@@ -82,6 +82,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>Main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,6 +114,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProjectController\ProjectController.vcxproj">
+      <Project>{d8b5e6a4-10b0-460c-9995-eb8a3708f28c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectModel\ProjectModel.vcxproj">
+      <Project>{3653bbfa-6d88-48ab-b23e-e5bf5b6aa3e9}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="UserLoginPage.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UserLoginPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserLoginPage.resx">
+      <DependentUpon>UserLoginPage.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
