@@ -21,8 +21,11 @@ namespace ProjectModel {
 		property bool Opertive; //Indica el estado de operatividad del vehículo
 		property array<Byte>^ Photo; // Matris de bytes
 		property List<int>^ Ids; // Lista de ids
-
-
-		, NumeroDeAsientos, Maletera,LlantaDeRepuesto, ModelodelMotor, size, wight
+		property int NumberOfSeats;
+		property bool Trunk;
+		property bool SpareTire;
+		property String^ EngineModel;
+		property double Size;
+		property double Weight;
 	};
 }

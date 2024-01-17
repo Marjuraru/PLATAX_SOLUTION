@@ -19,6 +19,6 @@ namespace ProjectModel {
 		property array<Byte>^ Photo; // Matris de bytes
 		property List<int>^ Ids; // Lista de Ids
 
-		acceso para el adm
+		//acceso para el adm
 	};
 }
