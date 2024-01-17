@@ -11,6 +11,8 @@ namespace ProjectModel {
 	public:
 		property int Id;
 		property String^ Name;
+		property String^ Email;
+		property String^ Password;
 		property int Dni;//placa de carro
 		property DateTime^ SignDate;//Fecha y hora de inicio de contrato
 		property DateTime^ BirthDate;//Fecha y hora de fin de contrato

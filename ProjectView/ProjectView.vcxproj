@@ -129,14 +129,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="UserFeedPage.cpp" />
     <ClCompile Include="UserLoginPage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="UserFeedPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="UserLoginPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UserFeedPage.resx">
+      <DependentUpon>UserFeedPage.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserLoginPage.resx">
       <DependentUpon>UserLoginPage.h</DependentUpon>
     </EmbeddedResource>
