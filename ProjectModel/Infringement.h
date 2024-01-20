@@ -8,7 +8,11 @@ namespace ProjectModel {
 	public ref class Infringement
 	{
 		public:
-			property bool YNInfringement;// tiene infracciones?
-			property String^ InfringementName;
+			property int id;
+			property double price;
+			property String^ Name;
+			property String^ Type;	//grave, leve, simple, etc	
+			property DateTime Date; //día que se puso la infracción
+			
 	};
 };

@@ -8,10 +8,13 @@ namespace ProjectModel {
 	{
 
 	public:
+		property int id;
 		property double Amount;
-		property DateTime^ Duration;//Fecha y hora de inicio de contrato
-		property String^ DepositMode;
-
+		property String^ PaymentMode;
+		property DateTime InitDate;//Fecha y hora de inicio de contrato		
+		property array<Byte>^ Voucher;
+		property array<Byte>^ Contract; //puede ser una clase completa
+		// se puede agregar que ingrese el numero de transacción, el nombre de la entidad bancaria y demás
 		//acceso para el adm
 	};
 };

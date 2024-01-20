@@ -7,9 +7,9 @@ namespace ProjectModel {
 	public ref class Commendation
 	{
 	public:
-		property bool YNCommendation;
-		property array<Byte>^ ScannedCommendation;
-		property String^ CommendatorName;
-
+		property int Id;
+		property String^ CommendatorName; // quien lo recomendó
+		property DateTime Date; //fecha de la recomendación
+		property array<Byte>^ ScannedCommendation; //scaneo del documento de recomendación
 	};
 };

@@ -10,7 +10,6 @@ namespace ProjectModel {
 
 		public:
 			property int Experience;// años de experiencia del admin
-			property int AccessLevel;
-			
+			property int AccessLevel;			
 	};
 };

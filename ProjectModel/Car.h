@@ -10,22 +10,13 @@ namespace ProjectModel {
 
 	public:
 		property int Id;
-		property String^ Brand;
-		property String^ Plate;//placa de carro
-		property DateTime^ StartDate;//Fecha y hora de inicio de contrato
-		property DateTime^ DeathLine;//Fecha y hora de fin de contrato
-		property double PayRent;//Pago del Taxi por la renta
-		property double Speed; 
+		property int NumberOfSeats;   
 		property String^ Color;
-		property String^ CarModel; 
+		property String^ CarModel;
+		property String^ Brand;
+		property String^ Plate;//placa de carro 
+		property bool SpareTire; //llanta de repuesto
 		property bool Opertive; //Indica el estado de operatividad del vehículo
 		property array<Byte>^ Photo; // Matris de bytes
-		property List<int>^ Ids; // Lista de ids
-		property int NumberOfSeats;
-		property bool Trunk;
-		property bool SpareTire;
-		property String^ EngineModel;
-		property double Size;
-		property double Weight;
 	};
 }
