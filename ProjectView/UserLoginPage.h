@@ -1,5 +1,6 @@
 #pragma once
 #include "UserFeedPage.h"
+#include "UserRegisterPage.h"
 
 namespace ProjectView {
 
@@ -89,7 +90,7 @@ namespace ProjectView {
 			// 
 			// textBox_email
 			// 
-			this->textBox_email->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->textBox_email->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_email->Location = System::Drawing::Point(169, 124);
 			this->textBox_email->Name = L"textBox_email";
@@ -100,7 +101,7 @@ namespace ProjectView {
 			// 
 			this->button_login->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_login->Location = System::Drawing::Point(201, 278);
+			this->button_login->Location = System::Drawing::Point(201, 237);
 			this->button_login->Name = L"button_login";
 			this->button_login->Size = System::Drawing::Size(136, 37);
 			this->button_login->TabIndex = 2;
@@ -110,10 +111,11 @@ namespace ProjectView {
 			// 
 			// textBox_password
 			// 
-			this->textBox_password->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->textBox_password->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_password->Location = System::Drawing::Point(169, 187);
 			this->textBox_password->Name = L"textBox_password";
+			this->textBox_password->PasswordChar = '*';
 			this->textBox_password->Size = System::Drawing::Size(210, 26);
 			this->textBox_password->TabIndex = 3;
 			// 
@@ -121,12 +123,13 @@ namespace ProjectView {
 			// 
 			this->button_register->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_register->Location = System::Drawing::Point(201, 348);
+			this->button_register->Location = System::Drawing::Point(201, 297);
 			this->button_register->Name = L"button_register";
 			this->button_register->Size = System::Drawing::Size(136, 37);
 			this->button_register->TabIndex = 4;
 			this->button_register->Text = L"Crear cuenta";
 			this->button_register->UseVisualStyleBackColor = true;
+			this->button_register->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &UserLoginPage::button_register_MouseClick);
 			// 
 			// label1
 			// 
@@ -166,7 +169,7 @@ namespace ProjectView {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(557, 499);
+			this->ClientSize = System::Drawing::Size(557, 346);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -196,8 +199,14 @@ namespace ProjectView {
 			userFeedPage->Show();
 		}
 		else {
-			MessageBox::Show("Credenciales incorrectas");
+			MessageBox::Show("Datos incorrectas o falta completar");
 		}
+	}
+	private: System::Void button_register_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+	
+			UserRegisterPage^ userRegisterPage = gcnew UserRegisterPage();
+			userRegisterPage->MdiParent = this->MdiParent;
+			userRegisterPage->Show();
 	}
 };
 }
