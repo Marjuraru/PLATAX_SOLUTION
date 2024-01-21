@@ -15,5 +15,7 @@ namespace ProjectController {
 
 		static bool validateAccess(String^ email, String^ password);
 
+		static void CreateClient(Client^ c);
+
 	};
 }

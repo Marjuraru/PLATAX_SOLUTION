@@ -5,7 +5,7 @@ using namespace System;
 
 namespace ProjectModel {
 	[Serializable]
-		public ref class Reclamation
+	public ref class Reclamation
 	{
 	public:
 		property int id;

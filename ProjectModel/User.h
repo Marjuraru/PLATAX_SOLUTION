@@ -13,6 +13,7 @@ namespace ProjectModel {
 		property int Phone;
 		property int Dni;
 		property String^ Name;
+		property String^ Lastname;
 		property String^ Address;
 		property String^ Email;
 		property String^ Password;

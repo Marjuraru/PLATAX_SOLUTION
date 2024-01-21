@@ -1,6 +1,6 @@
 #include "pch.h"
 
-#include "ProjectController.h"
+#include "ProjectController.h" 
  
 bool ProjectController::Controller::validateAccess(String^ email, String^ password)
 {
@@ -10,4 +10,9 @@ bool ProjectController::Controller::validateAccess(String^ email, String^ passwo
 	else {
 		return false;
 	}
+}
+
+void ProjectController::Controller::CreateClient(Client^ c)
+{
+	return ProjectPersistance::Persistance::CreateClient(c);
 }

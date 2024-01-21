@@ -4,7 +4,7 @@ using namespace System::Collections::Generic;
 
 namespace ProjectModel {
 	[Serializable]
-		public ref class Help
+	public ref class Help
 	{
 
 	public:

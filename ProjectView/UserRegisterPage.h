@@ -8,6 +8,11 @@ namespace ProjectView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Collections::Generic;
+	using namespace System::Xml::Serialization;
+	using namespace ProjectModel;
+	using namespace ProjectController;
+
 
 	/// <summary>
 	/// Resumen de UserRegisterPage
@@ -36,7 +41,8 @@ namespace ProjectView {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::TextBox^ textBox_names;
+	private: System::Windows::Forms::TextBox^ textBox_name;
+
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::TextBox^ textBox_lastname;
 	private: System::Windows::Forms::TextBox^ textBox_phone;
@@ -47,21 +53,26 @@ namespace ProjectView {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::TextBox^ textBox_dni;
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::DateTimePicker^ dateTimePicker_birthdate;
+	private: System::Windows::Forms::DateTimePicker^ dtp_birthdate;
+
 
 
 	private: System::Windows::Forms::Label^ label7;
 
 	private: System::Windows::Forms::Label^ label8;
-	private: System::Windows::Forms::TextBox^ textBox_createpass;
+	private: System::Windows::Forms::TextBox^ textBox_password;
+
 
 	private: System::Windows::Forms::Label^ label9;
-	private: System::Windows::Forms::Button^ button_toregister;
+	private: System::Windows::Forms::Button^ button_register;
+
 
 	private: System::Windows::Forms::TextBox^ textBox_address;
 	private: System::Windows::Forms::Label^ label10;
-	private: System::Windows::Forms::CheckBox^ checkBox_sexw;
-	private: System::Windows::Forms::CheckBox^ checkBox_sexM;
+	private: System::Windows::Forms::CheckBox^ checkBox_female;
+	private: System::Windows::Forms::CheckBox^ checkBox_male;
+
+
 
 
 	protected:
@@ -81,7 +92,7 @@ namespace ProjectView {
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->textBox_names = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_name = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox_lastname = (gcnew System::Windows::Forms::TextBox());
 			this->textBox_phone = (gcnew System::Windows::Forms::TextBox());
@@ -90,16 +101,16 @@ namespace ProjectView {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox_dni = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->dateTimePicker_birthdate = (gcnew System::Windows::Forms::DateTimePicker());
+			this->dtp_birthdate = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->textBox_createpass = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_password = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->button_toregister = (gcnew System::Windows::Forms::Button());
+			this->button_register = (gcnew System::Windows::Forms::Button());
 			this->textBox_address = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->checkBox_sexw = (gcnew System::Windows::Forms::CheckBox());
-			this->checkBox_sexM = (gcnew System::Windows::Forms::CheckBox());
+			this->checkBox_female = (gcnew System::Windows::Forms::CheckBox());
+			this->checkBox_male = (gcnew System::Windows::Forms::CheckBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -124,14 +135,14 @@ namespace ProjectView {
 			this->label2->TabIndex = 7;
 			this->label2->Text = L"Nombres";
 			// 
-			// textBox_names
+			// textBox_name
 			// 
-			this->textBox_names->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox_name->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_names->Location = System::Drawing::Point(31, 104);
-			this->textBox_names->Name = L"textBox_names";
-			this->textBox_names->Size = System::Drawing::Size(210, 26);
-			this->textBox_names->TabIndex = 8;
+			this->textBox_name->Location = System::Drawing::Point(31, 104);
+			this->textBox_name->Name = L"textBox_name";
+			this->textBox_name->Size = System::Drawing::Size(210, 26);
+			this->textBox_name->TabIndex = 8;
 			// 
 			// label3
 			// 
@@ -213,22 +224,22 @@ namespace ProjectView {
 			this->label6->TabIndex = 15;
 			this->label6->Text = L"DNI";
 			// 
-			// dateTimePicker_birthdate
+			// dtp_birthdate
 			// 
-			this->dateTimePicker_birthdate->CalendarFont = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->dateTimePicker_birthdate->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->dateTimePicker_birthdate->Location = System::Drawing::Point(126, 375);
-			this->dateTimePicker_birthdate->Name = L"dateTimePicker_birthdate";
-			this->dateTimePicker_birthdate->Size = System::Drawing::Size(200, 20);
-			this->dateTimePicker_birthdate->TabIndex = 17;
+			this->dtp_birthdate->CalendarFont = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->dtp_birthdate->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->dtp_birthdate->Location = System::Drawing::Point(110, 367);
+			this->dtp_birthdate->Name = L"dtp_birthdate";
+			this->dtp_birthdate->Size = System::Drawing::Size(200, 20);
+			this->dtp_birthdate->TabIndex = 17;
 			// 
 			// label7
 			// 
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(152, 341);
+			this->label7->Location = System::Drawing::Point(139, 341);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(145, 17);
 			this->label7->TabIndex = 18;
@@ -245,14 +256,14 @@ namespace ProjectView {
 			this->label8->TabIndex = 20;
 			this->label8->Text = L"Sexo";
 			// 
-			// textBox_createpass
+			// textBox_password
 			// 
-			this->textBox_createpass->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox_password->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_createpass->Location = System::Drawing::Point(331, 361);
-			this->textBox_createpass->Name = L"textBox_createpass";
-			this->textBox_createpass->Size = System::Drawing::Size(172, 26);
-			this->textBox_createpass->TabIndex = 21;
+			this->textBox_password->Location = System::Drawing::Point(331, 361);
+			this->textBox_password->Name = L"textBox_password";
+			this->textBox_password->Size = System::Drawing::Size(172, 26);
+			this->textBox_password->TabIndex = 21;
 			// 
 			// label9
 			// 
@@ -265,14 +276,15 @@ namespace ProjectView {
 			this->label9->TabIndex = 22;
 			this->label9->Text = L"Crea tu contraseña";
 			// 
-			// button_toregister
+			// button_register
 			// 
-			this->button_toregister->Location = System::Drawing::Point(332, 393);
-			this->button_toregister->Name = L"button_toregister";
-			this->button_toregister->Size = System::Drawing::Size(171, 23);
-			this->button_toregister->TabIndex = 23;
-			this->button_toregister->Text = L"REGISTRAR";
-			this->button_toregister->UseVisualStyleBackColor = true;
+			this->button_register->Location = System::Drawing::Point(332, 393);
+			this->button_register->Name = L"button_register";
+			this->button_register->Size = System::Drawing::Size(171, 23);
+			this->button_register->TabIndex = 23;
+			this->button_register->Text = L"REGISTRAR";
+			this->button_register->UseVisualStyleBackColor = true;
+			this->button_register->Click += gcnew System::EventHandler(this, &UserRegisterPage::button_register_Click);
 			// 
 			// textBox_address
 			// 
@@ -294,25 +306,25 @@ namespace ProjectView {
 			this->label10->TabIndex = 24;
 			this->label10->Text = L"Dirección";
 			// 
-			// checkBox_sexw
+			// checkBox_female
 			// 
-			this->checkBox_sexw->AutoSize = true;
-			this->checkBox_sexw->Location = System::Drawing::Point(31, 361);
-			this->checkBox_sexw->Name = L"checkBox_sexw";
-			this->checkBox_sexw->Size = System::Drawing::Size(52, 17);
-			this->checkBox_sexw->TabIndex = 26;
-			this->checkBox_sexw->Text = L"Mujer";
-			this->checkBox_sexw->UseVisualStyleBackColor = true;
+			this->checkBox_female->AutoSize = true;
+			this->checkBox_female->Location = System::Drawing::Point(31, 361);
+			this->checkBox_female->Name = L"checkBox_female";
+			this->checkBox_female->Size = System::Drawing::Size(52, 17);
+			this->checkBox_female->TabIndex = 26;
+			this->checkBox_female->Text = L"Mujer";
+			this->checkBox_female->UseVisualStyleBackColor = true;
 			// 
-			// checkBox_sexM
+			// checkBox_male
 			// 
-			this->checkBox_sexM->AutoSize = true;
-			this->checkBox_sexM->Location = System::Drawing::Point(31, 384);
-			this->checkBox_sexM->Name = L"checkBox_sexM";
-			this->checkBox_sexM->Size = System::Drawing::Size(63, 17);
-			this->checkBox_sexM->TabIndex = 27;
-			this->checkBox_sexM->Text = L"Hombre";
-			this->checkBox_sexM->UseVisualStyleBackColor = true;
+			this->checkBox_male->AutoSize = true;
+			this->checkBox_male->Location = System::Drawing::Point(31, 384);
+			this->checkBox_male->Name = L"checkBox_male";
+			this->checkBox_male->Size = System::Drawing::Size(63, 17);
+			this->checkBox_male->TabIndex = 27;
+			this->checkBox_male->Text = L"Hombre";
+			this->checkBox_male->UseVisualStyleBackColor = true;
 			// 
 			// UserRegisterPage
 			// 
@@ -320,16 +332,16 @@ namespace ProjectView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(523, 424);
-			this->Controls->Add(this->checkBox_sexM);
-			this->Controls->Add(this->checkBox_sexw);
+			this->Controls->Add(this->checkBox_male);
+			this->Controls->Add(this->checkBox_female);
 			this->Controls->Add(this->textBox_address);
 			this->Controls->Add(this->label10);
-			this->Controls->Add(this->button_toregister);
+			this->Controls->Add(this->button_register);
 			this->Controls->Add(this->label9);
-			this->Controls->Add(this->textBox_createpass);
+			this->Controls->Add(this->textBox_password);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
-			this->Controls->Add(this->dateTimePicker_birthdate);
+			this->Controls->Add(this->dtp_birthdate);
 			this->Controls->Add(this->textBox_dni);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->textBox_email);
@@ -338,7 +350,7 @@ namespace ProjectView {
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->textBox_lastname);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->textBox_names);
+			this->Controls->Add(this->textBox_name);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Name = L"UserRegisterPage";
@@ -348,5 +360,24 @@ namespace ProjectView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button_register_Click(System::Object^ sender, System::EventArgs^ e) {
+		Client^ c = gcnew Client(); //declarar - crear
+		c->Name = textBox_name->Text;
+		c->Lastname = textBox_lastname->Text;
+		c->Dni = Convert::ToInt32(textBox_dni->Text); 
+		// otras formas: Int32::Parse(textBox_dni->Text); 
+		/*
+		int dni;
+		Int32::TryParse(textBox_dni->Text, dni);
+		*/
+		c->Phone = Int32::Parse(textBox_phone->Text);
+		c->BirthDate = dtp_birthdate->Value;
+		c->Password = textBox_password->Text;
+		c->Address = textBox_address->Text;
+		c->female = checkBox_female->Checked;
+		c->male = checkBox_male->Checked;
+
+		Controller::CreateClient(c);
+	}
+};
 }

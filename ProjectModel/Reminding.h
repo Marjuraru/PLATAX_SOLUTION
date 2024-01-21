@@ -5,7 +5,7 @@ using namespace System;
 
 namespace ProjectModel {
 	[Serializable]
-		public ref class Reminding
+	public ref class Reminding
 	{
 	public:
 		property int id;
