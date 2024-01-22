@@ -24,6 +24,9 @@
     <ClCompile Include="UserRegisterPage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="UserProfilePage.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UserLoginPage.h">
@@ -33,6 +36,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="UserRegisterPage.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="UserProfilePage.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

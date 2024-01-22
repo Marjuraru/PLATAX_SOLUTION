@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClCompile Include="UserFeedPage.cpp" />
     <ClCompile Include="UserLoginPage.cpp" />
+    <ClCompile Include="UserProfilePage.cpp" />
     <ClCompile Include="UserRegisterPage.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserLoginPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="UserProfilePage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserRegisterPage.h">
@@ -150,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserLoginPage.resx">
       <DependentUpon>UserLoginPage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserProfilePage.resx">
+      <DependentUpon>UserProfilePage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserRegisterPage.resx">
       <DependentUpon>UserRegisterPage.h</DependentUpon>

@@ -63,3 +63,94 @@ void ProjectPersistance::Persistance::CreateClient(Client^ c)
     PersistBinaryFile(CLIENT_FILE_BIN_NAME, ClientList);
 }
 
+void ProjectPersistance::Persistance::UpdateClient(Client^ c)
+{
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    if (ClientList != nullptr) {
+        for (int i = 0; i < ClientList->Count; i++) {
+            if (c->Id == ClientList[i]->Id) {
+                ClientList[i] = c;
+            }
+        }
+        /*
+        for each (Client^ client in ClientList){
+            if (c->Id == ClientList[i]->Id) {
+                ClientList[i] = c;
+            }
+        }
+        */
+    }        
+    PersistBinaryFile(CLIENT_FILE_BIN_NAME, ClientList);
+}
+
+void ProjectPersistance::Persistance::DeleteClient(int id)
+{
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    if (ClientList != nullptr) {
+        for (int i = ClientList->Count - 1; i >= 0; i--) {
+            if (id == ClientList[i]->Id) {
+                ClientList->RemoveAt(i);
+            }
+        }
+        // Guardar la lista actualizada en el archivo binario
+        PersistBinaryFile(CLIENT_FILE_BIN_NAME, ClientList);
+    }
+}
+
+List<Client^>^ ProjectPersistance::Persistance::QueryAllClients()
+{
+    return ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    /*
+    if (ClientList != nullptr) {
+        return ClientList;
+    }
+    return nullptr;
+    */
+}
+
+Client^ ProjectPersistance::Persistance::QueryClientById(int id)
+{
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    if (ClientList != nullptr) {
+        for (int i = 0; i < ClientList->Count; i++) {
+            if (ClientList[i]->Id == id) {
+                return ClientList[i];
+            }
+        }
+    }
+    return nullptr;
+}
+
+List<Client^>^ ProjectPersistance::Persistance::QueryListClientByName(String^ name)
+{
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME); //lista de almacenamiento total
+
+    List<Client^>^ Clients = gcnew List<Client^>(); //lista de clientes nueva
+    Clients = nullptr;
+
+    if (ClientList != nullptr) {
+        for (int i = 0; i < ClientList->Count; i++) {
+            if (ClientList[i]->Name == name) {
+                Clients->Add(ClientList[i]);
+            }
+        }
+    }
+    return Clients;
+}
+
+int ProjectPersistance::Persistance::GenerateClientId()
+{
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    int newID = 1;
+    if (ClientList != nullptr) {
+        // Busca el último ID utilizado y elige un nuevo ID que sea único
+        for each (Client ^ client in ClientList) {
+            if (client->Id >= newID) {
+                newID = client->Id + 1;
+            }
+        }
+    }
+    return newID;
+}
+
+

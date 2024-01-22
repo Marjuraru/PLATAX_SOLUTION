@@ -21,8 +21,15 @@ namespace ProjectPersistance {
 
         // Metodos de mantenimiento del Cliente - CRUD
         static void CreateClient(Client^ c);
-        //static void UpdateClient(Client^ c);
-        //static void DeleteClient(int id);
+        static void UpdateClient(Client^ c);
+        static void DeleteClient(int id);
 
+        //busqueda de una clase mediante su atributo
+        static List<Client^>^ QueryAllClients();
+        static Client^ QueryClientById(int id);
+        static List<Client^>^ QueryListClientByName(String^ name);
+
+        static int GenerateClientId();
+        
     };
 }

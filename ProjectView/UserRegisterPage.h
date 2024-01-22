@@ -1,5 +1,7 @@
 #pragma once
 
+#include "UserFeedPage.h"
+
 namespace ProjectView {
 
 	using namespace System;
@@ -315,6 +317,7 @@ namespace ProjectView {
 			this->checkBox_female->TabIndex = 26;
 			this->checkBox_female->Text = L"Mujer";
 			this->checkBox_female->UseVisualStyleBackColor = true;
+			this->checkBox_female->CheckedChanged += gcnew System::EventHandler(this, &UserRegisterPage::checkBox_female_CheckedChanged);
 			// 
 			// checkBox_male
 			// 
@@ -325,6 +328,7 @@ namespace ProjectView {
 			this->checkBox_male->TabIndex = 27;
 			this->checkBox_male->Text = L"Hombre";
 			this->checkBox_male->UseVisualStyleBackColor = true;
+			this->checkBox_male->CheckedChanged += gcnew System::EventHandler(this, &UserRegisterPage::checkBox_male_CheckedChanged);
 			// 
 			// UserRegisterPage
 			// 
@@ -360,8 +364,75 @@ namespace ProjectView {
 
 		}
 #pragma endregion
+
+	private: System::Void checkBox_female_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (checkBox_female->Checked) {
+			checkBox_male->Checked = false;
+		}
+	}
+	private: System::Void checkBox_male_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (checkBox_male->Checked) {
+			checkBox_female->Checked = false;
+		}
+	}
 	private: System::Void button_register_Click(System::Object^ sender, System::EventArgs^ e) {
+		/*
+		property int Id;
+		property int Phone;
+		property int Dni;
+		property String^ Name;
+		property String^ Lastname;
+		property String^ Address;
+		property String^ Email;
+		property String^ Password;
+		property bool male;
+		property bool female;
+		property DateTime SignDate;//Fecha y hora de inicio de contrato
+		property DateTime BirthDate;//Fecha y hora de fin de contrato
+		property array<Byte>^ Photo; // Matris de bytes		
+		
+		*/
+		String^ name = textBox_name->Text;
+		String^ lastname = textBox_lastname->Text;
+		String^ _dni = textBox_dni->Text;
+		String^ _phone = textBox_phone->Text;
+		String^ password = textBox_password->Text;
+		String^ address = textBox_address->Text; 
+		bool male = checkBox_male->Checked;
+		bool female = checkBox_female->Checked;
+
+		if (String::IsNullOrWhiteSpace(name) || String::IsNullOrWhiteSpace(lastname) || String::IsNullOrWhiteSpace(_dni) ||
+			String::IsNullOrWhiteSpace(_phone) || String::IsNullOrWhiteSpace(password) || String::IsNullOrWhiteSpace(address)) {
+			MessageBox::Show("Es necesario que se completen todos los datos de registro");
+			return;
+		}
+
+		int phone = 0, dni = 0;
+		if (_phone->Length != 9) {
+			MessageBox::Show("El número de telefono ingresado debe tener 9 dígitos");
+			return;
+		}
+		if (_dni->Length != 8) {
+			MessageBox::Show("El número de DNI ingresado debe tener 8 dígitos");
+			return;
+		}
+		
+		if (!Int32::TryParse(_phone, phone)) {
+			MessageBox::Show("Ingrese solo numeros para el teléfono");
+			return;
+		}
+		if (!Int32::TryParse(_dni, dni)) {
+			MessageBox::Show("Ingrese solo numeros para el DNI");
+			return;
+		}
+		
+		if (!male && !female) {
+			MessageBox::Show("Seleccione su sexo");
+			return;
+		}
+
 		Client^ c = gcnew Client(); //declarar - crear
+		c->Id = Controller::GenerateClientId();
 		c->Name = textBox_name->Text;
 		c->Lastname = textBox_lastname->Text;
 		c->Dni = Convert::ToInt32(textBox_dni->Text); 
@@ -376,8 +447,18 @@ namespace ProjectView {
 		c->Address = textBox_address->Text;
 		c->female = checkBox_female->Checked;
 		c->male = checkBox_male->Checked;
+		c->SignDate = System::DateTime::Now;
 
 		Controller::CreateClient(c);
+		MessageBox::Show("El registro se realizó exitosamente, bienvenido crack!");
+		
+		this->Close();
+
+		UserFeedPage^ userFeedPage = gcnew UserFeedPage();
+		userFeedPage->MdiParent = this->MdiParent;
+		userFeedPage->Show();
+		
 	}
+	
 };
 }
