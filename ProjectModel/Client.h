@@ -13,9 +13,10 @@ namespace ProjectModel {
 		public:
 			property int id;
 			property int Experience;// años de experiencia del cliente
-			property String^ LicenseType;// tipo de lincencia que tiene
-			property String^ LicenseName;
+			property String^ Licensetype;// tipo de lincencia que tiene
+			property String^ Licensename;
 			property Commendation^ recommend;
-			property Car^ Car;			
+			property Car^ Car;		
+
 	};
 };

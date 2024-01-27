@@ -10,9 +10,11 @@ namespace ProjectPersistance {
     private:
         static List<User^>^ UserList = gcnew List<User^>(); //no necesitamos 
         static List<Client^>^ ClientList = gcnew List<Client^>(); 
+        static List<Car^>^ CarList = gcnew List<Car^>();
 
     public:
         static String^ CLIENT_FILE_BIN_NAME = "Client.bin";
+        static String^ CAR_FILE_BIN_NAME = "Car.bin";
 
         //Persistencia binaria
         static void PersistBinaryFile(String^ fileName, Object^ persistObject); //metodo de escritura/creación de archivos binarios
@@ -26,10 +28,22 @@ namespace ProjectPersistance {
 
         //busqueda de una clase mediante su atributo
         static List<Client^>^ QueryAllClients();
-        static Client^ QueryClientById(int id);
-        static List<Client^>^ QueryListClientByName(String^ name);
+        static Client^ QueryClientById(int id);//*
+        static Client^ QueryClientByDni(int dni);
+        static Client^ QueryClientByEmail(String^ email);
+        static Client^ QueryClientByLicenseName(String^ licensename);
+
+
+        static List<Client^>^ QueryListClientByName(String^ name);//*
+        static List<Client^>^ QueryListClientByLastname(String^ lastname);
+        static List<Client^>^ QueryClientByLicensetype(String^ licensetype);
 
         static int GenerateClientId();
+
+        // Metodos de mantenimiento del Car - CRUD
+        static void CreateCar(Car^ c);
+        static void UpdateCar(Car^ c);
+        static void DeleteCar(int id);
         
     };
 }

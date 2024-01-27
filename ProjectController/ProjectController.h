@@ -24,7 +24,18 @@ namespace ProjectController {
 		//busqueda de una clase mediante su atributo
 		static List<Client^>^ QueryAllClients();
 		static Client^ QueryClientById(int id);
+		static Client^ QueryClientByDni(int dni);
+		static Client^ QueryClientByEmail(String^ email);
+		static Client^ QueryClientByLicenseName(String^ licensename);
+
 		static List<Client^>^ QueryListClientByName(String^ name);
+		static List<Client^>^ QueryListClientByLastname(String^ lastname);
+		static List<Client^>^ QueryClientByLicensetype(String^ licensetype);
+
+		//Mantenimiento de Carro
+		static void CreateCar(Car^ c);
+		static void UpdateCar(Car^ c);
+		static void DeleteCar(int id);
 
 	};
 }
