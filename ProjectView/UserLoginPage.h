@@ -104,7 +104,7 @@ namespace ProjectView {
 			this->button_login->Location = System::Drawing::Point(201, 237);
 			this->button_login->Name = L"button_login";
 			this->button_login->Size = System::Drawing::Size(136, 37);
-			this->button_login->TabIndex = 2;
+			this->button_login->TabIndex = 10;
 			this->button_login->Text = L"Iniciar sesión";
 			this->button_login->UseVisualStyleBackColor = true;
 			this->button_login->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &UserLoginPage::button_login_MouseClick);
@@ -117,7 +117,7 @@ namespace ProjectView {
 			this->textBox_password->Name = L"textBox_password";
 			this->textBox_password->PasswordChar = '*';
 			this->textBox_password->Size = System::Drawing::Size(210, 26);
-			this->textBox_password->TabIndex = 3;
+			this->textBox_password->TabIndex = 5;
 			// 
 			// button_register
 			// 
@@ -126,7 +126,7 @@ namespace ProjectView {
 			this->button_register->Location = System::Drawing::Point(201, 297);
 			this->button_register->Name = L"button_register";
 			this->button_register->Size = System::Drawing::Size(136, 37);
-			this->button_register->TabIndex = 4;
+			this->button_register->TabIndex = 15;
 			this->button_register->Text = L"Crear cuenta";
 			this->button_register->UseVisualStyleBackColor = true;
 			this->button_register->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &UserLoginPage::button_register_MouseClick);

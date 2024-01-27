@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 namespace ProjectView {
 
 	using namespace System;
@@ -8,6 +10,10 @@ namespace ProjectView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Collections::Generic;
+	using namespace System::Xml::Serialization;
+	using namespace ProjectModel;
+	using namespace ProjectController;
 
 	/// <summary>
 	/// Resumen de UserProfilePage
@@ -113,22 +119,28 @@ namespace ProjectView {
 			// checkBox_male
 			// 
 			this->checkBox_male->AutoSize = true;
+			this->checkBox_male->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->checkBox_male->Location = System::Drawing::Point(31, 410);
 			this->checkBox_male->Name = L"checkBox_male";
-			this->checkBox_male->Size = System::Drawing::Size(63, 17);
+			this->checkBox_male->Size = System::Drawing::Size(78, 23);
 			this->checkBox_male->TabIndex = 65;
 			this->checkBox_male->Text = L"Hombre";
 			this->checkBox_male->UseVisualStyleBackColor = true;
+			this->checkBox_male->CheckedChanged += gcnew System::EventHandler(this, &UserProfilePage::checkBox_male_CheckedChanged);
 			// 
 			// checkBox_female
 			// 
 			this->checkBox_female->AutoSize = true;
+			this->checkBox_female->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->checkBox_female->Location = System::Drawing::Point(31, 387);
 			this->checkBox_female->Name = L"checkBox_female";
-			this->checkBox_female->Size = System::Drawing::Size(52, 17);
+			this->checkBox_female->Size = System::Drawing::Size(65, 23);
 			this->checkBox_female->TabIndex = 60;
 			this->checkBox_female->Text = L"Mujer";
 			this->checkBox_female->UseVisualStyleBackColor = true;
+			this->checkBox_female->CheckedChanged += gcnew System::EventHandler(this, &UserProfilePage::checkBox_female_CheckedChanged);
 			// 
 			// textBox_address
 			// 
@@ -152,19 +164,22 @@ namespace ProjectView {
 			// 
 			// button_savechanges
 			// 
+			this->button_savechanges->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button_savechanges->Location = System::Drawing::Point(139, 529);
 			this->button_savechanges->Name = L"button_savechanges";
-			this->button_savechanges->Size = System::Drawing::Size(171, 23);
-			this->button_savechanges->TabIndex = 44;
+			this->button_savechanges->Size = System::Drawing::Size(174, 30);
+			this->button_savechanges->TabIndex = 85;
 			this->button_savechanges->Text = L"Guardar cambios";
 			this->button_savechanges->UseVisualStyleBackColor = true;
+			this->button_savechanges->Click += gcnew System::EventHandler(this, &UserProfilePage::button_savechanges_Click);
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(222, 426);
+			this->label9->Location = System::Drawing::Point(201, 452);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(138, 17);
 			this->label9->TabIndex = 43;
@@ -174,10 +189,10 @@ namespace ProjectView {
 			// 
 			this->textBox_password->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_password->Location = System::Drawing::Point(69, 471);
+			this->textBox_password->Location = System::Drawing::Point(69, 489);
 			this->textBox_password->Name = L"textBox_password";
 			this->textBox_password->Size = System::Drawing::Size(172, 26);
-			this->textBox_password->TabIndex = 42;
+			this->textBox_password->TabIndex = 75;
 			// 
 			// label8
 			// 
@@ -195,7 +210,7 @@ namespace ProjectView {
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(139, 367);
+			this->label7->Location = System::Drawing::Point(328, 367);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(145, 17);
 			this->label7->TabIndex = 40;
@@ -205,10 +220,12 @@ namespace ProjectView {
 			// 
 			this->dtp_birthdate->CalendarFont = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->dtp_birthdate->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->dtp_birthdate->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->dtp_birthdate->Location = System::Drawing::Point(110, 393);
+			this->dtp_birthdate->Location = System::Drawing::Point(253, 405);
 			this->dtp_birthdate->Name = L"dtp_birthdate";
-			this->dtp_birthdate->Size = System::Drawing::Size(200, 20);
+			this->dtp_birthdate->Size = System::Drawing::Size(250, 26);
 			this->dtp_birthdate->TabIndex = 70;
 			// 
 			// textBox_dni
@@ -324,6 +341,7 @@ namespace ProjectView {
 			// 
 			// pb_photo
 			// 
+			this->pb_photo->BackColor = System::Drawing::Color::White;
 			this->pb_photo->Location = System::Drawing::Point(602, 130);
 			this->pb_photo->Name = L"pb_photo";
 			this->pb_photo->Size = System::Drawing::Size(214, 184);
@@ -332,9 +350,11 @@ namespace ProjectView {
 			// 
 			// button_insertphoto
 			// 
+			this->button_insertphoto->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button_insertphoto->Location = System::Drawing::Point(627, 342);
 			this->button_insertphoto->Name = L"button_insertphoto";
-			this->button_insertphoto->Size = System::Drawing::Size(171, 23);
+			this->button_insertphoto->Size = System::Drawing::Size(174, 30);
 			this->button_insertphoto->TabIndex = 50;
 			this->button_insertphoto->Text = L"Selecciona una foto";
 			this->button_insertphoto->UseVisualStyleBackColor = true;
@@ -342,28 +362,31 @@ namespace ProjectView {
 			// 
 			// button_back
 			// 
+			this->button_back->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button_back->Location = System::Drawing::Point(452, 529);
 			this->button_back->Name = L"button_back";
-			this->button_back->Size = System::Drawing::Size(171, 23);
-			this->button_back->TabIndex = 51;
+			this->button_back->Size = System::Drawing::Size(174, 30);
+			this->button_back->TabIndex = 90;
 			this->button_back->Text = L"Cancelar";
 			this->button_back->UseVisualStyleBackColor = true;
+			this->button_back->Click += gcnew System::EventHandler(this, &UserProfilePage::button_back_Click);
 			// 
 			// textBox_newpassword
 			// 
 			this->textBox_newpassword->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_newpassword->Location = System::Drawing::Point(331, 471);
+			this->textBox_newpassword->Location = System::Drawing::Point(331, 489);
 			this->textBox_newpassword->Name = L"textBox_newpassword";
 			this->textBox_newpassword->Size = System::Drawing::Size(172, 26);
-			this->textBox_newpassword->TabIndex = 52;
+			this->textBox_newpassword->TabIndex = 80;
 			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(66, 451);
+			this->label11->Location = System::Drawing::Point(66, 469);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(125, 17);
 			this->label11->TabIndex = 53;
@@ -374,7 +397,7 @@ namespace ProjectView {
 			this->label12->AutoSize = true;
 			this->label12->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(328, 451);
+			this->label12->Location = System::Drawing::Point(328, 469);
 			this->label12->Name = L"label12";
 			this->label12->Size = System::Drawing::Size(126, 17);
 			this->label12->TabIndex = 54;
@@ -414,7 +437,7 @@ namespace ProjectView {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Name = L"UserProfilePage";
-			this->Text = L"UserProfilePage";
+			this->Text = L",";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -428,6 +451,85 @@ namespace ProjectView {
 		{
 			pb_photo->Image = gcnew Bitmap(opnfd->FileName);
 		}
+	}
+	
+
+	private: System::Void button_back_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+	}
+
+	private: System::Void checkBox_female_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+		if (checkBox_female->Checked) {
+			checkBox_male->Checked = false;
+		}
+	}
+
+	private: System::Void checkBox_male_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+
+		if (checkBox_male->Checked) {
+			checkBox_female->Checked = false;
+		}
+	}
+
+	private: System::Void button_savechanges_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+		String^ name = textBox_name->Text;
+		String^ lastname = textBox_lastname->Text;
+		String^ _dni = textBox_dni->Text;
+		String^ _phone = textBox_phone->Text;
+		String^ password = textBox_password->Text;
+		String^ newpassword = textBox_newpassword->Text;
+		String^ address = textBox_address->Text;
+		bool male = checkBox_male->Checked;
+		bool female = checkBox_female->Checked;
+
+		if (String::IsNullOrWhiteSpace(name) || String::IsNullOrWhiteSpace(lastname) || String::IsNullOrWhiteSpace(_dni) ||
+			String::IsNullOrWhiteSpace(_phone) || String::IsNullOrWhiteSpace(address)) {
+			MessageBox::Show("Es necesario que se completen todos los datos de registro");
+			return;
+		}
+		// String::IsNullOrWhiteSpace(password) || String::IsNullOrWhiteSpace(newpassword)
+		int phone = 0, dni = 0;
+		if (_phone->Length != 9) {
+			MessageBox::Show("El número de telefono ingresado debe tener 9 dígitos");
+			return;
+		}
+		if (_dni->Length != 8) {
+			MessageBox::Show("El número de DNI ingresado debe tener 8 dígitos");
+			return;
+		}
+
+		if (!Int32::TryParse(_phone, phone)) {
+			MessageBox::Show("Ingrese solo numeros para el teléfono");
+			return;
+		}
+		if (!Int32::TryParse(_dni, dni)) {
+			MessageBox::Show("Ingrese solo numeros para el DNI");
+			return;
+		}
+
+		if (!male && !female) {
+			MessageBox::Show("Seleccione su sexo");
+			return;
+		}
+
+		Client^ c = gcnew Client();
+		//no se va generar ID
+		c->Name = textBox_name->Text;
+		c->Lastname = textBox_lastname->Text;
+		c->Dni = Convert::ToInt32(textBox_dni->Text);
+		c->Phone = Int32::Parse(textBox_phone->Text);
+		c->BirthDate = dtp_birthdate->Value;
+	
+		c->Address = textBox_address->Text;
+		c->female = checkBox_female->Checked;
+		c->male = checkBox_male->Checked;
+
+		Controller::UpdateClient(c);
+		MessageBox::Show("¡Se editó correctamente!");
+
+		this->Close();
+
 	}
 
 

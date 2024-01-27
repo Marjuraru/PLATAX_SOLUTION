@@ -37,7 +37,7 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
             file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
             formatter = gcnew BinaryFormatter();
 
-            if (fileName->Equals(CLIENT_FILE_BIN_NAME)) {
+            if (fileName->Equals(CLIENT_FILE_BIN_NAME || CAR_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }          
             
@@ -121,6 +121,45 @@ Client^ ProjectPersistance::Persistance::QueryClientById(int id)
     return nullptr;
 }
 
+Client^ ProjectPersistance::Persistance::QueryClientByDni(int dni)
+{
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    if (ClientList != nullptr) {
+        for (int i = 0; i < ClientList->Count; i++) {
+            if (ClientList[i]->Dni == dni) {
+                return ClientList[i];
+            }
+        }
+    }
+    return nullptr;
+}
+
+Client^ ProjectPersistance::Persistance::QueryClientByEmail(String^ email)
+{
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    if (ClientList != nullptr) {
+        for (int i = 0; i < ClientList->Count; i++) {
+            if (ClientList[i]->Email == email) {
+                return ClientList[i];
+            }
+        }
+    }
+    return nullptr;
+}
+
+Client^ ProjectPersistance::Persistance::QueryClientByLicenseName(String^ licensename)
+{
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    if (ClientList != nullptr) {
+        for (int i = 0; i < ClientList->Count; i++) {
+            if (ClientList[i]->Licensename == licensename) {
+                return ClientList[i];
+            }
+        }
+    }
+    return nullptr;
+}
+
 List<Client^>^ ProjectPersistance::Persistance::QueryListClientByName(String^ name)
 {
     ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME); //lista de almacenamiento total
@@ -131,6 +170,42 @@ List<Client^>^ ProjectPersistance::Persistance::QueryListClientByName(String^ na
     if (ClientList != nullptr) {
         for (int i = 0; i < ClientList->Count; i++) {
             if (ClientList[i]->Name == name) {
+                Clients->Add(ClientList[i]);
+            }
+        }
+    }
+    return Clients;
+}
+
+
+//lastname
+List<Client^>^ ProjectPersistance::Persistance::QueryListClientByLastname(String^ lastname)
+{
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME); //lista de almacenamiento total
+
+    List<Client^>^ Clients = gcnew List<Client^>(); //lista de clientes nueva
+    Clients = nullptr;
+
+    if (ClientList != nullptr) {
+        for (int i = 0; i < ClientList->Count; i++) {
+            if (ClientList[i]->Lastname == lastname) {
+                Clients->Add(ClientList[i]);
+            }
+        }
+    }
+    return Clients;
+}
+
+List<Client^>^ ProjectPersistance::Persistance::QueryClientByLicensetype(String^ licensetype)
+{
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME); //lista de almacenamiento total
+
+    List<Client^>^ Clients = gcnew List<Client^>(); //lista de clientes nueva
+    Clients = nullptr;
+
+    if (ClientList != nullptr) {
+        for (int i = 0; i < ClientList->Count; i++) {
+            if (ClientList[i]->Licensetype == licensetype) {
                 Clients->Add(ClientList[i]);
             }
         }
@@ -151,6 +226,46 @@ int ProjectPersistance::Persistance::GenerateClientId()
         }
     }
     return newID;
+}
+
+void ProjectPersistance::Persistance::CreateCar(Car^ c)
+{
+    {
+        CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
+        if (CarList == nullptr) {
+            // Si la lista no se cargó correctamente, crea una nueva lista
+            CarList = gcnew List<Car^>();
+        }
+        CarList->Add(c);
+        PersistBinaryFile(CAR_FILE_BIN_NAME, CarList);
+    }
+}
+
+void ProjectPersistance::Persistance::UpdateCar(Car^ c)
+{
+    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
+    if (CarList != nullptr) {
+        for (int i = 0; i < CarList->Count; i++) {
+            if (c->Id == CarList[i]->Id) {
+                CarList[i] = c;
+            }
+        }
+    }
+    PersistBinaryFile(CAR_FILE_BIN_NAME, CarList);
+}
+
+void ProjectPersistance::Persistance::DeleteCar(int id)
+{
+    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
+    if (CarList != nullptr) {
+        for (int i = CarList->Count - 1; i >= 0; i--) {
+            if (id == CarList[i]->Id) {
+                CarList->RemoveAt(i);
+            }
+        }
+        // Guardar la lista actualizada en el archivo binario
+        PersistBinaryFile(CAR_FILE_BIN_NAME, CarList);
+    }
 }
 
 
