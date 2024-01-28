@@ -438,6 +438,7 @@ namespace ProjectView {
 			this->Controls->Add(this->label1);
 			this->Name = L"UserProfilePage";
 			this->Text = L",";
+			this->Load += gcnew System::EventHandler(this, &UserProfilePage::UserProfilePage_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -452,6 +453,31 @@ namespace ProjectView {
 			pb_photo->Image = gcnew Bitmap(opnfd->FileName);
 		}
 	}
+
+	void ShowImage(array<System::Byte>^ imageBytes, PictureBox^ pictureBox) {
+		if (imageBytes == nullptr || imageBytes->Length == 0 || pictureBox == nullptr) {
+			// Verificar si la matriz de bytes es nula o vacía, o si el PictureBox es nulo.
+			// Puedes manejar esto de acuerdo a tus necesidades, por ejemplo, mostrar un mensaje de error.
+			return;
+		}
+
+		// Crear un MemoryStream a partir de la matriz de bytes.
+		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(imageBytes);
+
+		try {
+			// Crear una imagen desde el MemoryStream.
+			System::Drawing::Image^ image = System::Drawing::Image::FromStream(ms);
+
+			// Mostrar la imagen en el PictureBox.
+			pictureBox->Image = image;
+		}
+		catch (Exception^ ex) {
+			// Manejar cualquier excepción que pueda ocurrir al cargar la imagen.
+			// Puedes mostrar un mensaje de error o realizar otra acción adecuada.
+			MessageBox::Show("Error al cargar la imagen: " + ex->Message);
+		}
+	}
+
 	
 
 	private: System::Void button_back_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -472,7 +498,8 @@ namespace ProjectView {
 	}
 
 	private: System::Void button_savechanges_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+		Client^ c = gcnew Client();
+
 		String^ name = textBox_name->Text;
 		String^ lastname = textBox_lastname->Text;
 		String^ _dni = textBox_dni->Text;
@@ -488,6 +515,24 @@ namespace ProjectView {
 			MessageBox::Show("Es necesario que se completen todos los datos de registro");
 			return;
 		}
+		if (!String::IsNullOrWhiteSpace(password) && !String::IsNullOrWhiteSpace(newpassword)) {
+
+			Client^ client = Controller::QueryClientById(Session::CurrentClient->Id); //el id aun no lo sabemos
+			if (password == client->Password) {
+				c->Password = newpassword;
+			}
+			else {
+				// La contraseña actual no coincide, mostrar un mensaje de error.
+				MessageBox::Show("La contraseña actual ingresada es incorrecta");
+				return;
+			}
+		}
+		else {
+			MessageBox::Show("Por favor ingrese las contraseñas para actualizarla");
+			return;
+		}
+
+
 		// String::IsNullOrWhiteSpace(password) || String::IsNullOrWhiteSpace(newpassword)
 		int phone = 0, dni = 0;
 		if (_phone->Length != 9) {
@@ -513,7 +558,7 @@ namespace ProjectView {
 			return;
 		}
 
-		Client^ c = gcnew Client();
+		
 		//no se va generar ID
 		c->Name = textBox_name->Text;
 		c->Lastname = textBox_lastname->Text;
@@ -525,6 +570,14 @@ namespace ProjectView {
 		c->female = checkBox_female->Checked;
 		c->male = checkBox_male->Checked;
 
+		if (pb_photo->Image != nullptr) {
+
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+			pb_photo->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+			c->Photo = ms->ToArray();
+			ms->Close();
+		} 
+
 		Controller::UpdateClient(c);
 		MessageBox::Show("¡Se editó correctamente!");
 
@@ -533,5 +586,14 @@ namespace ProjectView {
 	}
 
 
+	private: System::Void UserProfilePage_Load(System::Object^ sender, System::EventArgs^ e) {
+		Client^ c = Session::CurrentClient;
+
+		textBox_name->Text = c->Name;
+		textBox_lastname->Text = c->Lastname;
+
+		ShowImage(c->Photo, pb_photo);
+
+	}
 };
 }

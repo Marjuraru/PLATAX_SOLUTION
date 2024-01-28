@@ -107,7 +107,7 @@ namespace ProjectView {
 			this->button_login->TabIndex = 10;
 			this->button_login->Text = L"Iniciar sesión";
 			this->button_login->UseVisualStyleBackColor = true;
-			this->button_login->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &UserLoginPage::button_login_MouseClick);
+			this->button_login->Click += gcnew System::EventHandler(this, &UserLoginPage::button_login_Click);
 			// 
 			// textBox_password
 			// 
@@ -187,7 +187,7 @@ namespace ProjectView {
 	
 	private:
 	
-
+	/*
 	private: System::Void button_login_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		//String^ email = textBox_email->Text;
 		//String^ password = textBox_password->Text;
@@ -202,11 +202,31 @@ namespace ProjectView {
 			MessageBox::Show("Datos incorrectas o falta completar");
 		}
 	}
+	*/
 	private: System::Void button_register_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 	
 			UserRegisterPage^ userRegisterPage = gcnew UserRegisterPage();
 			userRegisterPage->MdiParent = this->MdiParent;
 			userRegisterPage->Show();
+	}
+	private: System::Void button_login_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ email = textBox_email->Text;
+		String^ password = textBox_password->Text;
+		Client^ c = Controller::QueryClientByEmail(email);
+		if (c != nullptr) {
+			if (c->Password == password ) {
+				Session::CurrentClient = c;
+				UserFeedPage^ userFeedPage = gcnew UserFeedPage();
+				userFeedPage->MdiParent = this->MdiParent;
+				userFeedPage->Show();
+			}
+			else {
+				MessageBox::Show("Datos incorrectas o falta completar");
+			}
+		}
+		else {
+			MessageBox::Show("El email ingresado no existe");
+		}
 	}
 };
 }

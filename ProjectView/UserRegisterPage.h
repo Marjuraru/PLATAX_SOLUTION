@@ -443,12 +443,14 @@ namespace ProjectView {
 		*/
 		c->Phone = Int32::Parse(textBox_phone->Text);
 		c->BirthDate = dtp_birthdate->Value;
+		c->Email = textBox_email->Text;
 		c->Password = textBox_password->Text;
 		c->Address = textBox_address->Text;
 		c->female = checkBox_female->Checked;
 		c->male = checkBox_male->Checked;
 		c->SignDate = System::DateTime::Now;
 
+		Session::CurrentClient = c;
 		Controller::CreateClient(c);
 		MessageBox::Show("El registro se realizó exitosamente, bienvenido crack!");
 		

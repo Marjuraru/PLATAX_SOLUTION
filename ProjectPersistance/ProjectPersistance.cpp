@@ -37,10 +37,12 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
             file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
             formatter = gcnew BinaryFormatter();
 
-            if (fileName->Equals(CLIENT_FILE_BIN_NAME || CAR_FILE_BIN_NAME)) {
+            if (fileName->Equals(CLIENT_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }          
-            
+            else if (fileName->Equals(CAR_FILE_BIN_NAME)) {
+                result = formatter->Deserialize(file);
+            }
         }
     }
     catch (Exception^ ex) {
