@@ -230,10 +230,12 @@ namespace ProjectView {
 			// 
 			this->dtp_birthdate->CalendarFont = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->dtp_birthdate->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->dtp_birthdate->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->dtp_birthdate->Location = System::Drawing::Point(110, 367);
+			this->dtp_birthdate->Location = System::Drawing::Point(115, 361);
 			this->dtp_birthdate->Name = L"dtp_birthdate";
-			this->dtp_birthdate->Size = System::Drawing::Size(200, 20);
+			this->dtp_birthdate->Size = System::Drawing::Size(200, 26);
 			this->dtp_birthdate->TabIndex = 17;
 			// 
 			// label7
@@ -280,9 +282,11 @@ namespace ProjectView {
 			// 
 			// button_register
 			// 
+			this->button_register->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->button_register->Location = System::Drawing::Point(332, 393);
 			this->button_register->Name = L"button_register";
-			this->button_register->Size = System::Drawing::Size(171, 23);
+			this->button_register->Size = System::Drawing::Size(171, 29);
 			this->button_register->TabIndex = 23;
 			this->button_register->Text = L"REGISTRAR";
 			this->button_register->UseVisualStyleBackColor = true;
@@ -311,9 +315,11 @@ namespace ProjectView {
 			// checkBox_female
 			// 
 			this->checkBox_female->AutoSize = true;
+			this->checkBox_female->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->checkBox_female->Location = System::Drawing::Point(31, 361);
 			this->checkBox_female->Name = L"checkBox_female";
-			this->checkBox_female->Size = System::Drawing::Size(52, 17);
+			this->checkBox_female->Size = System::Drawing::Size(65, 23);
 			this->checkBox_female->TabIndex = 26;
 			this->checkBox_female->Text = L"Mujer";
 			this->checkBox_female->UseVisualStyleBackColor = true;
@@ -322,9 +328,11 @@ namespace ProjectView {
 			// checkBox_male
 			// 
 			this->checkBox_male->AutoSize = true;
+			this->checkBox_male->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->checkBox_male->Location = System::Drawing::Point(31, 384);
 			this->checkBox_male->Name = L"checkBox_male";
-			this->checkBox_male->Size = System::Drawing::Size(63, 17);
+			this->checkBox_male->Size = System::Drawing::Size(78, 23);
 			this->checkBox_male->TabIndex = 27;
 			this->checkBox_male->Text = L"Hombre";
 			this->checkBox_male->UseVisualStyleBackColor = true;
@@ -448,7 +456,7 @@ namespace ProjectView {
 		c->Address = textBox_address->Text;
 		c->female = checkBox_female->Checked;
 		c->male = checkBox_male->Checked;
-		c->SignDate = System::DateTime::Now;
+		c->SignDate = System::DateTime::Now;//toma hora y fecha del sistema
 
 		Session::CurrentClient = c;
 		Controller::CreateClient(c);

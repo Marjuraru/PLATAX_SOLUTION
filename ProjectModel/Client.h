@@ -11,7 +11,7 @@ namespace ProjectModel {
 	public ref class Client : public User {
 		
 		public:
-			property int id;
+			property int Id;
 			property int Experience;// años de experiencia del cliente
 			property String^ Licensetype;// tipo de lincencia que tiene
 			property String^ Licensename;

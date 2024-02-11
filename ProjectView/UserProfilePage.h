@@ -66,10 +66,15 @@ namespace ProjectView {
 	private: System::Windows::Forms::PictureBox^ pb_photo;
 
 	private: System::Windows::Forms::Button^ button_insertphoto;
-	private: System::Windows::Forms::Button^ button_back;
+
 	private: System::Windows::Forms::TextBox^ textBox_newpassword;
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::Button^ button_back;
+
+
+
+
 
 
 
@@ -109,10 +114,10 @@ namespace ProjectView {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->pb_photo = (gcnew System::Windows::Forms::PictureBox());
 			this->button_insertphoto = (gcnew System::Windows::Forms::Button());
-			this->button_back = (gcnew System::Windows::Forms::Button());
 			this->textBox_newpassword = (gcnew System::Windows::Forms::TextBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->button_back = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -360,18 +365,6 @@ namespace ProjectView {
 			this->button_insertphoto->UseVisualStyleBackColor = true;
 			this->button_insertphoto->Click += gcnew System::EventHandler(this, &UserProfilePage::button_insertphoto_Click);
 			// 
-			// button_back
-			// 
-			this->button_back->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button_back->Location = System::Drawing::Point(452, 529);
-			this->button_back->Name = L"button_back";
-			this->button_back->Size = System::Drawing::Size(174, 30);
-			this->button_back->TabIndex = 90;
-			this->button_back->Text = L"Cancelar";
-			this->button_back->UseVisualStyleBackColor = true;
-			this->button_back->Click += gcnew System::EventHandler(this, &UserProfilePage::button_back_Click);
-			// 
 			// textBox_newpassword
 			// 
 			this->textBox_newpassword->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -403,16 +396,30 @@ namespace ProjectView {
 			this->label12->TabIndex = 54;
 			this->label12->Text = L"Contraseña nueva";
 			// 
+			// button_back
+			// 
+			this->button_back->BackColor = System::Drawing::Color::Maroon;
+			this->button_back->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_back->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->button_back->Location = System::Drawing::Point(452, 529);
+			this->button_back->Name = L"button_back";
+			this->button_back->Size = System::Drawing::Size(174, 30);
+			this->button_back->TabIndex = 91;
+			this->button_back->Text = L"Cancelar";
+			this->button_back->UseVisualStyleBackColor = false;
+			this->button_back->Click += gcnew System::EventHandler(this, &UserProfilePage::button_back_Click_1);
+			// 
 			// UserProfilePage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(875, 595);
+			this->Controls->Add(this->button_back);
 			this->Controls->Add(this->label12);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->textBox_newpassword);
-			this->Controls->Add(this->button_back);
 			this->Controls->Add(this->button_insertphoto);
 			this->Controls->Add(this->pb_photo);
 			this->Controls->Add(this->checkBox_male);
@@ -479,10 +486,6 @@ namespace ProjectView {
 	}
 
 	
-
-	private: System::Void button_back_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->Close();
-	}
 
 	private: System::Void checkBox_female_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		if (checkBox_female->Checked) {
@@ -595,5 +598,10 @@ namespace ProjectView {
 		ShowImage(c->Photo, pb_photo);
 
 	}
+	private: System::Void button_back_Click_1(System::Object^ sender, System::EventArgs^ e) {
+
+		this->Close();
+
+}
 };
 }

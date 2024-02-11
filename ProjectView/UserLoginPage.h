@@ -228,5 +228,6 @@ namespace ProjectView {
 			MessageBox::Show("El email ingresado no existe");
 		}
 	}
+
 };
 }

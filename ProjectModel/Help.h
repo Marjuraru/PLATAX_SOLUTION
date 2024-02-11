@@ -8,7 +8,7 @@ namespace ProjectModel {
 	{
 
 	public:
-		property int id; 
+		property int Id; 
 		property String^ Type;
 		property String^ Description; //detalles del tipo de ayuda que se necesita
 		property String^ Feedback; //respuesta del personal de ayuda
