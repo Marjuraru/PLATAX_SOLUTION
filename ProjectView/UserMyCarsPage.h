@@ -8,7 +8,10 @@ namespace ProjectView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	using namespace System::Collections::Generic;
+	using namespace System::Xml::Serialization;
+	using namespace ProjectModel;
+	using namespace ProjectController;
 
 	/// <summary>
 	/// Resumen de UserMyCarsPage
@@ -35,7 +38,9 @@ namespace ProjectView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridView^ dgv_cars;
+	protected:
+
 	private: System::Windows::Forms::Button^ button_exit;
 
 	private: System::Windows::Forms::Button^ button_add;
@@ -53,13 +58,14 @@ namespace ProjectView {
 
 
 	private: System::Windows::Forms::PictureBox^ pb_photo;
+	private: System::Windows::Forms::TextBox^ textBox_tid;
 
 
 
 
 
 
-	private: System::Windows::Forms::TextBox^ textBox_id;
+
 
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::ComboBox^ comboBox_conditionmycars;
@@ -79,7 +85,8 @@ namespace ProjectView {
 
 	private: System::Windows::Forms::Label^ label15;
 	private: System::Windows::Forms::Label^ label16;
-	private: System::Windows::Forms::TextBox^ textBox_platemycars;
+	private: System::Windows::Forms::TextBox^ textBox_plate;
+
 
 	private: System::Windows::Forms::Label^ label17;
 
@@ -101,9 +108,11 @@ namespace ProjectView {
 	private: System::Windows::Forms::ComboBox^ comboBox6;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Button^ button_clearall;
+	private: System::Windows::Forms::TextBox^ textBox_id;
 
-	private: System::Windows::Forms::TextBox^ textBox_idmycars;
-	private: System::Windows::Forms::Button^ button1;
+
+	private: System::Windows::Forms::Button^ button_id;
+
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
@@ -139,13 +148,19 @@ namespace ProjectView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->dgv_cars = (gcnew System::Windows::Forms::DataGridView());
+			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Plate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Brand = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Color = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Operative = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Condition = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->button_exit = (gcnew System::Windows::Forms::Button());
 			this->button_add = (gcnew System::Windows::Forms::Button());
 			this->button1_search = (gcnew System::Windows::Forms::Button());
 			this->button_insertphoto = (gcnew System::Windows::Forms::Button());
 			this->pb_photo = (gcnew System::Windows::Forms::PictureBox());
-			this->textBox_id = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_tid = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->comboBox_conditionmycars = (gcnew System::Windows::Forms::ComboBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
@@ -155,7 +170,7 @@ namespace ProjectView {
 			this->textBox_brandmycard = (gcnew System::Windows::Forms::TextBox());
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->label16 = (gcnew System::Windows::Forms::Label());
-			this->textBox_platemycars = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_plate = (gcnew System::Windows::Forms::TextBox());
 			this->label17 = (gcnew System::Windows::Forms::Label());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
@@ -168,38 +183,75 @@ namespace ProjectView {
 			this->comboBox6 = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button_clearall = (gcnew System::Windows::Forms::Button());
-			this->textBox_idmycars = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->textBox_id = (gcnew System::Windows::Forms::TextBox());
+			this->button_id = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->button_logout = (gcnew System::Windows::Forms::Button());
-			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Plate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Brand = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Color = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Operative = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Condition = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_cars))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->BeginInit();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// dataGridView1
+			// dgv_cars
 			// 
-			this->dataGridView1->AllowUserToAddRows = false;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+			this->dgv_cars->AllowUserToAddRows = false;
+			this->dgv_cars->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgv_cars->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->Id, this->Plate,
 					this->Brand, this->Color, this->Operative, this->Condition
 			});
-			this->dataGridView1->Location = System::Drawing::Point(12, 337);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->ReadOnly = true;
-			this->dataGridView1->Size = System::Drawing::Size(433, 181);
-			this->dataGridView1->TabIndex = 110;
+			this->dgv_cars->Location = System::Drawing::Point(12, 337);
+			this->dgv_cars->Name = L"dgv_cars";
+			this->dgv_cars->ReadOnly = true;
+			this->dgv_cars->Size = System::Drawing::Size(433, 181);
+			this->dgv_cars->TabIndex = 110;
+			this->dgv_cars->RowHeaderMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &UserMyCarsPage::dgv_cars_RowHeaderMouseClick);
+			// 
+			// Id
+			// 
+			this->Id->HeaderText = L"ID";
+			this->Id->Name = L"Id";
+			this->Id->ReadOnly = true;
+			this->Id->Width = 30;
+			// 
+			// Plate
+			// 
+			this->Plate->HeaderText = L"Placa";
+			this->Plate->Name = L"Plate";
+			this->Plate->ReadOnly = true;
+			this->Plate->Width = 60;
+			// 
+			// Brand
+			// 
+			this->Brand->HeaderText = L"Marca";
+			this->Brand->Name = L"Brand";
+			this->Brand->ReadOnly = true;
+			this->Brand->Width = 60;
+			// 
+			// Color
+			// 
+			this->Color->HeaderText = L"Color";
+			this->Color->Name = L"Color";
+			this->Color->ReadOnly = true;
+			this->Color->Width = 60;
+			// 
+			// Operative
+			// 
+			this->Operative->HeaderText = L"Estado de Operatividad";
+			this->Operative->Name = L"Operative";
+			this->Operative->ReadOnly = true;
+			this->Operative->Width = 90;
+			// 
+			// Condition
+			// 
+			this->Condition->HeaderText = L"Condición";
+			this->Condition->Name = L"Condition";
+			this->Condition->ReadOnly = true;
+			this->Condition->Width = 90;
 			// 
 			// button_exit
 			// 
@@ -261,18 +313,18 @@ namespace ProjectView {
 			this->pb_photo->TabIndex = 146;
 			this->pb_photo->TabStop = false;
 			// 
-			// textBox_id
+			// textBox_tid
 			// 
-			this->textBox_id->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->textBox_tid->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_id->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_id->Location = System::Drawing::Point(488, 49);
-			this->textBox_id->Name = L"textBox_id";
-			this->textBox_id->Size = System::Drawing::Size(147, 26);
-			this->textBox_id->TabIndex = 55;
-			this->textBox_id->Tag = L"";
-			this->textBox_id->Text = L"ID";
-			this->textBox_id->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->textBox_tid->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->textBox_tid->Location = System::Drawing::Point(488, 49);
+			this->textBox_tid->Name = L"textBox_tid";
+			this->textBox_tid->Size = System::Drawing::Size(147, 26);
+			this->textBox_tid->TabIndex = 55;
+			this->textBox_tid->Tag = L"";
+			this->textBox_tid->Text = L"ID";
+			this->textBox_tid->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// label1
 			// 
@@ -373,15 +425,15 @@ namespace ProjectView {
 			this->label16->TabIndex = 167;
 			this->label16->Text = L"Marca";
 			// 
-			// textBox_platemycars
+			// textBox_plate
 			// 
-			this->textBox_platemycars->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox_plate->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_platemycars->Location = System::Drawing::Point(117, 70);
-			this->textBox_platemycars->Name = L"textBox_platemycars";
-			this->textBox_platemycars->Size = System::Drawing::Size(104, 26);
-			this->textBox_platemycars->TabIndex = 15;
-			this->textBox_platemycars->Tag = L"";
+			this->textBox_plate->Location = System::Drawing::Point(117, 70);
+			this->textBox_plate->Name = L"textBox_plate";
+			this->textBox_plate->Size = System::Drawing::Size(104, 26);
+			this->textBox_plate->TabIndex = 15;
+			this->textBox_plate->Tag = L"";
 			// 
 			// label17
 			// 
@@ -538,28 +590,30 @@ namespace ProjectView {
 			this->button_clearall->Tag = L"";
 			this->button_clearall->Text = L"Limpiar todo";
 			this->button_clearall->UseVisualStyleBackColor = true;
+			this->button_clearall->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_clearall_Click);
 			// 
-			// textBox_idmycars
+			// textBox_id
 			// 
-			this->textBox_idmycars->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox_id->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_idmycars->Location = System::Drawing::Point(117, 36);
-			this->textBox_idmycars->Name = L"textBox_idmycars";
-			this->textBox_idmycars->Size = System::Drawing::Size(104, 26);
-			this->textBox_idmycars->TabIndex = 5;
-			this->textBox_idmycars->Tag = L"";
+			this->textBox_id->Location = System::Drawing::Point(117, 36);
+			this->textBox_id->Name = L"textBox_id";
+			this->textBox_id->Size = System::Drawing::Size(104, 26);
+			this->textBox_id->TabIndex = 5;
+			this->textBox_id->Tag = L"";
 			// 
-			// button1
+			// button_id
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button_id->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(227, 35);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(174, 30);
-			this->button1->TabIndex = 191;
-			this->button1->Tag = L"";
-			this->button1->Text = L"BUSCAR";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button_id->Location = System::Drawing::Point(227, 35);
+			this->button_id->Name = L"button_id";
+			this->button_id->Size = System::Drawing::Size(174, 30);
+			this->button_id->TabIndex = 191;
+			this->button_id->Tag = L"";
+			this->button_id->Text = L"BUSCAR";
+			this->button_id->UseVisualStyleBackColor = true;
+			this->button_id->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_id_Click);
 			// 
 			// button2
 			// 
@@ -619,10 +673,10 @@ namespace ProjectView {
 			this->groupBox2->Controls->Add(this->button1_search);
 			this->groupBox2->Controls->Add(this->label19);
 			this->groupBox2->Controls->Add(this->button2);
-			this->groupBox2->Controls->Add(this->textBox_idmycars);
-			this->groupBox2->Controls->Add(this->button1);
+			this->groupBox2->Controls->Add(this->textBox_id);
+			this->groupBox2->Controls->Add(this->button_id);
 			this->groupBox2->Controls->Add(this->label17);
-			this->groupBox2->Controls->Add(this->textBox_platemycars);
+			this->groupBox2->Controls->Add(this->textBox_plate);
 			this->groupBox2->Controls->Add(this->button_clearall);
 			this->groupBox2->Controls->Add(this->label16);
 			this->groupBox2->Controls->Add(this->label15);
@@ -657,48 +711,6 @@ namespace ProjectView {
 			this->button_logout->Text = L"Cerrar sesión";
 			this->button_logout->UseVisualStyleBackColor = false;
 			// 
-			// Id
-			// 
-			this->Id->HeaderText = L"ID";
-			this->Id->Name = L"Id";
-			this->Id->ReadOnly = true;
-			this->Id->Width = 30;
-			// 
-			// Plate
-			// 
-			this->Plate->HeaderText = L"Placa";
-			this->Plate->Name = L"Plate";
-			this->Plate->ReadOnly = true;
-			this->Plate->Width = 60;
-			// 
-			// Brand
-			// 
-			this->Brand->HeaderText = L"Marca";
-			this->Brand->Name = L"Brand";
-			this->Brand->ReadOnly = true;
-			this->Brand->Width = 60;
-			// 
-			// Color
-			// 
-			this->Color->HeaderText = L"Color";
-			this->Color->Name = L"Color";
-			this->Color->ReadOnly = true;
-			this->Color->Width = 60;
-			// 
-			// Operative
-			// 
-			this->Operative->HeaderText = L"Estado de Operatividad";
-			this->Operative->Name = L"Operative";
-			this->Operative->ReadOnly = true;
-			this->Operative->Width = 90;
-			// 
-			// Condition
-			// 
-			this->Condition->HeaderText = L"Condición";
-			this->Condition->Name = L"Condition";
-			this->Condition->ReadOnly = true;
-			this->Condition->Width = 90;
-			// 
 			// UserMyCarsPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -719,12 +731,13 @@ namespace ProjectView {
 			this->Controls->Add(this->button_add);
 			this->Controls->Add(this->button_insertphoto);
 			this->Controls->Add(this->pb_photo);
-			this->Controls->Add(this->textBox_id);
+			this->Controls->Add(this->textBox_tid);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->dataGridView1);
+			this->Controls->Add(this->dgv_cars);
 			this->Name = L"UserMyCarsPage";
 			this->Text = L"UserMyCarsPage";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->Load += gcnew System::EventHandler(this, &UserMyCarsPage::UserMyCarsPage_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_cars))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
@@ -734,10 +747,142 @@ namespace ProjectView {
 		}
 #pragma endregion
 
-private: System::Void button_exit_Click(System::Object^ sender, System::EventArgs^ e) {
+	private:
+		void ShowImage(array<System::Byte>^ imageBytes, PictureBox^ pictureBox) {
+			if (imageBytes == nullptr || imageBytes->Length == 0 || pictureBox == nullptr) {
+				// Verificar si la matriz de bytes es nula o vacía, o si el PictureBox es nulo.
+				// Puedes manejar esto de acuerdo a tus necesidades, por ejemplo, mostrar un mensaje de error.
+				return;
+			}
 
-	this->Close();
+			// Crear un MemoryStream a partir de la matriz de bytes.
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(imageBytes);
 
-}
+			try {
+				// Crear una imagen desde el MemoryStream.
+				System::Drawing::Image^ image = System::Drawing::Image::FromStream(ms);
+
+				// Mostrar la imagen en el PictureBox.
+				pictureBox->Image = image;
+			}
+			catch (Exception^ ex) {
+				// Manejar cualquier excepción que pueda ocurrir al cargar la imagen.
+				// Puedes mostrar un mensaje de error o realizar otra acción adecuada.
+				MessageBox::Show("Error al cargar la imagen: " + ex->Message);
+			}
+		}
+		void ShowCars() {
+			List<Car^>^ cars = Controller::QueryAllCars();
+			if (cars->Count != 0) {
+				dgv_cars->Rows->Clear();
+				for (int i = 0; i < cars->Count; i++) {
+					Car^ c = cars[i];
+					String^ atributobooleanoYes;
+					if (c->Operative == true) {
+						atributobooleanoYes = "Operativo";
+					}
+					else {
+						atributobooleanoYes = "Inoperativo";
+					}
+					dgv_cars->Rows->Add(gcnew array<String^> {
+						"" + c->Id,
+							"" + c->Plate,
+							"" + c->Brand,
+							"" + c->Color,
+							"" + atributobooleanoYes,
+							"" + c->Condition,
+					});
+				}
+			}
+			else {
+				MessageBox::Show("No hay carros disponibles para mostrar");
+			}
+		}
+		void ShowSearchedCar(Car^ c) {
+			dgv_cars->Rows->Clear();
+			String^ atributobooleanoYes;
+				if(c->Operative == true){
+					atributobooleanoYes = "Operativo";
+				}
+				else{
+					atributobooleanoYes = "Inoperativo";
+				}
+				
+			dgv_cars->Rows->Add(gcnew array<String^> {
+				"" + c->Id,
+					"" + c->Plate,
+					"" + c->Brand,
+					"" + c->Color, 
+					"" + atributobooleanoYes,
+					"" + c->Condition,
+
+			});
+		}
+		void ClearTextBoxes() {
+			//función para limpiar todas las textboxes
+		}
+
+		void FillCarTextBoxes(Car^ c) {
+			textBox_tid->Text = Convert::ToString(c->Id);
+
+			if (c->Photo != nullptr) {
+				ShowImage(c->Photo, pb_photo);
+			}
+		}
+
+
+	private: System::Void button_exit_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		this->Close();
+
+	}
+	private: System::Void button_id_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ tid = textBox_id->Text;
+		if (String::IsNullOrWhiteSpace(tid)) {
+			MessageBox::Show("Ingrese el id del carro a buscar");
+			return;
+		}
+		int id = 0;
+		if (!Int32::TryParse(tid, id)) {
+			MessageBox::Show("El id deben ser dígitos");
+			return;
+		}
+
+		Car^ c = Controller::QueryCarById(id);
+		if (c == nullptr) {
+			MessageBox::Show("El id del carro ingresado no existe");
+			return;
+		}	
+
+		FillCarTextBoxes(c);
+
+		ShowSearchedCar(c);
+
+
+	}
+	private: System::Void UserMyCarsPage_Load(System::Object^ sender, System::EventArgs^ e) {
+		ShowCars();		
+	}
+	private: System::Void dgv_cars_RowHeaderMouseClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^ e) {
+		if (e->RowIndex >= 0 && e->RowIndex < dgv_cars->Rows->Count) {
+			DataGridViewRow^ selectedRow = dgv_cars->Rows[e->RowIndex];
+
+			// Verifica si la celda seleccionada tiene datos antes de procesarla
+			if (selectedRow->Cells["Id"]->Value != nullptr) {
+				ClearTextBoxes();
+				// Obtener los datos de id de la fila seleccionada			
+				String^ id = selectedRow->Cells["Id"]->Value->ToString();
+				if (!String::IsNullOrWhiteSpace(id)) {
+					int IdToSearch = Convert::ToInt32(id);
+					Car^ c = Controller::QueryCarById(IdToSearch);
+					FillCarTextBoxes(c); 
+				}
+			}
+		}
+	}
+	private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClearTextBoxes();
+		ShowCars();
+	}
 };
 }

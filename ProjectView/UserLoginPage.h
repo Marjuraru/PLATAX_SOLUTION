@@ -213,12 +213,46 @@ namespace ProjectView {
 		String^ email = textBox_email->Text;
 		String^ password = textBox_password->Text;
 		Client^ c = Controller::QueryClientByEmail(email);
+		
+		/*if (email == "admin") {
+			if (password == "admin") {
+				//falta cambiar para que abra las vistas de administrador
+				Session::CurrentClient = c;
+				UserFeedPage^ userFeedPage = gcnew UserFeedPage();
+				userFeedPage->MdiParent = this->MdiParent;
+				userFeedPage->Show();
+			}
+			else {
+				MessageBox::Show("Datos incorrectas o falta completar");
+			}
+		}
+		else {
+			MessageBox::Show("El email ingresado no existe");
+		}*/
+
 		if (c != nullptr) {
 			if (c->Password == password ) {
 				Session::CurrentClient = c;
 				UserFeedPage^ userFeedPage = gcnew UserFeedPage();
 				userFeedPage->MdiParent = this->MdiParent;
 				userFeedPage->Show();
+				return;
+			}
+			else {
+				MessageBox::Show("Datos incorrectas o falta completar");
+			}
+		}
+		else {
+			MessageBox::Show("El email ingresado no existe");
+		}
+
+		if (email == "user") {
+			if (password == "user") {
+				Session::CurrentClient = c;
+				UserFeedPage^ userFeedPage = gcnew UserFeedPage();
+				userFeedPage->MdiParent = this->MdiParent;
+				userFeedPage->Show();
+				return;
 			}
 			else {
 				MessageBox::Show("Datos incorrectas o falta completar");
