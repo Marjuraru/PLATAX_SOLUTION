@@ -15,8 +15,9 @@ namespace ProjectModel {
 		property String^ CarModel;
 		property String^ Brand;
 		property String^ Plate;//placa de carro 
+		property String^ Condition;// Condición del auto
+		property bool Operative; //Indica el estado de operatividad del vehículo
 		property bool SpareTire; //llanta de repuesto
-		property bool Opertive; //Indica el estado de operatividad del vehículo
 		property array<Byte>^ Photo; // Matris de bytes
 	};
 }
