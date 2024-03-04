@@ -548,11 +548,11 @@ namespace ProjectView {
 		}
 
 		if (!Int32::TryParse(_phone, phone)) {
-			MessageBox::Show("Ingrese solo numeros para el teléfono");
+			MessageBox::Show("Ingrese solo números para el teléfono");
 			return;
 		}
 		if (!Int32::TryParse(_dni, dni)) {
-			MessageBox::Show("Ingrese solo numeros para el DNI");
+			MessageBox::Show("Ingrese solo números para el DNI");
 			return;
 		}
 
