@@ -296,7 +296,7 @@ List<Client^>^ ProjectPersistance::Persistance::QueryAllClients()
 Client^ ProjectPersistance::Persistance::QueryClientById(int id)
 {
     ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList != nullptr) {
+    if (ClientList -> Count != 0) {
         for (int i = 0; i < ClientList->Count; i++) {
             if (ClientList[i]->Id == id) {
                 return ClientList[i];
@@ -306,12 +306,10 @@ Client^ ProjectPersistance::Persistance::QueryClientById(int id)
     return nullptr;
 }
 
-
-
 Client^ ProjectPersistance::Persistance::QueryClientByDni(int dni)
 {
     ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList != nullptr) {
+    if (ClientList -> Count != 0) {
         for (int i = 0; i < ClientList->Count; i++) {
             if (ClientList[i]->Dni == dni) {
                 return ClientList[i];
@@ -324,7 +322,7 @@ Client^ ProjectPersistance::Persistance::QueryClientByDni(int dni)
 Client^ ProjectPersistance::Persistance::QueryClientByEmail(String^ email)
 {
     ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList != nullptr) {
+    if (ClientList -> Count != 0) {
         for (int i = 0; i < ClientList->Count; i++) {
             if (ClientList[i]->Email == email) {
                 return ClientList[i];
@@ -337,7 +335,7 @@ Client^ ProjectPersistance::Persistance::QueryClientByEmail(String^ email)
 Client^ ProjectPersistance::Persistance::QueryClientByLicenseName(String^ licensename)
 {
     ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList != nullptr) {
+    if (ClientList -> Count != 0) {
         for (int i = 0; i < ClientList->Count; i++) {
             if (ClientList[i]->Licensename == licensename) {
                 return ClientList[i];
@@ -354,7 +352,7 @@ List<Client^>^ ProjectPersistance::Persistance::QueryListClientByName(String^ na
     List<Client^>^ Clients = gcnew List<Client^>(); //lista de clientes nueva
     Clients = nullptr;
 
-    if (ClientList != nullptr) {
+    if (ClientList -> Count != 0) {
         for (int i = 0; i < ClientList->Count; i++) {
             if (ClientList[i]->Name == name) {
                 Clients->Add(ClientList[i]);
@@ -372,7 +370,7 @@ List<Client^>^ ProjectPersistance::Persistance::QueryListClientByLastname(String
     List<Client^>^ Clients = gcnew List<Client^>();
     Clients = nullptr;
 
-    if (ClientList != nullptr) {
+    if (ClientList -> Count != 0) {
         for (int i = 0; i < ClientList->Count; i++) {
             if (ClientList[i]->Lastname == lastname) {
                 Clients->Add(ClientList[i]);
@@ -389,7 +387,7 @@ List<Client^>^ ProjectPersistance::Persistance::QueryListClientByLicensetype(Str
     List<Client^>^ Clients = gcnew List<Client^>(); 
     Clients = nullptr;
 
-    if (ClientList != nullptr) {
+    if (ClientList  -> Count != 0) {
         for (int i = 0; i < ClientList->Count; i++) {
             if (ClientList[i]->Licensetype == licensetype) {
                 Clients->Add(ClientList[i]);
@@ -407,7 +405,7 @@ List<Car^>^ ProjectPersistance::Persistance::QueryAllCars()
 Car^ ProjectPersistance::Persistance::QueryCarById(int id)
 {
     CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
-    if (CarList != nullptr) {
+    if (CarList -> Count != 0) {
         for (int i = 0; i < CarList->Count; i++) {
             if (CarList[i]->Id == id) {
                 return CarList[i];
@@ -418,9 +416,9 @@ Car^ ProjectPersistance::Persistance::QueryCarById(int id)
 }
 
 Car^ ProjectPersistance::Persistance::QueryCarByPlate(String^ plate)
-{
+{   
     CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
-    if (CarList != nullptr) {
+    if (CarList -> Count != 0) {  //Count < 1 (para List)= nullptr (para no List)
         for (int i = 0; i < CarList->Count; i++) {
             if (CarList[i]->Plate == plate) {
                 return CarList[i];
@@ -435,9 +433,9 @@ List<Car^>^ ProjectPersistance::Persistance::QueryListCarByBrand(String^ brand)
     CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME); //lista de almacenamiento total
 
     List<Car^>^ Cars = gcnew List<Car^>(); 
-    Cars = nullptr;
+    /*Cars = nullptr; */
 
-    if (CarList != nullptr) {
+    if (CarList -> Count != 0) {
         for (int i = 0; i < CarList->Count; i++) {
             if (CarList[i]->Brand == brand) {
                 Cars->Add(CarList[i]);
@@ -452,9 +450,9 @@ List<Car^>^ ProjectPersistance::Persistance::QueryListCarByColor(String^ color)
     CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME); //lista de almacenamiento total
 
     List<Car^>^ Cars = gcnew List<Car^>();
-    Cars = nullptr;
-
-    if (CarList != nullptr) {
+    //Cars = nullptr;
+     
+    if (CarList -> Count != 0) {
         for (int i = 0; i < CarList->Count; i++) {
             if (CarList[i]->Color == color) {
                 Cars->Add(CarList[i]);
@@ -469,9 +467,9 @@ List<Car^>^ ProjectPersistance::Persistance::QueryListCarByCondition(String^ con
     CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME); //lista de almacenamiento total
 
     List<Car^>^ Cars = gcnew List<Car^>(); 
-    Cars = nullptr;
+    //Cars = nullptr;
 
-    if (CarList != nullptr) {
+    if (CarList -> Count != 0) {
         for (int i = 0; i < CarList->Count; i++) {
             if (CarList[i]->Condition == condition) {
                 Cars->Add(CarList[i]);
@@ -486,9 +484,9 @@ List<Car^>^ ProjectPersistance::Persistance::QueryListCarByOperative(bool operat
     CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME); //lista de almacenamiento total
 
     List<Car^>^ Cars = gcnew List<Car^>(); 
-    Cars = nullptr;
+    //Cars = nullptr;
 
-    if (CarList != nullptr) {
+    if (CarList -> Count != 0) {
         for (int i = 0; i < CarList->Count; i++) {
             if (CarList[i]->Operative == operative) {
                 Cars->Add(CarList[i]);
@@ -506,19 +504,20 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryAllReclamations()
 Reclamation^ ProjectPersistance::Persistance::QueryReclamationById(int id)
 {
     ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
-    if (ReclamationList != nullptr) {
+    if (ReclamationList -> Count != 0) {
         for (int i = 0; i < ReclamationList->Count; i++) {
             if (ReclamationList[i]->Id == id) {
                 return ReclamationList[i];
             }
         }
     }
+    return nullptr;
 }
 
 Reclamation^ ProjectPersistance::Persistance::QueryReclamationByTitle(String^ title)
 {
     ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
-    if (ReclamationList != nullptr) {
+    if (ReclamationList -> Count != 0) {
         for (int i = 0; i < ReclamationList->Count; i++) {
             if (ReclamationList[i]->Title == title) {
                 return ReclamationList[i];
@@ -535,7 +534,7 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByType(
     List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
     Reclamations = nullptr;
 
-    if (ReclamationList != nullptr) {
+    if (ReclamationList -> Count != 0) {
         for (int i = 0; i < ReclamationList->Count; i++) {
             if (ReclamationList[i]->Type == type) {
                 Reclamations->Add(ReclamationList[i]);
@@ -552,7 +551,7 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByCateg
     List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
     Reclamations = nullptr;
 
-    if (ReclamationList != nullptr) {
+    if (ReclamationList -> Count != 0) {
         for (int i = 0; i < ReclamationList->Count; i++) {
             if (ReclamationList[i]->Category == category) {
                 Reclamations->Add(ReclamationList[i]);
@@ -569,7 +568,7 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByState
     List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
     Reclamations = nullptr;
 
-    if (ReclamationList != nullptr) {
+    if (ReclamationList -> Count != 0) {
         for (int i = 0; i < ReclamationList->Count; i++) {
             if (ReclamationList[i]->Status == status) {
                 Reclamations->Add(ReclamationList[i]);
@@ -586,7 +585,7 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByDate(
     List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
     Reclamations = nullptr;
 
-    if (ReclamationList != nullptr) {
+    if (ReclamationList -> Count != 0) {
         for (int i = 0; i < CarList->Count; i++) {
             if (ReclamationList[i]->Date == date) {
                 Reclamations->Add(ReclamationList[i]);
@@ -604,13 +603,14 @@ List<Help^>^ ProjectPersistance::Persistance::QueryAllHelps()
 Help^ ProjectPersistance::Persistance::QueryHelpById(int id)
 {
     HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME);
-    if (HelpList != nullptr) {
+    if (HelpList -> Count != 0) {
         for (int i = 0; i < HelpList->Count; i++) {
             if (HelpList[i]->Id == id) {
                 return HelpList[i];
             }
         }
     }
+    return nullptr;
 }
 
 List<Help^>^ ProjectPersistance::Persistance::QueryListHelpByType(String^ type)
@@ -620,7 +620,7 @@ List<Help^>^ ProjectPersistance::Persistance::QueryListHelpByType(String^ type)
     List<Help^>^ Helps = gcnew List<Help^>();
     Helps = nullptr;
 
-    if (HelpList != nullptr) {
+    if (HelpList-> Count != 0) {
         for (int i = 0; i < HelpList->Count; i++) {
             if (HelpList[i]->Type == type) {
                 Helps->Add(HelpList[i]);
@@ -637,7 +637,7 @@ List<Help^>^ ProjectPersistance::Persistance::QueryListHelpByCategory(String^ st
     List<Help^>^ Helps = gcnew List<Help^>();
     Helps = nullptr;
 
-    if (HelpList != nullptr) {
+    if (HelpList -> Count != 0) {
         for (int i = 0; i < HelpList->Count; i++) {
             if (HelpList[i]->Status == status) {
                 Helps->Add(HelpList[i]);
@@ -654,7 +654,7 @@ List<Help^>^ ProjectPersistance::Persistance::QueryListHelpByChecked(bool checke
     List<Help^>^ Helps = gcnew List<Help^>();
     Helps = nullptr;
 
-    if (HelpList != nullptr) {
+    if (HelpList -> Count != 0) {
         for (int i = 0; i < HelpList->Count; i++) {
             if (HelpList[i]->Checked == checked) {
                 Helps->Add(HelpList[i]);
@@ -671,7 +671,7 @@ List<Help^>^ ProjectPersistance::Persistance::QueryListHelpByDate(DateTime date)
     List<Help^>^ Helps = gcnew List<Help^>();
     Helps = nullptr;
 
-    if (HelpList != nullptr) {
+    if (HelpList -> Count != 0) {
         for (int i = 0; i < HelpList->Count; i++) {
             if (HelpList[i]->RequestDate == date) {
                 Helps->Add(HelpList[i]);
