@@ -76,8 +76,8 @@ namespace ProjectPersistance {
 
         static List<Reclamation^>^ QueryListReclamationByType(String^ type);
         static List<Reclamation^>^ QueryListReclamationByCategory(String^ category);
-        static List<Reclamation^>^ QueryListReclamationByState(String^ status);
-        static List<Reclamation^>^ QueryListReclamationByDate(DateTime date);
+        static List<Reclamation^>^ QueryListReclamationByState(String^ state);
+        static List<Reclamation^>^ QueryListReclamationByDate(DateTime systemdate);
 
               //Búsqueda de Help
         static List<Help^>^ QueryAllHelps();

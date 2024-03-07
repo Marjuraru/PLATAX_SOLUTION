@@ -89,6 +89,7 @@ namespace ProjectView {
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::ComboBox^ comboBox_condition;
 	private: System::Windows::Forms::Button^ button_insertphoto;
+	private: System::Windows::Forms::Button^ button_clearall;
 
 
 
@@ -96,7 +97,7 @@ namespace ProjectView {
 
 
 
-	private: System::Windows::Forms::Button^ button1;
+
 	private: System::Windows::Forms::Button^ button_cancel;
 	private: System::Windows::Forms::Button^ button_add;
 
@@ -135,7 +136,7 @@ namespace ProjectView {
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->comboBox_condition = (gcnew System::Windows::Forms::ComboBox());
 			this->button_insertphoto = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button_clearall = (gcnew System::Windows::Forms::Button());
 			this->button_cancel = (gcnew System::Windows::Forms::Button());
 			this->button_add = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->BeginInit();
@@ -153,22 +154,22 @@ namespace ProjectView {
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label10->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label10->Location = System::Drawing::Point(100, 158);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(45, 17);
+			this->label10->Size = System::Drawing::Size(46, 19);
 			this->label10->TabIndex = 103;
 			this->label10->Text = L"Color";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(95, 126);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(50, 17);
+			this->label5->Size = System::Drawing::Size(54, 19);
 			this->label5->TabIndex = 97;
 			this->label5->Text = L"Marca";
 			// 
@@ -185,11 +186,11 @@ namespace ProjectView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(103, 94);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(42, 17);
+			this->label4->Size = System::Drawing::Size(45, 19);
 			this->label4->TabIndex = 95;
 			this->label4->Text = L"Placa";
 			// 
@@ -206,11 +207,11 @@ namespace ProjectView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(31, 61);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(114, 17);
+			this->label3->Size = System::Drawing::Size(116, 19);
 			this->label3->TabIndex = 94;
 			this->label3->Text = L"Modelo de Auto";
 			// 
@@ -258,22 +259,22 @@ namespace ProjectView {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label7->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label7->Location = System::Drawing::Point(3, 190);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(142, 17);
+			this->label7->Size = System::Drawing::Size(144, 19);
 			this->label7->TabIndex = 120;
 			this->label7->Text = L"Numero de Asientos";
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label8->Location = System::Drawing::Point(72, 220);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(73, 34);
+			this->label8->Size = System::Drawing::Size(76, 38);
 			this->label8->TabIndex = 122;
 			this->label8->Text = L"Llanta de \r\nRepuesto";
 			// 
@@ -283,7 +284,6 @@ namespace ProjectView {
 			this->comboBox_sparetire->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox_sparetire->FormattingEnabled = true;
-			this->comboBox_sparetire->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Sí", L"No" });
 			this->comboBox_sparetire->Location = System::Drawing::Point(146, 225);
 			this->comboBox_sparetire->Name = L"comboBox_sparetire";
 			this->comboBox_sparetire->Size = System::Drawing::Size(106, 27);
@@ -296,7 +296,6 @@ namespace ProjectView {
 			this->comboBox_operative->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox_operative->FormattingEnabled = true;
-			this->comboBox_operative->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Operativo", L"Inoperativo" });
 			this->comboBox_operative->Location = System::Drawing::Point(146, 266);
 			this->comboBox_operative->Name = L"comboBox_operative";
 			this->comboBox_operative->Size = System::Drawing::Size(106, 27);
@@ -306,22 +305,22 @@ namespace ProjectView {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label6->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label6->Location = System::Drawing::Point(52, 259);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(93, 34);
+			this->label6->Size = System::Drawing::Size(96, 38);
 			this->label6->TabIndex = 124;
 			this->label6->Text = L"Estado de\r\nOperatividad";
 			// 
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label9->Location = System::Drawing::Point(66, 312);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(74, 17);
+			this->label9->Size = System::Drawing::Size(75, 19);
 			this->label9->TabIndex = 126;
 			this->label9->Text = L"Condición";
 			// 
@@ -331,7 +330,6 @@ namespace ProjectView {
 			this->comboBox_condition->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox_condition->FormattingEnabled = true;
-			this->comboBox_condition->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Nuevo", L"Usado", L"Antiguo" });
 			this->comboBox_condition->Location = System::Drawing::Point(146, 308);
 			this->comboBox_condition->Name = L"comboBox_condition";
 			this->comboBox_condition->Size = System::Drawing::Size(106, 27);
@@ -351,26 +349,26 @@ namespace ProjectView {
 			this->button_insertphoto->UseVisualStyleBackColor = true;
 			this->button_insertphoto->Click += gcnew System::EventHandler(this, &UserAddCarPage::button_insertphoto_Click);
 			// 
-			// button1
+			// button_clearall
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button_clearall->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(330, 308);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(108, 30);
-			this->button1->TabIndex = 55;
-			this->button1->Tag = L"";
-			this->button1->Text = L"Limpiar todo";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &UserAddCarPage::button1_Click);
+			this->button_clearall->Location = System::Drawing::Point(330, 308);
+			this->button_clearall->Name = L"button_clearall";
+			this->button_clearall->Size = System::Drawing::Size(108, 30);
+			this->button_clearall->TabIndex = 55;
+			this->button_clearall->Tag = L"";
+			this->button_clearall->Text = L"Limpiar todo";
+			this->button_clearall->UseVisualStyleBackColor = true;
+			this->button_clearall->Click += gcnew System::EventHandler(this, &UserAddCarPage::button_clearall_Click);
 			// 
 			// button_cancel
 			// 
 			this->button_cancel->BackColor = System::Drawing::Color::Maroon;
-			this->button_cancel->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_cancel->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_cancel->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_cancel->Location = System::Drawing::Point(385, 344);
+			this->button_cancel->Location = System::Drawing::Point(384, 344);
 			this->button_cancel->Name = L"button_cancel";
 			this->button_cancel->Size = System::Drawing::Size(105, 31);
 			this->button_cancel->TabIndex = 65;
@@ -400,7 +398,7 @@ namespace ProjectView {
 			this->ClientSize = System::Drawing::Size(520, 386);
 			this->Controls->Add(this->button_cancel);
 			this->Controls->Add(this->button_add);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->button_clearall);
 			this->Controls->Add(this->button_insertphoto);
 			this->Controls->Add(this->comboBox_condition);
 			this->Controls->Add(this->label9);
@@ -422,21 +420,50 @@ namespace ProjectView {
 			this->Controls->Add(this->label1);
 			this->Name = L"UserAddCarPage";
 			this->Text = L"UserAddCarPage";
+			this->Load += gcnew System::EventHandler(this, &UserAddCarPage::UserAddCarPage_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+
+	private:  
+		
+		void ClearTextBoxes() {
+
+			textBox_carmodel->Clear();
+			textBox_plate->Clear();
+			textBox_brand->Clear();
+			textBox_color->Clear();
+			textBox_numberofseats->Clear();
+			comboBox_sparetire->Items->Clear();
+			comboBox_operative->Items->Clear();
+			comboBox_condition->Items->Clear();
+			pb_photo->Image = nullptr;
+
+		}
+
+		void FillCombos() {
+			comboBox_operative->Items->Clear();
+			comboBox_condition->Items->Clear();
+			comboBox_sparetire->Items->Add("Sí");
+			comboBox_sparetire->Items->Add("No");
+			comboBox_operative->Items->Add("Operativo");
+			comboBox_operative->Items->Add("Inoperativo");
+			comboBox_condition->Items->Add("Nuevo");
+			comboBox_condition->Items->Add("Usado");
+			comboBox_condition->Items->Add("Antiguo");
+
+
+		}
+
 	private: System::Void button_cancel_Click_1(System::Object^ sender, System::EventArgs^ e) {
 
 			this->Close();
 
 	}
 	private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
-
-
-
 
 		Car^ car = gcnew Car();
 
@@ -538,17 +565,12 @@ private: System::Void button_insertphoto_Click(System::Object^ sender, System::E
 		pb_photo->Image = gcnew Bitmap(opnfd->FileName);
 	}
 }
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
 
-	textBox_carmodel->Clear();
-	textBox_plate->Clear();
-	textBox_brand->Clear();
-	textBox_color->Clear();
-	textBox_numberofseats->Clear();
-	comboBox_sparetire->Items->Clear();
-	comboBox_operative->Items->Clear();
-	comboBox_condition->Items->Clear();
-	pb_photo->Image = nullptr; // limpia la imagen
+
+	ClearTextBoxes();
+	FillCombos();
+ // limpia la imagen
 
 	/*String^ carmodel = textBox_carmodel->Text;
 	String^ plate = textBox_plate->Text;
@@ -560,5 +582,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	String^ condition = comboBox_condition->Text;*/
 
 }
+	private: System::Void UserAddCarPage_Load(System::Object^ sender, System::EventArgs^ e) {
+
+		FillCombos();
+
+	}
 };
 }

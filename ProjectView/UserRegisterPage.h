@@ -129,11 +129,11 @@ namespace ProjectView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(28, 74);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(68, 17);
+			this->label2->Size = System::Drawing::Size(70, 19);
 			this->label2->TabIndex = 7;
 			this->label2->Text = L"Nombres";
 			// 
@@ -149,11 +149,11 @@ namespace ProjectView {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(290, 74);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(70, 17);
+			this->label3->Size = System::Drawing::Size(71, 19);
 			this->label3->TabIndex = 9;
 			this->label3->Text = L"Apellidos";
 			// 
@@ -178,11 +178,11 @@ namespace ProjectView {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(28, 144);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(65, 17);
+			this->label4->Size = System::Drawing::Size(67, 19);
 			this->label4->TabIndex = 11;
 			this->label4->Text = L"Teléfono";
 			// 
@@ -198,11 +198,11 @@ namespace ProjectView {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(28, 208);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(134, 17);
+			this->label5->Size = System::Drawing::Size(135, 19);
 			this->label5->TabIndex = 13;
 			this->label5->Text = L"Correo Electrónico";
 			// 
@@ -218,11 +218,11 @@ namespace ProjectView {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label6->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label6->Location = System::Drawing::Point(290, 144);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(36, 17);
+			this->label6->Size = System::Drawing::Size(39, 19);
 			this->label6->TabIndex = 15;
 			this->label6->Text = L"DNI";
 			// 
@@ -241,22 +241,22 @@ namespace ProjectView {
 			// label7
 			// 
 			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label7->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label7->Location = System::Drawing::Point(139, 341);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(145, 17);
+			this->label7->Size = System::Drawing::Size(149, 19);
 			this->label7->TabIndex = 18;
 			this->label7->Text = L"Fecha de Nacimiento";
 			// 
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label8->Location = System::Drawing::Point(53, 341);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(40, 17);
+			this->label8->Size = System::Drawing::Size(42, 19);
 			this->label8->TabIndex = 20;
 			this->label8->Text = L"Sexo";
 			// 
@@ -272,11 +272,11 @@ namespace ProjectView {
 			// label9
 			// 
 			this->label9->AutoSize = true;
-			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label9->Location = System::Drawing::Point(351, 341);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(132, 17);
+			this->label9->Size = System::Drawing::Size(136, 19);
 			this->label9->TabIndex = 22;
 			this->label9->Text = L"Crea tu contraseña";
 			// 
@@ -304,11 +304,11 @@ namespace ProjectView {
 			// label10
 			// 
 			this->label10->AutoSize = true;
-			this->label10->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label10->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label10->Location = System::Drawing::Point(28, 273);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(71, 17);
+			this->label10->Size = System::Drawing::Size(73, 19);
 			this->label10->TabIndex = 24;
 			this->label10->Text = L"Dirección";
 			// 

@@ -213,9 +213,9 @@ List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByState(S
 	return ProjectPersistance::Persistance::QueryListReclamationByState(state);
 }
 
-List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByDate(DateTime date)
+List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByDate(DateTime systemdate)
 {
-	return ProjectPersistance::Persistance::QueryListReclamationByDate(date);
+	return ProjectPersistance::Persistance::QueryListReclamationByDate(systemdate);
 }
 
 //*//
