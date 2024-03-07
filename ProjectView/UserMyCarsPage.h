@@ -144,13 +144,35 @@ private: System::Windows::Forms::Button^ button_condition;
 
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::Button^ button_logout;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Id;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Plate;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Brand;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Color;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Operative;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
+
+
+
+
+
+
 private: System::Windows::Forms::TextBox^ textBox_tid;
+private: System::Windows::Forms::Button^ button_eliminate;
+
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Id;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Plate;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Brand;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Color;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Operative;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -218,6 +240,7 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->button_logout = (gcnew System::Windows::Forms::Button());
 			this->textBox_tid = (gcnew System::Windows::Forms::TextBox());
+			this->button_eliminate = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_cars))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->BeginInit();
 			this->groupBox2->SuspendLayout();
@@ -226,6 +249,7 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			// dgv_cars
 			// 
 			this->dgv_cars->AllowUserToAddRows = false;
+			this->dgv_cars->AllowUserToDeleteRows = false;
 			this->dgv_cars->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgv_cars->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->Id, this->Plate,
@@ -234,7 +258,7 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			this->dgv_cars->Location = System::Drawing::Point(12, 337);
 			this->dgv_cars->Name = L"dgv_cars";
 			this->dgv_cars->ReadOnly = true;
-			this->dgv_cars->Size = System::Drawing::Size(433, 181);
+			this->dgv_cars->Size = System::Drawing::Size(434, 181);
 			this->dgv_cars->TabIndex = 70;
 			this->dgv_cars->RowHeaderMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &UserMyCarsPage::dgv_cars_RowHeaderMouseClick);
 			// 
@@ -283,10 +307,10 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			// button_exit
 			// 
 			this->button_exit->BackColor = System::Drawing::Color::Maroon;
-			this->button_exit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_exit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_exit->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_exit->Location = System::Drawing::Point(605, 413);
+			this->button_exit->Location = System::Drawing::Point(714, 461);
 			this->button_exit->Name = L"button_exit";
 			this->button_exit->Size = System::Drawing::Size(124, 36);
 			this->button_exit->TabIndex = 130;
@@ -359,7 +383,6 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			this->comboBox_condition->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox_condition->FormattingEnabled = true;
-			this->comboBox_condition->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Nuevo", L"Usado", L"Antiguo" });
 			this->comboBox_condition->Location = System::Drawing::Point(117, 197);
 			this->comboBox_condition->Name = L"comboBox_condition";
 			this->comboBox_condition->Size = System::Drawing::Size(106, 27);
@@ -369,11 +392,11 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label11->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label11->Location = System::Drawing::Point(37, 201);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(74, 17);
+			this->label11->Size = System::Drawing::Size(75, 19);
 			this->label11->TabIndex = 178;
 			this->label11->Text = L"Condición";
 			// 
@@ -382,7 +405,6 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			this->comboBox_operative->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox_operative->FormattingEnabled = true;
-			this->comboBox_operative->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Operativo", L"Inoperativo" });
 			this->comboBox_operative->Location = System::Drawing::Point(117, 166);
 			this->comboBox_operative->Name = L"comboBox_operative";
 			this->comboBox_operative->Size = System::Drawing::Size(106, 27);
@@ -392,11 +414,11 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			// label12
 			// 
 			this->label12->AutoSize = true;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label12->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(24, 161);
+			this->label12->Location = System::Drawing::Point(24, 160);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(93, 34);
+			this->label12->Size = System::Drawing::Size(96, 38);
 			this->label12->TabIndex = 176;
 			this->label12->Text = L"   Estado de\r\nOperatividad";
 			// 
@@ -423,22 +445,22 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			// label15
 			// 
 			this->label15->AutoSize = true;
-			this->label15->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label15->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label15->Location = System::Drawing::Point(69, 138);
+			this->label15->Location = System::Drawing::Point(69, 137);
 			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(45, 17);
+			this->label15->Size = System::Drawing::Size(46, 19);
 			this->label15->TabIndex = 169;
 			this->label15->Text = L"Color";
 			// 
 			// label16
 			// 
 			this->label16->AutoSize = true;
-			this->label16->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label16->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label16->Location = System::Drawing::Point(64, 106);
+			this->label16->Location = System::Drawing::Point(64, 105);
 			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(50, 17);
+			this->label16->Size = System::Drawing::Size(54, 19);
 			this->label16->TabIndex = 167;
 			this->label16->Text = L"Marca";
 			// 
@@ -455,22 +477,22 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			// label17
 			// 
 			this->label17->AutoSize = true;
-			this->label17->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label17->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label17->Location = System::Drawing::Point(72, 74);
+			this->label17->Location = System::Drawing::Point(72, 73);
 			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(42, 17);
+			this->label17->Size = System::Drawing::Size(45, 19);
 			this->label17->TabIndex = 165;
 			this->label17->Text = L"Placa";
 			// 
 			// label19
 			// 
 			this->label19->AutoSize = true;
-			this->label19->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label19->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label19->Location = System::Drawing::Point(89, 40);
+			this->label19->Location = System::Drawing::Point(89, 39);
 			this->label19->Name = L"label19";
-			this->label19->Size = System::Drawing::Size(25, 17);
+			this->label19->Size = System::Drawing::Size(27, 19);
 			this->label19->TabIndex = 162;
 			this->label19->Text = L"ID";
 			// 
@@ -545,7 +567,6 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 				static_cast<System::Byte>(0)));
 			this->comboBox_tsparetire->ForeColor = System::Drawing::SystemColors::GrayText;
 			this->comboBox_tsparetire->FormattingEnabled = true;
-			this->comboBox_tsparetire->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Sí", L"No" });
 			this->comboBox_tsparetire->Location = System::Drawing::Point(457, 241);
 			this->comboBox_tsparetire->Name = L"comboBox_tsparetire";
 			this->comboBox_tsparetire->RightToLeft = System::Windows::Forms::RightToLeft::No;
@@ -560,7 +581,6 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 				static_cast<System::Byte>(0)));
 			this->comboBox_toperative->ForeColor = System::Drawing::SystemColors::GrayText;
 			this->comboBox_toperative->FormattingEnabled = true;
-			this->comboBox_toperative->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Sí", L"No" });
 			this->comboBox_toperative->Location = System::Drawing::Point(457, 273);
 			this->comboBox_toperative->Name = L"comboBox_toperative";
 			this->comboBox_toperative->RightToLeft = System::Windows::Forms::RightToLeft::No;
@@ -575,7 +595,6 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 				static_cast<System::Byte>(0)));
 			this->comboBox_tcondition->ForeColor = System::Drawing::SystemColors::GrayText;
 			this->comboBox_tcondition->FormattingEnabled = true;
-			this->comboBox_tcondition->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Sí", L"No" });
 			this->comboBox_tcondition->Location = System::Drawing::Point(457, 304);
 			this->comboBox_tcondition->Name = L"comboBox_tcondition";
 			this->comboBox_tcondition->RightToLeft = System::Windows::Forms::RightToLeft::No;
@@ -600,12 +619,12 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			// 
 			this->button_clearall->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_clearall->Location = System::Drawing::Point(131, 233);
+			this->button_clearall->Location = System::Drawing::Point(141, 230);
 			this->button_clearall->Name = L"button_clearall";
-			this->button_clearall->Size = System::Drawing::Size(174, 30);
+			this->button_clearall->Size = System::Drawing::Size(186, 30);
 			this->button_clearall->TabIndex = 65;
 			this->button_clearall->Tag = L"";
-			this->button_clearall->Text = L"Limpiar todo";
+			this->button_clearall->Text = L"Limpiar todo y/o Actualizar";
 			this->button_clearall->UseVisualStyleBackColor = true;
 			this->button_clearall->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_clearall_Click);
 			// 
@@ -747,12 +766,27 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			this->textBox_tid->Text = L"ID";
 			this->textBox_tid->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
+			// button_eliminate
+			// 
+			this->button_eliminate->BackColor = System::Drawing::Color::Orange;
+			this->button_eliminate->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_eliminate->Location = System::Drawing::Point(583, 387);
+			this->button_eliminate->Name = L"button_eliminate";
+			this->button_eliminate->Size = System::Drawing::Size(130, 40);
+			this->button_eliminate->TabIndex = 197;
+			this->button_eliminate->Tag = L"";
+			this->button_eliminate->Text = L"ELIMINAR";
+			this->button_eliminate->UseVisualStyleBackColor = false;
+			this->button_eliminate->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_eliminate_Click);
+			// 
 			// UserMyCarsPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(881, 524);
+			this->Controls->Add(this->button_eliminate);
 			this->Controls->Add(this->textBox_tid);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->label2);
@@ -807,7 +841,7 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 				MessageBox::Show("Error al cargar la imagen: " + ex->Message);
 			}
 		}
-		void ShowCars() {
+		void ShowInitialDgvCars() {
 			List<Car^>^ cars = Controller::QueryAllCars();
 			if (cars->Count != 0) {
 				dgv_cars->Rows->Clear();
@@ -821,7 +855,7 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 						atributobooleanoYes = "Inoperativo";
 					}
 					dgv_cars->Rows->Add(gcnew array<String^> {
-						"" + c->Id,
+							"" + c->Id,
 							"" + c->Plate,
 							"" + c->Brand,
 							"" + c->Color,
@@ -856,6 +890,33 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 		}
 		void ClearTextBoxes() {
 			//función para limpiar todas las textboxes
+
+			textBox_id->Clear();
+			textBox_plate->Clear();
+			textBox_brand->Clear();
+			textBox_color->Clear();
+			comboBox_operative->Items->Clear();
+			comboBox_condition->Items->Clear();
+			//comboBox_operative->SelectedIndex  = -1;
+			//Falta que a la hora de limpiar se elimine el item seleccionando en el combo
+
+		}
+
+		void FillCombos() {
+			comboBox_operative->Items->Clear();//parte de una buena práctica...
+			comboBox_condition->Items->Clear();
+			comboBox_operative->Items->Add("Operativo");
+			comboBox_operative->Items->Add("Inoperativo");
+			comboBox_condition->Items->Add("Nuevo");
+			comboBox_condition->Items->Add("Usado");
+			comboBox_condition->Items->Add("Antiguo");
+			comboBox_tsparetire->Items->Add("Sí");
+			comboBox_tsparetire->Items->Add("No");
+			comboBox_toperative->Items->Add("Operativa");
+			comboBox_toperative->Items->Add("Inoperativa");
+			comboBox_tcondition->Items->Add("Nuevo");
+			comboBox_tcondition->Items->Add("Usado");
+			comboBox_tcondition->Items->Add("Antiguo");
 		}
 
 		void FillCarTextBoxes(Car^ c) {
@@ -866,9 +927,30 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			textBox_tbrand->Text = c->Brand;
 			textBox_tcolor->Text = c->Color;
 			textBox_tnumberseats->Text = Convert::ToString(c->NumberOfSeats);
-			comboBox_tsparetire->Text = Convert::ToString(c->SpareTire);
-			comboBox_toperative->Text= Convert::ToString(c->Operative);
 			comboBox_tcondition->Text = Convert::ToString(c->Condition);
+			String^ sparetire_ = Convert::ToString(c->SpareTire);
+				if (sparetire_ == "True") {
+
+					comboBox_tsparetire->Text = "Sí";
+
+				}
+				else if (sparetire_ == "False") {
+
+					comboBox_tsparetire->Text = "No";
+
+				}
+
+			String^ operative_ = Convert::ToString(c->Operative);
+				if (operative_ == "True") {
+
+					comboBox_toperative->Text = "operativo";
+
+				}
+				else if (operative_ == "False") {
+
+					comboBox_toperative->Text = "Inoperativo";
+
+				}
 
 
 			if (c->Photo != nullptr) {
@@ -940,7 +1022,7 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 			return;
 		}
 
-		FillCarTextBoxes(cList[0]);
+		FillCarTextBoxes(cList[0]);//por el List<Car^>^
 
 		ShowSearchedCar(cList[0]);
 
@@ -1012,8 +1094,10 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 	}
 
 	private: System::Void UserMyCarsPage_Load(System::Object^ sender, System::EventArgs^ e) {
-		ShowCars();		
+		FillCombos();
+		ShowInitialDgvCars();
 	}
+
 	private: System::Void dgv_cars_RowHeaderMouseClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^ e) {
 		if (e->RowIndex >= 0 && e->RowIndex < dgv_cars->Rows->Count) {
 			DataGridViewRow^ selectedRow = dgv_cars->Rows[e->RowIndex];
@@ -1026,17 +1110,19 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 				if (!String::IsNullOrWhiteSpace(id)) {
 					int IdToSearch = Convert::ToInt32(id);
 					Car^ c = Controller::QueryCarById(IdToSearch);
-					FillCarTextBoxes(c); 
+					FillCarTextBoxes(c);
 				}
 			}
 		}
 	}
-	private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
-		ClearTextBoxes();
-		ShowCars();
-	}
 
-	
+	private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
+			
+		ShowInitialDgvCars();
+		ClearTextBoxes();
+		FillCombos();
+
+	}
 
 	private: System::Void button_insertphoto_Click(System::Object^ sender, System::EventArgs^ e) {
 
@@ -1052,16 +1138,17 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 
 		Car^ car = gcnew Car();
 
+		String^ _id = textBox_tid->Text;
 		String^ carmodel = textBox_tmodel->Text;
 		String^ plate = textBox_tplate->Text;
 		String^ brand = textBox_tbrand->Text;
 		String^ color = textBox_tcolor->Text;
 		String^ _numberofseats = textBox_tnumberseats->Text;
 		String^ sparetire = comboBox_tsparetire->Text;
-		String^ operative = comboBox_operative->Text;
-		String^ condition = comboBox_condition->Text;
+		String^ operative = comboBox_toperative->Text;
+		String^ condition = comboBox_tcondition->Text;
 
-
+	
 
 		if (sparetire == "Sí") {
 
@@ -1086,20 +1173,28 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 
 		}
 
+
 		if (plate->Length != 7) {
 			MessageBox::Show("La placa del vehículo ingresado debe tener 7 dígitos");
 			return;
 		}
 
-		int numberseats = 0;
+		int numberofseats = 0;
 
-		if (!Int32::TryParse(_numberofseats, numberseats)) {
+		if (!Int32::TryParse(_numberofseats, numberofseats)) {
 			MessageBox::Show("Ingrese solo números para la cantidad de asientos");
 			return;
 		}
 
-		//Ya no necesita generar ID, se conserva el mismo
-		car->NumberOfSeats = numberseats;
+		int id = 0;
+		if (!Int32::TryParse(_id, id)) {
+			
+			MessageBox::Show("Si se desea agregar ir a la pestaña 'Agregar Carro'");
+			return;
+		}
+
+		car->Id = Int32::Parse(textBox_tid->Text);
+		car->NumberOfSeats = numberofseats;
 		car->Color = color;
 		car->CarModel = carmodel;
 		car->Brand = brand;
@@ -1116,6 +1211,12 @@ private: System::Windows::Forms::TextBox^ textBox_tid;
 
 		Controller::UpdateCar(car);
 		MessageBox::Show("¡Se actualizó correctamente!");
+
+	}
+	private: System::Void button_eliminate_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		int id = Int32::Parse(textBox_id->Text);
+		Controller::DeleteCar(id);
 
 	}
 };

@@ -145,22 +145,22 @@ namespace ProjectView {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(169, 105);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(114, 17);
+			this->label2->Size = System::Drawing::Size(117, 19);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Ingresa tu email";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(169, 167);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(150, 17);
+			this->label3->Size = System::Drawing::Size(154, 19);
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"Ingresa tu contraseña";
 			// 
@@ -243,7 +243,7 @@ namespace ProjectView {
 			}
 		}
 		else {
-			MessageBox::Show("El email ingresado no existe");
+			MessageBox::Show("La contraseña ingresada no existe");
 		}
 
 		if (email == "user") {

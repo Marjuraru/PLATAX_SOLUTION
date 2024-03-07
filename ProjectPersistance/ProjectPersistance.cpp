@@ -532,7 +532,7 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByType(
     ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
 
     List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
-    Reclamations = nullptr;
+    //Reclamations = nullptr;
 
     if (ReclamationList -> Count != 0) {
         for (int i = 0; i < ReclamationList->Count; i++) {
@@ -544,12 +544,13 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByType(
     return Reclamations;
 }
 
+
 List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByCategory(String^ category)
 {
     ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
 
     List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
-    Reclamations = nullptr;
+    //Reclamations = nullptr;
 
     if (ReclamationList -> Count != 0) {
         for (int i = 0; i < ReclamationList->Count; i++) {
@@ -561,16 +562,16 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByCateg
     return Reclamations;
 }
 
-List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByState(String^ status)
+List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByState(String^ state)
 {
     ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
 
     List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
-    Reclamations = nullptr;
+    //Reclamations = nullptr;
 
     if (ReclamationList -> Count != 0) {
         for (int i = 0; i < ReclamationList->Count; i++) {
-            if (ReclamationList[i]->Status == status) {
+            if (ReclamationList[i]->State == state) {
                 Reclamations->Add(ReclamationList[i]);
             }
         }
@@ -578,16 +579,16 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByState
     return Reclamations;
 }
 
-List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByDate(DateTime date)
+List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByDate(DateTime systemdate)
 {
     ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
 
     List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
-    Reclamations = nullptr;
+    //Reclamations = nullptr;
 
     if (ReclamationList -> Count != 0) {
         for (int i = 0; i < CarList->Count; i++) {
-            if (ReclamationList[i]->Date == date) {
+            if (ReclamationList[i]->SystemDate == systemdate) {
                 Reclamations->Add(ReclamationList[i]);
             }
         }

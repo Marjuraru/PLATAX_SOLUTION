@@ -13,9 +13,10 @@ namespace ProjectModel {
 		property String^ Title;
 		property String^ Description;
 		property String^ Category; //urgente, importante, //comboo
-		property String^ Status;//Pendiente y Resuelto
+		property String^ State;//Pendiente y Resuelto
 		property String^ Feedback;
-		property DateTime Date; //fecha de reclamo
+		property DateTime SearchDate; //fecha de reclamo
+		property DateTime SystemDate;
 		property array<Byte>^ Photo;
 	};
 };
