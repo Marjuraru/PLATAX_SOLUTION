@@ -587,8 +587,8 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByDate(
     //Reclamations = nullptr;
 
     if (ReclamationList -> Count != 0) {
-        for (int i = 0; i < CarList->Count; i++) {
-            if (ReclamationList[i]->SystemDate == systemdate) {
+        for (int i = 0; i < ReclamationList->Count; i++) {
+            if (ReclamationList[i]->SystemDate.Date == systemdate.Date) {
                 Reclamations->Add(ReclamationList[i]);
             }
         }

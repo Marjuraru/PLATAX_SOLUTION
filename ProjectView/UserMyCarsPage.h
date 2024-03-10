@@ -380,6 +380,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			// 
 			// comboBox_condition
 			// 
+			this->comboBox_condition->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox_condition->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox_condition->FormattingEnabled = true;
@@ -402,6 +403,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			// 
 			// comboBox_operative
 			// 
+			this->comboBox_operative->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox_operative->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox_operative->FormattingEnabled = true;
@@ -990,13 +992,19 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 	}
 
 	private: System::Void button_plate_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		/*
 		String^ tplate = textBox_plate->Text;
 		if (String::IsNullOrWhiteSpace(tplate)) {
 			MessageBox::Show("Ingrese la placa del carro a buscar");
 			return;
 		}
+		List<Car^>^ listCars = Controller::QueryListCarsByClientId(Session::CurrentClient->Id);
+		List<Car^>^ carMatch = gcnew List<Car^>();
+		for each (Car^ c in listCars){
+			if (c->Plate == tplate) {
 
+			}
+		}
 		Car^ c = Controller::QueryCarByPlate(tplate);
 		if (c == nullptr) {
 			MessageBox::Show("La placa del carro ingresado no existe");
@@ -1005,7 +1013,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 
 		FillCarTextBoxes(c);
 
-		ShowSearchedCar(c);
+		ShowSearchedCar(c);*/
 
 	}
 	private: System::Void button_brand_Click(System::Object^ sender, System::EventArgs^ e) {

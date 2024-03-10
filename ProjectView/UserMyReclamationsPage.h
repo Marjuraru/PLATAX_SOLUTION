@@ -922,7 +922,7 @@ namespace ProjectView {
 	}
 	private: System::Void button_date_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		DateTime tsystemdate = dtp_date->Value;
+		DateTime tsystemdate = dtp_date->Value.Date;
 		
 
 		List<Reclamation^>^ cList = Controller::QueryListReclamationByDate(tsystemdate);
