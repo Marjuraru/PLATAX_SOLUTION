@@ -14,240 +14,135 @@ bool ProjectController::Controller::validateAccess(String^ email, String^ passwo
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-int ProjectController::Controller::GenerateClientId()
+int ProjectController::Controller::GenerateProprietorId()
 {
-	return ProjectPersistance::Persistance::GenerateClientId();
+	return ProjectPersistance::Persistance::GenerateProprietorId();
 }
 
-int ProjectController::Controller::GenerateReclamationId()
+int ProjectController::Controller::GenerateVehicleId()
 {
-		return ProjectPersistance::Persistance::GenerateReclamationId();
-}
-
-int ProjectController::Controller::GenerateCarId()
-{
-	return ProjectPersistance::Persistance::GenerateCarId();
-}
-
-int ProjectController::Controller::GenerateHelpId()
-{
-	return ProjectPersistance::Persistance::GenerateHelpId();
+	return ProjectPersistance::Persistance::GenerateVehicleId();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-void ProjectController::Controller::CreateClient(Client^ c)
+void ProjectController::Controller::CreateProprietor(Proprietor^ c)
 {
-	return ProjectPersistance::Persistance::CreateClient(c);
+	return ProjectPersistance::Persistance::CreateProprietor(c);
 }
 
-void ProjectController::Controller::CreateCar(Car^ c)
+void ProjectController::Controller::CreateVehicle(Vehicle^ c)
 {
-	return ProjectPersistance::Persistance::CreateCar(c);
-}
-
-void ProjectController::Controller::CreateReclamation(Reclamation^ c)
-{
-	return ProjectPersistance::Persistance::CreateReclamation(c);
-}
-
-void ProjectController::Controller::CreateHelp(Help^ c)
-{
-	return ProjectPersistance::Persistance::CreateHelp(c);
+	return ProjectPersistance::Persistance::CreateVehicle(c);
 }
 
 
-void ProjectController::Controller::UpdateClient(Client^ c)
+void ProjectController::Controller::UpdateProprietor(Proprietor^ c)
 {
-	return ProjectPersistance::Persistance::UpdateClient(c);
+	return ProjectPersistance::Persistance::UpdateProprietor(c);
 }
 
-void ProjectController::Controller::UpdateCar(Car^ c)
+void ProjectController::Controller::UpdateVehicle(Vehicle^ c)
 {
-	return ProjectPersistance::Persistance::UpdateCar(c);
-}
-
-void ProjectController::Controller::UpdateReclamation(Reclamation^ c)
-{
-	return ProjectPersistance::Persistance::UpdateReclamation(c);
-}
-
-void ProjectController::Controller::UpdateHelp(Help^ c)
-{
-	return ProjectPersistance::Persistance::UpdateHelp(c);
+	return ProjectPersistance::Persistance::UpdateVehicle(c);
 }
 
 
-void ProjectController::Controller::DeleteClient(int id)
+void ProjectController::Controller::DeleteProprietor(int id)
 {
-	return ProjectPersistance::Persistance::DeleteClient(id);
+	return ProjectPersistance::Persistance::DeleteProprietor(id);
 }
 
-void ProjectController::Controller::DeleteCar(int id)
+void ProjectController::Controller::DeleteVehicle(int id)
 {
-	return ProjectPersistance::Persistance::DeleteCar(id);
-}
-
-void ProjectController::Controller::DeleteReclamation(int id)
-{
-	return ProjectPersistance::Persistance::DeleteReclamation(id);
-}
-
-void ProjectController::Controller::DeleteHelp(int id)
-{
-	return ProjectPersistance::Persistance::DeleteHelp(id);
-
+	return ProjectPersistance::Persistance::DeleteVehicle(id);
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-List<Client^>^ ProjectController::Controller::QueryAllClients()
+List<Proprietor^>^ ProjectController::Controller::QueryAllProprietors()
 {
-	return ProjectPersistance::Persistance::QueryAllClients();
+	return ProjectPersistance::Persistance::QueryAllProprietors();
 }
 //*
-Client^ ProjectController::Controller::QueryClientById(int id)
+Proprietor^ ProjectController::Controller::QueryProprietorById(int id)
 {
-	return ProjectPersistance::Persistance::QueryClientById(id);
+	return ProjectPersistance::Persistance::QueryProprietorById(id);
 }
 
-Client^ ProjectController::Controller::QueryClientByDni(int dni)
+Proprietor^ ProjectController::Controller::QueryProprietorByDni(int dni)
 {
-	return ProjectPersistance::Persistance::QueryClientByDni(dni);
+	return ProjectPersistance::Persistance::QueryProprietorByDni(dni);
 }
 
-Client^ ProjectController::Controller::QueryClientByEmail(String^ email)
+Proprietor^ ProjectController::Controller::QueryProprietorByEmail(String^ email)
 {
-	return ProjectPersistance::Persistance::QueryClientByEmail(email);
+	return ProjectPersistance::Persistance::QueryProprietorByEmail(email);
 }
 
-Client^ ProjectController::Controller::QueryClientByLicenseName(String^ licensename)
+Proprietor^ ProjectController::Controller::QueryProprietorByLicenseName(String^ licensename)
 {
-	return ProjectPersistance::Persistance::QueryClientByLicenseName(licensename);
+	return ProjectPersistance::Persistance::QueryProprietorByLicenseName(licensename);
 }
 
 //
 
-List<Client^>^ ProjectController::Controller::QueryListClientByName(String^ name)
+List<Proprietor^>^ ProjectController::Controller::QueryListProprietorByName(String^ name)
 {
-	return ProjectPersistance::Persistance::QueryListClientByName(name);
+	return ProjectPersistance::Persistance::QueryListProprietorByName(name);
 }
 
-List<Client^>^ ProjectController::Controller::QueryListClientByLastname(String^ lastname)
+List<Proprietor^>^ ProjectController::Controller::QueryListProprietorByLastname(String^ lastname)
 {
-	return ProjectPersistance::Persistance::QueryListClientByLastname(lastname);
+	return ProjectPersistance::Persistance::QueryListProprietorByLastname(lastname);
 }
 
-List<Client^>^ ProjectController::Controller::QueryListClientByLicensetype(String^ licensetype)
+List<Proprietor^>^ ProjectController::Controller::QueryListProprietorByLicensetype(String^ licensetype)
 {
-	return ProjectPersistance::Persistance::QueryListClientByLicensetype(licensetype);
+	return ProjectPersistance::Persistance::QueryListProprietorByLicensetype(licensetype);
 }
 
 
 //*//
-List<Car^>^ ProjectController::Controller::QueryAllCars()
+List<Vehicle^>^ ProjectController::Controller::QueryAllVehicles()
 {
-	return ProjectPersistance::Persistance::QueryAllCars();
+	return ProjectPersistance::Persistance::QueryAllVehicles();
 }
 //
-Car^ ProjectController::Controller::QueryCarById(int id)
+Vehicle^ ProjectController::Controller::QueryVehicleById(int id)
 {
-	return ProjectPersistance::Persistance::QueryCarById(id);
+	return ProjectPersistance::Persistance::QueryVehicleById(id);
 }
 
-Car^ ProjectController::Controller::QueryCarByPlate(String^ plate)
+Vehicle^ ProjectController::Controller::QueryVehicleByPlate(String^ plate)
 {
-	return ProjectPersistance::Persistance::QueryCarByPlate(plate);
+	return ProjectPersistance::Persistance::QueryVehicleByPlate(plate);
 }
 
 //
 
-List<Car^>^ ProjectController::Controller::QueryListCarByBrand(String^ brand)
+List<Vehicle^>^ ProjectController::Controller::QueryListVehiclesByProprietorId(int Id)
 {
-	return ProjectPersistance::Persistance::QueryListCarByBrand(brand);
+	return ProjectPersistance::Persistance::QueryListVehiclesByProprietorId(Id);
 }
 
-List<Car^>^ ProjectController::Controller::QueryListCarByColor(String^ color)
+List<Vehicle^>^ ProjectController::Controller::QueryListVehicleByBrand(String^ brand)
 {
-	return ProjectPersistance::Persistance::QueryListCarByColor(color);
+	return ProjectPersistance::Persistance::QueryListVehicleByBrand(brand);
 }
 
-List<Car^>^ ProjectController::Controller::QueryListCarByCondition(String^ condition)
+List<Vehicle^>^ ProjectController::Controller::QueryListVehicleByColor(String^ color)
 {
-	return ProjectPersistance::Persistance::QueryListCarByCondition(condition);
+	return ProjectPersistance::Persistance::QueryListVehicleByColor(color);
 }
 
-List<Car^>^ ProjectController::Controller::QueryListCarByOperative(bool operative)
+List<Vehicle^>^ ProjectController::Controller::QueryListVehicleByCondition(String^ condition)
 {
-	return ProjectPersistance::Persistance::QueryListCarByOperative(operative);
+	return ProjectPersistance::Persistance::QueryListVehicleByCondition(condition);
 }
 
-//*//
-List<Reclamation^>^ ProjectController::Controller::QueryAllReclamations()
+List<Vehicle^>^ ProjectController::Controller::QueryListVehicleByOperative(bool operative)
 {
-	return ProjectPersistance::Persistance::QueryAllReclamations();
-
-}
-//
-Reclamation^ ProjectController::Controller::QueryReclamationById(int id)
-{
-	return ProjectPersistance::Persistance::QueryReclamationById(id);
-}
-
-Reclamation^ ProjectController::Controller::QueryReclamationByTitle(String^ title)
-{
-	return ProjectPersistance::Persistance::QueryReclamationByTitle(title);
-}
-
-List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByType(String^ type)
-{
-	return ProjectPersistance::Persistance::QueryListReclamationByType(type);
-}
-
-List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByCategory(String^ category)
-{
-	return ProjectPersistance::Persistance::QueryListReclamationByCategory(category);
-}
-
-List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByState(String^ state)
-{
-	return ProjectPersistance::Persistance::QueryListReclamationByState(state);
-}
-
-List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByDate(DateTime systemdate)
-{
-	return ProjectPersistance::Persistance::QueryListReclamationByDate(systemdate);
-}
-
-//*//
-List<Help^>^ ProjectController::Controller::QueryAllHelps()
-{
-	return ProjectPersistance::Persistance::QueryAllHelps();
-
-}
-//
-Help^ ProjectController::Controller::QueryHelpById(int id)
-{
-	return ProjectPersistance::Persistance::QueryHelpById(id);
-}
-
-List<Help^>^ ProjectController::Controller::QueryListHelpByType(String^ type)
-{
-	return ProjectPersistance::Persistance::QueryListHelpByType(type);
-}
-
-List<Help^>^ ProjectController::Controller::QueryListHelpByCategory(String^ state)
-{
-	return ProjectPersistance::Persistance::QueryListHelpByCategory(state);
-}
-
-List<Help^>^ ProjectController::Controller::QueryListHelpByChecked(bool checked)
-{
-	return ProjectPersistance::Persistance::QueryListHelpByChecked(checked);
-}
-
-List<Help^>^ ProjectController::Controller::QueryListHelpByDate(DateTime date)
-{
-	return ProjectPersistance::Persistance::QueryListHelpByDate(date);
+	return ProjectPersistance::Persistance::QueryListVehicleByOperative(operative);
 }
 
 

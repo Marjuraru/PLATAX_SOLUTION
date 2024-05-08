@@ -126,14 +126,15 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="UserAddCarPage.cpp" />
+    <ClCompile Include="UserAddVehiclePage.cpp" />
     <ClCompile Include="UserFeedPage.cpp" />
     <ClCompile Include="UserHelpPage.cpp" />
     <ClCompile Include="UserLoginPage.cpp" />
-    <ClCompile Include="UserMyCarsPage.cpp" />
+    <ClCompile Include="UserMyVehiclesPage.cpp" />
     <ClCompile Include="UserMyReclamationsPage.cpp" />
     <ClCompile Include="UserMyStatisticsPage.cpp" />
     <ClCompile Include="UserProfilePage.cpp" />
@@ -141,7 +142,7 @@
     <ClCompile Include="UserRegisterPage.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UserAddCarPage.h">
+    <ClInclude Include="UserAddVehiclePage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserFeedPage.h">
@@ -153,7 +154,7 @@
     <ClInclude Include="UserLoginPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="UserMyCarsPage.h">
+    <ClInclude Include="UserMyVehiclesPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserMyReclamationsPage.h">
@@ -173,8 +174,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UserAddCarPage.resx">
-      <DependentUpon>UserAddCarPage.h</DependentUpon>
+    <EmbeddedResource Include="UserAddVehiclePage.resx">
+      <DependentUpon>UserAddVehiclePage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserFeedPage.resx">
       <DependentUpon>UserFeedPage.h</DependentUpon>
@@ -185,11 +186,14 @@
     <EmbeddedResource Include="UserLoginPage.resx">
       <DependentUpon>UserLoginPage.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserMyCarsPage.resx">
-      <DependentUpon>UserMyCarsPage.h</DependentUpon>
+    <EmbeddedResource Include="UserMyVehiclesPage.resx">
+      <DependentUpon>UserMyVehiclesPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserMyReclamationsPage.resx">
       <DependentUpon>UserMyReclamationsPage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserMyStatisticsPage.resx">
+      <DependentUpon>UserMyStatisticsPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserProfilePage.resx">
       <DependentUpon>UserProfilePage.h</DependentUpon>

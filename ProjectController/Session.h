@@ -7,21 +7,22 @@ namespace ProjectModel {
     public ref class Session
     {
     public:
-        static property Client^ CurrentClient {
-            Client^ get() {
-                return currentClient;
+        static property Proprietor^ CurrentProprietor {
+            Proprietor^ get() {
+                return currentProprietor;
             }
-            void set(Client^ user) {
-                currentClient = user;
+            void set(Proprietor^ user) {
+                currentProprietor = user;
             }
         }
+        //para los demás
         /*
-        static property Receptor^ CurrentReceptor {
-            Receptor^ get() {
-                return currentReceptor;
+        static property Owner^ CurrentOwner {
+            Owner^ get() {
+                return currentOwner;
             }
-            void set(Receptor^ receptor) {
-                currentReceptor = receptor;
+            void set(Owner^ owner) {
+                currentOwner = owner;
             }
         }
 
@@ -34,9 +35,9 @@ namespace ProjectModel {
             }
         }*/
     private:
-        static Client^ currentClient;
+        static Proprietor^ currentProprietor;
         /*
-        static Receptor^ currentReceptor;
+        static Owner^ currentOwner;
         static Administrator^ currentAdministrator;
         */
     };

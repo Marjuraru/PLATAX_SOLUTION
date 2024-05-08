@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 namespace ProjectView {
 
 	using namespace System;
@@ -501,15 +499,17 @@ namespace ProjectView {
 	}
 
 	private: System::Void button_savechanges_Click(System::Object^ sender, System::EventArgs^ e) {
-		Client^ c = gcnew Client();
+		Proprietor^ c = Session::CurrentProprietor;
 
 		String^ name = textBox_name->Text;
 		String^ lastname = textBox_lastname->Text;
 		String^ _dni = textBox_dni->Text;
 		String^ _phone = textBox_phone->Text;
+		String^ email = textBox_email->Text;
+		String^ address = textBox_address->Text;
 		String^ password = textBox_password->Text;
 		String^ newpassword = textBox_newpassword->Text;
-		String^ address = textBox_address->Text;
+		
 		bool male = checkBox_male->Checked;
 		bool female = checkBox_female->Checked;
 
@@ -520,8 +520,8 @@ namespace ProjectView {
 		}
 		if (!String::IsNullOrWhiteSpace(password) && !String::IsNullOrWhiteSpace(newpassword)) {
 
-			Client^ client = Controller::QueryClientById(Session::CurrentClient->Id); //el id aun no lo sabemos
-			if (password == client->Password) {
+			Proprietor^ c = Controller::QueryProprietorById(Session::CurrentProprietor->Id); //el id aun no lo sabemos
+			if (password == c->Password) {
 				c->Password = newpassword;
 			}
 			else {
@@ -567,11 +567,12 @@ namespace ProjectView {
 		c->Lastname = textBox_lastname->Text;
 		c->Dni = Convert::ToInt32(textBox_dni->Text);
 		c->Phone = Int32::Parse(textBox_phone->Text);
-		c->BirthDate = dtp_birthdate->Value;
-	
+		c->Email = textBox_email->Text;
 		c->Address = textBox_address->Text;
+		c->BirthDate = dtp_birthdate->Value;
 		c->female = checkBox_female->Checked;
 		c->male = checkBox_male->Checked;
+		
 
 		if (pb_photo->Image != nullptr) {
 
@@ -581,21 +582,31 @@ namespace ProjectView {
 			ms->Close();
 		} 
 
-		Controller::UpdateClient(c);
+		//Session::CurrentClient = c;
+		Controller::UpdateProprietor(c);
 		MessageBox::Show("¡Se editó correctamente!");
-
+		Session::CurrentProprietor = c;
 		this->Close();
 
 	}
 
 
 	private: System::Void UserProfilePage_Load(System::Object^ sender, System::EventArgs^ e) {
-		Client^ c = Session::CurrentClient;
+		Proprietor^ c = Session::CurrentProprietor;
 
 		textBox_name->Text = c->Name;
 		textBox_lastname->Text = c->Lastname;
-
-		ShowImage(c->Photo, pb_photo);
+		textBox_dni->Text = Convert::ToString(c->Dni);
+		textBox_phone->Text = Convert::ToString(c->Phone);
+		textBox_email->Text = c->Email;
+		textBox_address->Text = c->Address;
+		dtp_birthdate->Value = c->BirthDate;
+		checkBox_female->Checked = c->female;
+		checkBox_male->Checked = c->male;
+		if (c->Photo != nullptr) {
+			ShowImage(c->Photo, pb_photo);
+		}
+		
 
 	}
 	private: System::Void button_back_Click_1(System::Object^ sender, System::EventArgs^ e) {

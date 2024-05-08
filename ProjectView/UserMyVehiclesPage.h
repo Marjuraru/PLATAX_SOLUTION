@@ -14,12 +14,12 @@ namespace ProjectView {
 	using namespace ProjectController;
 
 	/// <summary>
-	/// Resumen de UserMyCarsPage
+	/// Resumen de UserMyVehcilesPage
 	/// </summary>
-	public ref class UserMyCarsPage : public System::Windows::Forms::Form
+	public ref class UserMyVehiclesPage : public System::Windows::Forms::Form
 	{
 	public:
-		UserMyCarsPage(void)
+		UserMyVehiclesPage(void)
 		{
 			InitializeComponent();
 			//
@@ -31,14 +31,16 @@ namespace ProjectView {
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
 		/// </summary>
-		~UserMyCarsPage()
+		~UserMyVehiclesPage()
 		{
 			if (components)
 			{
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataGridView^ dgv_cars;
+	private: System::Windows::Forms::DataGridView^ dgv_vehicles;
+	protected:
+
 	protected:
 
 	private: System::Windows::Forms::Button^ button_exit;
@@ -159,6 +161,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Brand;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ Color;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ Operative;
 private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
+private: System::Windows::Forms::NotifyIcon^ notifyIcon1;
+private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -188,7 +192,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -197,7 +201,9 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->dgv_cars = (gcnew System::Windows::Forms::DataGridView());
+			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(UserMyVehiclesPage::typeid));
+			this->dgv_vehicles = (gcnew System::Windows::Forms::DataGridView());
 			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Plate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Brand = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -241,26 +247,27 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_logout = (gcnew System::Windows::Forms::Button());
 			this->textBox_tid = (gcnew System::Windows::Forms::TextBox());
 			this->button_eliminate = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_cars))->BeginInit();
+			this->notifyIcon1 = (gcnew System::Windows::Forms::NotifyIcon(this->components));
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->BeginInit();
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// dgv_cars
+			// dgv_vehicles
 			// 
-			this->dgv_cars->AllowUserToAddRows = false;
-			this->dgv_cars->AllowUserToDeleteRows = false;
-			this->dgv_cars->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgv_cars->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+			this->dgv_vehicles->AllowUserToAddRows = false;
+			this->dgv_vehicles->AllowUserToDeleteRows = false;
+			this->dgv_vehicles->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgv_vehicles->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->Id, this->Plate,
 					this->Brand, this->Color, this->Operative, this->Condition
 			});
-			this->dgv_cars->Location = System::Drawing::Point(12, 337);
-			this->dgv_cars->Name = L"dgv_cars";
-			this->dgv_cars->ReadOnly = true;
-			this->dgv_cars->Size = System::Drawing::Size(434, 181);
-			this->dgv_cars->TabIndex = 70;
-			this->dgv_cars->RowHeaderMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &UserMyCarsPage::dgv_cars_RowHeaderMouseClick);
+			this->dgv_vehicles->Location = System::Drawing::Point(12, 337);
+			this->dgv_vehicles->Name = L"dgv_vehicles";
+			this->dgv_vehicles->ReadOnly = true;
+			this->dgv_vehicles->Size = System::Drawing::Size(434, 181);
+			this->dgv_vehicles->TabIndex = 70;
+			this->dgv_vehicles->RowHeaderMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &UserMyVehiclesPage::dgv_vehicles_RowHeaderMouseClick);
 			// 
 			// Id
 			// 
@@ -317,7 +324,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_exit->Tag = L"65";
 			this->button_exit->Text = L"SALIR";
 			this->button_exit->UseVisualStyleBackColor = false;
-			this->button_exit->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_exit_Click);
+			this->button_exit->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_exit_Click);
 			// 
 			// button_update
 			// 
@@ -330,7 +337,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_update->Tag = L"";
 			this->button_update->Text = L"Guardar y Actualizar";
 			this->button_update->UseVisualStyleBackColor = true;
-			this->button_update->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_update_Click);
+			this->button_update->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_update_Click);
 			// 
 			// button_plate
 			// 
@@ -343,7 +350,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_plate->Tag = L"";
 			this->button_plate->Text = L"BUSCAR";
 			this->button_plate->UseVisualStyleBackColor = true;
-			this->button_plate->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_plate_Click);
+			this->button_plate->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_plate_Click);
 			// 
 			// button_insertphoto
 			// 
@@ -356,7 +363,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_insertphoto->Tag = L"";
 			this->button_insertphoto->Text = L"Cambiar imagen";
 			this->button_insertphoto->UseVisualStyleBackColor = true;
-			this->button_insertphoto->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_insertphoto_Click);
+			this->button_insertphoto->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_insertphoto_Click);
 			// 
 			// pb_photo
 			// 
@@ -372,11 +379,11 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 26.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(426, 5);
+			this->label1->Location = System::Drawing::Point(512, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(209, 40);
+			this->label1->Size = System::Drawing::Size(300, 40);
 			this->label1->TabIndex = 137;
-			this->label1->Text = L"MIS AUTOS";
+			this->label1->Text = L"MIS VEHÍCULOS";
 			// 
 			// comboBox_condition
 			// 
@@ -508,7 +515,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->textBox_tmodel->Size = System::Drawing::Size(147, 26);
 			this->textBox_tmodel->TabIndex = 80;
 			this->textBox_tmodel->Tag = L"";
-			this->textBox_tmodel->Text = L"Modelo de Auto";
+			this->textBox_tmodel->Text = L"Modelo";
 			this->textBox_tmodel->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// textBox_tplate
@@ -628,7 +635,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_clearall->Tag = L"";
 			this->button_clearall->Text = L"Limpiar todo y/o Actualizar";
 			this->button_clearall->UseVisualStyleBackColor = true;
-			this->button_clearall->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_clearall_Click);
+			this->button_clearall->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_clearall_Click);
 			// 
 			// textBox_id
 			// 
@@ -651,7 +658,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_id->Tag = L"";
 			this->button_id->Text = L"BUSCAR";
 			this->button_id->UseVisualStyleBackColor = true;
-			this->button_id->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_id_Click);
+			this->button_id->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_id_Click);
 			// 
 			// button_brand
 			// 
@@ -664,7 +671,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_brand->Tag = L"";
 			this->button_brand->Text = L"BUSCAR";
 			this->button_brand->UseVisualStyleBackColor = true;
-			this->button_brand->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_brand_Click);
+			this->button_brand->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_brand_Click);
 			// 
 			// button_color
 			// 
@@ -677,7 +684,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_color->Tag = L"";
 			this->button_color->Text = L"BUSCAR";
 			this->button_color->UseVisualStyleBackColor = true;
-			this->button_color->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_color_Click);
+			this->button_color->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_color_Click);
 			// 
 			// button_operative
 			// 
@@ -690,7 +697,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_operative->Tag = L"";
 			this->button_operative->Text = L"BUSCAR";
 			this->button_operative->UseVisualStyleBackColor = true;
-			this->button_operative->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_operative_Click);
+			this->button_operative->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_operative_Click);
 			// 
 			// button_condition
 			// 
@@ -703,7 +710,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_condition->Tag = L"";
 			this->button_condition->Text = L"BUSCAR";
 			this->button_condition->UseVisualStyleBackColor = true;
-			this->button_condition->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_condition_Click);
+			this->button_condition->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_condition_Click);
 			// 
 			// groupBox2
 			// 
@@ -780,9 +787,17 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->button_eliminate->Tag = L"";
 			this->button_eliminate->Text = L"ELIMINAR";
 			this->button_eliminate->UseVisualStyleBackColor = false;
-			this->button_eliminate->Click += gcnew System::EventHandler(this, &UserMyCarsPage::button_eliminate_Click);
+			this->button_eliminate->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_eliminate_Click);
 			// 
-			// UserMyCarsPage
+			// notifyIcon1
+			// 
+			this->notifyIcon1->BalloonTipIcon = System::Windows::Forms::ToolTipIcon::Info;
+			this->notifyIcon1->BalloonTipTitle = L"Notificación";
+			this->notifyIcon1->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"notifyIcon1.Icon")));
+			this->notifyIcon1->Text = L"notifyIcon1";
+			this->notifyIcon1->Visible = true;
+			// 
+			// UserMyVehcilesPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -805,11 +820,11 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			this->Controls->Add(this->button_insertphoto);
 			this->Controls->Add(this->pb_photo);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->dgv_cars);
-			this->Name = L"UserMyCarsPage";
-			this->Text = L"UserMyCarsPage";
-			this->Load += gcnew System::EventHandler(this, &UserMyCarsPage::UserMyCarsPage_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_cars))->EndInit();
+			this->Controls->Add(this->dgv_vehicles);
+			this->Name = L"UserMyVehcilesPage";
+			this->Text = L"UserMyVehiclesPage";
+			this->Load += gcnew System::EventHandler(this, &UserMyVehiclesPage::UserMyVehiclesPage_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
@@ -843,12 +858,12 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 				MessageBox::Show("Error al cargar la imagen: " + ex->Message);
 			}
 		}
-		void ShowInitialDgvCars() {
-			List<Car^>^ cars = Controller::QueryAllCars();
-			if (cars->Count != 0) {
-				dgv_cars->Rows->Clear();
-				for (int i = 0; i < cars->Count; i++) {
-					Car^ c = cars[i];
+		void ShowInitialDgvVehicles() {
+			List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
+			if (vehicles->Count != 0) {
+				dgv_vehicles->Rows->Clear();
+				for (int i = 0; i < vehicles->Count; i++) {
+					Vehicle^ c = vehicles[i];
 					String^ atributobooleanoYes;
 					if (c->Operative == true) {
 						atributobooleanoYes = "Operativo";
@@ -856,7 +871,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 					else {
 						atributobooleanoYes = "Inoperativo";
 					}
-					dgv_cars->Rows->Add(gcnew array<String^> {
+					dgv_vehicles->Rows->Add(gcnew array<String^> {
 							"" + c->Id,
 							"" + c->Plate,
 							"" + c->Brand,
@@ -867,11 +882,11 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 				}
 			}
 			else {
-				MessageBox::Show("No hay carros disponibles para mostrar");
+				MessageBox::Show("No hay vehículos disponibles para mostrar");
 			}
 		}
-		void ShowSearchedCar(Car^ c) {
-			dgv_cars->Rows->Clear();
+		void ShowSearchedVehicle(Vehicle^ c) {
+			dgv_vehicles->Rows->Clear();
 			String^ atributobooleanoYes;
 				if(c->Operative == true){
 					atributobooleanoYes = "Operativo";
@@ -880,7 +895,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 					atributobooleanoYes = "Inoperativo";
 				}
 				
-			dgv_cars->Rows->Add(gcnew array<String^> {
+			dgv_vehicles->Rows->Add(gcnew array<String^> {
 				"" + c->Id,
 					"" + c->Plate,
 					"" + c->Brand,
@@ -903,7 +918,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			//Falta que a la hora de limpiar se elimine el item seleccionando en el combo
 
 		}
-
+			
 		void FillCombos() {
 			comboBox_operative->Items->Clear();//parte de una buena práctica...
 			comboBox_condition->Items->Clear();
@@ -921,10 +936,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			comboBox_tcondition->Items->Add("Antiguo");
 		}
 
-		void FillCarTextBoxes(Car^ c) {
+		void FillVehicleTextBoxes(Vehicle^ c) {
 
 			textBox_tid->Text = Convert::ToString(c->Id);
-			textBox_tmodel->Text = c->CarModel;
+			textBox_tmodel->Text = c->Model;
 			textBox_tplate->Text = c->Plate;
 			textBox_tbrand->Text = c->Brand;
 			textBox_tcolor->Text = c->Color;
@@ -969,7 +984,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 	private: System::Void button_id_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ tid = textBox_id->Text;
 		if (String::IsNullOrWhiteSpace(tid)) {
-			MessageBox::Show("Ingrese el id del carro a buscar");
+			MessageBox::Show("Ingrese el id del vehículo a buscar");
 			return;
 		}
 		int id = 0;
@@ -978,87 +993,91 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			return;
 		}
 
-		Car^ c = Controller::QueryCarById(id);
+		Vehicle^ c = Controller::QueryVehicleById(id);
 		if (c == nullptr) {
-			MessageBox::Show("El id del carro ingresado no existe");
+			notifyIcon1->BalloonTipText = "El id del vehículo ingresado no existe.";
+			notifyIcon1->ShowBalloonTip(2500);
 			return;
 		}	
 
-		FillCarTextBoxes(c);
+		FillVehicleTextBoxes(c);
 
-		ShowSearchedCar(c);
+		ShowSearchedVehicle(c);
 
 
 	}
 
 	private: System::Void button_plate_Click(System::Object^ sender, System::EventArgs^ e) {
-		/*
+		
 		String^ tplate = textBox_plate->Text;
 		if (String::IsNullOrWhiteSpace(tplate)) {
-			MessageBox::Show("Ingrese la placa del carro a buscar");
+			MessageBox::Show("Ingrese la placa del vehículo a buscar");
 			return;
 		}
-		List<Car^>^ listCars = Controller::QueryListCarsByClientId(Session::CurrentClient->Id);
-		List<Car^>^ carMatch = gcnew List<Car^>();
-		for each (Car^ c in listCars){
+		List<Vehicle^>^ listVehicles = Controller::QueryListVehiclesByProprietorId(Session::CurrentProprietor->Id);
+		List<Vehicle^>^ vehicleMatch = gcnew List<Vehicle^>();
+		for each (Vehicle ^ c in listVehicles){
 			if (c->Plate == tplate) {
 
 			}
 		}
-		Car^ c = Controller::QueryCarByPlate(tplate);
+		Vehicle^ c = Controller::QueryVehicleByPlate(tplate);
 		if (c == nullptr) {
-			MessageBox::Show("La placa del carro ingresado no existe");
+			notifyIcon1->BalloonTipText = "La placa del vehículo ingresado no existe.";
+			notifyIcon1->ShowBalloonTip(2500);
 			return;
 		}
 
-		FillCarTextBoxes(c);
+		FillVehicleTextBoxes(c);
 
-		ShowSearchedCar(c);*/
+		ShowSearchedVehicle(c);
 
 	}
 	private: System::Void button_brand_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		String^ tbrand = textBox_brand->Text;
 		if (String::IsNullOrWhiteSpace(tbrand)) {
-			MessageBox::Show("Ingrese la marca del carro a buscar");
+			MessageBox::Show("Ingrese la marca del vehículo a buscar");
 			return;
 		}
 
-		List<Car^>^ cList = Controller::QueryListCarByBrand(tbrand);
+		List<Vehicle^>^ cList = Controller::QueryListVehicleByBrand(tbrand);
 		if (cList -> Count < 1) {
-			MessageBox::Show("La marca del carro ingresado no existe");
+			notifyIcon1->BalloonTipText = "La marca del vehículo ingresado no existe.";
+			notifyIcon1->ShowBalloonTip(2500);
 			return;
 		}
 
-		FillCarTextBoxes(cList[0]);//por el List<Car^>^
+		FillVehicleTextBoxes(cList[0]);//por el List<Car^>^
 
-		ShowSearchedCar(cList[0]);
+		ShowSearchedVehicle(cList[0]);
 
 	}
 	private: System::Void button_color_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		String^ tcolor = textBox_color->Text;
 		if (String::IsNullOrWhiteSpace(tcolor)) {
-			MessageBox::Show("Ingrese el color del carro a buscar");
+			MessageBox::Show("Ingrese el color del vehículo a buscar");
 			return;
 		}
 
-		List<Car^>^ cList = Controller::QueryListCarByColor(tcolor);
+		List<Vehicle^>^ cList = Controller::QueryListVehicleByColor(tcolor);
 		if (cList->Count < 1) {
-			MessageBox::Show("Lo color del carro ingresado no existe");
+			notifyIcon1->BalloonTipText = "El color del vehículo ingresado no existe.";
+			notifyIcon1->ShowBalloonTip(2500);
 			return;
 		}
 
-		FillCarTextBoxes(cList[0]);
+		FillVehicleTextBoxes(cList[0]);
 
-		ShowSearchedCar(cList[0]);
+		ShowSearchedVehicle(cList[0]);
 
 	}
 	private: System::Void button_operative_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		String^ toperative = comboBox_operative->Text;
 		if (String::IsNullOrWhiteSpace(toperative)) {
-			MessageBox::Show("Ingrese la operatividad del carro a buscar");
+			MessageBox::Show("Ingrese la operatividad del vehículo a buscar");
 			return;
 		}
 		bool toperative_bool;
@@ -1069,15 +1088,16 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 			toperative_bool = false;
 		}
 
-		List<Car^>^ cList = Controller::QueryListCarByOperative(toperative_bool);
+		List<Vehicle^>^ cList = Controller::QueryListVehicleByOperative(toperative_bool);
 		if (cList -> Count < 1) {
-			MessageBox::Show("La operatividad del carro ingresado no existe");
+			notifyIcon1->BalloonTipText = "La operatividad del vehículo ingresado no existe.";
+			notifyIcon1->ShowBalloonTip(2500);
 			return;
 		}
 
-		FillCarTextBoxes(cList[0]);
+		FillVehicleTextBoxes(cList[0]);
 
-		ShowSearchedCar(cList[0]);
+		ShowSearchedVehicle(cList[0]);
 
 	}
 
@@ -1085,30 +1105,31 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 
 		String^ tcondition = comboBox_condition->Text;
 		if (String::IsNullOrWhiteSpace(tcondition)) {
-			MessageBox::Show("Ingrese la condición del carro a buscar");
+			MessageBox::Show("Ingrese la condición del vehículo a buscar");
 			return;
 		}
 
-		List<Car^>^ cList = Controller::QueryListCarByCondition(tcondition);
+		List<Vehicle^>^ cList = Controller::QueryListVehicleByCondition(tcondition);
 		if (cList->Count < 1) {
-			MessageBox::Show("La condición del carro ingresado no existe");
+			notifyIcon1->BalloonTipText = "La condición del vehículo ingresado no existe.";
+			notifyIcon1->ShowBalloonTip(2500);
 			return;
 		}
 
-		FillCarTextBoxes(cList[0]);
+		FillVehicleTextBoxes(cList[0]);
 
-		ShowSearchedCar(cList[0]);
+		ShowSearchedVehicle(cList[0]);
 
 	}
 
-	private: System::Void UserMyCarsPage_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void UserMyVehiclesPage_Load(System::Object^ sender, System::EventArgs^ e) {
 		FillCombos();
-		ShowInitialDgvCars();
+		ShowInitialDgvVehicles();
 	}
 
-	private: System::Void dgv_cars_RowHeaderMouseClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^ e) {
-		if (e->RowIndex >= 0 && e->RowIndex < dgv_cars->Rows->Count) {
-			DataGridViewRow^ selectedRow = dgv_cars->Rows[e->RowIndex];
+	private: System::Void dgv_vehicles_RowHeaderMouseClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^ e) {
+		if (e->RowIndex >= 0 && e->RowIndex < dgv_vehicles->Rows->Count) {
+			DataGridViewRow^ selectedRow = dgv_vehicles->Rows[e->RowIndex];
 
 			// Verifica si la celda seleccionada tiene datos antes de procesarla
 			if (selectedRow->Cells["Id"]->Value != nullptr) {
@@ -1117,8 +1138,8 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 				String^ id = selectedRow->Cells["Id"]->Value->ToString();
 				if (!String::IsNullOrWhiteSpace(id)) {
 					int IdToSearch = Convert::ToInt32(id);
-					Car^ c = Controller::QueryCarById(IdToSearch);
-					FillCarTextBoxes(c);
+					Vehicle^ c = Controller::QueryVehicleById(IdToSearch);
+					FillVehicleTextBoxes(c);
 				}
 			}
 		}
@@ -1126,7 +1147,7 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 
 	private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
 			
-		ShowInitialDgvCars();
+		ShowInitialDgvVehicles();
 		ClearTextBoxes();
 		FillCombos();
 
@@ -1144,10 +1165,10 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 	}
 	private: System::Void button_update_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		Car^ car = gcnew Car();
+		Vehicle^ vehicle = gcnew Vehicle();
 
 		String^ _id = textBox_tid->Text;
-		String^ carmodel = textBox_tmodel->Text;
+		String^ model = textBox_tmodel->Text;
 		String^ plate = textBox_tplate->Text;
 		String^ brand = textBox_tbrand->Text;
 		String^ color = textBox_tcolor->Text;
@@ -1156,28 +1177,31 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 		String^ operative = comboBox_toperative->Text;
 		String^ condition = comboBox_tcondition->Text;
 
-	
+		if (_id == "ID") {
+			MessageBox::Show("No se realizó ninguna modificación\ndebido a que no seleccionó ningún objeto.");
+			return;
+		}
 
 		if (sparetire == "Sí") {
 
-			car->SpareTire = true;
+			vehicle->SpareTire = true;
 
 		}
 		else if (sparetire == "No") {
 
-			car->SpareTire = false;
+			vehicle->SpareTire = false;
 
 		}
 
 
 		if (operative == "Operativo") {
 
-			car->Operative = true;
+			vehicle->Operative = true;
 
 		}
 		else if (operative == "Inoperativo") {
 
-			car->Operative = false;
+			vehicle->Operative = false;
 
 		}
 
@@ -1197,35 +1221,52 @@ private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
 		int id = 0;
 		if (!Int32::TryParse(_id, id)) {
 			
-			MessageBox::Show("Si se desea agregar ir a la pestaña 'Agregar Carro'");
+			MessageBox::Show("Si se desea agregar ir a la pestaña 'Agregar Vehículo'");
 			return;
 		}
 
-		car->Id = Int32::Parse(textBox_tid->Text);
-		car->NumberOfSeats = numberofseats;
-		car->Color = color;
-		car->CarModel = carmodel;
-		car->Brand = brand;
-		car->Plate = plate;
-		car->Condition = condition;
+		vehicle->Id = Int32::Parse(textBox_tid->Text);
+		vehicle->NumberOfSeats = numberofseats;
+		vehicle->Color = color;
+		vehicle->Model = model;
+		vehicle->Brand = brand;
+		vehicle->Plate = plate;
+		vehicle->Condition = condition;
 
 		if (pb_photo->Image != nullptr) {
 
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 			pb_photo->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
-			car->Photo = ms->ToArray();
+			vehicle->Photo = ms->ToArray();
 			ms->Close();
 		}
 
-		Controller::UpdateCar(car);
+		Controller::UpdateVehicle(vehicle);
 		MessageBox::Show("¡Se actualizó correctamente!");
 
 	}
 	private: System::Void button_eliminate_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		int id = Int32::Parse(textBox_id->Text);
-		Controller::DeleteCar(id);
+		String^ tid = textBox_id->Text;
 
+		if (String::IsNullOrWhiteSpace(tid)) {
+			MessageBox::Show("No se ingresó ningún tipo de dato.\nPara eliminar un vehículo,\nse debe unicamente ingresar el ID\nde la zona de Criterio de Busqueda.");
+			return;
+		}
+				
+		int id = Int32::Parse(tid);
+		List<Vehicle^>^ VehicleList = Controller::QueryAllVehicles();
+		for each (Vehicle ^ c in VehicleList) {
+			if (c->Id == id) {
+				Controller::DeleteVehicle(id);
+				MessageBox::Show("¡Se eliminó exitosamente el siguiente ID: " + tid + " !");
+				ShowInitialDgvVehicles();
+				ClearTextBoxes();
+				return;
+			}
+		}		
+		MessageBox::Show("El ID ingresado no existe");
+		
 	}
 };
 }

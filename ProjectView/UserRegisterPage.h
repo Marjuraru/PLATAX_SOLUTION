@@ -73,6 +73,8 @@ namespace ProjectView {
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::CheckBox^ checkBox_female;
 	private: System::Windows::Forms::CheckBox^ checkBox_male;
+	private: System::Windows::Forms::NotifyIcon^ notifyIcon1;
+	private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -83,7 +85,7 @@ namespace ProjectView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -92,6 +94,8 @@ namespace ProjectView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(UserRegisterPage::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textBox_name = (gcnew System::Windows::Forms::TextBox());
@@ -113,6 +117,7 @@ namespace ProjectView {
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->checkBox_female = (gcnew System::Windows::Forms::CheckBox());
 			this->checkBox_male = (gcnew System::Windows::Forms::CheckBox());
+			this->notifyIcon1 = (gcnew System::Windows::Forms::NotifyIcon(this->components));
 			this->SuspendLayout();
 			// 
 			// label1
@@ -144,7 +149,7 @@ namespace ProjectView {
 			this->textBox_name->Location = System::Drawing::Point(31, 104);
 			this->textBox_name->Name = L"textBox_name";
 			this->textBox_name->Size = System::Drawing::Size(210, 26);
-			this->textBox_name->TabIndex = 8;
+			this->textBox_name->TabIndex = 5;
 			// 
 			// label3
 			// 
@@ -173,7 +178,7 @@ namespace ProjectView {
 			this->textBox_phone->Location = System::Drawing::Point(31, 174);
 			this->textBox_phone->Name = L"textBox_phone";
 			this->textBox_phone->Size = System::Drawing::Size(210, 26);
-			this->textBox_phone->TabIndex = 12;
+			this->textBox_phone->TabIndex = 15;
 			// 
 			// label4
 			// 
@@ -193,7 +198,7 @@ namespace ProjectView {
 			this->textBox_email->Location = System::Drawing::Point(31, 238);
 			this->textBox_email->Name = L"textBox_email";
 			this->textBox_email->Size = System::Drawing::Size(472, 26);
-			this->textBox_email->TabIndex = 14;
+			this->textBox_email->TabIndex = 25;
 			// 
 			// label5
 			// 
@@ -213,7 +218,7 @@ namespace ProjectView {
 			this->textBox_dni->Location = System::Drawing::Point(293, 174);
 			this->textBox_dni->Name = L"textBox_dni";
 			this->textBox_dni->Size = System::Drawing::Size(210, 26);
-			this->textBox_dni->TabIndex = 16;
+			this->textBox_dni->TabIndex = 20;
 			// 
 			// label6
 			// 
@@ -236,7 +241,7 @@ namespace ProjectView {
 			this->dtp_birthdate->Location = System::Drawing::Point(115, 361);
 			this->dtp_birthdate->Name = L"dtp_birthdate";
 			this->dtp_birthdate->Size = System::Drawing::Size(200, 26);
-			this->dtp_birthdate->TabIndex = 17;
+			this->dtp_birthdate->TabIndex = 45;
 			// 
 			// label7
 			// 
@@ -267,7 +272,7 @@ namespace ProjectView {
 			this->textBox_password->Location = System::Drawing::Point(331, 361);
 			this->textBox_password->Name = L"textBox_password";
 			this->textBox_password->Size = System::Drawing::Size(172, 26);
-			this->textBox_password->TabIndex = 21;
+			this->textBox_password->TabIndex = 50;
 			// 
 			// label9
 			// 
@@ -287,7 +292,7 @@ namespace ProjectView {
 			this->button_register->Location = System::Drawing::Point(332, 393);
 			this->button_register->Name = L"button_register";
 			this->button_register->Size = System::Drawing::Size(171, 29);
-			this->button_register->TabIndex = 23;
+			this->button_register->TabIndex = 55;
 			this->button_register->Text = L"REGISTRAR";
 			this->button_register->UseVisualStyleBackColor = true;
 			this->button_register->Click += gcnew System::EventHandler(this, &UserRegisterPage::button_register_Click);
@@ -299,7 +304,7 @@ namespace ProjectView {
 			this->textBox_address->Location = System::Drawing::Point(31, 303);
 			this->textBox_address->Name = L"textBox_address";
 			this->textBox_address->Size = System::Drawing::Size(472, 26);
-			this->textBox_address->TabIndex = 25;
+			this->textBox_address->TabIndex = 30;
 			// 
 			// label10
 			// 
@@ -320,7 +325,7 @@ namespace ProjectView {
 			this->checkBox_female->Location = System::Drawing::Point(31, 361);
 			this->checkBox_female->Name = L"checkBox_female";
 			this->checkBox_female->Size = System::Drawing::Size(65, 23);
-			this->checkBox_female->TabIndex = 26;
+			this->checkBox_female->TabIndex = 35;
 			this->checkBox_female->Text = L"Mujer";
 			this->checkBox_female->UseVisualStyleBackColor = true;
 			this->checkBox_female->CheckedChanged += gcnew System::EventHandler(this, &UserRegisterPage::checkBox_female_CheckedChanged);
@@ -333,10 +338,18 @@ namespace ProjectView {
 			this->checkBox_male->Location = System::Drawing::Point(31, 384);
 			this->checkBox_male->Name = L"checkBox_male";
 			this->checkBox_male->Size = System::Drawing::Size(78, 23);
-			this->checkBox_male->TabIndex = 27;
+			this->checkBox_male->TabIndex = 40;
 			this->checkBox_male->Text = L"Hombre";
 			this->checkBox_male->UseVisualStyleBackColor = true;
 			this->checkBox_male->CheckedChanged += gcnew System::EventHandler(this, &UserRegisterPage::checkBox_male_CheckedChanged);
+			// 
+			// notifyIcon1
+			// 
+			this->notifyIcon1->BalloonTipIcon = System::Windows::Forms::ToolTipIcon::Info;
+			this->notifyIcon1->BalloonTipTitle = L"Notificación";
+			this->notifyIcon1->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"notifyIcon1.Icon")));
+			this->notifyIcon1->Text = L"notifyIcon1";
+			this->notifyIcon1->Visible = true;
 			// 
 			// UserRegisterPage
 			// 
@@ -426,11 +439,11 @@ namespace ProjectView {
 		}
 		
 		if (!Int32::TryParse(_phone, phone)) {
-			MessageBox::Show("Ingrese solo numeros para el teléfono");
+			MessageBox::Show("Ingrese solo números para el teléfono");
 			return;
 		}
 		if (!Int32::TryParse(_dni, dni)) {
-			MessageBox::Show("Ingrese solo numeros para el DNI");
+			MessageBox::Show("Ingrese solo números para el DNI");
 			return;
 		}
 		
@@ -439,8 +452,8 @@ namespace ProjectView {
 			return;
 		}
 
-		Client^ c = gcnew Client(); //declarar - crear
-		c->Id = Controller::GenerateClientId();
+		Proprietor^ c = gcnew Proprietor(); //declarar - crear
+		c->Id = Controller::GenerateProprietorId();
 		c->Name = textBox_name->Text;
 		c->Lastname = textBox_lastname->Text;
 		c->Dni = Convert::ToInt32(textBox_dni->Text); 
@@ -458,8 +471,8 @@ namespace ProjectView {
 		c->male = checkBox_male->Checked;
 		c->SignDate = System::DateTime::Now;//toma hora y fecha del sistema
 
-		Session::CurrentClient = c;
-		Controller::CreateClient(c);
+		Session::CurrentProprietor = c;
+		Controller::CreateProprietor(c);
 		MessageBox::Show("El registro se realizó exitosamente, bienvenido crack!");
 		
 		this->Close();
@@ -467,7 +480,8 @@ namespace ProjectView {
 		UserFeedPage^ userFeedPage = gcnew UserFeedPage();
 		userFeedPage->MdiParent = this->MdiParent;
 		userFeedPage->Show();
-		
+		notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado registrado";
+		notifyIcon1->ShowBalloonTip(2500);
 	}
 	
 };

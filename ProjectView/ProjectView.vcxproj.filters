@@ -27,13 +27,13 @@
     <ClCompile Include="UserProfilePage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="UserMyCarsPage.cpp">
+    <ClCompile Include="UserMyVehiclesPage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="UserMyStatisticsPage.cpp">
+    <ClCompile Include="UserAddVehiclePage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="UserAddCarPage.cpp">
+    <ClCompile Include="UserHelpPage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="UserReclamationPage.cpp">
@@ -42,7 +42,7 @@
     <ClCompile Include="UserMyReclamationsPage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="UserHelpPage.cpp">
+    <ClCompile Include="UserMyStatisticsPage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,13 +59,13 @@
     <ClInclude Include="UserProfilePage.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UserMyCarsPage.h">
+    <ClInclude Include="UserMyVehiclesPage.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UserMyStatisticsPage.h">
+    <ClInclude Include="UserAddVehiclePage.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UserAddCarPage.h">
+    <ClInclude Include="UserHelpPage.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="UserReclamationPage.h">
@@ -74,7 +74,7 @@
     <ClInclude Include="UserMyReclamationsPage.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UserHelpPage.h">
+    <ClInclude Include="UserMyStatisticsPage.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

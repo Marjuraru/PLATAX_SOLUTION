@@ -1,7 +1,7 @@
 #pragma once
 #include "UserProfilePage.h"
-#include "UserAddCarPage.h"
-#include "UserMyCarsPage.h"
+#include "UserAddVehiclePage.h"
+#include "UserMyVehiclesPage.h"
 #include "UserMyStatisticsPage.h"
 #include "UserReclamationPage.h"
 #include "UserMyReclamationsPage.h"
@@ -42,16 +42,21 @@ namespace ProjectView {
 			}
 		}
 	private: System::Windows::Forms::GroupBox^ groupBox2;
+	private: System::Windows::Forms::Button^ button_myreclamations;
+
 	protected:
-	private: System::Windows::Forms::Button^ button_mycomplains;
+
 	private: System::Windows::Forms::Button^ button_logout;
-	private: System::Windows::Forms::Button^ button_mycar;
+	private: System::Windows::Forms::Button^ button_myvehicle;
+
 
 
 	private: System::Windows::Forms::Button^ button_editprofile;
 	private: System::Windows::Forms::Button^ button_statistics;
-	private: System::Windows::Forms::Button^ button_complains;
-	private: System::Windows::Forms::Button^ button_addcar;
+	private: System::Windows::Forms::Button^ button_reclamation;
+	private: System::Windows::Forms::Button^ button_addvehicle;
+
+
 	private: System::Windows::Forms::Button^ button_help;
 
 
@@ -70,13 +75,13 @@ namespace ProjectView {
 		{
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->button_help = (gcnew System::Windows::Forms::Button());
-			this->button_mycomplains = (gcnew System::Windows::Forms::Button());
+			this->button_myreclamations = (gcnew System::Windows::Forms::Button());
 			this->button_logout = (gcnew System::Windows::Forms::Button());
-			this->button_mycar = (gcnew System::Windows::Forms::Button());
+			this->button_myvehicle = (gcnew System::Windows::Forms::Button());
 			this->button_editprofile = (gcnew System::Windows::Forms::Button());
 			this->button_statistics = (gcnew System::Windows::Forms::Button());
-			this->button_complains = (gcnew System::Windows::Forms::Button());
-			this->button_addcar = (gcnew System::Windows::Forms::Button());
+			this->button_reclamation = (gcnew System::Windows::Forms::Button());
+			this->button_addvehicle = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -84,13 +89,13 @@ namespace ProjectView {
 			// 
 			this->groupBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
 			this->groupBox2->Controls->Add(this->button_help);
-			this->groupBox2->Controls->Add(this->button_mycomplains);
+			this->groupBox2->Controls->Add(this->button_myreclamations);
 			this->groupBox2->Controls->Add(this->button_logout);
-			this->groupBox2->Controls->Add(this->button_mycar);
+			this->groupBox2->Controls->Add(this->button_myvehicle);
 			this->groupBox2->Controls->Add(this->button_editprofile);
 			this->groupBox2->Controls->Add(this->button_statistics);
-			this->groupBox2->Controls->Add(this->button_complains);
-			this->groupBox2->Controls->Add(this->button_addcar);
+			this->groupBox2->Controls->Add(this->button_reclamation);
+			this->groupBox2->Controls->Add(this->button_addvehicle);
 			this->groupBox2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -115,17 +120,17 @@ namespace ProjectView {
 			this->button_help->UseVisualStyleBackColor = true;
 			this->button_help->Click += gcnew System::EventHandler(this, &UserFeedPage::button_help_Click);
 			// 
-			// button_mycomplains
+			// button_myreclamations
 			// 
-			this->button_mycomplains->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_myreclamations->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_mycomplains->Location = System::Drawing::Point(678, 24);
-			this->button_mycomplains->Name = L"button_mycomplains";
-			this->button_mycomplains->Size = System::Drawing::Size(124, 26);
-			this->button_mycomplains->TabIndex = 35;
-			this->button_mycomplains->Text = L"Mis Reclamos";
-			this->button_mycomplains->UseVisualStyleBackColor = true;
-			this->button_mycomplains->Click += gcnew System::EventHandler(this, &UserFeedPage::button_mycomplains_Click);
+			this->button_myreclamations->Location = System::Drawing::Point(678, 24);
+			this->button_myreclamations->Name = L"button_myreclamations";
+			this->button_myreclamations->Size = System::Drawing::Size(124, 26);
+			this->button_myreclamations->TabIndex = 35;
+			this->button_myreclamations->Text = L"Mis Reclamos";
+			this->button_myreclamations->UseVisualStyleBackColor = true;
+			this->button_myreclamations->Click += gcnew System::EventHandler(this, &UserFeedPage::button_myreclamations_Click);
 			// 
 			// button_logout
 			// 
@@ -141,17 +146,17 @@ namespace ProjectView {
 			this->button_logout->UseVisualStyleBackColor = false;
 			this->button_logout->Click += gcnew System::EventHandler(this, &UserFeedPage::button_logout_Click);
 			// 
-			// button_mycar
+			// button_myvehicle
 			// 
-			this->button_mycar->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_myvehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_mycar->Location = System::Drawing::Point(280, 24);
-			this->button_mycar->Name = L"button_mycar";
-			this->button_mycar->Size = System::Drawing::Size(113, 26);
-			this->button_mycar->TabIndex = 10;
-			this->button_mycar->Text = L"Mis Vehículos";
-			this->button_mycar->UseVisualStyleBackColor = true;
-			this->button_mycar->Click += gcnew System::EventHandler(this, &UserFeedPage::button_mycar_Click);
+			this->button_myvehicle->Location = System::Drawing::Point(280, 24);
+			this->button_myvehicle->Name = L"button_myvehicle";
+			this->button_myvehicle->Size = System::Drawing::Size(113, 26);
+			this->button_myvehicle->TabIndex = 10;
+			this->button_myvehicle->Text = L"Mis Vehículos";
+			this->button_myvehicle->UseVisualStyleBackColor = true;
+			this->button_myvehicle->Click += gcnew System::EventHandler(this, &UserFeedPage::button_myvehicle_Click);
 			// 
 			// button_editprofile
 			// 
@@ -177,29 +182,29 @@ namespace ProjectView {
 			this->button_statistics->UseVisualStyleBackColor = true;
 			this->button_statistics->Click += gcnew System::EventHandler(this, &UserFeedPage::button_statistics_Click);
 			// 
-			// button_complains
+			// button_reclamation
 			// 
-			this->button_complains->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_reclamation->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_complains->Location = System::Drawing::Point(550, 24);
-			this->button_complains->Name = L"button_complains";
-			this->button_complains->Size = System::Drawing::Size(113, 26);
-			this->button_complains->TabIndex = 30;
-			this->button_complains->Text = L"Reclamar";
-			this->button_complains->UseVisualStyleBackColor = true;
-			this->button_complains->Click += gcnew System::EventHandler(this, &UserFeedPage::button_complains_Click);
+			this->button_reclamation->Location = System::Drawing::Point(550, 24);
+			this->button_reclamation->Name = L"button_reclamation";
+			this->button_reclamation->Size = System::Drawing::Size(113, 26);
+			this->button_reclamation->TabIndex = 30;
+			this->button_reclamation->Text = L"Reclamar";
+			this->button_reclamation->UseVisualStyleBackColor = true;
+			this->button_reclamation->Click += gcnew System::EventHandler(this, &UserFeedPage::button_reclamation_Click);
 			// 
-			// button_addcar
+			// button_addvehicle
 			// 
-			this->button_addcar->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button_addvehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_addcar->Location = System::Drawing::Point(412, 24);
-			this->button_addcar->Name = L"button_addcar";
-			this->button_addcar->Size = System::Drawing::Size(118, 26);
-			this->button_addcar->TabIndex = 25;
-			this->button_addcar->Text = L"Agregar Carro";
-			this->button_addcar->UseVisualStyleBackColor = true;
-			this->button_addcar->Click += gcnew System::EventHandler(this, &UserFeedPage::button_addcar_Click);
+			this->button_addvehicle->Location = System::Drawing::Point(412, 24);
+			this->button_addvehicle->Name = L"button_addvehicle";
+			this->button_addvehicle->Size = System::Drawing::Size(118, 26);
+			this->button_addvehicle->TabIndex = 25;
+			this->button_addvehicle->Text = L"Agregar Carro";
+			this->button_addvehicle->UseVisualStyleBackColor = true;
+			this->button_addvehicle->Click += gcnew System::EventHandler(this, &UserFeedPage::button_addvehicle_Click);
 			// 
 			// UserFeedPage
 			// 
@@ -226,51 +231,48 @@ namespace ProjectView {
 		this->Close();
 	}
 
-	private: System::Void button_addcar_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button_addvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		UserAddCarPage^ userAddCarPage = gcnew UserAddCarPage();
-		userAddCarPage->MdiParent = this->MdiParent;
-		userAddCarPage->Show();
+		UserAddVehiclePage^ userAddVehiclePage = gcnew UserAddVehiclePage();
+		userAddVehiclePage->MdiParent = this->MdiParent;
+		userAddVehiclePage->Show();
 		/*this->Hide(); */
 	}
-	private: System::Void button_mycar_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button_myvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		UserMyCarsPage^ userMyCarsPage = gcnew UserMyCarsPage();
-		userMyCarsPage->MdiParent = this->MdiParent;
-		userMyCarsPage->Show();
-		//this->Close();
-
-	}
-	private: System::Void button_statistics_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		UserMyStatisticsPage^ userMyStatisticsPage = gcnew UserMyStatisticsPage();
-		userMyStatisticsPage->MdiParent = this->MdiParent;
-		userMyStatisticsPage->Show();
+		UserMyVehiclesPage^ userMyVehiclesPage = gcnew UserMyVehiclesPage();
+		userMyVehiclesPage->MdiParent = this->MdiParent;
+		userMyVehiclesPage->Show();
 		//this->Close();
 
 	}
 
-	private: System::Void button_complains_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		UserReclamationPage^ userReclamationPage = gcnew UserReclamationPage();
-		userReclamationPage->MdiParent = this->MdiParent;
-		userReclamationPage->Show();
-		//this->Close();
-
-	}
-	private: System::Void button_mycomplains_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		UserMyReclamationsPage^ userMyReclamationsPage = gcnew UserMyReclamationsPage();
-		userMyReclamationsPage->MdiParent = this->MdiParent;
-		userMyReclamationsPage->Show();
-		//this->Close();
-
-	}
 private: System::Void button_help_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		UserHelpPage^ userHelpPage = gcnew UserHelpPage();
 		userHelpPage->MdiParent = this->MdiParent;
 		userHelpPage->Show();
+		//this->Close();
+}
+private: System::Void button_statistics_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		UserMyStatisticsPage^ userMyStatisticsPage = gcnew UserMyStatisticsPage();
+		userMyStatisticsPage->MdiParent = this->MdiParent;
+		userMyStatisticsPage->Show();
+		//this->Close();
+}
+private: System::Void button_reclamation_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		UserReclamationPage^ userReclamationPage = gcnew UserReclamationPage();
+		userReclamationPage->MdiParent = this->MdiParent;
+		userReclamationPage->Show();
+		//this->Close();
+}
+private: System::Void button_myreclamations_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		UserMyReclamationsPage^ userMyReclamationsPage = gcnew UserMyReclamationsPage();
+		userMyReclamationsPage->MdiParent = this->MdiParent;
+		userMyReclamationsPage->Show();
 		//this->Close();
 }
 };

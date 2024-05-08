@@ -9,7 +9,6 @@ namespace ProjectModel {
 	public ref class Adm : public User {
 
 		public:
-			property int Experience;// años de experiencia del admin
 			property int AccessLevel;			
 	};
 };

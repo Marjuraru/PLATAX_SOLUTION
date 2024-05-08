@@ -37,13 +37,10 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
             file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
             formatter = gcnew BinaryFormatter();
 
-            if (fileName->Equals(CLIENT_FILE_BIN_NAME)) {
-                result = formatter->Deserialize(file);
-            }          
-            else if (fileName->Equals(CAR_FILE_BIN_NAME)) {
+            if (fileName->Equals(PROPRIETOR_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
-            else if (fileName->Equals(RECLAMATION_FILE_BIN_NAME)) {
+            else if (fileName->Equals(VEHICLE_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
         }
@@ -57,60 +54,30 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
     return result;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////
-int ProjectPersistance::Persistance::GenerateClientId()
+int ProjectPersistance::Persistance::GenerateProprietorId()
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
     int newID = 1;
-    if (ClientList != nullptr) {
+    if (ProprietorList != nullptr) {
         // Busca el último ID utilizado y elige un nuevo ID que sea único
-        for each (Client ^ client in ClientList) {
-            if (client->Id >= newID) {
-                newID = client->Id + 1;
+        for each (Proprietor ^ Proprietor in ProprietorList) {
+            if (Proprietor->Id >= newID) {
+                newID = Proprietor->Id + 1;
             }
         }
     }
     return newID;
 }
 
-int ProjectPersistance::Persistance::GenerateCarId()
+int ProjectPersistance::Persistance::GenerateVehicleId()
 {
-    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
     int newID = 1;
-    if (CarList != nullptr) {
+    if (VehicleList != nullptr) {
         // Busca el último ID utilizado y elige un nuevo ID que sea único
-        for each (Car ^ car in CarList) {
-            if (car->Id >= newID) {
-                newID = car->Id + 1;
-            }
-        }
-    }
-    return newID;
-}
-
-int ProjectPersistance::Persistance::GenerateReclamationId()
-{
-    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
-    int newID = 1;
-    if (ReclamationList != nullptr) {
-        // Busca el último ID utilizado y elige un nuevo ID que sea único
-        for each (Reclamation ^ reclamation in ReclamationList) {
-            if (reclamation->Id >= newID) {
-                newID = reclamation->Id + 1;
-            }
-        }
-    }
-    return newID;
-}
-
-int ProjectPersistance::Persistance::GenerateHelpId()
-{
-    HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME);
-    int newID = 1;
-    if (HelpList != nullptr) {
-        // Busca el último ID utilizado y elige un nuevo ID que sea único
-        for each (Help ^ help in HelpList) {
-            if (help->Id >= newID) {
-                newID = help->Id + 1;
+        for each (Vehicle ^ vehicle in VehicleList) {
+            if (vehicle->Id >= newID) {
+                newID = vehicle->Id + 1;
             }
         }
     }
@@ -118,61 +85,37 @@ int ProjectPersistance::Persistance::GenerateHelpId()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-void ProjectPersistance::Persistance::CreateClient(Client^ c)
+void ProjectPersistance::Persistance::CreateProprietor(Proprietor^ c)
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList == nullptr) {
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    if (ProprietorList == nullptr) {
         // Si la lista no se cargó correctamente, crea una nueva lista
-        ClientList = gcnew List<Client^>();
+        ProprietorList = gcnew List<Proprietor^>();
     }
-    ClientList->Add(c);
-    PersistBinaryFile(CLIENT_FILE_BIN_NAME, ClientList);
+    ProprietorList->Add(c);
+    PersistBinaryFile(PROPRIETOR_FILE_BIN_NAME, ProprietorList);
 }
 
-void ProjectPersistance::Persistance::CreateCar(Car^ c)
+void ProjectPersistance::Persistance::CreateVehicle(Vehicle^ c)
 {
 
-    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
-    if (CarList == nullptr) {
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
+    if (VehicleList == nullptr) {
         // Si la lista no se cargó correctamente, crea una nueva lista
-        CarList = gcnew List<Car^>();
+        VehicleList = gcnew List<Vehicle^>();
     }
-    CarList->Add(c);
-    PersistBinaryFile(CAR_FILE_BIN_NAME, CarList);
-}
-
-void ProjectPersistance::Persistance::CreateReclamation(Reclamation^ c)
-{
-    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
-    if (ReclamationList == nullptr) {
-        // Si la lista no se cargó correctamente, crea una nueva lista
-        ReclamationList = gcnew List<Reclamation^>();
-    }
-    ReclamationList->Add(c);
-    PersistBinaryFile(RECLAMATION_FILE_BIN_NAME, ReclamationList);
-}
-
-void ProjectPersistance::Persistance::CreateHelp(Help^ c)
-{
-
-    HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME);
-    if (HelpList == nullptr) {
-        // Si la lista no se cargó correctamente, crea una nueva lista
-        HelpList = gcnew List<Help^>();
-    }
-    HelpList->Add(c);
-    PersistBinaryFile(HELP_FILE_BIN_NAME, HelpList);
-
+    VehicleList->Add(c);
+    PersistBinaryFile(VEHICLE_FILE_BIN_NAME, VehicleList);
 }
 
 
-void ProjectPersistance::Persistance::UpdateClient(Client^ c)
+void ProjectPersistance::Persistance::UpdateProprietor(Proprietor^ c)
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList != nullptr) {
-        for (int i = 0; i < ClientList->Count; i++) {
-            if (c->Id == ClientList[i]->Id) {
-                ClientList[i] = c;
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    if (ProprietorList != nullptr) {
+        for (int i = 0; i < ProprietorList->Count; i++) {
+            if (c->Id == ProprietorList[i]->Id) {
+                ProprietorList[i] = c;
             }
         }
         /*
@@ -183,108 +126,57 @@ void ProjectPersistance::Persistance::UpdateClient(Client^ c)
         }
         */
     }        
-    PersistBinaryFile(CLIENT_FILE_BIN_NAME, ClientList);
+    PersistBinaryFile(PROPRIETOR_FILE_BIN_NAME, ProprietorList);
 }
 
-void ProjectPersistance::Persistance::UpdateReclamation(Reclamation^ c)
+void ProjectPersistance::Persistance::UpdateVehicle(Vehicle^ c)
 {
-    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
-    if (ReclamationList != nullptr) {
-        for (int i = 0; i < ReclamationList->Count; i++) {
-            if (c->Id == ReclamationList[i]->Id) {
-                ReclamationList[i] = c;
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
+    if (VehicleList != nullptr) {
+        for (int i = 0; i < VehicleList->Count; i++) {
+            if (c->Id == VehicleList[i]->Id) {
+                VehicleList[i] = c;
             }
         }
     }
-    PersistBinaryFile(RECLAMATION_FILE_BIN_NAME, ReclamationList);
-}
-
-void ProjectPersistance::Persistance::UpdateCar(Car^ c)
-{
-    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
-    if (CarList != nullptr) {
-        for (int i = 0; i < CarList->Count; i++) {
-            if (c->Id == CarList[i]->Id) {
-                CarList[i] = c;
-            }
-        }
-    }
-    PersistBinaryFile(CAR_FILE_BIN_NAME, CarList);
-}
-
-void ProjectPersistance::Persistance::UpdateHelp(Help^ c)
-{
-    HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME);
-    if (HelpList != nullptr) {
-        for (int i = 0; i < HelpList->Count; i++) {
-            if (c->Id == CarList[i]->Id) {
-                HelpList[i] = c;
-            }
-        }
-    }
-    PersistBinaryFile(HELP_FILE_BIN_NAME, HelpList);
+    PersistBinaryFile(VEHICLE_FILE_BIN_NAME, VehicleList);
 }
 
 
-void ProjectPersistance::Persistance::DeleteClient(int id)
+
+
+void ProjectPersistance::Persistance::DeleteProprietor(int id)
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList != nullptr) {
-        for (int i = ClientList->Count - 1; i >= 0; i--) {
-            if (id == ClientList[i]->Id) {
-                ClientList->RemoveAt(i);
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    if (ProprietorList != nullptr) {
+        for (int i = ProprietorList->Count - 1; i >= 0; i--) {
+            if (id == ProprietorList[i]->Id) {
+                ProprietorList->RemoveAt(i);
             }
         }
         // Guardar la lista actualizada en el archivo binario
-        PersistBinaryFile(CLIENT_FILE_BIN_NAME, ClientList);
+        PersistBinaryFile(PROPRIETOR_FILE_BIN_NAME, ProprietorList);
     }
 }
 
-void ProjectPersistance::Persistance::DeleteCar(int id)
+void ProjectPersistance::Persistance::DeleteVehicle(int id)
 {
-    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
-    if (CarList != nullptr) {
-        for (int i = CarList->Count - 1; i >= 0; i--) {
-            if (id == CarList[i]->Id) {
-                CarList->RemoveAt(i);
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
+    if (VehicleList != nullptr) {
+        for (int i = VehicleList->Count - 1; i >= 0; i--) {
+            if (id == VehicleList[i]->Id) {
+                VehicleList->RemoveAt(i);
             }
         }
         // Guardar la lista actualizada en el archivo binario
-        PersistBinaryFile(CAR_FILE_BIN_NAME, CarList);
+        PersistBinaryFile(VEHICLE_FILE_BIN_NAME, VehicleList);
     }
 }
 
-void ProjectPersistance::Persistance::DeleteReclamation(int id)
-{
-    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
-    if (ReclamationList != nullptr) {
-        for (int i = ReclamationList->Count - 1; i >= 0; i--) {
-            if (id == ReclamationList[i]->Id) {
-                ReclamationList->RemoveAt(i);
-            }
-        }
-        // Guardar la lista actualizada en el archivo binario
-        PersistBinaryFile(RECLAMATION_FILE_BIN_NAME, ReclamationList);
-    }
-}
-
-void ProjectPersistance::Persistance::DeleteHelp(int id)
-{
-    HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME);
-    if (HelpList != nullptr) {
-        for (int i = HelpList->Count - 1; i >= 0; i--) {
-            if (id == HelpList[i]->Id) {
-                HelpList->RemoveAt(i);
-            }
-        }
-        // Guardar la lista actualizada en el archivo binario
-        PersistBinaryFile(HELP_FILE_BIN_NAME, HelpList);
-    }
-}
 ///////////////////////////////////////////////////////////////////////////////////////////
-List<Client^>^ ProjectPersistance::Persistance::QueryAllClients()
+List<Proprietor^>^ ProjectPersistance::Persistance::QueryAllProprietors()
 {
-    return ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    return ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
     /*
     if (ClientList != nullptr) {
         return ClientList;
@@ -293,394 +185,231 @@ List<Client^>^ ProjectPersistance::Persistance::QueryAllClients()
    */
 }
 
-Client^ ProjectPersistance::Persistance::QueryClientById(int id)
+Proprietor^ ProjectPersistance::Persistance::QueryProprietorById(int id)
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList -> Count != 0) {
-        for (int i = 0; i < ClientList->Count; i++) {
-            if (ClientList[i]->Id == id) {
-                return ClientList[i];
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    if (ProprietorList -> Count != 0) {
+        for (int i = 0; i < ProprietorList->Count; i++) {
+            if (ProprietorList[i]->Id == id) {
+                return ProprietorList[i];
             }
         }
     }
     return nullptr;
 }
 
-Client^ ProjectPersistance::Persistance::QueryClientByDni(int dni)
+Proprietor^ ProjectPersistance::Persistance::QueryProprietorByDni(int dni)
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList -> Count != 0) {
-        for (int i = 0; i < ClientList->Count; i++) {
-            if (ClientList[i]->Dni == dni) {
-                return ClientList[i];
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    if (ProprietorList -> Count != 0) {
+        for (int i = 0; i < ProprietorList->Count; i++) {
+            if (ProprietorList[i]->Dni == dni) {
+                return ProprietorList[i];
             }
         }
     }
     return nullptr;
 }
 
-Client^ ProjectPersistance::Persistance::QueryClientByEmail(String^ email)
+Proprietor^ ProjectPersistance::Persistance::QueryProprietorByEmail(String^ email)
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList -> Count != 0) {
-        for (int i = 0; i < ClientList->Count; i++) {
-            if (ClientList[i]->Email == email) {
-                return ClientList[i];
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+
+    try {
+        if (ProprietorList->Count != 0) {
+            for (int i = 0; i < ProprietorList->Count; i++) {
+                if (ProprietorList[i]->Email == email) {
+                    return ProprietorList[i];
+                }
+            }
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    return nullptr;
+
+}
+
+Proprietor^ ProjectPersistance::Persistance::QueryProprietorByLicenseName(String^ licensename)
+{
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    if (ProprietorList -> Count != 0) {
+        for (int i = 0; i < ProprietorList->Count; i++) {
+            if (ProprietorList[i]->Licensename == licensename) {
+                return ProprietorList[i];
             }
         }
     }
     return nullptr;
 }
 
-Client^ ProjectPersistance::Persistance::QueryClientByLicenseName(String^ licensename)
+List<Proprietor^>^ ProjectPersistance::Persistance::QueryListProprietorByName(String^ name)
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    if (ClientList -> Count != 0) {
-        for (int i = 0; i < ClientList->Count; i++) {
-            if (ClientList[i]->Licensename == licensename) {
-                return ClientList[i];
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME); //lista de almacenamiento total
+
+    List<Proprietor^>^ Proprietors = gcnew List<Proprietor^>(); //lista de clientes nueva
+    Proprietors = nullptr;
+
+    if (ProprietorList -> Count != 0) {
+        for (int i = 0; i < ProprietorList->Count; i++) {
+            if (ProprietorList[i]->Name == name) {
+                Proprietors->Add(ProprietorList[i]);
             }
         }
     }
-    return nullptr;
-}
-
-List<Client^>^ ProjectPersistance::Persistance::QueryListClientByName(String^ name)
-{
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME); //lista de almacenamiento total
-
-    List<Client^>^ Clients = gcnew List<Client^>(); //lista de clientes nueva
-    Clients = nullptr;
-
-    if (ClientList -> Count != 0) {
-        for (int i = 0; i < ClientList->Count; i++) {
-            if (ClientList[i]->Name == name) {
-                Clients->Add(ClientList[i]);
-            }
-        }
-    }
-    return Clients;
+    return Proprietors;
 }
 
 
-List<Client^>^ ProjectPersistance::Persistance::QueryListClientByLastname(String^ lastname)
+List<Proprietor^>^ ProjectPersistance::Persistance::QueryListProprietorByLastname(String^ lastname)
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME); //lista de almacenamiento total
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME); //lista de almacenamiento total
 
-    List<Client^>^ Clients = gcnew List<Client^>();
-    Clients = nullptr;
+    List<Proprietor^>^ Proprietors = gcnew List<Proprietor^>();
+    Proprietors = nullptr;
 
-    if (ClientList -> Count != 0) {
-        for (int i = 0; i < ClientList->Count; i++) {
-            if (ClientList[i]->Lastname == lastname) {
-                Clients->Add(ClientList[i]);
+    if (ProprietorList -> Count != 0) {
+        for (int i = 0; i < ProprietorList->Count; i++) {
+            if (ProprietorList[i]->Lastname == lastname) {
+                Proprietors->Add(ProprietorList[i]);
             }
         }
     }
-    return Clients;
+    return Proprietors;
 }
 
-List<Client^>^ ProjectPersistance::Persistance::QueryListClientByLicensetype(String^ licensetype)
+List<Proprietor^>^ ProjectPersistance::Persistance::QueryListProprietorByLicensetype(String^ licensetype)
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME); //lista de almacenamiento total
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME); //lista de almacenamiento total
 
-    List<Client^>^ Clients = gcnew List<Client^>(); 
-    Clients = nullptr;
+    List<Proprietor^>^ Proprietors = gcnew List<Proprietor^>();
+    Proprietors = nullptr;
 
-    if (ClientList  -> Count != 0) {
-        for (int i = 0; i < ClientList->Count; i++) {
-            if (ClientList[i]->Licensetype == licensetype) {
-                Clients->Add(ClientList[i]);
+    if (ProprietorList  -> Count != 0) {
+        for (int i = 0; i < ProprietorList->Count; i++) {
+            if (ProprietorList[i]->Licensetype == licensetype) {
+                Proprietors->Add(ProprietorList[i]);
             }
         }
     }
-    return Clients;
+    return Proprietors;
 }
 //
-List<Car^>^ ProjectPersistance::Persistance::QueryAllCars()
+List<Vehicle^>^ ProjectPersistance::Persistance::QueryAllVehicles()
 {
-    return CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
+    return VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
 }
 
-Car^ ProjectPersistance::Persistance::QueryCarById(int id)
+Vehicle^ ProjectPersistance::Persistance::QueryVehicleById(int id)
 {
-    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
-    if (CarList -> Count != 0) {
-        for (int i = 0; i < CarList->Count; i++) {
-            if (CarList[i]->Id == id) {
-                return CarList[i];
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
+    if (VehicleList-> Count != 0) {
+        for (int i = 0; i < VehicleList->Count; i++) {
+            if (VehicleList[i]->Id == id) {
+                return VehicleList[i];
             }
         }
     }
     return nullptr;
 }
 
-Car^ ProjectPersistance::Persistance::QueryCarByPlate(String^ plate)
+Vehicle^ ProjectPersistance::Persistance::QueryVehicleByPlate(String^ plate)
 {   
-    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME);
-    if (CarList -> Count != 0) {  //Count < 1 (para List)= nullptr (para no List)
-        for (int i = 0; i < CarList->Count; i++) {
-            if (CarList[i]->Plate == plate) {
-                return CarList[i];
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
+    if (VehicleList-> Count != 0) {  //Count < 1 (para List)= nullptr (para no List)
+        for (int i = 0; i < VehicleList->Count; i++) {
+            if (VehicleList[i]->Plate == plate) {
+                return VehicleList[i];
             }
         }
     }
     return nullptr;
 }
 
-List<Car^>^ ProjectPersistance::Persistance::QueryListCarByBrand(String^ brand)
+List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehiclesByProprietorId(int Id)
 {
-    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME); //lista de almacenamiento total
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME); //lista de almacenamiento total
 
-    List<Car^>^ Cars = gcnew List<Car^>(); 
-    /*Cars = nullptr; */
+    List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
+    /*Vehicles = nullptr; */
 
-    if (CarList -> Count != 0) {
-        for (int i = 0; i < CarList->Count; i++) {
-            if (CarList[i]->Brand == brand) {
-                Cars->Add(CarList[i]);
+    if (VehicleList->Count != 0) {
+        for (int i = 0; i < VehicleList->Count; i++) {
+            if (VehicleList[i]->Id == Id) {
+                Vehicles->Add(VehicleList[i]);
             }
         }
     }
-    return Cars;
+    return Vehicles;
 }
 
-List<Car^>^ ProjectPersistance::Persistance::QueryListCarByColor(String^ color)
+List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByBrand(String^ brand)
 {
-    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME); //lista de almacenamiento total
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME); //lista de almacenamiento total
 
-    List<Car^>^ Cars = gcnew List<Car^>();
-    //Cars = nullptr;
+    List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
+    /*Vehicles = nullptr; */
+
+    if (VehicleList-> Count != 0) {
+        for (int i = 0; i < VehicleList->Count; i++) {
+            if (VehicleList[i]->Brand == brand) {
+                Vehicles->Add(VehicleList[i]);
+            }
+        }
+    }
+    return Vehicles;
+}
+
+List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByColor(String^ color)
+{
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME); //lista de almacenamiento total
+
+    List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
+    //Vehicles = nullptr;
      
-    if (CarList -> Count != 0) {
-        for (int i = 0; i < CarList->Count; i++) {
-            if (CarList[i]->Color == color) {
-                Cars->Add(CarList[i]);
+    if (VehicleList-> Count != 0) {
+        for (int i = 0; i < VehicleList->Count; i++) {
+            if (VehicleList[i]->Color == color) {
+                Vehicles->Add(VehicleList[i]);
             }
         }
     }
-    return Cars;
+    return Vehicles;
 }
 
-List<Car^>^ ProjectPersistance::Persistance::QueryListCarByCondition(String^ condition)
+List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByCondition(String^ condition)
 {
-    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME); //lista de almacenamiento total
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME); //lista de almacenamiento total
 
-    List<Car^>^ Cars = gcnew List<Car^>(); 
-    //Cars = nullptr;
+    List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
+    //Vehicles = nullptr;
 
-    if (CarList -> Count != 0) {
-        for (int i = 0; i < CarList->Count; i++) {
-            if (CarList[i]->Condition == condition) {
-                Cars->Add(CarList[i]);
+    if (VehicleList-> Count != 0) {
+        for (int i = 0; i < VehicleList->Count; i++) {
+            if (VehicleList[i]->Condition == condition) {
+                Vehicles->Add(VehicleList[i]);
             }
         }
     }
-    return Cars;
+    return Vehicles;
 }
 
-List<Car^>^ ProjectPersistance::Persistance::QueryListCarByOperative(bool operative)
+List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByOperative(bool operative)
 {
-    CarList = (List<Car^>^)Persistance::LoadBinaryFile(CAR_FILE_BIN_NAME); //lista de almacenamiento total
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME); //lista de almacenamiento total
 
-    List<Car^>^ Cars = gcnew List<Car^>(); 
-    //Cars = nullptr;
+    List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
+    //Vehicles = nullptr;
 
-    if (CarList -> Count != 0) {
-        for (int i = 0; i < CarList->Count; i++) {
-            if (CarList[i]->Operative == operative) {
-                Cars->Add(CarList[i]);
+    if (VehicleList-> Count != 0) {
+        for (int i = 0; i < VehicleList->Count; i++) {
+            if (VehicleList[i]->Operative == operative) {
+                Vehicles->Add(VehicleList[i]);
             }
         }
     }
-    return Cars;
+    return Vehicles;
 }
-//
-List<Reclamation^>^ ProjectPersistance::Persistance::QueryAllReclamations()
-{
-    return ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
-}
-
-Reclamation^ ProjectPersistance::Persistance::QueryReclamationById(int id)
-{
-    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
-    if (ReclamationList -> Count != 0) {
-        for (int i = 0; i < ReclamationList->Count; i++) {
-            if (ReclamationList[i]->Id == id) {
-                return ReclamationList[i];
-            }
-        }
-    }
-    return nullptr;
-}
-
-Reclamation^ ProjectPersistance::Persistance::QueryReclamationByTitle(String^ title)
-{
-    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
-    if (ReclamationList -> Count != 0) {
-        for (int i = 0; i < ReclamationList->Count; i++) {
-            if (ReclamationList[i]->Title == title) {
-                return ReclamationList[i];
-            }
-        }
-    }
-    return nullptr;
-}
-
-List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByType(String^ type)
-{
-    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
-
-    List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
-    //Reclamations = nullptr;
-
-    if (ReclamationList -> Count != 0) {
-        for (int i = 0; i < ReclamationList->Count; i++) {
-            if (ReclamationList[i]->Type == type) {
-                Reclamations->Add(ReclamationList[i]);
-            }
-        }
-    }
-    return Reclamations;
-}
-
-
-List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByCategory(String^ category)
-{
-    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
-
-    List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
-    //Reclamations = nullptr;
-
-    if (ReclamationList -> Count != 0) {
-        for (int i = 0; i < ReclamationList->Count; i++) {
-            if (ReclamationList[i]->Category == category) {
-                Reclamations->Add(ReclamationList[i]);
-            }
-        }
-    }
-    return Reclamations;
-}
-
-List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByState(String^ state)
-{
-    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
-
-    List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
-    //Reclamations = nullptr;
-
-    if (ReclamationList -> Count != 0) {
-        for (int i = 0; i < ReclamationList->Count; i++) {
-            if (ReclamationList[i]->State == state) {
-                Reclamations->Add(ReclamationList[i]);
-            }
-        }
-    }
-    return Reclamations;
-}
-
-List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByDate(DateTime systemdate)
-{
-    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
-
-    List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
-    //Reclamations = nullptr;
-
-    if (ReclamationList -> Count != 0) {
-        for (int i = 0; i < ReclamationList->Count; i++) {
-            if (ReclamationList[i]->SystemDate.Date == systemdate.Date) {
-                Reclamations->Add(ReclamationList[i]);
-            }
-        }
-    }
-    return Reclamations;
-}
-//
-List<Help^>^ ProjectPersistance::Persistance::QueryAllHelps()
-{
-    return HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME);
-}
-
-Help^ ProjectPersistance::Persistance::QueryHelpById(int id)
-{
-    HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME);
-    if (HelpList -> Count != 0) {
-        for (int i = 0; i < HelpList->Count; i++) {
-            if (HelpList[i]->Id == id) {
-                return HelpList[i];
-            }
-        }
-    }
-    return nullptr;
-}
-
-List<Help^>^ ProjectPersistance::Persistance::QueryListHelpByType(String^ type)
-{
-    HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME); //lista de almacenamiento total
-
-    List<Help^>^ Helps = gcnew List<Help^>();
-    Helps = nullptr;
-
-    if (HelpList-> Count != 0) {
-        for (int i = 0; i < HelpList->Count; i++) {
-            if (HelpList[i]->Type == type) {
-                Helps->Add(HelpList[i]);
-            }
-        }
-    }
-    return Helps;
-}
-
-List<Help^>^ ProjectPersistance::Persistance::QueryListHelpByCategory(String^ status)
-{
-    HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME); //lista de almacenamiento total
-
-    List<Help^>^ Helps = gcnew List<Help^>();
-    Helps = nullptr;
-
-    if (HelpList -> Count != 0) {
-        for (int i = 0; i < HelpList->Count; i++) {
-            if (HelpList[i]->Status == status) {
-                Helps->Add(HelpList[i]);
-            }
-        }
-    }
-    return HelpList;
-}
-
-List<Help^>^ ProjectPersistance::Persistance::QueryListHelpByChecked(bool checked)
-{
-    HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME); //lista de almacenamiento total
-
-    List<Help^>^ Helps = gcnew List<Help^>();
-    Helps = nullptr;
-
-    if (HelpList -> Count != 0) {
-        for (int i = 0; i < HelpList->Count; i++) {
-            if (HelpList[i]->Checked == checked) {
-                Helps->Add(HelpList[i]);
-            }
-        }
-    }
-    return Helps;
-}
-
-List<Help^>^ ProjectPersistance::Persistance::QueryListHelpByDate(DateTime date)
-{
-    HelpList = (List<Help^>^)Persistance::LoadBinaryFile(HELP_FILE_BIN_NAME); //lista de almacenamiento total
-
-    List<Help^>^ Helps = gcnew List<Help^>();
-    Helps = nullptr;
-
-    if (HelpList -> Count != 0) {
-        for (int i = 0; i < HelpList->Count; i++) {
-            if (HelpList[i]->RequestDate == date) {
-                Helps->Add(HelpList[i]);
-            }
-        }
-    }
-    return Helps;
-}
-//
 
 

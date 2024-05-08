@@ -56,6 +56,9 @@ namespace ProjectView {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::NotifyIcon^ notifyIcon1;
+
+	private: System::ComponentModel::IContainer^ components;
 
 
 	protected:
@@ -70,7 +73,7 @@ namespace ProjectView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -79,6 +82,8 @@ namespace ProjectView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(UserLoginPage::typeid));
 			this->textBox_email = (gcnew System::Windows::Forms::TextBox());
 			this->button_login = (gcnew System::Windows::Forms::Button());
 			this->textBox_password = (gcnew System::Windows::Forms::TextBox());
@@ -86,13 +91,15 @@ namespace ProjectView {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->notifyIcon1 = (gcnew System::Windows::Forms::NotifyIcon(this->components));
 			this->SuspendLayout();
 			// 
 			// textBox_email
 			// 
 			this->textBox_email->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_email->Location = System::Drawing::Point(169, 124);
+			this->textBox_email->ForeColor = System::Drawing::SystemColors::WindowFrame;
+			this->textBox_email->Location = System::Drawing::Point(73, 140);
 			this->textBox_email->Name = L"textBox_email";
 			this->textBox_email->Size = System::Drawing::Size(210, 26);
 			this->textBox_email->TabIndex = 0;
@@ -101,9 +108,9 @@ namespace ProjectView {
 			// 
 			this->button_login->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_login->Location = System::Drawing::Point(201, 237);
+			this->button_login->Location = System::Drawing::Point(73, 253);
 			this->button_login->Name = L"button_login";
-			this->button_login->Size = System::Drawing::Size(136, 37);
+			this->button_login->Size = System::Drawing::Size(210, 37);
 			this->button_login->TabIndex = 10;
 			this->button_login->Text = L"Iniciar sesión";
 			this->button_login->UseVisualStyleBackColor = true;
@@ -113,7 +120,7 @@ namespace ProjectView {
 			// 
 			this->textBox_password->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_password->Location = System::Drawing::Point(169, 187);
+			this->textBox_password->Location = System::Drawing::Point(73, 203);
 			this->textBox_password->Name = L"textBox_password";
 			this->textBox_password->PasswordChar = '*';
 			this->textBox_password->Size = System::Drawing::Size(210, 26);
@@ -123,9 +130,9 @@ namespace ProjectView {
 			// 
 			this->button_register->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_register->Location = System::Drawing::Point(201, 297);
+			this->button_register->Location = System::Drawing::Point(73, 313);
 			this->button_register->Name = L"button_register";
-			this->button_register->Size = System::Drawing::Size(136, 37);
+			this->button_register->Size = System::Drawing::Size(210, 37);
 			this->button_register->TabIndex = 15;
 			this->button_register->Text = L"Crear cuenta";
 			this->button_register->UseVisualStyleBackColor = true;
@@ -136,18 +143,18 @@ namespace ProjectView {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(42, 39);
+			this->label1->Location = System::Drawing::Point(106, 43);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(473, 31);
+			this->label1->Size = System::Drawing::Size(150, 31);
 			this->label1->TabIndex = 5;
-			this->label1->Text = L"PLATAFORMA DE TAXIS EMBETAX";
+			this->label1->Text = L"\"PLATAX\"";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(169, 105);
+			this->label2->Location = System::Drawing::Point(73, 121);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(117, 19);
 			this->label2->TabIndex = 6;
@@ -158,18 +165,26 @@ namespace ProjectView {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(169, 167);
+			this->label3->Location = System::Drawing::Point(73, 183);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(154, 19);
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"Ingresa tu contraseña";
 			// 
+			// notifyIcon1
+			// 
+			this->notifyIcon1->BalloonTipIcon = System::Windows::Forms::ToolTipIcon::Info;
+			this->notifyIcon1->BalloonTipTitle = L"Notificación";
+			this->notifyIcon1->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"notifyIcon1.Icon")));
+			this->notifyIcon1->Text = L"notifyIcon1";
+			this->notifyIcon1->Visible = true;
+			// 
 			// UserLoginPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(557, 372);
+			this->BackColor = System::Drawing::Color::Peru;
+			this->ClientSize = System::Drawing::Size(355, 372);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -212,30 +227,22 @@ namespace ProjectView {
 	private: System::Void button_login_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ email = textBox_email->Text;
 		String^ password = textBox_password->Text;
-		Client^ c = Controller::QueryClientByEmail(email);
-		
-		/*if (email == "admin") {
-			if (password == "admin") {
-				//falta cambiar para que abra las vistas de administrador
-				Session::CurrentClient = c;
-				UserFeedPage^ userFeedPage = gcnew UserFeedPage();
-				userFeedPage->MdiParent = this->MdiParent;
-				userFeedPage->Show();
-			}
-			else {
-				MessageBox::Show("Datos incorrectas o falta completar");
-			}
+
+		if (String::IsNullOrWhiteSpace(email) || String::IsNullOrWhiteSpace(password)) {
+			MessageBox::Show("Es necesario que se completen todos los datos de registro");
+			return;
 		}
-		else {
-			MessageBox::Show("El email ingresado no existe");
-		}*/
+
+		Proprietor^ c = Controller::QueryProprietorByEmail(email);
 
 		if (c != nullptr) {
 			if (c->Password == password ) {
-				Session::CurrentClient = c;
+				Session::CurrentProprietor = c;
 				UserFeedPage^ userFeedPage = gcnew UserFeedPage();
 				userFeedPage->MdiParent = this->MdiParent;
 				userFeedPage->Show();
+				notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax!";
+				notifyIcon1->ShowBalloonTip(2500);
 				return;
 			}
 			else {
@@ -248,10 +255,12 @@ namespace ProjectView {
 
 		if (email == "user") {
 			if (password == "user") {
-				Session::CurrentClient = c;
+				Session::CurrentProprietor = c;
 				UserFeedPage^ userFeedPage = gcnew UserFeedPage();
 				userFeedPage->MdiParent = this->MdiParent;
 				userFeedPage->Show();
+				notifyIcon1->BalloonTipText = "¡Has desbloqueado el modo Usuiario Maestro!";
+				notifyIcon1->ShowBalloonTip(2500);
 				return;
 			}
 			else {
@@ -261,7 +270,9 @@ namespace ProjectView {
 		else {
 			MessageBox::Show("El email ingresado no existe");
 		}
+		
 	}
+
 
 };
 }

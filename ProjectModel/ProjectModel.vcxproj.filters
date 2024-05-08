@@ -24,13 +24,13 @@
     <ClInclude Include="pch.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Car.h">
+    <ClInclude Include="Vehicle.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="User.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Client.h">
+    <ClInclude Include="Proprietor.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Adm.h">
@@ -65,13 +65,13 @@
     <ClCompile Include="pch.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Car.cpp">
+    <ClCompile Include="Vehicle.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="User.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Client.cpp">
+    <ClCompile Include="Proprietor.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="Adm.cpp">

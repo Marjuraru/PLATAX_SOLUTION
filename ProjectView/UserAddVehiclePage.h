@@ -14,12 +14,12 @@ namespace ProjectView {
 	using namespace ProjectController;
 
 	/// <summary>
-	/// Resumen de UserAddCarPage
+	/// Resumen de UserAddVehiclePage
 	/// </summary>
-	public ref class UserAddCarPage : public System::Windows::Forms::Form
+	public ref class UserAddVehiclePage : public System::Windows::Forms::Form
 	{
 	public:
-		UserAddCarPage(void)
+		UserAddVehiclePage(void)
 		{
 			InitializeComponent();
 			//
@@ -31,7 +31,7 @@ namespace ProjectView {
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
 		/// </summary>
-		~UserAddCarPage()
+		~UserAddVehiclePage()
 		{
 			if (components)
 			{
@@ -62,7 +62,9 @@ namespace ProjectView {
 	private: System::Windows::Forms::TextBox^ textBox_plate;
 
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::TextBox^ textBox_carmodel;
+	private: System::Windows::Forms::TextBox^ textBox_model;
+
+
 
 	private: System::Windows::Forms::Label^ label3;
 
@@ -122,7 +124,7 @@ namespace ProjectView {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox_plate = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->textBox_carmodel = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_model = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox_brand = (gcnew System::Windows::Forms::TextBox());
@@ -194,37 +196,37 @@ namespace ProjectView {
 			this->label4->TabIndex = 95;
 			this->label4->Text = L"Placa";
 			// 
-			// textBox_carmodel
+			// textBox_model
 			// 
-			this->textBox_carmodel->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBox_model->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_carmodel->Location = System::Drawing::Point(148, 57);
-			this->textBox_carmodel->Name = L"textBox_carmodel";
-			this->textBox_carmodel->Size = System::Drawing::Size(104, 26);
-			this->textBox_carmodel->TabIndex = 10;
-			this->textBox_carmodel->Tag = L"";
+			this->textBox_model->Location = System::Drawing::Point(148, 57);
+			this->textBox_model->Name = L"textBox_model";
+			this->textBox_model->Size = System::Drawing::Size(104, 26);
+			this->textBox_model->TabIndex = 10;
+			this->textBox_model->Tag = L"";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(31, 61);
+			this->label3->Location = System::Drawing::Point(89, 61);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(116, 19);
+			this->label3->Size = System::Drawing::Size(61, 19);
 			this->label3->TabIndex = 94;
-			this->label3->Text = L"Modelo de Auto";
+			this->label3->Text = L"Modelo";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(151, 11);
+			this->label1->Location = System::Drawing::Point(101, 9);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(300, 31);
+			this->label1->Size = System::Drawing::Size(347, 31);
 			this->label1->TabIndex = 91;
-			this->label1->Text = L"AGREGANDO CARRO";
+			this->label1->Text = L"AGREGANDO VEHÍCULO";
 			// 
 			// textBox_brand
 			// 
@@ -347,7 +349,7 @@ namespace ProjectView {
 			this->button_insertphoto->Tag = L"";
 			this->button_insertphoto->Text = L"Adjuntar imagen";
 			this->button_insertphoto->UseVisualStyleBackColor = true;
-			this->button_insertphoto->Click += gcnew System::EventHandler(this, &UserAddCarPage::button_insertphoto_Click);
+			this->button_insertphoto->Click += gcnew System::EventHandler(this, &UserAddVehiclePage::button_insertphoto_Click);
 			// 
 			// button_clearall
 			// 
@@ -360,7 +362,7 @@ namespace ProjectView {
 			this->button_clearall->Tag = L"";
 			this->button_clearall->Text = L"Limpiar todo";
 			this->button_clearall->UseVisualStyleBackColor = true;
-			this->button_clearall->Click += gcnew System::EventHandler(this, &UserAddCarPage::button_clearall_Click);
+			this->button_clearall->Click += gcnew System::EventHandler(this, &UserAddVehiclePage::button_clearall_Click);
 			// 
 			// button_cancel
 			// 
@@ -375,7 +377,7 @@ namespace ProjectView {
 			this->button_cancel->Tag = L"";
 			this->button_cancel->Text = L"CANCELAR";
 			this->button_cancel->UseVisualStyleBackColor = false;
-			this->button_cancel->Click += gcnew System::EventHandler(this, &UserAddCarPage::button_cancel_Click_1);
+			this->button_cancel->Click += gcnew System::EventHandler(this, &UserAddVehiclePage::button_cancel_Click_1);
 			// 
 			// button_add
 			// 
@@ -388,9 +390,9 @@ namespace ProjectView {
 			this->button_add->Tag = L"";
 			this->button_add->Text = L"AÑADIR";
 			this->button_add->UseVisualStyleBackColor = true;
-			this->button_add->Click += gcnew System::EventHandler(this, &UserAddCarPage::button_add_Click);
+			this->button_add->Click += gcnew System::EventHandler(this, &UserAddVehiclePage::button_add_Click);
 			// 
-			// UserAddCarPage
+			// UserAddVehiclePage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -415,12 +417,12 @@ namespace ProjectView {
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->textBox_plate);
 			this->Controls->Add(this->label4);
-			this->Controls->Add(this->textBox_carmodel);
+			this->Controls->Add(this->textBox_model);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label1);
-			this->Name = L"UserAddCarPage";
-			this->Text = L"UserAddCarPage";
-			this->Load += gcnew System::EventHandler(this, &UserAddCarPage::UserAddCarPage_Load);
+			this->Name = L"UserAddVehiclePage";
+			this->Text = L"UserAddVehiclePage";
+			this->Load += gcnew System::EventHandler(this, &UserAddVehiclePage::UserAddVehiclePage_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -432,7 +434,7 @@ namespace ProjectView {
 		
 		void ClearTextBoxes() {
 
-			textBox_carmodel->Clear();
+			textBox_model->Clear();
 			textBox_plate->Clear();
 			textBox_brand->Clear();
 			textBox_color->Clear();
@@ -465,9 +467,9 @@ namespace ProjectView {
 	}
 	private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		Car^ car = gcnew Car();
+		Vehicle^ vehicle = gcnew Vehicle();
 
-		String^ carmodel = textBox_carmodel->Text;
+		String^ model = textBox_model->Text;
 		String^ plate = textBox_plate->Text;
 		String^ brand = textBox_brand->Text;
 		String^ color = textBox_color->Text;
@@ -479,28 +481,28 @@ namespace ProjectView {
 
 		if (sparetire == "Sí") {
 
-			car->SpareTire = true;
+			vehicle->SpareTire = true;
 
 		}
 		else if (sparetire == "No") {
 
-			car->SpareTire = false;
+			vehicle->SpareTire = false;
 
 		}
 
 
 		if (operative == "Operativo") {
 
-			car->Operative = true;
+			vehicle->Operative = true;
 
 		}
 		else if (operative == "Inoperativo") {
 
-			car->Operative = false;
+			vehicle->Operative = false;
 
 		}
 
-		if (String::IsNullOrWhiteSpace(carmodel) || String::IsNullOrWhiteSpace(plate) || String::IsNullOrWhiteSpace(brand) ||
+		if (String::IsNullOrWhiteSpace(model) || String::IsNullOrWhiteSpace(plate) || String::IsNullOrWhiteSpace(brand) ||
 			String::IsNullOrWhiteSpace(color) || String::IsNullOrWhiteSpace(_numberofseats) || String::IsNullOrWhiteSpace(sparetire)
 			|| String::IsNullOrWhiteSpace(operative) || String::IsNullOrWhiteSpace(condition)) {
 			MessageBox::Show("Es necesario que se completen todos los datos de registro");
@@ -518,23 +520,23 @@ namespace ProjectView {
 			return;
 		}
 
-		car->Id = Controller::GenerateCarId();
-		car->NumberOfSeats = numberofseats;
-		car->Color = color;
-		car->CarModel = carmodel;
-		car->Brand = brand;
-		car->Plate = plate;
-		car->Condition = condition;
+		vehicle->Id = Controller::GenerateVehicleId();
+		vehicle->NumberOfSeats = numberofseats;
+		vehicle->Color = color;
+		vehicle->Model = model;
+		vehicle->Brand = brand;
+		vehicle->Plate = plate;
+		vehicle->Condition = condition;
 		
 		if (pb_photo->Image != nullptr) {
 
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 			pb_photo->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
-			car->Photo = ms->ToArray();
+			vehicle->Photo = ms->ToArray();
 			ms->Close();
 		}
 
-		Controller::CreateCar(car);
+		Controller::CreateVehicle(vehicle);
 		MessageBox::Show("Se ha agregado un nuevo vehículo");
 		
 		this->Close();
@@ -543,7 +545,7 @@ namespace ProjectView {
 		property int Id;
 		property int NumberOfSeats;
 		property String^ Color;
-		property String^ CarModel;
+		property String^ Model;
 		property String^ Brand;
 		property String^ Plate;//placa de carro
 		property String^ Condition;// Condición del auto
@@ -572,7 +574,7 @@ private: System::Void button_clearall_Click(System::Object^ sender, System::Even
 	FillCombos();
  // limpia la imagen
 
-	/*String^ carmodel = textBox_carmodel->Text;
+	/*String^ model = textBox_model->Text;
 	String^ plate = textBox_plate->Text;
 	String^ brand = textBox_brand->Text;
 	String^ color = textBox_color->Text;
@@ -582,7 +584,7 @@ private: System::Void button_clearall_Click(System::Object^ sender, System::Even
 	String^ condition = comboBox_condition->Text;*/
 
 }
-	private: System::Void UserAddCarPage_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void UserAddVehiclePage_Load(System::Object^ sender, System::EventArgs^ e) {
 
 		FillCombos();
 

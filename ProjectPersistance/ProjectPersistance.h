@@ -9,16 +9,12 @@ namespace ProjectPersistance {
     {
     private:                    //(2°)
         static List<User^>^ UserList = gcnew List<User^>(); //no necesitamos 
-        static List<Client^>^ ClientList = gcnew List<Client^>();
-        static List<Car^>^ CarList = gcnew List<Car^>();
-        static List<Reclamation^>^ ReclamationList = gcnew List<Reclamation^>();
-        static List<Help^>^ HelpList = gcnew List<Help^>();
+        static List<Proprietor^>^ ProprietorList = gcnew List<Proprietor^>();
+        static List<Vehicle^>^ VehicleList = gcnew List<Vehicle^>();
 
     public:                     //(1°)
-        static String^ CLIENT_FILE_BIN_NAME = "Client.bin";
-        static String^ CAR_FILE_BIN_NAME = "Car.bin";
-        static String^ RECLAMATION_FILE_BIN_NAME = "Reclamation.bin";
-        static String^ HELP_FILE_BIN_NAME = "Help.bin";
+        static String^ PROPRIETOR_FILE_BIN_NAME = "Proprietor.bin";
+        static String^ VEHICLE_FILE_BIN_NAME = "Vehicle.bin";
 
 
         //Persistencia binaria
@@ -26,67 +22,40 @@ namespace ProjectPersistance {
         static Object^ LoadBinaryFile(String^ fileName); //metodo de lectura/carga de archivos binarios
 
         //Generar Id para cada clase (comenzar 1° con esto)
-        static int GenerateClientId();
-        static int GenerateCarId();
-        static int GenerateReclamationId();
-        static int GenerateHelpId();
+        static int GenerateProprietorId();
+        static int GenerateVehicleId();
 
         // Metodos de mantenimiento del Cliente - CRUD (2°)
             // Metodos de mantenimiento del Cliente - CRUD
-        static void CreateClient(Client^ c);
-        static void UpdateClient(Client^ c);
-        static void DeleteClient(int id);
+        static void CreateProprietor(Proprietor^ c);
+        static void UpdateProprietor(Proprietor^ c);
+        static void DeleteProprietor(int id);
             // Metodos de mantenimiento del Car - CRUD
-        static void CreateCar(Car^ c);
-        static void UpdateCar(Car^ c);
-        static void DeleteCar(int id);
-            // Metodos de mantenimiento del Reclamation - CRUD
-        static void CreateReclamation(Reclamation^ c);
-        static void UpdateReclamation(Reclamation^ c);
-        static void DeleteReclamation(int id);
-            //Método de mantenimiento del Help - CRUD
-        static void CreateHelp(Help^ c);
-        static void UpdateHelp(Help^ c);
-        static void DeleteHelp(int id);
+        static void CreateVehicle(Vehicle^ c);
+        static void UpdateVehicle(Vehicle^ c);
+        static void DeleteVehicle(int id);
+
 
         //Búsqueda de una clase mediante su atributo (2°)
             //BÚsqueda de Cliente
-        static List<Client^>^ QueryAllClients();
-        static Client^ QueryClientById(int id);//*
-        static Client^ QueryClientByDni(int dni);
-        static Client^ QueryClientByEmail(String^ email);
-        static Client^ QueryClientByLicenseName(String^ licensename);
+        static List<Proprietor^>^ QueryAllProprietors();
+        static Proprietor^ QueryProprietorById(int id);//*
+        static Proprietor^ QueryProprietorByDni(int dni);
+        static Proprietor^ QueryProprietorByEmail(String^ email);
+        static Proprietor^ QueryProprietorByLicenseName(String^ licensename);
 
-        static List<Client^>^ QueryListClientByName(String^ name);//*
-        static List<Client^>^ QueryListClientByLastname(String^ lastname);
-        static List<Client^>^ QueryListClientByLicensetype(String^ licensetype);
+        static List<Proprietor^>^ QueryListProprietorByName(String^ name);//*
+        static List<Proprietor^>^ QueryListProprietorByLastname(String^ lastname);
+        static List<Proprietor^>^ QueryListProprietorByLicensetype(String^ licensetype);
              //Búsqueda de Car
-        static List<Car^>^ QueryAllCars();
-        static Car^ QueryCarById(int id);
-        static Car^ QueryCarByPlate(String^ plate);
+        static List<Vehicle^>^ QueryAllVehicles();
+        static Vehicle^ QueryVehicleById(int id);
+        static Vehicle^ QueryVehicleByPlate(String^ plate);
 
-        static List<Car^>^ QueryListCarByBrand(String^ brand);
-        static List<Car^>^ QueryListCarByColor(String^ color);
-        static List<Car^>^ QueryListCarByCondition(String^ condition);
-        static List<Car^>^ QueryListCarByOperative(bool operative);
-             //Búsqueda de Reclamation
-        static List<Reclamation^>^ QueryAllReclamations();
-        static Reclamation^ QueryReclamationById(int id);
-        static Reclamation^ QueryReclamationByTitle(String^ title);
-
-        static List<Reclamation^>^ QueryListReclamationByType(String^ type);
-        static List<Reclamation^>^ QueryListReclamationByCategory(String^ category);
-        static List<Reclamation^>^ QueryListReclamationByState(String^ state);
-        static List<Reclamation^>^ QueryListReclamationByDate(DateTime systemdate);
-
-              //Búsqueda de Help
-        static List<Help^>^ QueryAllHelps();
-        static Help^ QueryHelpById(int id);
-
-        static List<Help^>^ QueryListHelpByType(String^ type);
-        static List<Help^>^ QueryListHelpByCategory(String^ state);
-        static List<Help^>^ QueryListHelpByChecked(bool checked);
-        static List<Help^>^ QueryListHelpByDate(DateTime date);
-
+        static List<Vehicle^>^ QueryListVehiclesByProprietorId(int Id);
+        static List<Vehicle^>^ QueryListVehicleByBrand(String^ brand);
+        static List<Vehicle^>^ QueryListVehicleByColor(String^ color);
+        static List<Vehicle^>^ QueryListVehicleByCondition(String^ condition);
+        static List<Vehicle^>^ QueryListVehicleByOperative(bool operative);
     };
 }
