@@ -110,7 +110,7 @@ namespace ProjectView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -430,8 +430,8 @@ namespace ProjectView {
 		}
 #pragma endregion
 
-	private:  
-		
+	private:
+
 		void ClearTextBoxes() {
 
 			textBox_model->Clear();
@@ -462,7 +462,7 @@ namespace ProjectView {
 
 	private: System::Void button_cancel_Click_1(System::Object^ sender, System::EventArgs^ e) {
 
-			this->Close();
+		this->Close();
 
 	}
 	private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -527,7 +527,7 @@ namespace ProjectView {
 		vehicle->Brand = brand;
 		vehicle->Plate = plate;
 		vehicle->Condition = condition;
-		
+
 		if (pb_photo->Image != nullptr) {
 
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
@@ -538,56 +538,56 @@ namespace ProjectView {
 
 		Controller::CreateVehicle(vehicle);
 		MessageBox::Show("Se ha agregado un nuevo vehículo");
-		
+
 		this->Close();
 
-	   /*
-		property int Id;
-		property int NumberOfSeats;
-		property String^ Color;
-		property String^ Model;
-		property String^ Brand;
-		property String^ Plate;//placa de carro
-		property String^ Condition;// Condición del auto
-		property bool Operative; //Indica el estado de operatividad del vehículo
-		property bool SpareTire; //llanta de repuesto
-		property array<Byte>^ Photo; // Matris de bytes
-		*/
+		/*
+		 property int Id;
+		 property int NumberOfSeats;
+		 property String^ Color;
+		 property String^ Model;
+		 property String^ Brand;
+		 property String^ Plate;//placa de carro
+		 property String^ Condition;// Condición del auto
+		 property bool Operative; //Indica el estado de operatividad del vehículo
+		 property bool SpareTire; //llanta de repuesto
+		 property array<Byte>^ Photo; // Matris de bytes
+		 */
 
-		/*UserFeedPage^ userFeedPage = gcnew UserFeedPage();
-		userFeedPage->MdiParent = this->MdiParent;
-		userFeedPage->Show();*///se quiere hacer una referencia circular
-}
-private: System::Void button_insertphoto_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	OpenFileDialog^ opnfd = gcnew OpenFileDialog();
-	opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
-	if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-	{
-		pb_photo->Image = gcnew Bitmap(opnfd->FileName);
+		 /*UserFeedPage^ userFeedPage = gcnew UserFeedPage();
+		 userFeedPage->MdiParent = this->MdiParent;
+		 userFeedPage->Show();*///se quiere hacer una referencia circular
 	}
-}
-private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button_insertphoto_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		OpenFileDialog^ opnfd = gcnew OpenFileDialog();
+		opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+		if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			pb_photo->Image = gcnew Bitmap(opnfd->FileName);
+		}
+	}
+	private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
-	ClearTextBoxes();
-	FillCombos();
- // limpia la imagen
+		ClearTextBoxes();
+		FillCombos();
+		// limpia la imagen
 
-	/*String^ model = textBox_model->Text;
-	String^ plate = textBox_plate->Text;
-	String^ brand = textBox_brand->Text;
-	String^ color = textBox_color->Text;
-	String^ _numberofseats = textBox_numberofseats->Text;
-	String^ sparetire = comboBox_sparetire->Text;
-	String^ operative = comboBox_operative->Text;
-	String^ condition = comboBox_condition->Text;*/
+		   /*String^ model = textBox_model->Text;
+		   String^ plate = textBox_plate->Text;
+		   String^ brand = textBox_brand->Text;
+		   String^ color = textBox_color->Text;
+		   String^ _numberofseats = textBox_numberofseats->Text;
+		   String^ sparetire = comboBox_sparetire->Text;
+		   String^ operative = comboBox_operative->Text;
+		   String^ condition = comboBox_condition->Text;*/
 
-}
+	}
 	private: System::Void UserAddVehiclePage_Load(System::Object^ sender, System::EventArgs^ e) {
 
 		FillCombos();
 
 	}
-};
+	};
 }

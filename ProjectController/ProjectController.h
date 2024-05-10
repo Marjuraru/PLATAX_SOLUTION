@@ -14,7 +14,7 @@ namespace ProjectController {
 	public:
 
 		static bool validateAccess(String^ email, String^ password);
-		
+
 		//Generar Id para Cada clase
 		static int GenerateProprietorId();
 		static int GenerateVehicleId();
@@ -25,14 +25,14 @@ namespace ProjectController {
 		static void CreateProprietor(Proprietor^ c);
 		static void UpdateProprietor(Proprietor^ c);
 		static void DeleteProprietor(int id);
-			//Mantenimiento de Vehicle
+		//Mantenimiento de Vehicle
 		static void CreateVehicle(Vehicle^ c);
 		static void UpdateVehicle(Vehicle^ c);
 		static void DeleteVehicle(int id);
 
 
-		//Búsqueda de una clase mediante su atributo
-			//Bússqueda de Cliente
+		//BÃºsqueda de una clase mediante su atributo
+			//BÃºssqueda de Cliente
 		static List<Proprietor^>^ QueryAllProprietors();
 		static Proprietor^ QueryProprietorById(int id);
 		static Proprietor^ QueryProprietorByDni(int dni);
@@ -42,7 +42,7 @@ namespace ProjectController {
 		static List<Proprietor^>^ QueryListProprietorByName(String^ name);
 		static List<Proprietor^>^ QueryListProprietorByLastname(String^ lastname);
 		static List<Proprietor^>^ QueryListProprietorByLicensetype(String^ licensetype);
-			//Búsqueda de Vehicle
+		//BÃºsqueda de Vehicle
 		static List<Vehicle^>^ QueryAllVehicles();
 		static Vehicle^ QueryVehicleById(int id);
 		static Vehicle^ QueryVehicleByPlate(String^ plate);
@@ -53,6 +53,6 @@ namespace ProjectController {
 		static List<Vehicle^>^ QueryListVehicleByCondition(String^ condition);
 		static List<Vehicle^>^ QueryListVehicleByOperative(bool operative);
 
-		
+
 	};
 }

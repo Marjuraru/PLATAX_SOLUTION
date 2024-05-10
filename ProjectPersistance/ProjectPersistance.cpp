@@ -1,7 +1,7 @@
 #include "pch.h"
 
 #include "ProjectPersistance.h"
- 
+
 
 using namespace System;
 using namespace System::IO;
@@ -125,7 +125,7 @@ void ProjectPersistance::Persistance::UpdateProprietor(Proprietor^ c)
             }
         }
         */
-    }        
+    }
     PersistBinaryFile(PROPRIETOR_FILE_BIN_NAME, ProprietorList);
 }
 
@@ -188,7 +188,7 @@ List<Proprietor^>^ ProjectPersistance::Persistance::QueryAllProprietors()
 Proprietor^ ProjectPersistance::Persistance::QueryProprietorById(int id)
 {
     ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
-    if (ProprietorList -> Count != 0) {
+    if (ProprietorList->Count != 0) {
         for (int i = 0; i < ProprietorList->Count; i++) {
             if (ProprietorList[i]->Id == id) {
                 return ProprietorList[i];
@@ -201,7 +201,7 @@ Proprietor^ ProjectPersistance::Persistance::QueryProprietorById(int id)
 Proprietor^ ProjectPersistance::Persistance::QueryProprietorByDni(int dni)
 {
     ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
-    if (ProprietorList -> Count != 0) {
+    if (ProprietorList->Count != 0) {
         for (int i = 0; i < ProprietorList->Count; i++) {
             if (ProprietorList[i]->Dni == dni) {
                 return ProprietorList[i];
@@ -234,7 +234,7 @@ Proprietor^ ProjectPersistance::Persistance::QueryProprietorByEmail(String^ emai
 Proprietor^ ProjectPersistance::Persistance::QueryProprietorByLicenseName(String^ licensename)
 {
     ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
-    if (ProprietorList -> Count != 0) {
+    if (ProprietorList->Count != 0) {
         for (int i = 0; i < ProprietorList->Count; i++) {
             if (ProprietorList[i]->Licensename == licensename) {
                 return ProprietorList[i];
@@ -251,7 +251,7 @@ List<Proprietor^>^ ProjectPersistance::Persistance::QueryListProprietorByName(St
     List<Proprietor^>^ Proprietors = gcnew List<Proprietor^>(); //lista de clientes nueva
     Proprietors = nullptr;
 
-    if (ProprietorList -> Count != 0) {
+    if (ProprietorList->Count != 0) {
         for (int i = 0; i < ProprietorList->Count; i++) {
             if (ProprietorList[i]->Name == name) {
                 Proprietors->Add(ProprietorList[i]);
@@ -269,7 +269,7 @@ List<Proprietor^>^ ProjectPersistance::Persistance::QueryListProprietorByLastnam
     List<Proprietor^>^ Proprietors = gcnew List<Proprietor^>();
     Proprietors = nullptr;
 
-    if (ProprietorList -> Count != 0) {
+    if (ProprietorList->Count != 0) {
         for (int i = 0; i < ProprietorList->Count; i++) {
             if (ProprietorList[i]->Lastname == lastname) {
                 Proprietors->Add(ProprietorList[i]);
@@ -286,7 +286,7 @@ List<Proprietor^>^ ProjectPersistance::Persistance::QueryListProprietorByLicense
     List<Proprietor^>^ Proprietors = gcnew List<Proprietor^>();
     Proprietors = nullptr;
 
-    if (ProprietorList  -> Count != 0) {
+    if (ProprietorList->Count != 0) {
         for (int i = 0; i < ProprietorList->Count; i++) {
             if (ProprietorList[i]->Licensetype == licensetype) {
                 Proprietors->Add(ProprietorList[i]);
@@ -304,7 +304,7 @@ List<Vehicle^>^ ProjectPersistance::Persistance::QueryAllVehicles()
 Vehicle^ ProjectPersistance::Persistance::QueryVehicleById(int id)
 {
     VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
-    if (VehicleList-> Count != 0) {
+    if (VehicleList->Count != 0) {
         for (int i = 0; i < VehicleList->Count; i++) {
             if (VehicleList[i]->Id == id) {
                 return VehicleList[i];
@@ -315,9 +315,9 @@ Vehicle^ ProjectPersistance::Persistance::QueryVehicleById(int id)
 }
 
 Vehicle^ ProjectPersistance::Persistance::QueryVehicleByPlate(String^ plate)
-{   
+{
     VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
-    if (VehicleList-> Count != 0) {  //Count < 1 (para List)= nullptr (para no List)
+    if (VehicleList->Count != 0) {  //Count < 1 (para List)= nullptr (para no List)
         for (int i = 0; i < VehicleList->Count; i++) {
             if (VehicleList[i]->Plate == plate) {
                 return VehicleList[i];
@@ -329,7 +329,7 @@ Vehicle^ ProjectPersistance::Persistance::QueryVehicleByPlate(String^ plate)
 
 List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehiclesByProprietorId(int Id)
 {
-    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME); //lista de almacenamiento total
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME); //lista de almacenamiento total
 
     List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
     /*Vehicles = nullptr; */
@@ -351,7 +351,7 @@ List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByBrand(String^
     List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
     /*Vehicles = nullptr; */
 
-    if (VehicleList-> Count != 0) {
+    if (VehicleList->Count != 0) {
         for (int i = 0; i < VehicleList->Count; i++) {
             if (VehicleList[i]->Brand == brand) {
                 Vehicles->Add(VehicleList[i]);
@@ -367,8 +367,8 @@ List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByColor(String^
 
     List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
     //Vehicles = nullptr;
-     
-    if (VehicleList-> Count != 0) {
+
+    if (VehicleList->Count != 0) {
         for (int i = 0; i < VehicleList->Count; i++) {
             if (VehicleList[i]->Color == color) {
                 Vehicles->Add(VehicleList[i]);
@@ -385,7 +385,7 @@ List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByCondition(Str
     List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
     //Vehicles = nullptr;
 
-    if (VehicleList-> Count != 0) {
+    if (VehicleList->Count != 0) {
         for (int i = 0; i < VehicleList->Count; i++) {
             if (VehicleList[i]->Condition == condition) {
                 Vehicles->Add(VehicleList[i]);
@@ -402,7 +402,7 @@ List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByOperative(boo
     List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
     //Vehicles = nullptr;
 
-    if (VehicleList-> Count != 0) {
+    if (VehicleList->Count != 0) {
         for (int i = 0; i < VehicleList->Count; i++) {
             if (VehicleList[i]->Operative == operative) {
                 Vehicles->Add(VehicleList[i]);
@@ -411,5 +411,4 @@ List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByOperative(boo
     }
     return Vehicles;
 }
-
 

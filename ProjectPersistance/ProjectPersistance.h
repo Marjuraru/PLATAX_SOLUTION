@@ -30,7 +30,7 @@ namespace ProjectPersistance {
         static void CreateProprietor(Proprietor^ c);
         static void UpdateProprietor(Proprietor^ c);
         static void DeleteProprietor(int id);
-            // Metodos de mantenimiento del Car - CRUD
+        // Metodos de mantenimiento del Car - CRUD
         static void CreateVehicle(Vehicle^ c);
         static void UpdateVehicle(Vehicle^ c);
         static void DeleteVehicle(int id);
@@ -47,7 +47,7 @@ namespace ProjectPersistance {
         static List<Proprietor^>^ QueryListProprietorByName(String^ name);//*
         static List<Proprietor^>^ QueryListProprietorByLastname(String^ lastname);
         static List<Proprietor^>^ QueryListProprietorByLicensetype(String^ licensetype);
-             //Búsqueda de Car
+        //Búsqueda de Car
         static List<Vehicle^>^ QueryAllVehicles();
         static Vehicle^ QueryVehicleById(int id);
         static Vehicle^ QueryVehicleByPlate(String^ plate);
@@ -59,3 +59,4 @@ namespace ProjectPersistance {
         static List<Vehicle^>^ QueryListVehicleByOperative(bool operative);
     };
 }
+
