@@ -412,3 +412,4 @@ List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByOperative(boo
     return Vehicles;
 }
 
+//cambio
