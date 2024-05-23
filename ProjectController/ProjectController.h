@@ -18,13 +18,18 @@ namespace ProjectController {
 		//Generar Id para Cada clase
 		static int GenerateProprietorId();
 		static int GenerateVehicleId();
+		static int GenerateClientId();
 
 
 		//Mantenimiento de las Clases
-			//Mantenimiento de Client
+			//Mantenimiento de Proprietor
 		static void CreateProprietor(Proprietor^ c);
 		static void UpdateProprietor(Proprietor^ c);
 		static void DeleteProprietor(int id);
+		//Mantenimiento de Client
+		static void CreateClient(Client^ c);
+		static void UpdateClient(Client^ c);
+		static void DeleteClient(int id);
 		//Mantenimiento de Vehicle
 		static void CreateVehicle(Vehicle^ c);
 		static void UpdateVehicle(Vehicle^ c);
@@ -32,16 +37,24 @@ namespace ProjectController {
 
 
 		//Búsqueda de una clase mediante su atributo
-			//Bússqueda de Cliente
+			//Bússqueda de Proprietor
 		static List<Proprietor^>^ QueryAllProprietors();
 		static Proprietor^ QueryProprietorById(int id);
 		static Proprietor^ QueryProprietorByDni(int dni);
 		static Proprietor^ QueryProprietorByEmail(String^ email);
-		static Proprietor^ QueryProprietorByLicenseName(String^ licensename);
 
 		static List<Proprietor^>^ QueryListProprietorByName(String^ name);
 		static List<Proprietor^>^ QueryListProprietorByLastname(String^ lastname);
-		static List<Proprietor^>^ QueryListProprietorByLicensetype(String^ licensetype);
+		//Bússqueda de Cliente
+		static List<Client^>^ QueryAllClients();
+		static Client^ QueryClientById(int id);
+		static Client^ QueryClientByDni(int dni);
+		static Client^ QueryClientByEmail(String^ email);
+		static Client^ QueryClientByLicenseName(String^ licensename);
+
+		static List<Client^>^ QueryListClientByName(String^ name);
+		static List<Client^>^ QueryListClientByLastname(String^ lastname);
+		static List<Client^>^ QueryListClientByLicensetype(String^ licensetype);
 		//Búsqueda de Vehicle
 		static List<Vehicle^>^ QueryAllVehicles();
 		static Vehicle^ QueryVehicleById(int id);

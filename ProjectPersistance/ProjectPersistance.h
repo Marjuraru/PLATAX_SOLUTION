@@ -11,10 +11,12 @@ namespace ProjectPersistance {
         static List<User^>^ UserList = gcnew List<User^>(); //no necesitamos 
         static List<Proprietor^>^ ProprietorList = gcnew List<Proprietor^>();
         static List<Vehicle^>^ VehicleList = gcnew List<Vehicle^>();
+        static List<Client^>^ ClientList = gcnew List<Client^>();
 
     public:                     //(1°)
         static String^ PROPRIETOR_FILE_BIN_NAME = "Proprietor.bin";
         static String^ VEHICLE_FILE_BIN_NAME = "Vehicle.bin";
+        static String^ CLIENT_FILE_BIN_NAME = "Client.bin";
 
 
         //Persistencia binaria
@@ -24,12 +26,16 @@ namespace ProjectPersistance {
         //Generar Id para cada clase (comenzar 1° con esto)
         static int GenerateProprietorId();
         static int GenerateVehicleId();
+        static int GenerateClientId();
 
-        // Metodos de mantenimiento del Cliente - CRUD (2°)
-            // Metodos de mantenimiento del Cliente - CRUD
+        // Metodos de mantenimiento del Proprietario - CRUD
         static void CreateProprietor(Proprietor^ c);
         static void UpdateProprietor(Proprietor^ c);
         static void DeleteProprietor(int id);
+        // Metodos de mantenimiento del Cliente - CRUD
+        static void CreateClient(Client^ c);
+        static void UpdateClient(Client^ c);
+        static void DeleteClient(int id);
         // Metodos de mantenimiento del Car - CRUD
         static void CreateVehicle(Vehicle^ c);
         static void UpdateVehicle(Vehicle^ c);
@@ -37,16 +43,24 @@ namespace ProjectPersistance {
 
 
         //Búsqueda de una clase mediante su atributo (2°)
-            //BÚsqueda de Cliente
+            //Bússqueda de Proprietor
         static List<Proprietor^>^ QueryAllProprietors();
-        static Proprietor^ QueryProprietorById(int id);//*
+        static Proprietor^ QueryProprietorById(int id);
         static Proprietor^ QueryProprietorByDni(int dni);
         static Proprietor^ QueryProprietorByEmail(String^ email);
-        static Proprietor^ QueryProprietorByLicenseName(String^ licensename);
 
-        static List<Proprietor^>^ QueryListProprietorByName(String^ name);//*
+        static List<Proprietor^>^ QueryListProprietorByName(String^ name);
         static List<Proprietor^>^ QueryListProprietorByLastname(String^ lastname);
-        static List<Proprietor^>^ QueryListProprietorByLicensetype(String^ licensetype);
+        //Bússqueda de Cliente
+        static List<Client^>^ QueryAllClients();
+        static Client^ QueryClientById(int id);
+        static Client^ QueryClientByDni(int dni);
+        static Client^ QueryClientByEmail(String^ email);
+        static Client^ QueryClientByLicenseName(String^ licensename);
+
+        static List<Client^>^ QueryListClientByName(String^ name);
+        static List<Client^>^ QueryListClientByLastname(String^ lastname);
+        static List<Client^>^ QueryListClientByLicensetype(String^ licensetype);
         //Búsqueda de Car
         static List<Vehicle^>^ QueryAllVehicles();
         static Vehicle^ QueryVehicleById(int id);

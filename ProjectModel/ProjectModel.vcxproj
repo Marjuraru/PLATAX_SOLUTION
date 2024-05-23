@@ -121,6 +121,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Adm.h" />
+    <ClInclude Include="Client.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="Proprietor.h" />
     <ClInclude Include="Commendation.h" />
@@ -137,6 +138,7 @@
   <ItemGroup>
     <ClCompile Include="Adm.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Client.cpp" />
     <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="Proprietor.cpp" />
     <ClCompile Include="Commendation.cpp" />
