@@ -561,7 +561,7 @@ namespace ProjectView {
 	private: System::Void button_insertphoto_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		OpenFileDialog^ opnfd = gcnew OpenFileDialog();
-		opnfd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+		opnfd->Filter = "Image Files (*.jpg;*.jpeg;*.gif;)|*.jpg;*.jpeg;*.gif;";
 		if (opnfd->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			pb_photo->Image = gcnew Bitmap(opnfd->FileName);

@@ -371,6 +371,7 @@ namespace ProjectView {
 			this->button_color->Tag = L"";
 			this->button_color->Text = L"BUSCAR";
 			this->button_color->UseVisualStyleBackColor = true;
+			this->button_color->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_color_Click);
 			// 
 			// button_operative
 			// 
@@ -383,6 +384,7 @@ namespace ProjectView {
 			this->button_operative->Tag = L"";
 			this->button_operative->Text = L"BUSCAR";
 			this->button_operative->UseVisualStyleBackColor = true;
+			this->button_operative->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_operative_Click);
 			// 
 			// button_brand
 			// 
@@ -395,6 +397,7 @@ namespace ProjectView {
 			this->button_brand->Tag = L"";
 			this->button_brand->Text = L"BUSCAR";
 			this->button_brand->UseVisualStyleBackColor = true;
+			this->button_brand->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_brand_Click);
 			// 
 			// textBox_id
 			// 
@@ -417,6 +420,7 @@ namespace ProjectView {
 			this->button_id->Tag = L"";
 			this->button_id->Text = L"BUSCAR";
 			this->button_id->UseVisualStyleBackColor = true;
+			this->button_id->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_id_Click);
 			// 
 			// button_clearall
 			// 
@@ -602,6 +606,7 @@ namespace ProjectView {
 			this->button_plate->Tag = L"";
 			this->button_plate->Text = L"BUSCAR";
 			this->button_plate->UseVisualStyleBackColor = true;
+			this->button_plate->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_plate_Click);
 			// 
 			// label19
 			// 
