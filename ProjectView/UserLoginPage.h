@@ -236,6 +236,7 @@ namespace ProjectView {
 			MessageBox::Show("Es necesario que se completen todos los datos de registro");
 			return;
 		}
+		////////////////////////////////////////////////
 
 		Proprietor^ c = Controller::QueryProprietorByEmail(email);
 
