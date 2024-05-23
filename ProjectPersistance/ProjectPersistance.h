@@ -12,12 +12,13 @@ namespace ProjectPersistance {
         static List<Proprietor^>^ ProprietorList = gcnew List<Proprietor^>();
         static List<Vehicle^>^ VehicleList = gcnew List<Vehicle^>();
         static List<Client^>^ ClientList = gcnew List<Client^>();
+        static List<Reclamation^>^ ReclamationList = gcnew List<Reclamation^>();
 
     public:                     //(1°)
         static String^ PROPRIETOR_FILE_BIN_NAME = "Proprietor.bin";
         static String^ VEHICLE_FILE_BIN_NAME = "Vehicle.bin";
         static String^ CLIENT_FILE_BIN_NAME = "Client.bin";
-
+        static String^ RECLAMATION_FILE_BIN_NAME = "reclamation.bin";
 
         //Persistencia binaria
         static void PersistBinaryFile(String^ fileName, Object^ persistObject); //metodo de escritura/creación de archivos binarios
@@ -27,6 +28,7 @@ namespace ProjectPersistance {
         static int GenerateProprietorId();
         static int GenerateVehicleId();
         static int GenerateClientId();
+        static int GenerateReclamationId();
 
         // Metodos de mantenimiento del Proprietario - CRUD
         static void CreateProprietor(Proprietor^ c);
@@ -40,6 +42,10 @@ namespace ProjectPersistance {
         static void CreateVehicle(Vehicle^ c);
         static void UpdateVehicle(Vehicle^ c);
         static void DeleteVehicle(int id);
+        // Metodos de mantenimiento del Reclamation - CRUD
+        static void CreateReclamation(Reclamation^ c);
+        static void UpdateReclamation(Reclamation^ c);
+        static void DeleteReclamation(int id);
 
 
         //Búsqueda de una clase mediante su atributo (2°)
@@ -71,6 +77,17 @@ namespace ProjectPersistance {
         static List<Vehicle^>^ QueryListVehicleByColor(String^ color);
         static List<Vehicle^>^ QueryListVehicleByCondition(String^ condition);
         static List<Vehicle^>^ QueryListVehicleByOperative(bool operative);
+
+        //Búsqueda de Reclamation
+        static List<Reclamation^>^ QueryAllReclamations();
+        static Reclamation^ QueryReclamationById(int id);
+        static Reclamation^ QueryReclamationByTitle(String^ title);
+
+        static List<Reclamation^>^ QueryListReclamationByType(String^ type);
+        static List<Reclamation^>^ QueryListReclamationByCategory(String^ category);
+        static List<Reclamation^>^ QueryListReclamationByState(String^ state);
+        static List<Reclamation^>^ QueryListReclamationByDate(DateTime systemdate);
+
     };
 }
 

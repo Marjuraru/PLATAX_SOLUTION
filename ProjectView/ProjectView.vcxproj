@@ -130,6 +130,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ClientFeedPage.cpp" />
     <ClCompile Include="UserAddVehiclePage.cpp" />
     <ClCompile Include="UserFeedPage.cpp" />
     <ClCompile Include="UserHelpPage.cpp" />
@@ -142,6 +143,9 @@
     <ClCompile Include="UserRegisterPage.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClientFeedPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="UserAddVehiclePage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -174,6 +178,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ClientFeedPage.resx">
+      <DependentUpon>ClientFeedPage.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserAddVehiclePage.resx">
       <DependentUpon>UserAddVehiclePage.h</DependentUpon>
     </EmbeddedResource>
