@@ -23,8 +23,6 @@ namespace ProjectView {
 		{
 			InitializeComponent();
 			//
-			//TODO: agregar código de constructor aquí
-			//
 		}
 
 	protected:
