@@ -34,6 +34,11 @@ int ProjectController::Controller::GenerateReclamationId()
 	return ProjectPersistance::Persistance::GenerateReclamationId();
 }
 
+int ProjectController::Controller::GenerateAdmId()
+{
+	return 0;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 void ProjectController::Controller::CreateProprietor(Proprietor^ c)
 {
@@ -52,6 +57,10 @@ void ProjectController::Controller::CreateVehicle(Vehicle^ c)
 void ProjectController::Controller::CreateReclamation(Reclamation^ c)
 {
 	return ProjectPersistance::Persistance::CreateReclamation(c);
+}
+void ProjectController::Controller::CreateAdm(Adm^ c)
+{
+	return ProjectPersistance::Persistance::CreateAdm(c);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -76,6 +85,11 @@ void ProjectController::Controller::UpdateReclamation(Reclamation^ c)
 	return ProjectPersistance::Persistance::UpdateReclamation(c);
 }
 
+void ProjectController::Controller::UpdateAdm(Adm^ c)
+{
+	return ProjectPersistance::Persistance::UpdateAdm(c);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 void ProjectController::Controller::DeleteProprietor(int id)
@@ -97,6 +111,12 @@ void ProjectController::Controller::DeleteReclamation(int id)
 {
 	return ProjectPersistance::Persistance::DeleteReclamation(id);
 }
+
+void ProjectController::Controller::DeleteAdm(int id)
+{
+	return ProjectPersistance::Persistance::DeleteAdm(id);
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 List<Proprietor^>^ ProjectController::Controller::QueryAllProprietors()

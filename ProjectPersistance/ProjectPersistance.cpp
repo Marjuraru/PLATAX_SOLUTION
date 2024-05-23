@@ -49,6 +49,9 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
             else if (fileName->Equals(RECLAMATION_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
+            else if (fileName->Equals(ADM_FILE_BIN_NAME)) {
+                result = formatter->Deserialize(file);
+            }
         }
     }
     catch (Exception^ ex) {
@@ -120,6 +123,21 @@ int ProjectPersistance::Persistance::GenerateReclamationId()
     return newID;
 }
 
+int ProjectPersistance::Persistance::GenerateAdmId()
+{
+    AdmList = (List< Adm^>^)Persistance::LoadBinaryFile(ADM_FILE_BIN_NAME);
+    int newID = 1;
+    if (AdmList != nullptr) {
+        // Busca el último ID utilizado y elige un nuevo ID que sea único
+        for each (Adm ^ adm in AdmList) {
+            if (adm->Id >= newID) {
+                newID = adm->Id + 1;
+            }
+        }
+    }
+    return newID;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 void ProjectPersistance::Persistance::CreateProprietor(Proprietor^ c)
 {
@@ -166,6 +184,16 @@ void ProjectPersistance::Persistance::CreateReclamation(Reclamation^ c)
     PersistBinaryFile(RECLAMATION_FILE_BIN_NAME, ReclamationList);
 }
 
+void ProjectPersistance::Persistance::CreateAdm(Adm^ c)
+{
+    AdmList = (List<Adm^>^)Persistance::LoadBinaryFile(ADM_FILE_BIN_NAME);
+    if (AdmList == nullptr) {
+        // Si la lista no se cargó correctamente, crea una nueva lista
+        AdmList = gcnew List<Adm^>();
+    }
+    AdmList->Add(c);
+    PersistBinaryFile(ADM_FILE_BIN_NAME, AdmList);
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 void ProjectPersistance::Persistance::UpdateProprietor(Proprietor^ c)
@@ -234,6 +262,26 @@ void ProjectPersistance::Persistance::UpdateReclamation(Reclamation^ c)
     PersistBinaryFile(RECLAMATION_FILE_BIN_NAME, ReclamationList);
 }
 
+void ProjectPersistance::Persistance::UpdateAdm(Adm^ c)
+{
+    AdmList = (List<Adm^>^)Persistance::LoadBinaryFile(ADM_FILE_BIN_NAME);
+    if (AdmList != nullptr) {
+        for (int i = 0; i < AdmList->Count; i++) {
+            if (c->Id == AdmList[i]->Id) {
+                AdmList[i] = c;
+            }
+        }
+        /*
+        for each (Client^ client in ClientList){
+            if (c->Id == ClientList[i]->Id) {
+                ClientList[i] = c;
+            }
+        }
+        */
+    }
+    PersistBinaryFile(PROPRIETOR_FILE_BIN_NAME, ProprietorList);
+}
+
 /// ///////////////////////////////////////////////////////////////////////////////////////////////////////
 void ProjectPersistance::Persistance::DeleteProprietor(int id)
 {
@@ -288,6 +336,20 @@ void ProjectPersistance::Persistance::DeleteReclamation(int id)
         }
         // Guardar la lista actualizada en el archivo binario
         PersistBinaryFile(RECLAMATION_FILE_BIN_NAME, ReclamationList);
+    }
+}
+
+void ProjectPersistance::Persistance::DeleteAdm(int id)
+{
+    AdmList = (List<Adm^>^)Persistance::LoadBinaryFile(ADM_FILE_BIN_NAME);
+    if (AdmList != nullptr) {
+        for (int i = AdmList->Count - 1; i >= 0; i--) {
+            if (id == AdmList[i]->Id) {
+                AdmList->RemoveAt(i);
+            }
+        }
+        // Guardar la lista actualizada en el archivo binario
+        PersistBinaryFile(ADM_FILE_BIN_NAME, AdmList);
     }
 }
 

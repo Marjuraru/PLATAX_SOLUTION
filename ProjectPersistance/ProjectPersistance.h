@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace ProjectModel; // Agrega esta línea para importar el espacio de nombres que contiene 'User'
 
-namespace ProjectPersistance {
+namespace ProjectPersistance { //marcelos version
     public ref class Persistance
     {
     private:                    //(2°)
@@ -13,12 +13,13 @@ namespace ProjectPersistance {
         static List<Vehicle^>^ VehicleList = gcnew List<Vehicle^>();
         static List<Client^>^ ClientList = gcnew List<Client^>();
         static List<Reclamation^>^ ReclamationList = gcnew List<Reclamation^>();
-
+        static List<Adm^>^ AdmList = gcnew List<Adm^>();//yo ////////////
     public:                     //(1°)
         static String^ PROPRIETOR_FILE_BIN_NAME = "Proprietor.bin";
         static String^ VEHICLE_FILE_BIN_NAME = "Vehicle.bin";
         static String^ CLIENT_FILE_BIN_NAME = "Client.bin";
         static String^ RECLAMATION_FILE_BIN_NAME = "reclamation.bin";
+        static String^ ADM_FILE_BIN_NAME = "Adm.bin"; //yo ///////////////
 
         //Persistencia binaria
         static void PersistBinaryFile(String^ fileName, Object^ persistObject); //metodo de escritura/creación de archivos binarios
@@ -29,6 +30,7 @@ namespace ProjectPersistance {
         static int GenerateVehicleId();
         static int GenerateClientId();
         static int GenerateReclamationId();
+        static int GenerateAdmId(); //yo /////////////
 
         // Metodos de mantenimiento del Proprietario - CRUD
         static void CreateProprietor(Proprietor^ c);
@@ -46,6 +48,10 @@ namespace ProjectPersistance {
         static void CreateReclamation(Reclamation^ c);
         static void UpdateReclamation(Reclamation^ c);
         static void DeleteReclamation(int id);
+        //Metodos de mantenimiento del Admin - CRUD  - yo /////////////////////////
+        static void CreateAdm(Adm^ c);
+        static void UpdateAdm(Adm^ c);
+        static void DeleteAdm(int id);
 
 
         //Búsqueda de una clase mediante su atributo (2°)

@@ -8,7 +8,7 @@ using namespace System::Xml::Serialization;
 using namespace System::IO;
 using namespace System::Runtime::Serialization::Formatters::Binary;
 
-namespace ProjectController {
+namespace ProjectController { //marcelos version
 	public ref class Controller
 	{
 	public:
@@ -20,6 +20,7 @@ namespace ProjectController {
 		static int GenerateVehicleId();
 		static int GenerateClientId();
 		static int GenerateReclamationId();
+		static int GenerateAdmId();
 
 		//Mantenimiento de las Clases
 			//Mantenimiento de Proprietor
@@ -38,6 +39,10 @@ namespace ProjectController {
 		static void CreateReclamation(Reclamation^ c);
 		static void UpdateReclamation(Reclamation^ c);
 		static void DeleteReclamation(int id);
+		//Mantenimiento de Adm
+		static void CreateAdm(Adm^ c);
+		static void UpdateAdm(Adm^ c);
+		static void DeleteAdm(int id);
 
 
 		//Búsqueda de una clase mediante su atributo
