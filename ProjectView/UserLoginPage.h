@@ -237,6 +237,7 @@ namespace ProjectView {
 			return;
 		}
 		////////////////////////////////////////////////
+		//SOY PINGUEL23 Y ME GUSTA EL 69
 
 		Proprietor^ c = Controller::QueryProprietorByEmail(email);
 
