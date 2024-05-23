@@ -43,6 +43,12 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
             else if (fileName->Equals(VEHICLE_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
+            else if (fileName->Equals(CLIENT_FILE_BIN_NAME)) {
+                result = formatter->Deserialize(file);
+            }
+            else if (fileName->Equals(RECLAMATION_FILE_BIN_NAME)) {
+                result = formatter->Deserialize(file);
+            }
         }
     }
     catch (Exception^ ex) {
@@ -99,6 +105,21 @@ int ProjectPersistance::Persistance::GenerateClientId()
     return newID;
 }
 
+int ProjectPersistance::Persistance::GenerateReclamationId()
+{
+    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
+    int newID = 1;
+    if (ReclamationList != nullptr) {
+        // Busca el último ID utilizado y elige un nuevo ID que sea único
+        for each (Reclamation ^ reclamation in ReclamationList) {
+            if (reclamation->Id >= newID) {
+                newID = reclamation->Id + 1;
+            }
+        }
+    }
+    return newID;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 void ProjectPersistance::Persistance::CreateProprietor(Proprietor^ c)
 {
@@ -132,6 +153,17 @@ void ProjectPersistance::Persistance::CreateClient(Client^ c)
     }
     ClientList->Add(c);
     PersistBinaryFile(CLIENT_FILE_BIN_NAME, ClientList);
+}
+
+void ProjectPersistance::Persistance::CreateReclamation(Reclamation^ c)
+{
+    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
+    if (ReclamationList == nullptr) {
+        // Si la lista no se cargó correctamente, crea una nueva lista
+        ReclamationList = gcnew List<Reclamation^>();
+    }
+    ReclamationList->Add(c);
+    PersistBinaryFile(RECLAMATION_FILE_BIN_NAME, ReclamationList);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -189,6 +221,19 @@ void ProjectPersistance::Persistance::UpdateClient(Client^ c)
     PersistBinaryFile(PROPRIETOR_FILE_BIN_NAME, ProprietorList);
 }
 
+void ProjectPersistance::Persistance::UpdateReclamation(Reclamation^ c)
+{
+    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
+    if (ReclamationList != nullptr) {
+        for (int i = 0; i < ReclamationList->Count; i++) {
+            if (c->Id == ReclamationList[i]->Id) {
+                ReclamationList[i] = c;
+            }
+        }
+    }
+    PersistBinaryFile(RECLAMATION_FILE_BIN_NAME, ReclamationList);
+}
+
 /// ///////////////////////////////////////////////////////////////////////////////////////////////////////
 void ProjectPersistance::Persistance::DeleteProprietor(int id)
 {
@@ -229,6 +274,20 @@ void ProjectPersistance::Persistance::DeleteClient(int id)
         }
         // Guardar la lista actualizada en el archivo binario
         PersistBinaryFile(CLIENT_FILE_BIN_NAME, ClientList);
+    }
+}
+
+void ProjectPersistance::Persistance::DeleteReclamation(int id)
+{
+    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
+    if (ReclamationList != nullptr) {
+        for (int i = ReclamationList->Count - 1; i >= 0; i--) {
+            if (id == ReclamationList[i]->Id) {
+                ReclamationList->RemoveAt(i);
+            }
+        }
+        // Guardar la lista actualizada en el archivo binario
+        PersistBinaryFile(RECLAMATION_FILE_BIN_NAME, ReclamationList);
     }
 }
 
@@ -561,6 +620,106 @@ List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByOperative(boo
         }
     }
     return Vehicles;
+}
+
+List<Reclamation^>^ ProjectPersistance::Persistance::QueryAllReclamations()
+{
+    return ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
+}
+
+Reclamation^ ProjectPersistance::Persistance::QueryReclamationById(int id)
+{
+    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
+    if (ReclamationList->Count != 0) {
+        for (int i = 0; i < ReclamationList->Count; i++) {
+            if (ReclamationList[i]->Id == id) {
+                return ReclamationList[i];
+            }
+        }
+    }
+    return nullptr;
+}
+
+Reclamation^ ProjectPersistance::Persistance::QueryReclamationByTitle(String^ title)
+{
+    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME);
+    if (ReclamationList->Count != 0) {
+        for (int i = 0; i < ReclamationList->Count; i++) {
+            if (ReclamationList[i]->Title == title) {
+                return ReclamationList[i];
+            }
+        }
+    }
+    return nullptr;
+}
+
+List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByType(String^ type)
+{
+    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
+
+    List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
+    //Reclamations = nullptr;
+
+    if (ReclamationList->Count != 0) {
+        for (int i = 0; i < ReclamationList->Count; i++) {
+            if (ReclamationList[i]->Type == type) {
+                Reclamations->Add(ReclamationList[i]);
+            }
+        }
+    }
+    return Reclamations;
+}
+
+
+List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByCategory(String^ category)
+{
+    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
+
+    List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
+    //Reclamations = nullptr;
+
+    if (ReclamationList->Count != 0) {
+        for (int i = 0; i < ReclamationList->Count; i++) {
+            if (ReclamationList[i]->Category == category) {
+                Reclamations->Add(ReclamationList[i]);
+            }
+        }
+    }
+    return Reclamations;
+}
+
+List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByState(String^ state)
+{
+    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
+
+    List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
+    //Reclamations = nullptr;
+
+    if (ReclamationList->Count != 0) {
+        for (int i = 0; i < ReclamationList->Count; i++) {
+            if (ReclamationList[i]->State == state) {
+                Reclamations->Add(ReclamationList[i]);
+            }
+        }
+    }
+    return Reclamations;
+}
+
+List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByDate(DateTime systemdate)
+{
+    ReclamationList = (List<Reclamation^>^)Persistance::LoadBinaryFile(RECLAMATION_FILE_BIN_NAME); //lista de almacenamiento total
+
+    List<Reclamation^>^ Reclamations = gcnew List<Reclamation^>();
+    //Reclamations = nullptr;
+
+    if (ReclamationList->Count != 0) {
+        for (int i = 0; i < ReclamationList->Count; i++) {
+            if (ReclamationList[i]->SystemDate.Date == systemdate.Date) {
+                Reclamations->Add(ReclamationList[i]);
+            }
+        }
+    }
+    return Reclamations;
 }
 
 //cambio

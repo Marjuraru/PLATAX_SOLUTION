@@ -19,7 +19,7 @@ namespace ProjectController {
 		static int GenerateProprietorId();
 		static int GenerateVehicleId();
 		static int GenerateClientId();
-
+		static int GenerateReclamationId();
 
 		//Mantenimiento de las Clases
 			//Mantenimiento de Proprietor
@@ -34,6 +34,10 @@ namespace ProjectController {
 		static void CreateVehicle(Vehicle^ c);
 		static void UpdateVehicle(Vehicle^ c);
 		static void DeleteVehicle(int id);
+		// Metodos de mantenimiento del Reclamation - CRUD
+		static void CreateReclamation(Reclamation^ c);
+		static void UpdateReclamation(Reclamation^ c);
+		static void DeleteReclamation(int id);
 
 
 		//Búsqueda de una clase mediante su atributo
@@ -66,6 +70,15 @@ namespace ProjectController {
 		static List<Vehicle^>^ QueryListVehicleByCondition(String^ condition);
 		static List<Vehicle^>^ QueryListVehicleByOperative(bool operative);
 
+		//Búsqueda de Reclamation
+		static List<Reclamation^>^ QueryAllReclamations();
+		static Reclamation^ QueryReclamationById(int id);
+		static Reclamation^ QueryReclamationByTitle(String^ title);
+
+		static List<Reclamation^>^ QueryListReclamationByType(String^ type);
+		static List<Reclamation^>^ QueryListReclamationByCategory(String^ category);
+		static List<Reclamation^>^ QueryListReclamationByState(String^ state);
+		static List<Reclamation^>^ QueryListReclamationByDate(DateTime date);
 
 	};
 }

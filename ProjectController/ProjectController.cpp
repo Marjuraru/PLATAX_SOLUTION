@@ -29,6 +29,11 @@ int ProjectController::Controller::GenerateVehicleId()
 	return ProjectPersistance::Persistance::GenerateVehicleId();
 }
 
+int ProjectController::Controller::GenerateReclamationId()
+{
+	return ProjectPersistance::Persistance::GenerateReclamationId();
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 void ProjectController::Controller::CreateProprietor(Proprietor^ c)
 {
@@ -42,6 +47,11 @@ void ProjectController::Controller::CreateClient(Client^ c)
 void ProjectController::Controller::CreateVehicle(Vehicle^ c)
 {
 	return ProjectPersistance::Persistance::CreateVehicle(c);
+}
+
+void ProjectController::Controller::CreateReclamation(Reclamation^ c)
+{
+	return ProjectPersistance::Persistance::CreateReclamation(c);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -61,6 +71,11 @@ void ProjectController::Controller::UpdateVehicle(Vehicle^ c)
 	return ProjectPersistance::Persistance::UpdateVehicle(c);
 }
 
+void ProjectController::Controller::UpdateReclamation(Reclamation^ c)
+{
+	return ProjectPersistance::Persistance::UpdateReclamation(c);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 void ProjectController::Controller::DeleteProprietor(int id)
@@ -76,6 +91,11 @@ void ProjectController::Controller::DeleteVehicle(int id)
 void ProjectController::Controller::DeleteClient(int id)
 {
 	return ProjectPersistance::Persistance::DeleteClient(id);
+}
+
+void ProjectController::Controller::DeleteReclamation(int id)
+{
+	return ProjectPersistance::Persistance::DeleteReclamation(id);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -196,8 +216,42 @@ List<Vehicle^>^ ProjectController::Controller::QueryListVehicleByOperative(bool 
 {
 	return ProjectPersistance::Persistance::QueryListVehicleByOperative(operative);
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+List<Reclamation^>^ ProjectController::Controller::QueryAllReclamations()
+{
+	return ProjectPersistance::Persistance::QueryAllReclamations();
 
+}
+//
+Reclamation^ ProjectController::Controller::QueryReclamationById(int id)
+{
+	return ProjectPersistance::Persistance::QueryReclamationById(id);
+}
 
+Reclamation^ ProjectController::Controller::QueryReclamationByTitle(String^ title)
+{
+	return ProjectPersistance::Persistance::QueryReclamationByTitle(title);
+}
+
+List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByType(String^ type)
+{
+	return ProjectPersistance::Persistance::QueryListReclamationByType(type);
+}
+
+List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByCategory(String^ category)
+{
+	return ProjectPersistance::Persistance::QueryListReclamationByCategory(category);
+}
+
+List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByState(String^ state)
+{
+	return ProjectPersistance::Persistance::QueryListReclamationByState(state);
+}
+
+List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByDate(DateTime systemdate)
+{
+	return ProjectPersistance::Persistance::QueryListReclamationByDate(systemdate);
+}
 
 
 
