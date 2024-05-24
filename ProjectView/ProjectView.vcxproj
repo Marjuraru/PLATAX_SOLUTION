@@ -189,6 +189,9 @@
     <EmbeddedResource Include="ClientFeedPage.resx">
       <DependentUpon>ClientFeedPage.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientHelp.resx">
+      <DependentUpon>ClientHelp.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientMyVehicle.resx">
       <DependentUpon>ClientMyVehicle.h</DependentUpon>
     </EmbeddedResource>

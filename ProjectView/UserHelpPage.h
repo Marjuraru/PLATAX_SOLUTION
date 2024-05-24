@@ -52,10 +52,11 @@ namespace ProjectView {
 			// 
 			// UserHelpPage
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(481, 261);
+			this->ClientSize = System::Drawing::Size(849, 524);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"UserHelpPage";
 			this->Text = L"UserHelpPage";
 			this->ResumeLayout(false);

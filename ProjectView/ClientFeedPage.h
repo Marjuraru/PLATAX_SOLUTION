@@ -5,8 +5,9 @@
 #include "UserMyStatisticsPage.h"
 #include "UserReclamationPage.h"
 #include "UserMyReclamationsPage.h"
-#include "UserHelpPage.h"
+#include "ClientHelp.h"
 #include "ClientMyVehicle.h"
+
 
 namespace ProjectView {
 
@@ -245,9 +246,9 @@ namespace ProjectView {
 
 	private: System::Void button_help_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		UserHelpPage^ userHelpPage = gcnew UserHelpPage();
-		userHelpPage->MdiParent = this->MdiParent;
-		userHelpPage->Show();
+		ClientHelp^ clientHelp = gcnew ClientHelp();
+		clientHelp->MdiParent = this->MdiParent;
+		clientHelp->Show();
 		//this->Close();
 	}
 	private: System::Void button_statistics_Click(System::Object^ sender, System::EventArgs^ e) {
