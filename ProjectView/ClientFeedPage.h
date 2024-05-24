@@ -6,6 +6,7 @@
 #include "UserReclamationPage.h"
 #include "UserMyReclamationsPage.h"
 #include "UserHelpPage.h"
+#include "ClientMyVehicle.h"
 
 namespace ProjectView {
 
@@ -52,12 +53,15 @@ namespace ProjectView {
 
 
 	private: System::Windows::Forms::Button^ button_editprofile;
-	private: System::Windows::Forms::Button^ button_statistics;
+
 	private: System::Windows::Forms::Button^ button_reclamation;
 
 
 
 	private: System::Windows::Forms::Button^ button_help;
+	private: System::Windows::Forms::Button^ button_myreclamations;
+	private: System::Windows::Forms::Button^ button_searchvehicle;
+
 
 
 	private:
@@ -74,11 +78,12 @@ namespace ProjectView {
 		void InitializeComponent(void)
 		{
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->button_searchvehicle = (gcnew System::Windows::Forms::Button());
+			this->button_myreclamations = (gcnew System::Windows::Forms::Button());
 			this->button_help = (gcnew System::Windows::Forms::Button());
 			this->button_logout = (gcnew System::Windows::Forms::Button());
 			this->button_myvehicle = (gcnew System::Windows::Forms::Button());
 			this->button_editprofile = (gcnew System::Windows::Forms::Button());
-			this->button_statistics = (gcnew System::Windows::Forms::Button());
 			this->button_reclamation = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
@@ -86,11 +91,12 @@ namespace ProjectView {
 			// groupBox2
 			// 
 			this->groupBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->groupBox2->Controls->Add(this->button_searchvehicle);
+			this->groupBox2->Controls->Add(this->button_myreclamations);
 			this->groupBox2->Controls->Add(this->button_help);
 			this->groupBox2->Controls->Add(this->button_logout);
 			this->groupBox2->Controls->Add(this->button_myvehicle);
 			this->groupBox2->Controls->Add(this->button_editprofile);
-			this->groupBox2->Controls->Add(this->button_statistics);
 			this->groupBox2->Controls->Add(this->button_reclamation);
 			this->groupBox2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -104,11 +110,35 @@ namespace ProjectView {
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Ir a";
 			// 
+			// button_searchvehicle
+			// 
+			this->button_searchvehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_searchvehicle->Location = System::Drawing::Point(436, 30);
+			this->button_searchvehicle->Margin = System::Windows::Forms::Padding(4);
+			this->button_searchvehicle->Name = L"button_searchvehicle";
+			this->button_searchvehicle->Size = System::Drawing::Size(183, 32);
+			this->button_searchvehicle->TabIndex = 43;
+			this->button_searchvehicle->Text = L"Buscar Vehículos";
+			this->button_searchvehicle->UseVisualStyleBackColor = true;
+			// 
+			// button_myreclamations
+			// 
+			this->button_myreclamations->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_myreclamations->Location = System::Drawing::Point(881, 30);
+			this->button_myreclamations->Margin = System::Windows::Forms::Padding(4);
+			this->button_myreclamations->Name = L"button_myreclamations";
+			this->button_myreclamations->Size = System::Drawing::Size(165, 32);
+			this->button_myreclamations->TabIndex = 42;
+			this->button_myreclamations->Text = L"Mis Reclamos";
+			this->button_myreclamations->UseVisualStyleBackColor = true;
+			// 
 			// button_help
 			// 
 			this->button_help->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_help->Location = System::Drawing::Point(755, 30);
+			this->button_help->Location = System::Drawing::Point(1085, 29);
 			this->button_help->Margin = System::Windows::Forms::Padding(4);
 			this->button_help->Name = L"button_help";
 			this->button_help->Size = System::Drawing::Size(151, 32);
@@ -136,7 +166,7 @@ namespace ProjectView {
 			// 
 			this->button_myvehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_myvehicle->Location = System::Drawing::Point(373, 30);
+			this->button_myvehicle->Location = System::Drawing::Point(229, 30);
 			this->button_myvehicle->Margin = System::Windows::Forms::Padding(4);
 			this->button_myvehicle->Name = L"button_myvehicle";
 			this->button_myvehicle->Size = System::Drawing::Size(151, 32);
@@ -158,24 +188,11 @@ namespace ProjectView {
 			this->button_editprofile->UseVisualStyleBackColor = true;
 			this->button_editprofile->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_editprofile_Click);
 			// 
-			// button_statistics
-			// 
-			this->button_statistics->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button_statistics->Location = System::Drawing::Point(177, 30);
-			this->button_statistics->Margin = System::Windows::Forms::Padding(4);
-			this->button_statistics->Name = L"button_statistics";
-			this->button_statistics->Size = System::Drawing::Size(171, 32);
-			this->button_statistics->TabIndex = 20;
-			this->button_statistics->Text = L"Mis estadísticas";
-			this->button_statistics->UseVisualStyleBackColor = true;
-			this->button_statistics->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_statistics_Click);
-			// 
 			// button_reclamation
 			// 
 			this->button_reclamation->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_reclamation->Location = System::Drawing::Point(561, 30);
+			this->button_reclamation->Location = System::Drawing::Point(686, 30);
 			this->button_reclamation->Margin = System::Windows::Forms::Padding(4);
 			this->button_reclamation->Name = L"button_reclamation";
 			this->button_reclamation->Size = System::Drawing::Size(151, 32);
@@ -184,7 +201,7 @@ namespace ProjectView {
 			this->button_reclamation->UseVisualStyleBackColor = true;
 			this->button_reclamation->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_reclamation_Click);
 			// 
-			// UserFeedPage
+			// ClientFeedPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -192,7 +209,7 @@ namespace ProjectView {
 			this->ClientSize = System::Drawing::Size(1321, 138);
 			this->Controls->Add(this->groupBox2);
 			this->Margin = System::Windows::Forms::Padding(4);
-			this->Name = L"UserFeedPage";
+			this->Name = L"ClientFeedPage";
 			this->Text = L"UserFeedPage";
 			this->groupBox2->ResumeLayout(false);
 			this->ResumeLayout(false);
@@ -219,9 +236,9 @@ namespace ProjectView {
 	}
 	private: System::Void button_myvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		UserMyVehiclesPage^ userMyVehiclesPage = gcnew UserMyVehiclesPage();
-		userMyVehiclesPage->MdiParent = this->MdiParent;
-		userMyVehiclesPage->Show();
+		ClientMyVehicle^ clientMyVehicle = gcnew ClientMyVehicle();
+		clientMyVehicle->MdiParent = this->MdiParent;
+		clientMyVehicle->Show();
 		//this->Close();
 
 	}
@@ -254,5 +271,6 @@ namespace ProjectView {
 		userMyReclamationsPage->Show();
 		//this->Close();
 	}
+
 	};
 }
