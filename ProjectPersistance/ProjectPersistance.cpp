@@ -568,6 +568,8 @@ List<Client^>^ ProjectPersistance::Persistance::QueryListClientByLicensetype(Str
     }
     return Clients;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 List<Vehicle^>^ ProjectPersistance::Persistance::QueryAllVehicles()
 {
     return VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
@@ -683,6 +685,8 @@ List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehicleByOperative(boo
     }
     return Vehicles;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 List<Reclamation^>^ ProjectPersistance::Persistance::QueryAllReclamations()
 {

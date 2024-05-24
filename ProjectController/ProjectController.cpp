@@ -194,7 +194,6 @@ List<Client^>^ ProjectController::Controller::QueryListClientByLicensetype(Strin
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-//
 List<Vehicle^>^ ProjectController::Controller::QueryAllVehicles()
 {
 	return ProjectPersistance::Persistance::QueryAllVehicles();

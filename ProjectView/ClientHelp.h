@@ -117,7 +117,6 @@ namespace ProjectView {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ClientHelp::typeid));
 			this->notifyIcon1 = (gcnew System::Windows::Forms::NotifyIcon(this->components));
 			this->textBox_tlastname = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -140,7 +139,6 @@ namespace ProjectView {
 			// 
 			this->notifyIcon1->BalloonTipIcon = System::Windows::Forms::ToolTipIcon::Info;
 			this->notifyIcon1->BalloonTipTitle = L"Notificación";
-			this->notifyIcon1->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"notifyIcon1.Icon")));
 			this->notifyIcon1->Text = L"notifyIcon1";
 			this->notifyIcon1->Visible = true;
 			// 
@@ -232,7 +230,7 @@ namespace ProjectView {
 				this->Id, this->Name,
 					this->Lastname
 			});
-			this->dgv_help->Location = System::Drawing::Point(505, 36);
+			this->dgv_help->Location = System::Drawing::Point(514, 96);
 			this->dgv_help->Margin = System::Windows::Forms::Padding(4);
 			this->dgv_help->Name = L"dgv_help";
 			this->dgv_help->ReadOnly = true;
@@ -312,7 +310,7 @@ namespace ProjectView {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::GradientInactiveCaption;
+			this->BackColor = System::Drawing::Color::DarkSeaGreen;
 			this->ClientSize = System::Drawing::Size(1105, 584);
 			this->Controls->Add(this->button_exit);
 			this->Controls->Add(this->ADD);
