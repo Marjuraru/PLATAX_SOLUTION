@@ -19,5 +19,7 @@ namespace ProjectModel {
 		property bool Operative; //Indica el estado de operatividad del vehículo
 		property bool SpareTire; //llanta de repuesto
 		property array<Byte>^ Photo; // Matris de bytes
+		property DateTime AquisitionDate;
+		property DateTime ExpirationDate;
 	};
 }
