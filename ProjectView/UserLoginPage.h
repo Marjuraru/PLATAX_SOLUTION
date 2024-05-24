@@ -2,6 +2,7 @@
 #include "UserFeedPage.h"
 #include "UserRegisterPage.h"
 #include "ClientFeedPage.h"
+#include "AdminFeedPage .h"
 
 namespace ProjectView {
 
@@ -15,7 +16,7 @@ namespace ProjectView {
 	using namespace System::Xml::Serialization;
 	using namespace ProjectModel;
 	using namespace ProjectController;
-
+	//
 	/*
 	property List<int>^ ids;
 	*/
@@ -58,7 +59,7 @@ namespace ProjectView {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::NotifyIcon^ notifyIcon1;
-	private: System::Windows::Forms::Button^ button_prueba;
+
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -95,7 +96,6 @@ namespace ProjectView {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->notifyIcon1 = (gcnew System::Windows::Forms::NotifyIcon(this->components));
-			this->button_prueba = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// textBox_email
@@ -190,23 +190,12 @@ namespace ProjectView {
 			this->notifyIcon1->Text = L"notifyIcon1";
 			this->notifyIcon1->Visible = true;
 			// 
-			// button_prueba
-			// 
-			this->button_prueba->Location = System::Drawing::Point(397, 59);
-			this->button_prueba->Name = L"button_prueba";
-			this->button_prueba->Size = System::Drawing::Size(75, 23);
-			this->button_prueba->TabIndex = 16;
-			this->button_prueba->Text = L"CLIENT";
-			this->button_prueba->UseVisualStyleBackColor = true;
-			this->button_prueba->Click += gcnew System::EventHandler(this, &UserLoginPage::button_prueba_Click);
-			// 
 			// UserLoginPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Peru;
 			this->ClientSize = System::Drawing::Size(496, 434);
-			this->Controls->Add(this->button_prueba);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -300,6 +289,49 @@ namespace ProjectView {
 			MessageBox::Show("El email ingresado no existe");
 		}
 		
+		if (email == "admin") {
+			if (password == "admin") {
+				Session::CurrentProprietor = c;
+				/*UserFeedPage^ userFeedPage = gcnew UserFeedPage();
+				userFeedPage->MdiParent = this->MdiParent;
+				userFeedPage->Show(); */
+
+				AdminFeedPage^ adminFeedPage = gcnew AdminFeedPage();
+				adminFeedPage->MdiParent = this->MdiParent;
+				adminFeedPage->Show();
+
+				notifyIcon1->BalloonTipText = "¡Has desbloqueado el modo ADMINISTRADOR!";
+				notifyIcon1->ShowBalloonTip(2500);
+				return;
+			}
+			else {
+				MessageBox::Show("Datos incorrectas o falta completar");
+			}
+		}
+		else {
+			MessageBox::Show("El email ingresado no existe");
+		}
+
+		if (email == "client") {
+			if (password == "client") {
+				Session::CurrentProprietor = c;
+
+				ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
+				clientFeedPage->MdiParent = this->MdiParent;
+				clientFeedPage->Show();
+
+				notifyIcon1->BalloonTipText = "¡Has desbloqueado el modo USUARIO!";
+				notifyIcon1->ShowBalloonTip(2500);
+				return;
+			}
+			else {
+				MessageBox::Show("Datos incorrectas o falta completar");
+			}
+		}
+		else {
+			MessageBox::Show("El email ingresado no existe");
+		}
+
 	}
 
 
