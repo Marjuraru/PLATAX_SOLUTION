@@ -882,7 +882,7 @@ namespace ProjectView {
 		textBox_tmodel->Clear();
 		textBox_tplate->Clear();
 		textBox_tbrand->Clear();
-		textBox_tcolor->Clear();
+		textBox_tcolor->Clear();//diego imbecil
 		textBox_tnumberseats->Clear();//DIEGO JAJAJAJAJA
 	}
 
