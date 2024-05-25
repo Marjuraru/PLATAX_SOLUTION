@@ -377,7 +377,7 @@ namespace ProjectView {
 	}
 	private: System::Void CleanAll_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		ClearTextBoxes();
+		ClearTextBoxes();//fsds
 
 	}
 	};
