@@ -344,5 +344,10 @@ private: System::Void button_prueba_Click(System::Object^ sender, System::EventA
 }
 
 
+
+
+
+
+
 };
 }
