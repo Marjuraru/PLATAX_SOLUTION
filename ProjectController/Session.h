@@ -17,12 +17,12 @@ namespace ProjectModel {
         }
         //para los demás
         /*
-        static property Owner^ CurrentOwner {
-            Owner^ get() {
-                return currentOwner;
+        static property Client^ CurrentClient {
+            Client^ get() {
+                return currentClient;
             }
-            void set(Owner^ owner) {
-                currentOwner = owner;
+            void set(Client^ client) {
+                currentClient = client;
             }
         }
 
