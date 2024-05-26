@@ -202,8 +202,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdmDataBaseUsers.resx">
+      <DependentUpon>AdmDataBaseUsers.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminFeedPage .resx">
       <DependentUpon>AdminFeedPage .h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdmInfoUserPage.resx">
+      <DependentUpon>AdmInfoUserPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientFeedPage.resx">
       <DependentUpon>ClientFeedPage.h</DependentUpon>

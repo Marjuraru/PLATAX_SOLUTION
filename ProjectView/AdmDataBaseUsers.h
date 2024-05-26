@@ -75,11 +75,11 @@ namespace ProjectView {
 			// DataBase
 			// 
 			this->DataBase->AutoSize = true;
-			this->DataBase->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->DataBase->Font = (gcnew System::Drawing::Font(L"Times New Roman", 26.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->DataBase->Location = System::Drawing::Point(229, 33);
+			this->DataBase->Location = System::Drawing::Point(166, 9);
 			this->DataBase->Name = L"DataBase";
-			this->DataBase->Size = System::Drawing::Size(183, 19);
+			this->DataBase->Size = System::Drawing::Size(403, 40);
 			this->DataBase->TabIndex = 9;
 			this->DataBase->Text = L"Base de datos de usuarios";
 			// 
@@ -90,9 +90,9 @@ namespace ProjectView {
 				this->Id, this->Phone,
 					this->Dni, this->Name, this->Lastname, this->Address, this->Email, this->Password
 			});
-			this->dataGridView1->Location = System::Drawing::Point(12, 167);
+			this->dataGridView1->Location = System::Drawing::Point(12, 124);
 			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(741, 150);
+			this->dataGridView1->Size = System::Drawing::Size(741, 221);
 			this->dataGridView1->TabIndex = 10;
 			// 
 			// Id
@@ -142,6 +142,7 @@ namespace ProjectView {
 			this->ClientSize = System::Drawing::Size(765, 357);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->DataBase);
+			//this->Name = L"AdmDataBaseUsers";
 			this->Text = L"AdmDataBaseUsers";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->ResumeLayout(false);
