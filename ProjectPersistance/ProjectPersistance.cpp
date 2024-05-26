@@ -95,7 +95,7 @@ int ProjectPersistance::Persistance::GenerateVehicleId()
 
 int ProjectPersistance::Persistance::GenerateClientId()
 {
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
     int newID = 1;
     if (ClientList != nullptr) {
         // Busca el último ID utilizado y elige un nuevo ID que sea único

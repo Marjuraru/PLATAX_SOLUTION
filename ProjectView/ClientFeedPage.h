@@ -1,12 +1,12 @@
 #pragma once
-#include "UserProfilePage.h"
+#include "ClientEditProfilePage.h"
 #include "UserAddVehiclePage.h"
-#include "UserMyVehiclesPage.h"
+#include "ClientSearchVehiclePage.h"
 #include "UserMyStatisticsPage.h"
 #include "UserReclamationPage.h"
 #include "UserMyReclamationsPage.h"
 #include "ClientHelp.h"
-#include "ClientMyVehicle.h"
+#include "ClientMyVehiclePage.h"
 
 
 namespace ProjectView {
@@ -115,13 +115,14 @@ namespace ProjectView {
 			// 
 			this->button_searchvehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_searchvehicle->Location = System::Drawing::Point(436, 30);
+			this->button_searchvehicle->Location = System::Drawing::Point(439, 30);
 			this->button_searchvehicle->Margin = System::Windows::Forms::Padding(4);
 			this->button_searchvehicle->Name = L"button_searchvehicle";
 			this->button_searchvehicle->Size = System::Drawing::Size(183, 32);
 			this->button_searchvehicle->TabIndex = 43;
 			this->button_searchvehicle->Text = L"Buscar Vehículos";
 			this->button_searchvehicle->UseVisualStyleBackColor = true;
+			this->button_searchvehicle->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_searchvehicle_Click);
 			// 
 			// button_myreclamations
 			// 
@@ -218,9 +219,9 @@ namespace ProjectView {
 		}
 #pragma endregion
 	private: System::Void button_editprofile_Click(System::Object^ sender, System::EventArgs^ e) {
-		UserProfilePage^ userProfilePage = gcnew UserProfilePage();
-		userProfilePage->MdiParent = this->MdiParent;
-		userProfilePage->Show();
+		ClientEditProfilePage^ clientEditProfilePage = gcnew ClientEditProfilePage();
+		clientEditProfilePage->MdiParent = this->MdiParent;
+		clientEditProfilePage->Show();
 		//this->Close();
 	}
 	private: System::Void button_logout_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -237,9 +238,9 @@ namespace ProjectView {
 	}
 	private: System::Void button_myvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		ClientMyVehicle^ clientMyVehicle = gcnew ClientMyVehicle();
-		clientMyVehicle->MdiParent = this->MdiParent;
-		clientMyVehicle->Show();
+		ClientMyVehiclePage^ clientMyVehiclePage = gcnew ClientMyVehiclePage();
+		clientMyVehiclePage->MdiParent = this->MdiParent;
+		clientMyVehiclePage->Show();
 		//this->Close();
 
 	}
@@ -273,5 +274,10 @@ namespace ProjectView {
 		//this->Close();
 	}
 
-	};
+	private: System::Void button_searchvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClientSearchVehiclePage^ clientSearchVehiclePage = gcnew ClientSearchVehiclePage();
+		clientSearchVehiclePage->MdiParent = this->MdiParent;
+		clientSearchVehiclePage->Show();
+	}
+};
 }

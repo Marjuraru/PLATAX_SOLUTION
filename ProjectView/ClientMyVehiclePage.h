@@ -16,10 +16,10 @@ namespace ProjectView {
 	/// <summary>
 	/// Resumen de UserMyVehcilesPage
 	/// </summary>
-	public ref class ClientMyVehicle : public System::Windows::Forms::Form
+	public ref class ClientMyVehiclePage : public System::Windows::Forms::Form
 	{
 	public:
-		ClientMyVehicle(void)
+		ClientMyVehiclePage(void)
 		{
 			InitializeComponent();
 			//
@@ -31,7 +31,7 @@ namespace ProjectView {
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
 		/// </summary>
-		~ClientMyVehicle()
+		~ClientMyVehiclePage()
 		{
 			if (components)
 			{
@@ -104,10 +104,10 @@ namespace ProjectView {
 
 
 
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Id;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Plate;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Brand;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Color;
+
+
+
+
 	private: System::Windows::Forms::DataGridView^ dataGridView1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn2;
@@ -115,6 +115,18 @@ namespace ProjectView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Label^ label12;
+
+
+
+
+
+
+
+
+
+
+
+
 
 	protected:
 
@@ -305,10 +317,6 @@ namespace ProjectView {
 			this->pb_photo = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->dgv_vehicles = (gcnew System::Windows::Forms::DataGridView());
-			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Plate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Brand = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Color = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->button_exit = (gcnew System::Windows::Forms::Button());
@@ -532,49 +540,14 @@ namespace ProjectView {
 			this->dgv_vehicles->AllowUserToAddRows = false;
 			this->dgv_vehicles->AllowUserToDeleteRows = false;
 			this->dgv_vehicles->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgv_vehicles->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
-				this->Id, this->Plate,
-					this->Brand, this->Color
-			});
 			this->dgv_vehicles->Location = System::Drawing::Point(12, 138);
 			this->dgv_vehicles->Margin = System::Windows::Forms::Padding(4);
 			this->dgv_vehicles->Name = L"dgv_vehicles";
 			this->dgv_vehicles->ReadOnly = true;
 			this->dgv_vehicles->RowHeadersWidth = 51;
-			this->dgv_vehicles->Size = System::Drawing::Size(505, 223);
+			this->dgv_vehicles->Size = System::Drawing::Size(554, 223);
 			this->dgv_vehicles->TabIndex = 201;
-			// 
-			// Id
-			// 
-			this->Id->HeaderText = L"ID";
-			this->Id->MinimumWidth = 6;
-			this->Id->Name = L"Id";
-			this->Id->ReadOnly = true;
-			this->Id->Width = 30;
-			// 
-			// Plate
-			// 
-			this->Plate->HeaderText = L"Fecha de Adquisición";
-			this->Plate->MinimumWidth = 6;
-			this->Plate->Name = L"Plate";
-			this->Plate->ReadOnly = true;
-			this->Plate->Width = 60;
-			// 
-			// Brand
-			// 
-			this->Brand->HeaderText = L"Fecha de expiración";
-			this->Brand->MinimumWidth = 6;
-			this->Brand->Name = L"Brand";
-			this->Brand->ReadOnly = true;
-			this->Brand->Width = 60;
-			// 
-			// Color
-			// 
-			this->Color->HeaderText = L"Días restantes";
-			this->Color->MinimumWidth = 6;
-			this->Color->Name = L"Color";
-			this->Color->ReadOnly = true;
-			this->Color->Width = 60;
+			this->dgv_vehicles->SelectionChanged += gcnew System::EventHandler(this, &ClientMyVehiclePage::dgv_vehicles_SelectionChanged);
 			// 
 			// label6
 			// 
@@ -614,7 +587,7 @@ namespace ProjectView {
 			this->button_exit->Tag = L"65";
 			this->button_exit->Text = L"SALIR";
 			this->button_exit->UseVisualStyleBackColor = false;
-			this->button_exit->Click += gcnew System::EventHandler(this, &ClientMyVehicle::button_exit_Click);
+			this->button_exit->Click += gcnew System::EventHandler(this, &ClientMyVehiclePage::button_exit_Click);
 			// 
 			// textBox_tspareTire
 			// 
@@ -672,7 +645,7 @@ namespace ProjectView {
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->Size = System::Drawing::Size(505, 223);
+			this->dataGridView1->Size = System::Drawing::Size(553, 223);
 			this->dataGridView1->TabIndex = 230;
 			// 
 			// dataGridViewTextBoxColumn1
@@ -731,7 +704,7 @@ namespace ProjectView {
 			this->label12->TabIndex = 232;
 			this->label12->Text = L"Historial de vehículos";
 			// 
-			// ClientMyVehicle
+			// ClientMyVehiclePage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -763,10 +736,10 @@ namespace ProjectView {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dgv_vehicles);
 			this->Margin = System::Windows::Forms::Padding(4);
-			this->Name = L"ClientMyVehicle";
+			this->Name = L"ClientMyVehiclePage";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"UserMyVehiclesPage";
-			this->Load += gcnew System::EventHandler(this, &ClientMyVehicle::UserMyVehiclesPage_Load);
+			this->Text = L"ClientMyVehiclesPage";
+			this->Load += gcnew System::EventHandler(this, &ClientMyVehiclePage::UserMyVehiclesPage_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -803,32 +776,14 @@ namespace ProjectView {
 			MessageBox::Show("Error al cargar la imagen: " + ex->Message);
 		}
 	}
-	void ShowInitialDgvVehicles() {
-			   List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
-			   if (vehicles->Count != 0) {
-				   dgv_vehicles->Rows->Clear();
-				   for (int i = 0; i < vehicles->Count; i++) {
-					   Vehicle^ c = vehicles[i];
-					   String^ atributobooleanoYes;
-					   if (c->Operative == true) {
-						   atributobooleanoYes = "Operativo";
-					   }
-					   else {
-						   atributobooleanoYes = "Inoperativo";
-					   }
-					   dgv_vehicles->Rows->Add(gcnew array<String^> {
-							   "" + c->Id,
-							   "" + c->AquisitionDate,
-							   "" + c->ExpirationDate,
-							   "" + c->Id,//CAMBIAR A DIAS RESTANTES, HACER CALCULO
-					   });
-				   }
-			   }
-			   else {
-				   MessageBox::Show("No hay vehículos disponibles para mostrar");
-			   }
-	}
 
+	private: System::Void DataGridView_Load(){
+		// Obtener todos los vehículos desde el controlador
+		List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
+
+		// Vincular los datos al DataGridView
+		dgv_vehicles->DataSource = vehicles;
+	}
 
 	private: System::Void UserMyVehiclesPage_Load(System::Object^ sender, System::EventArgs^ e) {
 		/*FillCombos();*/
@@ -842,7 +797,9 @@ namespace ProjectView {
 		textBox_toperative->Text = "Operativo";
 		textBox_tcondition->Text = "Condicion";
 		pb_photo->Image = nullptr;
-		ShowInitialDgvVehicles();
+		InitializeDataGridView();
+		DataGridView_Load();
+		this->dgv_vehicles->SelectionChanged += gcnew System::EventHandler(this, &ClientMyVehiclePage::dgv_vehicles_SelectionChanged);
 	}
     void FillVehicleTextBoxes(Vehicle^ c) {
 			   textBox_tid->Text = Convert::ToString(c->Id);
@@ -860,23 +817,6 @@ namespace ProjectView {
 			   }
 	}
 
-	private: System::Void dgv_vehicles_RowHeaderMouseClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^ e) {
-		if (e->RowIndex >= 0 && e->RowIndex < dgv_vehicles->Rows->Count) {
-				DataGridViewRow^ selectedRow = dgv_vehicles->Rows[e->RowIndex];
-
-			// Verifica si la celda seleccionada tiene datos antes de procesarla
-			if (selectedRow->Cells["Id"]->Value != nullptr) {
-				ClearTextBoxes();
-				// Obtener los datos de id de la fila seleccionada			
-				String^ id = selectedRow->Cells["Id"]->Value->ToString();
-				if (!String::IsNullOrWhiteSpace(id)) {
-					int IdToSearch = Convert::ToInt32(id);
-					Vehicle^ c = Controller::QueryVehicleById(IdToSearch);
-					FillVehicleTextBoxes(c);
-				}
-			}
-		}
-	}
     void ClearTextBoxes() {
 		textBox_tid->Clear();
 		textBox_tmodel->Clear();
@@ -888,5 +828,66 @@ namespace ProjectView {
 
 
 
-	};
+
+private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, System::EventArgs^ e) {
+
+	if (dgv_vehicles->SelectedRows->Count > 0){
+		// Obtener la fila seleccionada
+		DataGridViewRow^ selectedRow = dgv_vehicles->SelectedRows[0];
+		// Obtener el elemento de datos vinculado a la fila seleccionada y convertirlo a Vehicle^
+		Vehicle^ selectedData = dynamic_cast<Vehicle^>(selectedRow->DataBoundItem);
+		
+		if (selectedData != nullptr){
+			// Mostrar los detalles del registro seleccionado en los TextBox
+			textBox_tid->Text = selectedData->Id.ToString(); // Convertir entero a cadena
+			textBox_tmodel->Text = selectedData->Model; // Asignar directamente si es cadena
+			textBox_tplate->Text = selectedData->Plate;
+			textBox_tbrand->Text = selectedData->Brand;
+			textBox_tcolor->Text = selectedData->Color;
+			textBox_tnumberseats->Text = selectedData->NumberOfSeats.ToString(); // Convertir entero a cadena si NumberSeats es entero
+			textBox_tspareTire->Text = selectedData->SpareTire.ToString(); // Convertir booleano a cadena
+			textBox_toperative->Text = selectedData->Operative.ToString(); // Convertir booleano a cadena
+			textBox_tcondition->Text = selectedData->Condition; // Asignar directamente si es cadena
+		}
+	}
+}
+
+private: System::Void InitializeDataGridView()
+{
+	// Configurar el DataGridView para no generar columnas automáticamente
+	dgv_vehicles->AutoGenerateColumns = false;
+
+	// Crear y agregar columnas manualmente
+	DataGridViewTextBoxColumn^ idColumn = gcnew DataGridViewTextBoxColumn();
+	idColumn->HeaderText = "ID";
+	idColumn->DataPropertyName = "Id"; // Esto debe coincidir con el nombre de la propiedad en la clase de datos
+	idColumn->Width = 25; // Ajustar el ancho de la columna
+	dgv_vehicles->Columns->Add(idColumn);
+
+	DataGridViewTextBoxColumn^ aquisitionDateColumn = gcnew DataGridViewTextBoxColumn();
+	aquisitionDateColumn->HeaderText = "Fecha de adquisición";
+	aquisitionDateColumn->DataPropertyName = "AquisitionDate";
+	aquisitionDateColumn->DefaultCellStyle->Format = "dd/MM/yyyy";
+	idColumn->Width = 100; // Ajustar el ancho de la columna
+	dgv_vehicles->Columns->Add(aquisitionDateColumn);
+
+	DataGridViewTextBoxColumn^ expirationDateColumn = gcnew DataGridViewTextBoxColumn();
+	expirationDateColumn->HeaderText = "Fecha de expiración";
+	expirationDateColumn->DataPropertyName = "ExpirationDate";
+	expirationDateColumn->DefaultCellStyle->Format = "dd/MM/yyyy";
+	idColumn->Width = 100; // Ajustar el ancho de la columna
+	dgv_vehicles->Columns->Add(expirationDateColumn);
+
+	DataGridViewTextBoxColumn^ DaysremainingColumn = gcnew DataGridViewTextBoxColumn();
+	DaysremainingColumn->HeaderText = "Días restantes";
+	DaysremainingColumn->DataPropertyName = "Plate";
+	idColumn->Width = 25; // Ajustar el ancho de la columna
+	dgv_vehicles->Columns->Add(DaysremainingColumn);
+
+	// Puedes agregar más columnas según sea necesario
+}
+
+
+
+};
 }

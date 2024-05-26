@@ -248,18 +248,17 @@ namespace ProjectView {
 			MessageBox::Show("Es necesario que se completen todos los datos de registro");
 			return;
 		}
-		////////////////////////////////////////////////
-		//SOY PINGUEL23 Y ME GUSTA EL 69SS SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
-		Proprietor^ c = Controller::QueryProprietorByEmail(email);
+		Proprietor^ p = Controller::QueryProprietorByEmail(email);
+		Client^ c = Controller::QueryClientByEmail(email);
 
-		if (c != nullptr) {
-			if (c->Password == password ) {
-				Session::CurrentProprietor = c;
+		if (p != nullptr) {
+			if (p->Password == password ) {
+				Session::CurrentProprietor = p;
 				UserFeedPage^ userFeedPage = gcnew UserFeedPage();
 				userFeedPage->MdiParent = this->MdiParent;
 				userFeedPage->Show();
-				notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax!";
+				notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax ESTIMADO DUEÑO!";
 				notifyIcon1->ShowBalloonTip(2500);
 				return;
 			}
@@ -267,13 +266,41 @@ namespace ProjectView {
 				MessageBox::Show("Datos incorrectas o falta completar");
 			}
 		}
-		else {
+		else if (c != nullptr) {
+			if (c->Password == password) {
+				Session::CurrentClient = c;
+				ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
+				clientFeedPage->MdiParent = this->MdiParent;
+				clientFeedPage->Show();
+				notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax ESTIMADO CLIENTE!";
+				notifyIcon1->ShowBalloonTip(2500);
+				return;
+			}
+			else {
+				MessageBox::Show("Datos incorrectas o falta completar");
+			}
+		}
+		else if (email == "admin") {
+			if (password == "admin") {
+				Session::CurrentProprietor = p;
+				AdminFeedPage^ adminFeedPage = gcnew AdminFeedPage();
+				adminFeedPage->MdiParent = this->MdiParent;
+				adminFeedPage->Show();
+
+				notifyIcon1->BalloonTipText = "¡HAZ DESvLOKEADO EL MODO ADMINISTRABOR!";
+				notifyIcon1->ShowBalloonTip(2500);
+				return;
+			}
+			else {
+				MessageBox::Show("Datos incorrectas o falta completar");
+			}
+		}else{
 			MessageBox::Show("La contraseña ingresada no existe");
 		}
 
-		if (email == "user") {
+		/*if (email == "user") {
 			if (password == "user") {
-				Session::CurrentProprietor = c;
+				Session::CurrentProprietor = p;
 				UserFeedPage^ userFeedPage = gcnew UserFeedPage();
 				userFeedPage->MdiParent = this->MdiParent;
 				userFeedPage->Show();
@@ -287,34 +314,12 @@ namespace ProjectView {
 		}
 		else {
 			MessageBox::Show("El email ingresado no existe");
-		}
-		
-		if (email == "admin") {
-			if (password == "admin") {
-				Session::CurrentProprietor = c;
-				/*UserFeedPage^ userFeedPage = gcnew UserFeedPage();
-				userFeedPage->MdiParent = this->MdiParent;
-				userFeedPage->Show(); */
+		}*/
 
-				AdminFeedPage^ adminFeedPage = gcnew AdminFeedPage();
-				adminFeedPage->MdiParent = this->MdiParent;
-				adminFeedPage->Show();
-
-				notifyIcon1->BalloonTipText = "¡Has desbloqueado el modo ADMINISTRADOR!";
-				notifyIcon1->ShowBalloonTip(2500);
-				return;
-			}
-			else {
-				MessageBox::Show("Datos incorrectas o falta completar");
-			}
-		}
-		else {
-			MessageBox::Show("El email ingresado no existe");
-		}
-
+		/*
 		if (email == "client") {
 			if (password == "client") {
-				Session::CurrentProprietor = c;
+				Session::CurrentProprietor = p;
 
 				ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
 				clientFeedPage->MdiParent = this->MdiParent;
@@ -331,17 +336,8 @@ namespace ProjectView {
 		else {
 			MessageBox::Show("El email ingresado no existe");
 		}
-
+		*/
 	}
-
-
-private: System::Void button_prueba_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	ClientFeedPage^ clientfeedpage = gcnew ClientFeedPage();
-	clientfeedpage->MdiParent = this->MdiParent;
-	clientfeedpage->Show();
-	//this->Close();
-}
 
 
 
