@@ -1,4 +1,5 @@
 #pragma once
+#include "AdmNotifyPage.h" 
 
 namespace ProjectView {
 
@@ -293,6 +294,7 @@ namespace ProjectView {
             this->button_notify->Tag = L"";
             this->button_notify->Text = L"Notificar";
             this->button_notify->UseVisualStyleBackColor = false;
+            this->button_notify->Click += gcnew System::EventHandler(this, &AdmInfoUserPage::button_notify_Click);
             // 
             // textBox10
             // 
@@ -992,7 +994,7 @@ namespace ProjectView {
             this->Controls->Add(this->dgv_vehicles);
             this->Controls->Add(this->button_exit);
             this->Controls->Add(this->pb_photo);
-    //        this->Name = L"AdmInfoUserPage";
+     //       this->Name = L"AdmInfoUserPage";
             this->Text = L"AdmInfoUserPage";
             this->groupBox2->ResumeLayout(false);
             this->groupBox2->PerformLayout();
@@ -1009,5 +1011,10 @@ namespace ProjectView {
     private: System::Void button_exit_Click(System::Object^ sender, System::EventArgs^ e) {
         this->Close();
     }
+private: System::Void button_notify_Click(System::Object^ sender, System::EventArgs^ e) {
+    AdmNotifyPage^ admnotifypage = gcnew AdmNotifyPage();
+    admnotifypage->MdiParent = this->MdiParent;
+    admnotifypage->Show();
+}
 };
 }
