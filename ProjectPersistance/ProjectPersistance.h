@@ -18,7 +18,7 @@ namespace ProjectPersistance { //marcelos version
         static String^ PROPRIETOR_FILE_BIN_NAME = "Proprietor.bin";
         static String^ VEHICLE_FILE_BIN_NAME = "Vehicle.bin";
         static String^ CLIENT_FILE_BIN_NAME = "Client.bin";
-        static String^ RECLAMATION_FILE_BIN_NAME = "reclamation.bin";
+        static String^ RECLAMATION_FILE_BIN_NAME = "Reclamation.bin";
         static String^ ADM_FILE_BIN_NAME = "Adm.bin"; //yo ///////////////
 
         //Persistencia binaria

@@ -51,7 +51,7 @@
     <ClCompile Include="ClientHelp.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="ClientMyVehicle.cpp">
+    <ClCompile Include="ClientMyVehiclePage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="AdmDataBaseUsers.cpp">
@@ -64,6 +64,12 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="AdmNotifyPage.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSearchVehiclePage.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientEditProfilePage.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,7 +110,7 @@
     <ClInclude Include="ClientHelp.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ClientMyVehicle.h">
+    <ClInclude Include="ClientMyVehiclePage.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="AdmDataBaseUsers.h">
@@ -117,6 +123,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="AdmNotifyPage.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSearchVehiclePage.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientEditProfilePage.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

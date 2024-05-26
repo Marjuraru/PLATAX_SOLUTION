@@ -15,8 +15,7 @@ namespace ProjectModel {
                 currentProprietor = user;
             }
         }
-        //para los demás
-        /*
+        
         static property Client^ CurrentClient {
             Client^ get() {
                 return currentClient;
@@ -26,6 +25,9 @@ namespace ProjectModel {
             }
         }
 
+        //PARA LOS DEMAS
+
+        /*
         static property Administrator^ CurrentAdministrator {
             Administrator^ get() {
                 return currentAdministrator;
@@ -35,9 +37,12 @@ namespace ProjectModel {
             }
         }*/
     private:
-        static Proprietor^ currentProprietor;
+        static Proprietor^ currentProprietor;  
+        static Client^ currentClient;
+
+        //PARA LOS DEMAS
+
         /*
-        static Owner^ currentOwner;
         static Administrator^ currentAdministrator;
         */
     };

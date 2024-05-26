@@ -125,6 +125,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
@@ -134,9 +135,11 @@
     <ClCompile Include="AdminFeedPage .cpp" />
     <ClCompile Include="AdmInfoUserPage.cpp" />
     <ClCompile Include="AdmNotifyPage.cpp" />
+    <ClCompile Include="ClientEditProfilePage.cpp" />
     <ClCompile Include="ClientFeedPage.cpp" />
     <ClCompile Include="ClientHelp.cpp" />
-    <ClCompile Include="ClientMyVehicle.cpp" />
+    <ClCompile Include="ClientMyVehiclePage.cpp" />
+    <ClCompile Include="ClientSearchVehiclePage.cpp" />
     <ClCompile Include="UserAddVehiclePage.cpp" />
     <ClCompile Include="UserFeedPage.cpp" />
     <ClCompile Include="UserHelpPage.cpp" />
@@ -161,13 +164,19 @@
     <ClInclude Include="AdmNotifyPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ClientEditProfilePage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ClientFeedPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ClientHelp.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="ClientMyVehicle.h">
+    <ClInclude Include="ClientMyVehiclePage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ClientSearchVehiclePage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserAddVehiclePage.h">
@@ -205,14 +214,20 @@
     <EmbeddedResource Include="AdminFeedPage .resx">
       <DependentUpon>AdminFeedPage .h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientEditProfilePage.resx">
+      <DependentUpon>ClientEditProfilePage.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientFeedPage.resx">
       <DependentUpon>ClientFeedPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientHelp.resx">
       <DependentUpon>ClientHelp.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientMyVehicle.resx">
-      <DependentUpon>ClientMyVehicle.h</DependentUpon>
+    <EmbeddedResource Include="ClientMyVehiclePage.resx">
+      <DependentUpon>ClientMyVehiclePage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientSearchVehiclePage.resx">
+      <DependentUpon>ClientSearchVehiclePage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAddVehiclePage.resx">
       <DependentUpon>UserAddVehiclePage.h</DependentUpon>
