@@ -1,4 +1,5 @@
 #pragma once
+#include "ClientMyStatisticsPage.h"
 
 namespace ProjectView {
 
@@ -115,6 +116,7 @@ namespace ProjectView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ dataGridViewTextBoxColumn4;
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Label^ label12;
+	private: System::Windows::Forms::Button^ button_view_statistics;
 
 
 
@@ -330,6 +332,7 @@ namespace ProjectView {
 			this->dataGridViewTextBoxColumn4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->button_view_statistics = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -579,7 +582,7 @@ namespace ProjectView {
 			this->button_exit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_exit->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_exit->Location = System::Drawing::Point(954, 518);
+			this->button_exit->Location = System::Drawing::Point(981, 548);
 			this->button_exit->Margin = System::Windows::Forms::Padding(4);
 			this->button_exit->Name = L"button_exit";
 			this->button_exit->Size = System::Drawing::Size(165, 44);
@@ -704,12 +707,27 @@ namespace ProjectView {
 			this->label12->TabIndex = 232;
 			this->label12->Text = L"Historial de vehículos";
 			// 
+			// button_view_statistics
+			// 
+			this->button_view_statistics->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_view_statistics->Location = System::Drawing::Point(943, 483);
+			this->button_view_statistics->Margin = System::Windows::Forms::Padding(4);
+			this->button_view_statistics->Name = L"button_view_statistics";
+			this->button_view_statistics->Size = System::Drawing::Size(232, 37);
+			this->button_view_statistics->TabIndex = 233;
+			this->button_view_statistics->Tag = L"";
+			this->button_view_statistics->Text = L"Ver estadísticas";
+			this->button_view_statistics->UseVisualStyleBackColor = true;
+			this->button_view_statistics->Click += gcnew System::EventHandler(this, &ClientMyVehiclePage::button_view_statistics_Click);
+			// 
 			// ClientMyVehiclePage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSeaGreen;
 			this->ClientSize = System::Drawing::Size(1234, 645);
+			this->Controls->Add(this->button_view_statistics);
 			this->Controls->Add(this->label12);
 			this->Controls->Add(this->label11);
 			this->Controls->Add(this->dataGridView1);
@@ -889,5 +907,10 @@ private: System::Void InitializeDataGridView()
 
 
 
+	private: System::Void button_view_statistics_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClientMyStatisticsPage^ clientMyStatisticsPage = gcnew ClientMyStatisticsPage();
+		clientMyStatisticsPage->MdiParent = this->MdiParent;
+		clientMyStatisticsPage->Show();
+	}
 };
 }
