@@ -243,60 +243,98 @@ namespace ProjectView {
 	private: System::Void button_login_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ email = textBox_email->Text;
 		String^ password = textBox_password->Text;
+		//bool client = checkBox_client->Checked;
+		//bool proprietor = checkBox_proprietor->Checked;
 
 		if (String::IsNullOrWhiteSpace(email) || String::IsNullOrWhiteSpace(password)) {
 			MessageBox::Show("Es necesario que se completen todos los datos de registro");
 			return;
 		}
 
-		Proprietor^ p = Controller::QueryProprietorByEmail(email);
-		Client^ c = Controller::QueryClientByEmail(email);
+		//if (!client && !proprietor) {
+		//	MessageBox::Show("Seleccione su tipo de usuario");
+		//	return;
+		//}
 
-		if (p != nullptr) {
-			if (p->Password == password ) {
-				Session::CurrentProprietor = p;
-				UserFeedPage^ userFeedPage = gcnew UserFeedPage();
-				userFeedPage->MdiParent = this->MdiParent;
-				userFeedPage->Show();
-				notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax ESTIMADO DUEÑO!";
-				notifyIcon1->ShowBalloonTip(2500);
-				return;
-			}
-			else {
-				MessageBox::Show("Datos incorrectas o falta completar");
-			}
-		}
-		else if (c != nullptr) {
-			if (c->Password == password) {
-				Session::CurrentClient = c;
-				ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
-				clientFeedPage->MdiParent = this->MdiParent;
-				clientFeedPage->Show();
-				notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax ESTIMADO CLIENTE!";
-				notifyIcon1->ShowBalloonTip(2500);
-				return;
-			}
-			else {
-				MessageBox::Show("Datos incorrectas o falta completar");
-			}
-		}
-		else if (email == "admin") {
+		//analizar login
+
+
+
+
+		if (email == "admin") {
 			if (password == "admin") {
-				Session::CurrentProprietor = p;
+				/*Session::CurrentProprietor = p;*/
 				AdminFeedPage^ adminFeedPage = gcnew AdminFeedPage();
 				adminFeedPage->MdiParent = this->MdiParent;
 				adminFeedPage->Show();
 
-				notifyIcon1->BalloonTipText = "¡HAZ DESvLOKEADO EL MODO ADMINISTRABOR!";
+				notifyIcon1->BalloonTipText = "¡HAS DESBLOUEADO EL MODO ADMINISTRADOR!";
 				notifyIcon1->ShowBalloonTip(2500);
 				return;
 			}
-			else {
-				MessageBox::Show("Datos incorrectas o falta completar");
-			}
-		}else{
-			MessageBox::Show("La contraseña ingresada no existe");
 		}
+
+		List<Proprietor^>^ countproprietor = Controller::QueryAllProprietors();
+		List<Client^>^ countclient = Controller::QueryAllClients();
+
+		if (countproprietor == nullptr && countclient == nullptr) {
+
+
+			MessageBox::Show("El usuario ingresado no existe, registrese por favor.");
+
+
+		}
+		else {
+
+			if (countproprietor != nullptr) {
+				Proprietor^ p = Controller::QueryProprietorByEmail(email);
+				if (p != nullptr) {
+					if (p->Password == password && p->proprietor == true) {
+						Session::CurrentProprietor = p;
+						UserFeedPage^ userFeedPage = gcnew UserFeedPage();
+						userFeedPage->MdiParent = this->MdiParent;
+						userFeedPage->Show();
+						notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax ESTIMADO DUEÑO!";
+						notifyIcon1->ShowBalloonTip(2500);
+						return;
+					}
+					else {
+						MessageBox::Show("Datos incorrectas o falta completar");
+					}
+				}
+				else {
+					MessageBox::Show("El usuario ingresado no existe, registrese por favor.");
+				}
+
+
+			}
+			else if (countclient != nullptr) {
+				Client^ c = Controller::QueryClientByEmail(email);
+				if (c != nullptr) {
+					if (c->Password == password && c->client == true) {
+						Session::CurrentClient = c;
+						ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
+						clientFeedPage->MdiParent = this->MdiParent;
+						clientFeedPage->Show();
+						notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax ESTIMADO CLIENTE!";
+						notifyIcon1->ShowBalloonTip(2500);
+						return;
+					}
+					else {
+						MessageBox::Show("Datos incorrectas o falta completar");
+					}
+
+				}
+				else {
+
+					MessageBox::Show("El usuario ingresado no existe, registrese por favor.");
+
+				}
+
+
+			}
+		}
+
 
 		/*if (email == "user") {
 			if (password == "user") {
