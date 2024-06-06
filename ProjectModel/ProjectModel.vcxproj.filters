@@ -42,9 +42,6 @@
     <ClInclude Include="Reminding.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Help.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="Reclamation.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -55,6 +52,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="Client.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpPls.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,9 +86,6 @@
     <ClCompile Include="Reminding.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Help.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Reclamation.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -99,6 +96,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="Client.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpPls.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

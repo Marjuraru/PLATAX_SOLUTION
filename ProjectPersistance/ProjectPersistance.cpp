@@ -37,19 +37,26 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
             file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
             formatter = gcnew BinaryFormatter();
 
-            if (fileName->Equals(PROPRIETOR_FILE_BIN_NAME)) {
+            if (fileName->Equals(USER_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
-            else if (fileName->Equals(VEHICLE_FILE_BIN_NAME)) {
+            else if (fileName->Equals(PROPRIETOR_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
             else if (fileName->Equals(CLIENT_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
+            else if (fileName->Equals(VEHICLE_FILE_BIN_NAME)) {
+                result = formatter->Deserialize(file);
+            }
+
             else if (fileName->Equals(RECLAMATION_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
             else if (fileName->Equals(ADM_FILE_BIN_NAME)) {
+                result = formatter->Deserialize(file);
+            }
+            else if (fileName->Equals(HELPPLS_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
         }
@@ -62,21 +69,106 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
     }
     return result;
 }
-///////////////////////////////////////////////////////////////////////////////////////////
-int ProjectPersistance::Persistance::GenerateProprietorId()
+
+bool ProjectPersistance::Persistance::IsDniRegistered(int dni)
 {
     ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
-    int newID = 1;
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    // Verificar en la lista de propietarios
+
     if (ProprietorList != nullptr) {
+        for each (Proprietor ^ proprietor in ProprietorList) {
+            if (proprietor->Dni == dni) {
+                return true;
+            }
+        }
+    }
+    if (ClientList != nullptr) {
+        for each (Client ^ client in ClientList) {
+            if (client->Dni == dni) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool ProjectPersistance::Persistance::IsPhoneRegistered(int phone)
+{
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    // Verificar en la lista de propietarios
+
+    if (ProprietorList != nullptr) {
+        for each (Proprietor ^ proprietor in ProprietorList) {
+            if (proprietor->Phone == phone) {
+                return true;
+            }
+        }
+    }
+    if (ClientList != nullptr) {
+        for each (Client ^ client in ClientList) {
+            if (client->Phone == phone) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool ProjectPersistance::Persistance::IsEmailRegistered(String^ email)
+{
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+    // Verificar en la lista de propietarios
+
+    if (ProprietorList != nullptr) {
+        for each (Proprietor ^ proprietor in ProprietorList) {
+            if (proprietor->Email == email) {
+                return true;
+            }
+        }
+    }
+    if (ClientList != nullptr) {
+        for each (Client ^ client in ClientList) {
+            if (client->Email == email) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+int ProjectPersistance::Persistance::GenerateUserId()
+{
+    UserList = (List<User^>^)Persistance::LoadBinaryFile(USER_FILE_BIN_NAME);
+    int newID = 1;
+    if (UserList != nullptr) {
         // Busca el último ID utilizado y elige un nuevo ID que sea único
-        for each (Proprietor ^ Proprietor in ProprietorList) {
-            if (Proprietor->Id >= newID) {
-                newID = Proprietor->Id + 1;
+        for each (User ^ User in UserList) {
+            if (User->Id >= newID) {
+                newID = User->Id + 1;
             }
         }
     }
     return newID;
 }
+
+//int ProjectPersistance::Persistance::GenerateProprietorId()
+//{
+//    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+//    int newID = 1;
+//    if (ProprietorList != nullptr) {
+//        // Busca el último ID utilizado y elige un nuevo ID que sea único
+//        for each (Proprietor ^ Proprietor in ProprietorList) {
+//            if (Proprietor->Id >= newID) {
+//                newID = Proprietor->Id + 1;
+//            }
+//        }
+//    }
+//    return newID;
+//}
 
 int ProjectPersistance::Persistance::GenerateVehicleId()
 {
@@ -93,20 +185,20 @@ int ProjectPersistance::Persistance::GenerateVehicleId()
     return newID;
 }
 
-int ProjectPersistance::Persistance::GenerateClientId()
-{
-    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    int newID = 1;
-    if (ClientList != nullptr) {
-        // Busca el último ID utilizado y elige un nuevo ID que sea único
-        for each (Client ^ client in ClientList) {
-            if (client->Id >= newID) {
-                newID = client->Id + 1;
-            }
-        }
-    }
-    return newID;
-}
+//int ProjectPersistance::Persistance::GenerateClientId()
+//{
+//    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
+//    int newID = 1;
+//    if (ClientList != nullptr) {
+//        // Busca el último ID utilizado y elige un nuevo ID que sea único
+//        for each (Client ^ client in ClientList) {
+//            if (client->Id >= newID) {
+//                newID = client->Id + 1;
+//            }
+//        }
+//    }
+//    return newID;
+//}
 
 int ProjectPersistance::Persistance::GenerateReclamationId()
 {
@@ -123,15 +215,15 @@ int ProjectPersistance::Persistance::GenerateReclamationId()
     return newID;
 }
 
-int ProjectPersistance::Persistance::GenerateAdmId()
+int ProjectPersistance::Persistance::GenerateHelpPlsId()
 {
-    AdmList = (List< Adm^>^)Persistance::LoadBinaryFile(ADM_FILE_BIN_NAME);
+    HelpPlsList = (List< HelpPls^>^)Persistance::LoadBinaryFile(HELPPLS_FILE_BIN_NAME);
     int newID = 1;
-    if (AdmList != nullptr) {
+    if (HelpPlsList != nullptr) {
         // Busca el último ID utilizado y elige un nuevo ID que sea único
-        for each (Adm ^ adm in AdmList) {
-            if (adm->Id >= newID) {
-                newID = adm->Id + 1;
+        for each (HelpPls ^ helpPls in HelpPlsList) {
+            if (helpPls->Id >= newID) {
+                newID = helpPls->Id + 1;
             }
         }
     }
@@ -194,6 +286,18 @@ void ProjectPersistance::Persistance::CreateAdm(Adm^ c)
     AdmList->Add(c);
     PersistBinaryFile(ADM_FILE_BIN_NAME, AdmList);
 }
+
+void ProjectPersistance::Persistance::CreateHelpPls(HelpPls^ c)
+{
+    HelpPlsList = (List<HelpPls^>^)Persistance::LoadBinaryFile(HELPPLS_FILE_BIN_NAME);
+    if (HelpPlsList == nullptr) {
+        // Si la lista no se cargó correctamente, crea una nueva lista
+        HelpPlsList = gcnew List<HelpPls^>();
+    }
+    HelpPlsList->Add(c);
+    PersistBinaryFile(HELPPLS_FILE_BIN_NAME, HelpPlsList);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 void ProjectPersistance::Persistance::UpdateProprietor(Proprietor^ c)
@@ -282,6 +386,19 @@ void ProjectPersistance::Persistance::UpdateAdm(Adm^ c)
     PersistBinaryFile(PROPRIETOR_FILE_BIN_NAME, ProprietorList);
 }
 
+void ProjectPersistance::Persistance::UpdateHelpPls(HelpPls^ c)
+{
+    HelpPlsList = (List<HelpPls^>^)Persistance::LoadBinaryFile(HELPPLS_FILE_BIN_NAME);
+    if (HelpPlsList != nullptr) {
+        for (int i = 0; i < HelpPlsList->Count; i++) {
+            if (c->Id == HelpPlsList[i]->Id) {
+                HelpPlsList[i] = c;
+            }
+        }
+    }
+    PersistBinaryFile(HELPPLS_FILE_BIN_NAME, ReclamationList);
+}
+
 /// ///////////////////////////////////////////////////////////////////////////////////////////////////////
 void ProjectPersistance::Persistance::DeleteProprietor(int id)
 {
@@ -351,6 +468,27 @@ void ProjectPersistance::Persistance::DeleteAdm(int id)
         // Guardar la lista actualizada en el archivo binario
         PersistBinaryFile(ADM_FILE_BIN_NAME, AdmList);
     }
+}
+
+void ProjectPersistance::Persistance::DeleteHelpPls(int id)
+{
+    HelpPlsList = (List<HelpPls^>^)Persistance::LoadBinaryFile(HELPPLS_FILE_BIN_NAME);
+    if (HelpPlsList != nullptr) {
+        for (int i = HelpPlsList->Count - 1; i >= 0; i--) {
+            if (id == HelpPlsList[i]->Id) {
+                HelpPlsList->RemoveAt(i);
+            }
+        }
+        // Guardar la lista actualizada en el archivo binario
+        PersistBinaryFile(HELPPLS_FILE_BIN_NAME, ReclamationList);
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+List<User^>^ ProjectPersistance::Persistance::QueryAllUsers()
+{
+    return UserList = (List<User^>^)Persistance::LoadBinaryFile(USER_FILE_BIN_NAME);
+    // TODO: Insertar una instrucción "return" aquí
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -786,6 +924,13 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByDate(
         }
     }
     return Reclamations;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+List<HelpPls^>^ ProjectPersistance::Persistance::QueryAllHelpsPls()
+{
+    return HelpPlsList = (List<HelpPls^>^)Persistance::LoadBinaryFile(HELPPLS_FILE_BIN_NAME);
 }
 
 //cambio

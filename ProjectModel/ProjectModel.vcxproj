@@ -122,10 +122,10 @@
   <ItemGroup>
     <ClInclude Include="Adm.h" />
     <ClInclude Include="Client.h" />
+    <ClInclude Include="HelpPls.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="Proprietor.h" />
     <ClInclude Include="Commendation.h" />
-    <ClInclude Include="Help.h" />
     <ClInclude Include="Infringement.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ProjectModel.h" />
@@ -139,10 +139,10 @@
     <ClCompile Include="Adm.cpp" />
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="HelpPls.cpp" />
     <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="Proprietor.cpp" />
     <ClCompile Include="Commendation.cpp" />
-    <ClCompile Include="Help.cpp" />
     <ClCompile Include="Infringement.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
