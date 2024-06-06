@@ -507,7 +507,8 @@ namespace ProjectView {
 		String^ address = textBox_address->Text;
 		String^ password = textBox_password->Text;
 		String^ newpassword = textBox_newpassword->Text;
-		
+		DateTime birthdate = dtp_birthdate->Value;
+
 		bool male = checkBox_male->Checked;
 		bool female = checkBox_female->Checked;
 
@@ -559,6 +560,31 @@ namespace ProjectView {
 			return;
 		}
 
+		DateTime today = DateTime::Now;
+		DateTime minimumDate = today.AddYears(-18);
+		if (birthdate > minimumDate) {
+			MessageBox::Show("Debe ser mayor de 18 años para registrarse.");
+			return;
+		}
+
+		int _phone_ = Convert::ToInt32(textBox_phone->Text);
+		if (Controller::IsPhoneRegistered(_phone_)) {
+			MessageBox::Show("El número de teléfono ingresado ya ha sido registrado");
+			return;
+		}
+
+		int _dni_ = Convert::ToInt32(textBox_dni->Text);
+
+		if (Controller::IsDniRegistered(_dni_)) {
+			MessageBox::Show("El DNI ingresado ya ha sido registrado");
+			return;
+		}
+
+
+		if (Controller::IsEmailRegistered(email)) {
+			MessageBox::Show("El Email ingresado ya ha sido registrado");
+			return;
+		}
 		
 		//no se va generar ID
 		c->Name = textBox_name->Text;
