@@ -13,24 +13,30 @@ namespace ProjectPersistance { //marcelos version
         static List<Vehicle^>^ VehicleList = gcnew List<Vehicle^>();
         static List<Client^>^ ClientList = gcnew List<Client^>();
         static List<Reclamation^>^ ReclamationList = gcnew List<Reclamation^>();
-        static List<Adm^>^ AdmList = gcnew List<Adm^>();//yo ////////////
+        static List<Adm^>^ AdmList = gcnew List<Adm^>();
+        static List<HelpPls^>^ HelpPlsList = gcnew List<HelpPls^>();
     public:                     //(1°)
+        static String^ USER_FILE_BIN_NAME = "User.bin";
         static String^ PROPRIETOR_FILE_BIN_NAME = "Proprietor.bin";
         static String^ VEHICLE_FILE_BIN_NAME = "Vehicle.bin";
         static String^ CLIENT_FILE_BIN_NAME = "Client.bin";
         static String^ RECLAMATION_FILE_BIN_NAME = "Reclamation.bin";
-        static String^ ADM_FILE_BIN_NAME = "Adm.bin"; //yo ///////////////
+        static String^ ADM_FILE_BIN_NAME = "Adm.bin";
+        static String^ HELPPLS_FILE_BIN_NAME = "HelpPls.bin";
+
 
         //Persistencia binaria
         static void PersistBinaryFile(String^ fileName, Object^ persistObject); //metodo de escritura/creación de archivos binarios
         static Object^ LoadBinaryFile(String^ fileName); //metodo de lectura/carga de archivos binarios
 
         //Generar Id para cada clase (comenzar 1° con esto)
-        static int GenerateProprietorId();
+        static int GenerateUserId();
+        //static int GenerateProprietorId();
         static int GenerateVehicleId();
-        static int GenerateClientId();
+        //static int GenerateClientId();
         static int GenerateReclamationId();
-        static int GenerateAdmId(); //yo /////////////
+        //ADMINISTRADOR SE REGISTRA A NIVEL DE CÓDIGO
+        static int GenerateHelpPlsId();//--
 
         // Metodos de mantenimiento del Proprietario - CRUD
         static void CreateProprietor(Proprietor^ c);
@@ -48,14 +54,27 @@ namespace ProjectPersistance { //marcelos version
         static void CreateReclamation(Reclamation^ c);
         static void UpdateReclamation(Reclamation^ c);
         static void DeleteReclamation(int id);
-        //Metodos de mantenimiento del Admin - CRUD  - yo /////////////////////////
+        //Metodos de mantenimiento del Admin - CRUD  
         static void CreateAdm(Adm^ c);
         static void UpdateAdm(Adm^ c);
         static void DeleteAdm(int id);
 
+        //Metodos de mantenimiento de HelpPls - CRUD  -------
+        static void CreateHelpPls(HelpPls^ c);
+        static void UpdateHelpPls(HelpPls^ c);
+        static void DeleteHelpPls(int id);
+
+        //Atributos que no deben repetirse
+        static bool IsDniRegistered(int dni);
+        static bool IsPhoneRegistered(int phone);
+        static bool IsEmailRegistered(String^ email);
 
         //Búsqueda de una clase mediante su atributo (2°)
-            //Bússqueda de Proprietor
+
+        //Búsqueda de User solo por Id:
+        static List<User^>^ QueryAllUsers();
+
+        //Búsqueda de Proprietor
         static List<Proprietor^>^ QueryAllProprietors();
         static Proprietor^ QueryProprietorById(int id);
         static Proprietor^ QueryProprietorByDni(int dni);
@@ -84,7 +103,7 @@ namespace ProjectPersistance { //marcelos version
         static List<Vehicle^>^ QueryListVehicleByCondition(String^ condition);
         static List<Vehicle^>^ QueryListVehicleByOperative(bool operative);
 
-        //Búsqueda de Reclamation
+        //Búsqueda de Reclamation 
         static List<Reclamation^>^ QueryAllReclamations();
         static Reclamation^ QueryReclamationById(int id);
         static Reclamation^ QueryReclamationByTitle(String^ title);
@@ -93,6 +112,9 @@ namespace ProjectPersistance { //marcelos version
         static List<Reclamation^>^ QueryListReclamationByCategory(String^ category);
         static List<Reclamation^>^ QueryListReclamationByState(String^ state);
         static List<Reclamation^>^ QueryListReclamationByDate(DateTime systemdate);
+
+        //Búsqueda de HelpPls 
+        static List<HelpPls^>^ QueryAllHelpsPls();
 
     };
 }

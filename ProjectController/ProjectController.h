@@ -16,11 +16,13 @@ namespace ProjectController { //marcelos version
 		static bool validateAccess(String^ email, String^ password);
 
 		//Generar Id para Cada clase
-		static int GenerateProprietorId();
+		static int GenerateUserId();
+		//static int GenerateProprietorId();
 		static int GenerateVehicleId();
-		static int GenerateClientId();
+		//static int GenerateClientId();
 		static int GenerateReclamationId();
-		static int GenerateAdmId();
+		//ADMINISTRADOR SE REGISTRA A NIVEL DE CÓDIGO
+		static int GenerateHelpPlsId();//--
 
 		//Mantenimiento de las Clases
 			//Mantenimiento de Proprietor
@@ -44,9 +46,21 @@ namespace ProjectController { //marcelos version
 		static void UpdateAdm(Adm^ c);
 		static void DeleteAdm(int id);
 
+		//Metodos de mantenimiento de Help - CRUD  -------
+		static void CreateHelpPls(HelpPls^ c);
+		static void UpdateHelpPls(HelpPls^ c);
+		static void DeleteHelpPls(int id);
+
+		//Atributos que no deben repetirse
+		static bool IsDniRegistered(int dni);
+		static bool IsPhoneRegistered(int phone);
+		static bool IsEmailRegistered(String^ email);
 
 		//Búsqueda de una clase mediante su atributo
-			//Bússqueda de Proprietor
+			//Búsqueda de User solo por Id:
+		static List<User^>^ QueryAllUsers();
+
+		//Bússqueda de Proprietor
 		static List<Proprietor^>^ QueryAllProprietors();
 		static Proprietor^ QueryProprietorById(int id);
 		static Proprietor^ QueryProprietorByDni(int dni);
@@ -84,6 +98,10 @@ namespace ProjectController { //marcelos version
 		static List<Reclamation^>^ QueryListReclamationByCategory(String^ category);
 		static List<Reclamation^>^ QueryListReclamationByState(String^ state);
 		static List<Reclamation^>^ QueryListReclamationByDate(DateTime date);
+
+		//Búsqueda de Help 
+
+		static List<HelpPls^>^ QueryAllHelpsPls();
 
 	};
 }

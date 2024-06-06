@@ -12,17 +12,34 @@ bool ProjectController::Controller::validateAccess(String^ email, String^ passwo
 	}
 }
 
+bool ProjectController::Controller::IsDniRegistered(int dni)
+{
+	return ProjectPersistance::Persistance::IsDniRegistered(dni);
+}
+bool ProjectController::Controller::IsPhoneRegistered(int phone)
+{
+	return ProjectPersistance::Persistance::IsPhoneRegistered(phone);
+}
+bool ProjectController::Controller::IsEmailRegistered(String^ email)
+{
+	return ProjectPersistance::Persistance::IsEmailRegistered(email);
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-int ProjectController::Controller::GenerateProprietorId()
+int ProjectController::Controller::GenerateUserId()
 {
-	return ProjectPersistance::Persistance::GenerateProprietorId();
+	return ProjectPersistance::Persistance::GenerateUserId();
 }
 
-int ProjectController::Controller::GenerateClientId()
-{
-	return ProjectPersistance::Persistance::GenerateClientId();
-}
+//int ProjectController::Controller::GenerateProprietorId()
+//{
+//	return ProjectPersistance::Persistance::GenerateProprietorId();
+//}
+
+//int ProjectController::Controller::GenerateClientId()
+//{
+//	return ProjectPersistance::Persistance::GenerateClientId();
+//}
 
 int ProjectController::Controller::GenerateVehicleId()
 {
@@ -34,9 +51,9 @@ int ProjectController::Controller::GenerateReclamationId()
 	return ProjectPersistance::Persistance::GenerateReclamationId();
 }
 
-int ProjectController::Controller::GenerateAdmId()
+int ProjectController::Controller::GenerateHelpPlsId()
 {
-	return 0;
+	return ProjectPersistance::Persistance::GenerateHelpPlsId();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -44,6 +61,7 @@ void ProjectController::Controller::CreateProprietor(Proprietor^ c)
 {
 	return ProjectPersistance::Persistance::CreateProprietor(c);
 }
+
 void ProjectController::Controller::CreateClient(Client^ c)
 {
 	return ProjectPersistance::Persistance::CreateClient(c);
@@ -58,9 +76,15 @@ void ProjectController::Controller::CreateReclamation(Reclamation^ c)
 {
 	return ProjectPersistance::Persistance::CreateReclamation(c);
 }
+
 void ProjectController::Controller::CreateAdm(Adm^ c)
 {
 	return ProjectPersistance::Persistance::CreateAdm(c);
+}
+
+void ProjectController::Controller::CreateHelpPls(HelpPls^ c)
+{
+	return ProjectPersistance::Persistance::CreateHelpPls(c);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -90,6 +114,12 @@ void ProjectController::Controller::UpdateAdm(Adm^ c)
 	return ProjectPersistance::Persistance::UpdateAdm(c);
 }
 
+void ProjectController::Controller::UpdateHelpPls(HelpPls^ c)
+{
+	return ProjectPersistance::Persistance::UpdateHelpPls(c);
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 void ProjectController::Controller::DeleteProprietor(int id)
@@ -117,7 +147,16 @@ void ProjectController::Controller::DeleteAdm(int id)
 	return ProjectPersistance::Persistance::DeleteAdm(id);
 }
 
+void ProjectController::Controller::DeleteHelpPls(int id)
+{
+	return ProjectPersistance::Persistance::DeleteHelpPls(id);
+}
 
+///////////////////////////////////////////////////////////////////////////////////////////
+List<User^>^ ProjectController::Controller::QueryAllUsers()
+{
+	return ProjectPersistance::Persistance::QueryAllUsers();
+}
 ///////////////////////////////////////////////////////////////////////////////////////////
 List<Proprietor^>^ ProjectController::Controller::QueryAllProprietors()
 {
@@ -270,6 +309,13 @@ List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByState(S
 List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByDate(DateTime systemdate)
 {
 	return ProjectPersistance::Persistance::QueryListReclamationByDate(systemdate);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+List<HelpPls^>^ ProjectController::Controller::QueryAllHelpsPls()
+{
+	return ProjectPersistance::Persistance::QueryAllHelpsPls();
 }
 
 
