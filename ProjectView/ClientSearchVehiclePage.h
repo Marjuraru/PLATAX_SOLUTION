@@ -77,11 +77,23 @@ namespace ProjectView {
 	private: System::Windows::Forms::TextBox^ textBox_tmodel;
 	private: System::Windows::Forms::TextBox^ textBox_tplate;
 	private: System::Windows::Forms::PictureBox^ pb_photo;
+	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::PictureBox^ pb_photocar;
+
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Label^ label9;
+	private: System::Windows::Forms::TextBox^ textBox_Deals_completed;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::TextBox^ textBox_Recommendations;
+	private: System::Windows::Forms::Button^ button_Send_message;
 
 
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
-	private: System::Windows::Forms::RichTextBox^ richTextBox1;
+
+
+
+
+
+
 
 	private:
 		/// <summary>
@@ -138,12 +150,19 @@ namespace ProjectView {
 			this->textBox_tmodel = (gcnew System::Windows::Forms::TextBox());
 			this->textBox_tplate = (gcnew System::Windows::Forms::TextBox());
 			this->pb_photo = (gcnew System::Windows::Forms::PictureBox());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->pb_photocar = (gcnew System::Windows::Forms::PictureBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->textBox_Recommendations = (gcnew System::Windows::Forms::TextBox());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->textBox_Deals_completed = (gcnew System::Windows::Forms::TextBox());
+			this->button_Send_message = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->BeginInit();
+			this->groupBox1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photocar))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// groupBox2
@@ -676,39 +695,116 @@ namespace ProjectView {
 			this->pb_photo->TabIndex = 233;
 			this->pb_photo->TabStop = false;
 			// 
-			// button2
+			// groupBox1
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->groupBox1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->groupBox1->Controls->Add(this->label9);
+			this->groupBox1->Controls->Add(this->textBox_Deals_completed);
+			this->groupBox1->Controls->Add(this->label8);
+			this->groupBox1->Controls->Add(this->pb_photocar);
+			this->groupBox1->Controls->Add(this->textBox_Recommendations);
+			this->groupBox1->Controls->Add(this->button1);
+			this->groupBox1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(1118, 736);
-			this->button2->Margin = System::Windows::Forms::Padding(4);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(116, 37);
-			this->button2->TabIndex = 241;
-			this->button2->Tag = L"";
-			this->button2->Text = L"Enviar";
-			this->button2->UseVisualStyleBackColor = true;
+			this->groupBox1->Location = System::Drawing::Point(669, 379);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Size = System::Drawing::Size(556, 331);
+			this->groupBox1->TabIndex = 240;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Vehículo";
 			// 
-			// button3
+			// button1
 			// 
-			this->button3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->button1->BackColor = System::Drawing::Color::Maroon;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(711, 736);
-			this->button3->Margin = System::Windows::Forms::Padding(4);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(170, 37);
-			this->button3->TabIndex = 242;
-			this->button3->Tag = L"";
-			this->button3->Text = L"Limpiar mensaje";
-			this->button3->UseVisualStyleBackColor = true;
+			this->button1->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->button1->Location = System::Drawing::Point(956, 74);
+			this->button1->Margin = System::Windows::Forms::Padding(4);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(151, 30);
+			this->button1->TabIndex = 40;
+			this->button1->Text = L"Cerrar sesión";
+			this->button1->UseVisualStyleBackColor = false;
 			// 
-			// richTextBox1
+			// pb_photocar
 			// 
-			this->richTextBox1->Location = System::Drawing::Point(711, 594);
-			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(523, 123);
-			this->richTextBox1->TabIndex = 243;
-			this->richTextBox1->Text = L"";
+			this->pb_photocar->BackColor = System::Drawing::Color::White;
+			this->pb_photocar->Enabled = false;
+			this->pb_photocar->Location = System::Drawing::Point(74, 40);
+			this->pb_photocar->Margin = System::Windows::Forms::Padding(4);
+			this->pb_photocar->Name = L"pb_photocar";
+			this->pb_photocar->Size = System::Drawing::Size(417, 165);
+			this->pb_photocar->TabIndex = 241;
+			this->pb_photocar->TabStop = false;
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(93, 225);
+			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(160, 23);
+			this->label8->TabIndex = 242;
+			this->label8->Text = L"Recomendaciones";
+			// 
+			// textBox_Recommendations
+			// 
+			this->textBox_Recommendations->Enabled = false;
+			this->textBox_Recommendations->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox_Recommendations->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->textBox_Recommendations->Location = System::Drawing::Point(261, 223);
+			this->textBox_Recommendations->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_Recommendations->Name = L"textBox_Recommendations";
+			this->textBox_Recommendations->Size = System::Drawing::Size(195, 30);
+			this->textBox_Recommendations->TabIndex = 241;
+			this->textBox_Recommendations->Tag = L"";
+			this->textBox_Recommendations->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(68, 272);
+			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(186, 23);
+			this->label9->TabIndex = 244;
+			this->label9->Text = L"# Tratos concretados";
+			// 
+			// textBox_Deals_completed
+			// 
+			this->textBox_Deals_completed->Enabled = false;
+			this->textBox_Deals_completed->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox_Deals_completed->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->textBox_Deals_completed->Location = System::Drawing::Point(261, 270);
+			this->textBox_Deals_completed->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_Deals_completed->Name = L"textBox_Deals_completed";
+			this->textBox_Deals_completed->Size = System::Drawing::Size(195, 30);
+			this->textBox_Deals_completed->TabIndex = 243;
+			this->textBox_Deals_completed->Tag = L"";
+			this->textBox_Deals_completed->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// button_Send_message
+			// 
+			this->button_Send_message->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_Send_message->Location = System::Drawing::Point(834, 731);
+			this->button_Send_message->Margin = System::Windows::Forms::Padding(4);
+			this->button_Send_message->Name = L"button_Send_message";
+			this->button_Send_message->Size = System::Drawing::Size(232, 37);
+			this->button_Send_message->TabIndex = 179;
+			this->button_Send_message->Tag = L"";
+			this->button_Send_message->Text = L"Enviar mensaje";
+			this->button_Send_message->UseVisualStyleBackColor = true;
 			// 
 			// ClientSearchVehiclePage
 			// 
@@ -716,9 +812,8 @@ namespace ProjectView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSeaGreen;
 			this->ClientSize = System::Drawing::Size(1283, 811);
-			this->Controls->Add(this->richTextBox1);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button_Send_message);
+			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->textBox_tid);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
@@ -741,6 +836,9 @@ namespace ProjectView {
 			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photocar))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

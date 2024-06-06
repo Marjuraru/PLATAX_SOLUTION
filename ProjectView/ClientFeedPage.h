@@ -1,12 +1,9 @@
 #pragma once
 #include "ClientEditProfilePage.h"
-#include "UserAddVehiclePage.h"
 #include "ClientSearchVehiclePage.h"
-#include "UserMyStatisticsPage.h"
-#include "UserReclamationPage.h"
-#include "UserMyReclamationsPage.h"
 #include "ClientHelp.h"
 #include "ClientMyVehiclePage.h"
+#include "ClientMailBox.h"
 
 
 namespace ProjectView {
@@ -55,13 +52,17 @@ namespace ProjectView {
 
 	private: System::Windows::Forms::Button^ button_editprofile;
 
-	private: System::Windows::Forms::Button^ button_reclamation;
+
 
 
 
 	private: System::Windows::Forms::Button^ button_help;
-	private: System::Windows::Forms::Button^ button_myreclamations;
+
 	private: System::Windows::Forms::Button^ button_searchvehicle;
+	private: System::Windows::Forms::Button^ button_mailbox;
+	private: System::Windows::Forms::Button^ button_myreclamations;
+
+
 
 
 
@@ -79,26 +80,25 @@ namespace ProjectView {
 		void InitializeComponent(void)
 		{
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->button_mailbox = (gcnew System::Windows::Forms::Button());
 			this->button_searchvehicle = (gcnew System::Windows::Forms::Button());
 			this->button_myreclamations = (gcnew System::Windows::Forms::Button());
 			this->button_help = (gcnew System::Windows::Forms::Button());
 			this->button_logout = (gcnew System::Windows::Forms::Button());
 			this->button_myvehicle = (gcnew System::Windows::Forms::Button());
 			this->button_editprofile = (gcnew System::Windows::Forms::Button());
-			this->button_reclamation = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox2
 			// 
 			this->groupBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->groupBox2->Controls->Add(this->button_mailbox);
 			this->groupBox2->Controls->Add(this->button_searchvehicle);
 			this->groupBox2->Controls->Add(this->button_myreclamations);
 			this->groupBox2->Controls->Add(this->button_help);
-			this->groupBox2->Controls->Add(this->button_logout);
 			this->groupBox2->Controls->Add(this->button_myvehicle);
 			this->groupBox2->Controls->Add(this->button_editprofile);
-			this->groupBox2->Controls->Add(this->button_reclamation);
 			this->groupBox2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -106,16 +106,29 @@ namespace ProjectView {
 			this->groupBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox2->Size = System::Drawing::Size(1265, 110);
+			this->groupBox2->Size = System::Drawing::Size(1147, 84);
 			this->groupBox2->TabIndex = 47;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Ir a";
+			// 
+			// button_mailbox
+			// 
+			this->button_mailbox->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_mailbox->Location = System::Drawing::Point(590, 30);
+			this->button_mailbox->Margin = System::Windows::Forms::Padding(4);
+			this->button_mailbox->Name = L"button_mailbox";
+			this->button_mailbox->Size = System::Drawing::Size(145, 32);
+			this->button_mailbox->TabIndex = 44;
+			this->button_mailbox->Text = L"Buzón";
+			this->button_mailbox->UseVisualStyleBackColor = true;
+			this->button_mailbox->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_mailbox_Click);
 			// 
 			// button_searchvehicle
 			// 
 			this->button_searchvehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_searchvehicle->Location = System::Drawing::Point(439, 30);
+			this->button_searchvehicle->Location = System::Drawing::Point(371, 29);
 			this->button_searchvehicle->Margin = System::Windows::Forms::Padding(4);
 			this->button_searchvehicle->Name = L"button_searchvehicle";
 			this->button_searchvehicle->Size = System::Drawing::Size(183, 32);
@@ -128,7 +141,7 @@ namespace ProjectView {
 			// 
 			this->button_myreclamations->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_myreclamations->Location = System::Drawing::Point(881, 30);
+			this->button_myreclamations->Location = System::Drawing::Point(773, 30);
 			this->button_myreclamations->Margin = System::Windows::Forms::Padding(4);
 			this->button_myreclamations->Name = L"button_myreclamations";
 			this->button_myreclamations->Size = System::Drawing::Size(165, 32);
@@ -140,7 +153,7 @@ namespace ProjectView {
 			// 
 			this->button_help->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_help->Location = System::Drawing::Point(1085, 29);
+			this->button_help->Location = System::Drawing::Point(976, 30);
 			this->button_help->Margin = System::Windows::Forms::Padding(4);
 			this->button_help->Name = L"button_help";
 			this->button_help->Size = System::Drawing::Size(151, 32);
@@ -155,7 +168,7 @@ namespace ProjectView {
 			this->button_logout->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_logout->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_logout->Location = System::Drawing::Point(1061, 69);
+			this->button_logout->Location = System::Drawing::Point(991, 106);
 			this->button_logout->Margin = System::Windows::Forms::Padding(4);
 			this->button_logout->Name = L"button_logout";
 			this->button_logout->Size = System::Drawing::Size(197, 34);
@@ -168,7 +181,7 @@ namespace ProjectView {
 			// 
 			this->button_myvehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_myvehicle->Location = System::Drawing::Point(229, 30);
+			this->button_myvehicle->Location = System::Drawing::Point(186, 29);
 			this->button_myvehicle->Margin = System::Windows::Forms::Padding(4);
 			this->button_myvehicle->Name = L"button_myvehicle";
 			this->button_myvehicle->Size = System::Drawing::Size(151, 32);
@@ -190,26 +203,14 @@ namespace ProjectView {
 			this->button_editprofile->UseVisualStyleBackColor = true;
 			this->button_editprofile->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_editprofile_Click);
 			// 
-			// button_reclamation
-			// 
-			this->button_reclamation->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button_reclamation->Location = System::Drawing::Point(686, 30);
-			this->button_reclamation->Margin = System::Windows::Forms::Padding(4);
-			this->button_reclamation->Name = L"button_reclamation";
-			this->button_reclamation->Size = System::Drawing::Size(151, 32);
-			this->button_reclamation->TabIndex = 30;
-			this->button_reclamation->Text = L"Reclamos";
-			this->button_reclamation->UseVisualStyleBackColor = true;
-			this->button_reclamation->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_reclamation_Click);
-			// 
 			// ClientFeedPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSeaGreen;
-			this->ClientSize = System::Drawing::Size(1321, 138);
+			this->ClientSize = System::Drawing::Size(1227, 148);
 			this->Controls->Add(this->groupBox2);
+			this->Controls->Add(this->button_logout);
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ClientFeedPage";
 			this->Text = L"UserFeedPage";
@@ -228,14 +229,6 @@ namespace ProjectView {
 
 		this->Close();
 	}
-
-	private: System::Void button_addvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		UserAddVehiclePage^ userAddVehiclePage = gcnew UserAddVehiclePage();
-		userAddVehiclePage->MdiParent = this->MdiParent;
-		userAddVehiclePage->Show();
-		/*this->Hide(); */
-	}
 	private: System::Void button_myvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		ClientMyVehiclePage^ clientMyVehiclePage = gcnew ClientMyVehiclePage();
@@ -252,32 +245,16 @@ namespace ProjectView {
 		clientHelp->Show();
 		//this->Close();
 	}
-	private: System::Void button_statistics_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		UserMyStatisticsPage^ userMyStatisticsPage = gcnew UserMyStatisticsPage();
-		userMyStatisticsPage->MdiParent = this->MdiParent;
-		userMyStatisticsPage->Show();
-		//this->Close();
-	}
-	private: System::Void button_reclamation_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		UserReclamationPage^ userReclamationPage = gcnew UserReclamationPage();
-		userReclamationPage->MdiParent = this->MdiParent;
-		userReclamationPage->Show();
-		//this->Close();
-	}
-	private: System::Void button_myreclamations_Click(System::Object^ sender, System::EventArgs^ e) {
-
-		UserMyReclamationsPage^ userMyReclamationsPage = gcnew UserMyReclamationsPage();
-		userMyReclamationsPage->MdiParent = this->MdiParent;
-		userMyReclamationsPage->Show();
-		//this->Close();
-	}
 
 	private: System::Void button_searchvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
 		ClientSearchVehiclePage^ clientSearchVehiclePage = gcnew ClientSearchVehiclePage();
 		clientSearchVehiclePage->MdiParent = this->MdiParent;
 		clientSearchVehiclePage->Show();
+	}
+	private: System::Void button_mailbox_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClientMailBox^ clientMailBox = gcnew ClientMailBox();
+		clientMailBox->MdiParent = this->MdiParent;
+		clientMailBox->Show();
 	}
 };
 }
