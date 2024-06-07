@@ -144,6 +144,66 @@ namespace ProjectView {
 		}
 
 		void ShowVehiclesByBrandPieChart(){
+			{
+				List<Vehicle^>^ vehicles = nullptr; // Asegúrate de inicializar donations como nullptr
+
+				try {
+					vehicles = Controller::Controller::QueryAllVehicles();
+				}
+				catch (Exception^ ex) {
+					// Maneja la excepción aquí, como mostrar un mensaje de error o realizar alguna acción apropiada.
+						// Puedes usar ex->Message para obtener el mensaje de excepción.
+					MessageBox::Show("Error al cargar vehículos: " + ex->Message);
+				}
+
+				if (vehicles->Count == 0) {
+					chart_pie_vehicle->Visible = false;
+					MessageBox::Show("No hay vehículos que mostrar");
+					return;
+				}
+
+				// procedemos a analizar los datos -filtrar
+				Dictionary<String^, int> categoryCounts;
+
+				//recorremos todos los objetos de la clase car para extraer o filtrar todas las marcas existentes
+				for each (Vehicle ^ c in vehicles) {
+					String^ brand = c->Brand;
+					if (categoryCounts.ContainsKey(brand)) {
+						categoryCounts[brand] = 0;
+					}
+					else {
+						// Si la categoría no existe en el diccionario, agrégala con una cuenta de 1
+						categoryCounts[brand] = 0;
+					}
+				}
+
+
+				// Recorre la lista de productos y cuenta la cantidad en cada categoría
+				for each (Vehicle ^ c in vehicles) {
+					String^ brand = c->Brand;
+					//analizar qué parámetros o condiciones se deben cumplir para que consideres la cuenta de un carro con
+					//la marca correspondiente
+					//if (c->Operative != false) {
+						//if (c->Color == "Verde") {
+					if (categoryCounts.ContainsKey(brand)) {
+						categoryCounts[brand]++;
+					}
+					//}
+				//}
+				}
+
+				chart_pie_vehicle->Series["Variable"]->Points->Clear();
+				// Agrega los datos al gráfico de barras
+				for each (KeyValuePair<String^, int> categoryCount in categoryCounts) {
+					String^ categoryName = categoryCount.Key;
+					int count = categoryCount.Value;
+
+					chart_pie_vehicle->Series["Variable"]->Points->AddXY(categoryName, count);
+				}
+			}
+		}
+
+		void ShowVehiclesByModelPieChart() {
 			List<Vehicle^>^ vehicles = nullptr; // Asegúrate de inicializar donations como nullptr
 
 			try {
@@ -164,31 +224,31 @@ namespace ProjectView {
 			// procedemos a analizar los datos -filtrar
 			Dictionary<String^, int> categoryCounts;
 
-			//recorremos todos los objetos de la clase vehicle para extraer o filtrar todas las marcas existentes
+			//recorremos todos los objetos de la clase car para extraer o filtrar todas las marcas existentes
 			for each (Vehicle ^ c in vehicles) {
-				String^ brand = c->Brand;
-				if (categoryCounts.ContainsKey(brand)) {
-					categoryCounts[brand] = 0;
+				String^ model = c->Model;
+				if (categoryCounts.ContainsKey(model)) {
+					categoryCounts[model] = 0;
 				}
 				else {
 					// Si la categoría no existe en el diccionario, agrégala con una cuenta de 1
-					categoryCounts[brand] = 0;
+					categoryCounts[model] = 0;
 				}
 			}
 
 
 			// Recorre la lista de productos y cuenta la cantidad en cada categoría
 			for each (Vehicle ^ c in vehicles) {
-				String^ brand = c->Brand;
+				String^ model = c->Model;
 				//analizar qué parámetros o condiciones se deben cumplir para que consideres la cuenta de un carro con
 				//la marca correspondiente
-				if (c->Operative != false) {
-					if (c->Color == "Amarillo") {
-						if (categoryCounts.ContainsKey(brand)) {
-							categoryCounts[brand]++;
-						}
-					}
+				//if (c->Operative != false) {
+					//if (c->Color == "Verde") {
+				if (categoryCounts.ContainsKey(model)) {
+					categoryCounts[model]++;
 				}
+				//}
+			//}
 			}
 
 			chart_pie_vehicle->Series["Variable"]->Points->Clear();
@@ -199,76 +259,6 @@ namespace ProjectView {
 
 				chart_pie_vehicle->Series["Variable"]->Points->AddXY(categoryName, count);
 			}
-		}
-
-		void ShowVehiclesByModelPieChart() {
-			List<Vehicle^>^ vehicles = nullptr; // Asegúrate de inicializar vehicles como nullptr
-
-			try {
-				vehicles = Controller::QueryAllVehicles();
-			}
-			catch (Exception^ ex) {
-				// Maneja la excepción aquí, como mostrar un mensaje de error o realizar alguna acción apropiada.
-				// Puedes usar ex->Message para obtener el mensaje de excepción.
-				MessageBox::Show("Error al cargar vehículos: " + ex->Message);
-				return; // Salir si hay un error
-			}
-
-			if (vehicles == nullptr || vehicles->Count == 0) {
-				chart_pie_vehicle->Visible = false;
-				MessageBox::Show("No hay vehículos que mostrar");
-				return;
-			}
-
-			// Procedemos a analizar los datos - filtrar
-			Dictionary<String^, int>^ categoryCounts = gcnew Dictionary<String^, int>();
-
-			// Recorremos todos los objetos de la clase Vehicle para extraer o filtrar todos los modelos existentes
-			for each (Vehicle ^ c in vehicles) {
-				String^ model = c->Model;
-				if (!categoryCounts->ContainsKey(model)) {
-					// Si el modelo no existe en el diccionario, agrégalo con una cuenta de 0
-					categoryCounts[model] = 0;
-				}
-			}
-
-			// Recorre la lista de vehículos y cuenta la cantidad en cada modelo
-			for each (Vehicle ^ c in vehicles) {
-				String^ model = c->Model;
-				// Analizar qué parámetros o condiciones se deben cumplir para considerar la cuenta de un vehículo con
-				// el modelo correspondiente
-				if (c->Operative && c->Color == "Amarillo") {
-					if (categoryCounts->ContainsKey(model)) {
-						categoryCounts[model]++;
-					}
-				}
-			}
-
-			// Asegúrate de que la serie "Variable" exista en el gráfico
-			Series^ series = nullptr;
-			if (chart_pie_vehicle->Series->IsUniqueName("Variable")) {
-				series = gcnew Series("Variable");
-				series->ChartType = SeriesChartType::Pie;
-				chart_pie_vehicle->Series->Add(series);
-			}
-			else {
-				series = chart_pie_vehicle->Series["Variable"];
-			}
-
-			// Limpia los puntos de la serie existente
-			series->Points->Clear();
-
-			// Agrega los datos al gráfico de pastel
-			for each (KeyValuePair<String^, int> ^ categoryCount in categoryCounts) {
-				String^ categoryName = categoryCount->Key;
-				int count = categoryCount->Value;
-
-				if (count > 0) { // Solo añadir puntos si hay al menos un vehículo en esa categoría
-					series->Points->AddXY(categoryName, count);
-				}
-			}
-
-			chart_pie_vehicle->Visible = true; // Asegúrate de que el gráfico sea visible
 		}
 
 	private: System::Void button_vehicle_marca_Click(System::Object^ sender, System::EventArgs^ e) {
