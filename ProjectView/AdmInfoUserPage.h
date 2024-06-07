@@ -9,6 +9,10 @@ namespace ProjectView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+    using namespace System::Collections::Generic;
+    using namespace System::Xml::Serialization;
+    using namespace ProjectModel;
+    using namespace ProjectController;
 
 	/// <summary>
 	/// Resumen de AdmInfoUserPage
@@ -107,6 +111,8 @@ namespace ProjectView {
     private: System::Windows::Forms::TextBox^ textBox_taddress;
     private: System::Windows::Forms::TextBox^ textBox_tborndate;
     private: System::Windows::Forms::TextBox^ textBox_tregisterdate;
+    private: System::Windows::Forms::Button^ button_stats;
+
 
     protected:
 
@@ -286,6 +292,7 @@ namespace ProjectView {
             this->textBox_taddress = (gcnew System::Windows::Forms::TextBox());
             this->textBox_tborndate = (gcnew System::Windows::Forms::TextBox());
             this->textBox_tregisterdate = (gcnew System::Windows::Forms::TextBox());
+            this->button_stats = (gcnew System::Windows::Forms::Button());
             this->groupBox2->SuspendLayout();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->BeginInit();
@@ -439,7 +446,7 @@ namespace ProjectView {
             this->button_eliminate->BackColor = System::Drawing::Color::Orange;
             this->button_eliminate->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->button_eliminate->Location = System::Drawing::Point(808, 425);
+            this->button_eliminate->Location = System::Drawing::Point(808, 443);
             this->button_eliminate->Name = L"button_eliminate";
             this->button_eliminate->Size = System::Drawing::Size(137, 38);
             this->button_eliminate->TabIndex = 283;
@@ -989,6 +996,20 @@ namespace ProjectView {
             this->textBox_tregisterdate->Tag = L"";
             this->textBox_tregisterdate->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             // 
+            // button_stats
+            // 
+            this->button_stats->BackColor = System::Drawing::SystemColors::ActiveCaption;
+            this->button_stats->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->button_stats->Location = System::Drawing::Point(808, 381);
+            this->button_stats->Name = L"button_stats";
+            this->button_stats->Size = System::Drawing::Size(137, 38);
+            this->button_stats->TabIndex = 297;
+            this->button_stats->Tag = L"";
+            this->button_stats->Text = L"Stats";
+            this->button_stats->UseVisualStyleBackColor = false;
+            this->button_stats->Click += gcnew System::EventHandler(this, &AdmInfoUserPage::button_stats_Click);
+            // 
             // AdmInfoUserPage
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -996,6 +1017,7 @@ namespace ProjectView {
             this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
                 static_cast<System::Int32>(static_cast<System::Byte>(224)));
             this->ClientSize = System::Drawing::Size(1024, 551);
+            this->Controls->Add(this->button_stats);
             this->Controls->Add(this->textBox_tregisterdate);
             this->Controls->Add(this->textBox_tborndate);
             this->Controls->Add(this->textBox_taddress);
@@ -1024,8 +1046,7 @@ namespace ProjectView {
             this->Controls->Add(this->dgv_vehicles);
             this->Controls->Add(this->button_exit);
             this->Controls->Add(this->pb_photo);
-       //     this->Name = L"AdmInfoUserPage";
-        //    this->Text = L"AdmInfoUserPage";
+            this->Name = L"AdmInfoUserPage";
             this->Load += gcnew System::EventHandler(this, &AdmInfoUserPage::AdmInfoUserPage_Load);
             this->groupBox2->ResumeLayout(false);
             this->groupBox2->PerformLayout();
@@ -1036,6 +1057,38 @@ namespace ProjectView {
 
         }
 #pragma endregion
+    private:
+        void ShowInitialDgvClients() {
+            List<Client^>^ clients = Controller::QueryAllClients();
+            if (clients->Count != 0) {
+                dgv_vehicles->Rows->Clear();
+                for (int i = 0; i < clients->Count; i++) {
+                    Client^ c = clients[i];
+                    String^ atributobooleanoYes;
+                    
+                    dgv_vehicles->Rows->Add(gcnew array<String^> {
+                             //analogia
+                            "" + c->Id,
+                            "" + c->Phone,
+                            "" + c->Dni,
+                            "" + c->Name,
+                            "" + c->Lastname,
+                            "" + c->Address,
+                            "" + c->Email,
+                            "" + c->Password,
+                            "" + c->SignDate,
+                            "" + c->BirthDate,
+
+                    });
+                }
+            }
+            else {
+                MessageBox::Show("No hay clientes disponibles para mostrar");
+            }
+        }
+
+
+    
 	private: System::Void button_logout_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
@@ -1058,7 +1111,10 @@ private: System::Void AdmInfoUserPage_Load(System::Object^ sender, System::Event
     textBox_tborndate->Text = "Fecha de nacimiento";
     textBox_tregisterdate->Text = "Fecha de registro";
     pb_photo->Image = nullptr;
-   // ShowInitialDgvVehicles();
+   ShowInitialDgvClients();
+}
+private: System::Void button_stats_Click(System::Object^ sender, System::EventArgs^ e) {
+
 }
 };
 }

@@ -134,6 +134,7 @@
     <ClCompile Include="AdmDataBaseUsers.cpp" />
     <ClCompile Include="AdminFeedPage .cpp" />
     <ClCompile Include="AdmInfoUserPage.cpp" />
+    <ClCompile Include="AdminStatsPage.cpp" />
     <ClCompile Include="AdmNotifyPage.cpp" />
     <ClCompile Include="ClientEditProfilePage.cpp" />
     <ClCompile Include="ClientFeedPage.cpp" />
@@ -161,6 +162,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AdmInfoUserPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminStatsPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AdmNotifyPage.h">
@@ -224,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdmInfoUserPage.resx">
       <DependentUpon>AdmInfoUserPage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminStatsPage.resx">
+      <DependentUpon>AdminStatsPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientEditProfilePage.resx">
       <DependentUpon>ClientEditProfilePage.h</DependentUpon>
