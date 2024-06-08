@@ -302,37 +302,35 @@ namespace ProjectView {
 						MessageBox::Show("Datos incorrectas o falta completar");
 					}
 				}
-				else {
-					MessageBox::Show("El usuario ingresado no existe, registrese por favor.");
-				}
+				else if (countclient != nullptr) {
+					Client^ c = Controller::QueryClientByEmail(email);
+					if (c != nullptr) {
+						if (c->Password == password && c->client == true) {
+							Session::CurrentClient = c;
+							ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
+							clientFeedPage->MdiParent = this->MdiParent;
+							clientFeedPage->Show();
+							notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax ESTIMADO CLIENTE!";
+							notifyIcon1->ShowBalloonTip(2500);
+							return;
+						}
+						else {
+							MessageBox::Show("Datos incorrectas o falta completar");
+						}
 
-
-			}
-			else if (countclient != nullptr) {
-				Client^ c = Controller::QueryClientByEmail(email);
-				if (c != nullptr) {
-					if (c->Password == password && c->client == true) {
-						Session::CurrentClient = c;
-						ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
-						clientFeedPage->MdiParent = this->MdiParent;
-						clientFeedPage->Show();
-						notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax ESTIMADO CLIENTE!";
-						notifyIcon1->ShowBalloonTip(2500);
-						return;
 					}
 					else {
-						MessageBox::Show("Datos incorrectas o falta completar");
+
+						MessageBox::Show("El usuario ingresado no existe, registrese por favor.");
+
 					}
 
 				}
-				else {
-
-					MessageBox::Show("El usuario ingresado no existe, registrese por favor.");
-
-				}
 
 
-			}
+
+			} 
+			
 		}
 
 
@@ -376,12 +374,5 @@ namespace ProjectView {
 		}
 		*/
 	}
-
-
-
-
-
-
-
 };
 }
