@@ -116,6 +116,8 @@ namespace ProjectPersistance { //marcelos version
         //Búsqueda de HelpPls 
         static List<HelpPls^>^ QueryAllHelpsPls();
 
+        //Asignaciones de Vehículos
+ //       static void Asignarvehiculo(Vehicle^ current_vehicle,Proprietor^ current_proprietor);//
     };
 }
 

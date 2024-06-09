@@ -715,6 +715,7 @@ List<Vehicle^>^ ProjectPersistance::Persistance::QueryAllVehicles()
 
 Vehicle^ ProjectPersistance::Persistance::QueryVehicleById(int id)
 {
+
     VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
     if (VehicleList->Count != 0) {
         for (int i = 0; i < VehicleList->Count; i++) {
@@ -739,14 +740,14 @@ Vehicle^ ProjectPersistance::Persistance::QueryVehicleByPlate(String^ plate)
     return nullptr;
 }
 
-List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehiclesByProprietorId(int Id)
+List<Vehicle^>^ ProjectPersistance::Persistance::QueryListVehiclesByProprietorId(int Id)//id de proprietor
 {
     VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME); //lista de almacenamiento total
 
     List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
     /*Vehicles = nullptr; */
 
-    if (VehicleList->Count != 0) {
+    if ((VehicleList->Count != 0) && (ProprietorList->Count != 0)) {
         for (int i = 0; i < VehicleList->Count; i++) {
             if (VehicleList[i]->Id == Id) {
                 Vehicles->Add(VehicleList[i]);
@@ -932,5 +933,9 @@ List<HelpPls^>^ ProjectPersistance::Persistance::QueryAllHelpsPls()
 {
     return HelpPlsList = (List<HelpPls^>^)Persistance::LoadBinaryFile(HELPPLS_FILE_BIN_NAME);
 }
+
+//void ProjectPersistance::Persistance::Asignarvehiculo(Vehicle^ current_vehicle, Proprietor^ current_proprietor) {
+//    current_proprietor->List = current_vehicle;
+//}
 
 //cambio

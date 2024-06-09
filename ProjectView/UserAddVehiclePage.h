@@ -466,7 +466,6 @@ namespace ProjectView {
 
 	}
 	private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
-
 		Vehicle^ vehicle = gcnew Vehicle();
 
 		String^ model = textBox_model->Text;
@@ -537,6 +536,11 @@ namespace ProjectView {
 		}
 
 		Controller::CreateVehicle(vehicle);
+		
+		Proprietor^ ProprietorP = Session::CurrentProprietor;
+		ProprietorP->ListVehicleProprietor->Add(vehicle);
+		Controller::UpdateProprietor(ProprietorP);
+
 		MessageBox::Show("Se ha agregado un nuevo vehículo");
 
 		this->Close();

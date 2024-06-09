@@ -1077,10 +1077,20 @@ namespace ProjectView {
 		}
 		void ShowInitialDgvVehicles() {
 			List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
-			if (vehicles->Count != 0) {
+			List<Vehicle^>^ v = gcnew List<Vehicle^>();
+
+			for each(Vehicle^ veh in vehicles){
+				for each (Vehicle^ vej in Session::CurrentProprietor->ListVehicleProprietor) {
+					if (veh->Id == vej->Id) {
+						v->Add(veh);
+					}
+				}
+			}
+
+			if (v->Count != 0) {
 				dgv_vehicles->Rows->Clear();
-				for (int i = 0; i < vehicles->Count; i++) {
-					Vehicle^ c = vehicles[i];
+				for (int i = 0; i < v->Count; i++) {
+					Vehicle^ c = v[i];
 					String^ atributobooleanoYes;
 					if (c->Operative == true) {
 						atributobooleanoYes = "Operativo";
