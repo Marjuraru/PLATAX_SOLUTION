@@ -1060,7 +1060,12 @@ namespace ProjectView {
     private:
         void ShowInitialDgvClients() {
             List<Client^>^ clients = Controller::QueryAllClients();
-            if (clients->Count != 0) {
+
+            if (clients == nullptr) {
+                return;
+            }
+
+            if (clients->Count != 0 && clients != nullptr) {
                 dgv_vehicles->Rows->Clear();
                 for (int i = 0; i < clients->Count; i++) {
                     Client^ c = clients[i];

@@ -15,6 +15,6 @@ namespace ProjectModel {
 			property String^ Licensetype;// tipo de lincencia que tiene
 			property String^ Licensename;
 			property Commendation^ recommend;
-			property Vehicle^ Vehicle;
+			property List<Vehicle^>^ ListVehicleProprietor;
 	};
 };

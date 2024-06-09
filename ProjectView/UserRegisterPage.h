@@ -547,6 +547,7 @@ namespace ProjectView {
 
 		if (proprietor) {
 			//se está creando siempre el mismo Id(1)??? errori
+
 			p->Id = Controller::GenerateUserId();//ACA DEBERIA SER GENERATEUSERID
 			p->Name = textBox_name->Text;
 			p->Lastname = textBox_lastname->Text;
@@ -561,6 +562,7 @@ namespace ProjectView {
 			p->client = checkBox_client->Checked;
 			p->proprietor = checkBox_proprietor->Checked;
 			p->SignDate = System::DateTime::Now;//toma hora y fecha del sistema
+			p->ListVehicleProprietor = gcnew List<Vehicle^>();
 
 
 			Session::CurrentProprietor = p;
@@ -594,7 +596,7 @@ namespace ProjectView {
 			c->client = checkBox_client->Checked;
 			c->proprietor = checkBox_proprietor->Checked;
 			c->SignDate = System::DateTime::Now;//toma hora y fecha del sistema
-
+			c->ListVehicleClient = gcnew List<Vehicle^>();
 
 			Session::CurrentClient = c;
 			Controller::CreateClient(c);
