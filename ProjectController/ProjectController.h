@@ -55,6 +55,7 @@ namespace ProjectController { //marcelos version
 		static bool IsDniRegistered(int dni);
 		static bool IsPhoneRegistered(int phone);
 		static bool IsEmailRegistered(String^ email);
+		static bool IsPlateRegistered(String^ plate);
 
 		//Búsqueda de una clase mediante su atributo
 			//Búsqueda de User solo por Id:
