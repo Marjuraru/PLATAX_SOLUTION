@@ -25,6 +25,12 @@ bool ProjectController::Controller::IsEmailRegistered(String^ email)
 	return ProjectPersistance::Persistance::IsEmailRegistered(email);
 }
 
+bool ProjectController::Controller::IsPlateRegistered(String^ plate)
+{
+	return ProjectPersistance::Persistance::IsPlateRegistered(plate);
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 int ProjectController::Controller::GenerateUserId()
 {

@@ -74,7 +74,7 @@ bool ProjectPersistance::Persistance::IsDniRegistered(int dni)
 {
     ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
     ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    // Verificar en la lista de propietarios
+    // Verificar en la lista de propietarios y clientes
 
     if (ProprietorList != nullptr) {
         for each (Proprietor ^ proprietor in ProprietorList) {
@@ -97,7 +97,7 @@ bool ProjectPersistance::Persistance::IsPhoneRegistered(int phone)
 {
     ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
     ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    // Verificar en la lista de propietarios
+    // Verificar en la lista de propietarios y clientes
 
     if (ProprietorList != nullptr) {
         for each (Proprietor ^ proprietor in ProprietorList) {
@@ -120,7 +120,7 @@ bool ProjectPersistance::Persistance::IsEmailRegistered(String^ email)
 {
     ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
     ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
-    // Verificar en la lista de propietarios
+    // Verificar en la lista de propietarios y clientes
 
     if (ProprietorList != nullptr) {
         for each (Proprietor ^ proprietor in ProprietorList) {
@@ -132,6 +132,21 @@ bool ProjectPersistance::Persistance::IsEmailRegistered(String^ email)
     if (ClientList != nullptr) {
         for each (Client ^ client in ClientList) {
             if (client->Email == email) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool ProjectPersistance::Persistance::IsPlateRegistered(String^ plate)
+{
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
+    // Verificar en la lista de Vehículos
+
+    if (VehicleList != nullptr) {
+        for each (Vehicle ^ vehicle in VehicleList) {
+            if (vehicle->Plate == plate) {
                 return true;
             }
         }

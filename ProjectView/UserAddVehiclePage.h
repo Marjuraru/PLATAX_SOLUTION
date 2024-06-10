@@ -519,6 +519,12 @@ namespace ProjectView {
 			return;
 		}
 
+		if (Controller::IsPlateRegistered(plate)) {
+			MessageBox::Show("La placa ingresada ya ha sido registrado");
+			return;
+		}
+
+
 		vehicle->Id = Controller::GenerateVehicleId();
 		vehicle->NumberOfSeats = numberofseats;
 		vehicle->Color = color;

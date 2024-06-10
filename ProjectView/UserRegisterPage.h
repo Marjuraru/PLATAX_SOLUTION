@@ -567,7 +567,7 @@ namespace ProjectView {
 
 			Session::CurrentProprietor = p;
 			Controller::CreateProprietor(p);
-			MessageBox::Show("El registro se realizó exitosamente, bienvenido AMIGUE!");
+			MessageBox::Show("El registro se realizó exitosamente");
 
 
 			this->Close();
@@ -600,7 +600,7 @@ namespace ProjectView {
 
 			Session::CurrentClient = c;
 			Controller::CreateClient(c);
-			MessageBox::Show("El registro se realizó exitosamente, bienvenido AMIGUE!");
+			MessageBox::Show("El registro se realizó exitosamente.");
 
 
 			this->Close();
@@ -608,7 +608,7 @@ namespace ProjectView {
 			ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
 			clientFeedPage->MdiParent = this->MdiParent;
 			clientFeedPage->Show();
-			notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado CLIENTE";
+			notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado CLIENTE.";
 			notifyIcon1->ShowBalloonTip(2500);
 
 		}

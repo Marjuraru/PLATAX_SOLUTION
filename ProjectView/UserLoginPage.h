@@ -294,7 +294,7 @@ namespace ProjectView {
 						UserFeedPage^ userFeedPage = gcnew UserFeedPage();
 						userFeedPage->MdiParent = this->MdiParent;
 						userFeedPage->Show();
-						notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax ESTIMADO DUEÑO!";
+						notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado DUEÑO";
 						notifyIcon1->ShowBalloonTip(2500);
 						return;
 					}
@@ -310,7 +310,7 @@ namespace ProjectView {
 							ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
 							clientFeedPage->MdiParent = this->MdiParent;
 							clientFeedPage->Show();
-							notifyIcon1->BalloonTipText = "¡Bienvenid@ a PlaTax ESTIMADO CLIENTE!";
+							notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado CLIENTE";
 							notifyIcon1->ShowBalloonTip(2500);
 							return;
 						}
