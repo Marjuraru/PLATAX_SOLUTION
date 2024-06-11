@@ -946,8 +946,9 @@ private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, Syst
 		for each (Proprietor^ proprietor in proprietors) {
 			// Iterar sobre los vehículos de cada propietario
 			for each (Vehicle^ vehicle in proprietor->ListVehicleProprietor) {
-				// Verificar si el vehículo actual es igual al vehículo seleccionado
+				if(selectedVehicle->Plate == vehicle->Plate){
 					vehicleOwner = proprietor;
+				}		
 			}
 		}
 
