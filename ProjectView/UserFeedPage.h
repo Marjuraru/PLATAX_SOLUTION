@@ -227,8 +227,9 @@ namespace ProjectView {
 		//this->Close();
 	}
 	private: System::Void button_logout_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
+
 	}
 
 	private: System::Void button_addvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
