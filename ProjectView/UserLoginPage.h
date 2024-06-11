@@ -34,6 +34,11 @@ namespace ProjectView {
 			//
 		}
 
+		//static RegisterPage^ registerPage;
+		static AdminFeedPage^ adminFeedPage;
+		static UserFeedPage^ userFeedPage;
+		//static AdminMainControlPage^ adminMainControlPage;
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -217,7 +222,10 @@ namespace ProjectView {
 #pragma endregion
 	
 	private:
-	
+		void ClearTextBoxes() {
+			textBox_email->Clear();
+			textBox_password->Clear();
+		}
 	/*
 	private: System::Void button_login_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		//String^ email = textBox_email->Text;
@@ -243,6 +251,7 @@ namespace ProjectView {
 	private: System::Void button_login_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ email = textBox_email->Text;
 		String^ password = textBox_password->Text;
+
 		//bool client = checkBox_client->Checked;
 		//bool proprietor = checkBox_proprietor->Checked;
 
@@ -261,15 +270,31 @@ namespace ProjectView {
 
 
 
-		if (email == "admin") {
-			if (password == "admin") {
-				/*Session::CurrentProprietor = p;*/
-				AdminFeedPage^ adminFeedPage = gcnew AdminFeedPage();
-				adminFeedPage->MdiParent = this->MdiParent;
-				adminFeedPage->Show();
+		if (email == "admin" && password == "admin") {
 
-				notifyIcon1->BalloonTipText = "¡HAS DESBLOUEADO EL MODO ADMINISTRADOR!";
-				notifyIcon1->ShowBalloonTip(2500);
+			/*Session::CurrentProprietor = p;*/
+
+				
+			notifyIcon1->BalloonTipText = "¡HAS DESBLOUEADO EL MODO ADMINISTRADOR!";
+			notifyIcon1->ShowBalloonTip(2500);
+			ClearTextBoxes();
+				
+			if (adminFeedPage == nullptr) { //al inicio del programa es nulo, pero a la segunda vez no lo es
+				//AdminFeedPage^ adminFeedPage = gcnew AdminFeedPage();
+				//adminFeedPage->MdiParent = this->MdiParent;
+				//adminFeedPage->Show();
+
+				adminFeedPage = gcnew AdminFeedPage();
+				adminFeedPage->MdiParent = this->MdiParent;
+
+				this->Hide();//oculta la ventana madre(Login page)
+
+				if (adminFeedPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) { // muestra a la hija y tambien manda un valor boleano
+					this->Show();//Se muestra madre desde su código nuevamente
+					adminFeedPage = nullptr;// que raro, pero bueno, funciona poner nulo a este puntero para que se vuelva usar cuantas veces la ventana adminFeedPage
+					return;
+				}
+					
 				return;
 			}
 		}
@@ -290,12 +315,21 @@ namespace ProjectView {
 				Proprietor^ p = Controller::QueryProprietorByEmail(email);
 				if (p != nullptr) {
 					if (p->Password == password && p->proprietor == true) {
-						Session::CurrentProprietor = p;
-						UserFeedPage^ userFeedPage = gcnew UserFeedPage();
-						userFeedPage->MdiParent = this->MdiParent;
-						userFeedPage->Show();
+
 						notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado DUEÑO";
 						notifyIcon1->ShowBalloonTip(2500);
+						ClearTextBoxes();
+						Session::CurrentProprietor = p;
+
+						if (userFeedPage == nullptr) {
+							userFeedPage = gcnew UserFeedPage();
+							userFeedPage->MdiParent = this->MdiParent;
+							this->Hide();
+							if (userFeedPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+								this->Show();
+								userFeedPage = nullptr;
+							}
+						}
 						return;
 					}
 					else {
@@ -310,6 +344,7 @@ namespace ProjectView {
 							ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
 							clientFeedPage->MdiParent = this->MdiParent;
 							clientFeedPage->Show();
+							this->Hide();
 							notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado CLIENTE";
 							notifyIcon1->ShowBalloonTip(2500);
 							return;
@@ -332,7 +367,8 @@ namespace ProjectView {
 			} 
 			
 		}
-
+		
+		
 
 		/*if (email == "user") {
 			if (password == "user") {
@@ -374,5 +410,6 @@ namespace ProjectView {
 		}
 		*/
 	}
+
 };
 }
