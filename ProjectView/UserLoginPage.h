@@ -38,7 +38,7 @@ namespace ProjectView {
 		static AdminFeedPage^ adminFeedPage;
 		static UserFeedPage^ userFeedPage;
 		static UserRegisterPage^ userRegisterPage;
-		//static AdminMainControlPage^ adminMainControlPage;
+		static ClientFeedPage^ clientFeedPage;
 
 	protected:
 		/// <summary>
@@ -350,13 +350,21 @@ namespace ProjectView {
 					Client^ c = Controller::QueryClientByEmail(email);
 					if (c != nullptr) {
 						if (c->Password == password && c->client == true) {
-							Session::CurrentClient = c;
-							ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
-							clientFeedPage->MdiParent = this->MdiParent;
-							clientFeedPage->Show();
-							this->Hide();
 							notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado CLIENTE";
 							notifyIcon1->ShowBalloonTip(2500);
+							ClearTextBoxes();
+							Session::CurrentClient = c;
+
+							if (clientFeedPage == nullptr) {
+								clientFeedPage = gcnew ClientFeedPage();
+								clientFeedPage->MdiParent = this->MdiParent;
+								this->Hide();
+								if (clientFeedPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+									this->Show();
+									clientFeedPage = nullptr;
+								}
+							}
+
 							return;
 						}
 						else {

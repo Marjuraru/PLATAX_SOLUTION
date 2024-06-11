@@ -90,9 +90,9 @@ namespace ProjectView {
 			this->button_searchvehicle = (gcnew System::Windows::Forms::Button());
 			this->button_myreclamations = (gcnew System::Windows::Forms::Button());
 			this->button_help = (gcnew System::Windows::Forms::Button());
-			this->button_logout = (gcnew System::Windows::Forms::Button());
 			this->button_myvehicle = (gcnew System::Windows::Forms::Button());
 			this->button_editprofile = (gcnew System::Windows::Forms::Button());
+			this->button_logout = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -168,21 +168,6 @@ namespace ProjectView {
 			this->button_help->UseVisualStyleBackColor = true;
 			this->button_help->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_help_Click);
 			// 
-			// button_logout
-			// 
-			this->button_logout->BackColor = System::Drawing::Color::Maroon;
-			this->button_logout->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button_logout->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_logout->Location = System::Drawing::Point(991, 106);
-			this->button_logout->Margin = System::Windows::Forms::Padding(4);
-			this->button_logout->Name = L"button_logout";
-			this->button_logout->Size = System::Drawing::Size(197, 34);
-			this->button_logout->TabIndex = 40;
-			this->button_logout->Text = L"CERRAR SESIÓN";
-			this->button_logout->UseVisualStyleBackColor = false;
-			this->button_logout->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_logout_Click);
-			// 
 			// button_myvehicle
 			// 
 			this->button_myvehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -209,6 +194,21 @@ namespace ProjectView {
 			this->button_editprofile->UseVisualStyleBackColor = true;
 			this->button_editprofile->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_editprofile_Click);
 			// 
+			// button_logout
+			// 
+			this->button_logout->BackColor = System::Drawing::Color::Maroon;
+			this->button_logout->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_logout->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->button_logout->Location = System::Drawing::Point(991, 106);
+			this->button_logout->Margin = System::Windows::Forms::Padding(4);
+			this->button_logout->Name = L"button_logout";
+			this->button_logout->Size = System::Drawing::Size(197, 34);
+			this->button_logout->TabIndex = 40;
+			this->button_logout->Text = L"CERRAR SESIÓN";
+			this->button_logout->UseVisualStyleBackColor = false;
+			this->button_logout->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_logout_Click);
+			// 
 			// ClientFeedPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -220,6 +220,7 @@ namespace ProjectView {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ClientFeedPage";
 			this->Text = L"UserFeedPage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &ClientFeedPage::ClientFeedPage_FormClosed);
 			this->groupBox2->ResumeLayout(false);
 			this->ResumeLayout(false);
 
@@ -236,6 +237,7 @@ namespace ProjectView {
 	}
 	
 	private: System::Void button_logout_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
 	private: System::Void button_myvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -284,6 +286,11 @@ namespace ProjectView {
 			return;
 		}
 		return;
+	}
+
+	private: System::Void ClientFeedPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	}
 };
 }
