@@ -1221,7 +1221,8 @@ namespace ProjectView {
             this->Controls->Add(this->button_exit);
             this->Controls->Add(this->pb_photo);
             this->Margin = System::Windows::Forms::Padding(4);
-            //            this->Name = L"AdmInfoUserPage";
+
+            this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &AdmInfoUserPage::AdmInfoUserPage_FormClosed);
             this->Load += gcnew System::EventHandler(this, &AdmInfoUserPage::AdmInfoUserPage_Load);
             this->groupBox2->ResumeLayout(false);
             this->groupBox2->PerformLayout();
@@ -1332,5 +1333,8 @@ namespace ProjectView {
     private: System::Void button_stats_Click(System::Object^ sender, System::EventArgs^ e) {
 
     }
-    };
+    private: System::Void AdmInfoUserPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+        this->DialogResult = System::Windows::Forms::DialogResult::OK;
+    }
+};
 }

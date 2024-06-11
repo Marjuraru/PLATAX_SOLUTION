@@ -78,9 +78,10 @@ namespace ProjectView {
 			this->textBox_email->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_email->ForeColor = System::Drawing::SystemColors::WindowFrame;
-			this->textBox_email->Location = System::Drawing::Point(92, 65);
+			this->textBox_email->Location = System::Drawing::Point(123, 80);
+			this->textBox_email->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_email->Name = L"textBox_email";
-			this->textBox_email->Size = System::Drawing::Size(210, 26);
+			this->textBox_email->Size = System::Drawing::Size(279, 30);
 			this->textBox_email->TabIndex = 1;
 			// 
 			// email
@@ -88,9 +89,10 @@ namespace ProjectView {
 			this->email->AutoSize = true;
 			this->email->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->email->Location = System::Drawing::Point(39, 65);
+			this->email->Location = System::Drawing::Point(52, 80);
+			this->email->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->email->Name = L"email";
-			this->email->Size = System::Drawing::Size(47, 19);
+			this->email->Size = System::Drawing::Size(58, 23);
 			this->email->TabIndex = 7;
 			this->email->Text = L"Email";
 			// 
@@ -99,9 +101,10 @@ namespace ProjectView {
 			this->Notify->AutoSize = true;
 			this->Notify->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Notify->Location = System::Drawing::Point(165, 20);
+			this->Notify->Location = System::Drawing::Point(220, 25);
+			this->Notify->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->Notify->Name = L"Notify";
-			this->Notify->Size = System::Drawing::Size(127, 19);
+			this->Notify->Size = System::Drawing::Size(157, 23);
 			this->Notify->TabIndex = 8;
 			this->Notify->Text = L"NOTIFICACION";
 			// 
@@ -110,9 +113,10 @@ namespace ProjectView {
 			this->description->AutoSize = true;
 			this->description->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->description->Location = System::Drawing::Point(39, 94);
+			this->description->Location = System::Drawing::Point(52, 116);
+			this->description->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->description->Name = L"description";
-			this->description->Size = System::Drawing::Size(88, 19);
+			this->description->Size = System::Drawing::Size(108, 23);
 			this->description->TabIndex = 9;
 			this->description->Text = L"Descripcion";
 			// 
@@ -121,10 +125,11 @@ namespace ProjectView {
 			this->textBox_description->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_description->ForeColor = System::Drawing::SystemColors::WindowFrame;
-			this->textBox_description->Location = System::Drawing::Point(43, 116);
+			this->textBox_description->Location = System::Drawing::Point(57, 143);
+			this->textBox_description->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_description->Multiline = true;
 			this->textBox_description->Name = L"textBox_description";
-			this->textBox_description->Size = System::Drawing::Size(473, 104);
+			this->textBox_description->Size = System::Drawing::Size(629, 127);
 			this->textBox_description->TabIndex = 2;
 			// 
 			// button_logout
@@ -133,9 +138,10 @@ namespace ProjectView {
 			this->button_logout->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_logout->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_logout->Location = System::Drawing::Point(368, 238);
+			this->button_logout->Location = System::Drawing::Point(491, 293);
+			this->button_logout->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button_logout->Name = L"button_logout";
-			this->button_logout->Size = System::Drawing::Size(148, 28);
+			this->button_logout->Size = System::Drawing::Size(197, 34);
 			this->button_logout->TabIndex = 41;
 			this->button_logout->Text = L"Cerrar";
 			this->button_logout->UseVisualStyleBackColor = false;
@@ -147,9 +153,10 @@ namespace ProjectView {
 			this->buttonSend->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->buttonSend->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->buttonSend->Location = System::Drawing::Point(214, 238);
+			this->buttonSend->Location = System::Drawing::Point(285, 293);
+			this->buttonSend->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->buttonSend->Name = L"buttonSend";
-			this->buttonSend->Size = System::Drawing::Size(148, 28);
+			this->buttonSend->Size = System::Drawing::Size(197, 34);
 			this->buttonSend->TabIndex = 42;
 			this->buttonSend->Text = L"Enviar";
 			this->buttonSend->UseVisualStyleBackColor = false;
@@ -161,9 +168,10 @@ namespace ProjectView {
 			this->buttonClean->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->buttonClean->ForeColor = System::Drawing::Color::White;
-			this->buttonClean->Location = System::Drawing::Point(60, 238);
+			this->buttonClean->Location = System::Drawing::Point(80, 293);
+			this->buttonClean->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->buttonClean->Name = L"buttonClean";
-			this->buttonClean->Size = System::Drawing::Size(148, 28);
+			this->buttonClean->Size = System::Drawing::Size(197, 34);
 			this->buttonClean->TabIndex = 43;
 			this->buttonClean->Text = L"Limpiar todo";
 			this->buttonClean->UseVisualStyleBackColor = false;
@@ -171,9 +179,9 @@ namespace ProjectView {
 			// 
 			// AdmNotifyPage
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(528, 278);
+			this->ClientSize = System::Drawing::Size(704, 342);
 			this->Controls->Add(this->buttonClean);
 			this->Controls->Add(this->buttonSend);
 			this->Controls->Add(this->button_logout);
@@ -182,8 +190,10 @@ namespace ProjectView {
 			this->Controls->Add(this->email);
 			this->Controls->Add(this->textBox_description);
 			this->Controls->Add(this->textBox_email);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"AdmNotifyPage";
 			this->Text = L"AdmNotifyPage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &AdmNotifyPage::AdmNotifyPage_FormClosed);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -201,5 +211,8 @@ namespace ProjectView {
 	private: System::Void buttonClean_Click(System::Object^ sender, System::EventArgs^ e) {
 		ClearTextBoxes();
 	}
-	};
+	private: System::Void AdmNotifyPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
+};
 }

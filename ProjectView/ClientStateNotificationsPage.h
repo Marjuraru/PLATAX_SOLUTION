@@ -74,9 +74,9 @@ namespace ProjectView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart_notifications = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button_humidity = (gcnew System::Windows::Forms::Button());
 			this->button_speed = (gcnew System::Windows::Forms::Button());
@@ -88,18 +88,18 @@ namespace ProjectView {
 			// 
 			// chart_notifications
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->chart_notifications->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->chart_notifications->Legends->Add(legend2);
+			chartArea1->Name = L"ChartArea1";
+			this->chart_notifications->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart_notifications->Legends->Add(legend1);
 			this->chart_notifications->Location = System::Drawing::Point(457, 38);
 			this->chart_notifications->Margin = System::Windows::Forms::Padding(4);
 			this->chart_notifications->Name = L"chart_notifications";
-			series2->ChartArea = L"ChartArea1";
-			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
-			series2->Legend = L"Legend1";
-			series2->Name = L"Variable";
-			this->chart_notifications->Series->Add(series2);
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Spline;
+			series1->Legend = L"Legend1";
+			series1->Name = L"Variable";
+			this->chart_notifications->Series->Add(series1);
 			this->chart_notifications->Size = System::Drawing::Size(438, 362);
 			this->chart_notifications->TabIndex = 2;
 			this->chart_notifications->Text = L"chart_notifications";
@@ -115,7 +115,6 @@ namespace ProjectView {
 			this->button_humidity->TabIndex = 35;
 			this->button_humidity->Text = L"Gráfica Humedad";
 			this->button_humidity->UseVisualStyleBackColor = true;
-//			this->button_humidity->Click += gcnew System::EventHandler(this, &ClientStateNotificationsPage::button_vehicle_model_Click);
 			// 
 			// button_speed
 			// 
@@ -128,7 +127,6 @@ namespace ProjectView {
 			this->button_speed->TabIndex = 36;
 			this->button_speed->Text = L"Registro de velocidades";
 			this->button_speed->UseVisualStyleBackColor = true;
-//			this->button_speed->Click += gcnew System::EventHandler(this, &ClientStateNotificationsPage::button_vehicle_marca_Click);
 			// 
 			// button_distance
 			// 
@@ -166,6 +164,7 @@ namespace ProjectView {
 			this->Controls->Add(this->chart_notifications);
 			this->Name = L"ClientStateNotificationsPage";
 			this->Text = L"ClientMynotifaicion";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &ClientStateNotificationsPage::ClientStateNotificationsPage_FormClosed);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart_notifications))->EndInit();
 			this->ResumeLayout(false);
 
@@ -174,5 +173,8 @@ namespace ProjectView {
 
 
 
-	};
+	private: System::Void ClientStateNotificationsPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
+};
 }

@@ -24,6 +24,8 @@ namespace ProjectView {
 			//TODO: agregar código de constructor aquí
 			//
 		}
+		static AdmInfoUserPage^ admInfoUserPage;
+		static AdmNotifyPage^ admnotifypage;
 
 	protected:
 		/// <summary>
@@ -136,15 +138,29 @@ namespace ProjectView {
 #pragma endregion
 	private: System::Void button_notifyusers_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		AdmNotifyPage^ admnotifypage = gcnew AdmNotifyPage();
-		admnotifypage->MdiParent = this->MdiParent;
-		admnotifypage->Show();
-
+		if (admnotifypage == nullptr) {
+			admnotifypage = gcnew AdmNotifyPage();
+			admnotifypage->MdiParent = this->MdiParent;
+			this->Hide();
+			if (admnotifypage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				admnotifypage = nullptr;
+			}
+		}
+		return;
 	}
 	private: System::Void button_usersinfo_Click(System::Object^ sender, System::EventArgs^ e) {
-		AdmInfoUserPage^ admInfoUserPage = gcnew AdmInfoUserPage();
-		admInfoUserPage->MdiParent = this->MdiParent;
-		admInfoUserPage->Show();
+
+		if (admInfoUserPage == nullptr) {
+			admInfoUserPage = gcnew AdmInfoUserPage();
+			admInfoUserPage->MdiParent = this->MdiParent;
+			this->Hide();
+			if (admInfoUserPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				admInfoUserPage = nullptr;
+			}
+		}
+		return;
 	}
 	private: System::Void button_logout_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;

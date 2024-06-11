@@ -229,6 +229,9 @@
     <EmbeddedResource Include="AdmInfoUserPage.resx">
       <DependentUpon>AdmInfoUserPage.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdmNotifyPage.resx">
+      <DependentUpon>AdmNotifyPage.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientEditProfilePage.resx">
       <DependentUpon>ClientEditProfilePage.h</DependentUpon>
     </EmbeddedResource>

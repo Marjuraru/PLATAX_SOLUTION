@@ -157,16 +157,16 @@ namespace ProjectView {
 			this->textBox_tcomment = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->dgv_question = (gcnew System::Windows::Forms::DataGridView());
-			this->CleanAll = (gcnew System::Windows::Forms::Button());
-			this->ADD = (gcnew System::Windows::Forms::Button());
-			this->button_exit = (gcnew System::Windows::Forms::Button());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Name = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Lastname = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Comment = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->CommentDate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->CleanAll = (gcnew System::Windows::Forms::Button());
+			this->ADD = (gcnew System::Windows::Forms::Button());
+			this->button_exit = (gcnew System::Windows::Forms::Button());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->dgv_answer = (gcnew System::Windows::Forms::DataGridView());
 			this->dataGridViewTextBoxColumn1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridViewTextBoxColumn2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -189,9 +189,10 @@ namespace ProjectView {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(10, 19);
+			this->label1->Location = System::Drawing::Point(13, 23);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(350, 25);
+			this->label1->Size = System::Drawing::Size(441, 32);
 			this->label1->TabIndex = 56;
 			this->label1->Text = L"REGISTRAR NUEVA SOLICITUD";
 			// 
@@ -199,10 +200,11 @@ namespace ProjectView {
 			// 
 			this->textBox_tcomment->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_tcomment->Location = System::Drawing::Point(14, 98);
+			this->textBox_tcomment->Location = System::Drawing::Point(19, 121);
+			this->textBox_tcomment->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_tcomment->Multiline = true;
 			this->textBox_tcomment->Name = L"textBox_tcomment";
-			this->textBox_tcomment->Size = System::Drawing::Size(327, 164);
+			this->textBox_tcomment->Size = System::Drawing::Size(435, 201);
 			this->textBox_tcomment->TabIndex = 62;
 			// 
 			// label10
@@ -210,9 +212,10 @@ namespace ProjectView {
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(16, 65);
+			this->label10->Location = System::Drawing::Point(21, 80);
+			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(197, 19);
+			this->label10->Size = System::Drawing::Size(245, 23);
 			this->label10->TabIndex = 61;
 			this->label10->Text = L"¿En qué podemos ayudarte\?";
 			// 
@@ -225,81 +228,21 @@ namespace ProjectView {
 				this->Id, this->Name,
 					this->Lastname, this->Comment, this->CommentDate
 			});
-			this->dgv_question->Location = System::Drawing::Point(376, 58);
+			this->dgv_question->Location = System::Drawing::Point(501, 71);
+			this->dgv_question->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dgv_question->Name = L"dgv_question";
 			this->dgv_question->ReadOnly = true;
 			this->dgv_question->RowHeadersWidth = 51;
-			this->dgv_question->Size = System::Drawing::Size(434, 181);
+			this->dgv_question->Size = System::Drawing::Size(579, 223);
 			this->dgv_question->TabIndex = 202;
-			// 
-			// CleanAll
-			// 
-			this->CleanAll->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->CleanAll->Location = System::Drawing::Point(178, 287);
-			this->CleanAll->Name = L"CleanAll";
-			this->CleanAll->Size = System::Drawing::Size(108, 30);
-			this->CleanAll->TabIndex = 206;
-			this->CleanAll->Tag = L"";
-			this->CleanAll->Text = L"Limpiar todo";
-			this->CleanAll->UseVisualStyleBackColor = true;
-			this->CleanAll->Click += gcnew System::EventHandler(this, &ClientHelp::CleanAll_Click);
-			// 
-			// ADD
-			// 
-			this->ADD->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->ADD->Location = System::Drawing::Point(48, 287);
-			this->ADD->Name = L"ADD";
-			this->ADD->Size = System::Drawing::Size(108, 30);
-			this->ADD->TabIndex = 208;
-			this->ADD->Tag = L"";
-			this->ADD->Text = L"Añadir";
-			this->ADD->UseVisualStyleBackColor = true;
-			this->ADD->Click += gcnew System::EventHandler(this, &ClientHelp::ADD_Click);
-			// 
-			// button_exit
-			// 
-			this->button_exit->BackColor = System::Drawing::Color::Maroon;
-			this->button_exit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button_exit->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_exit->Location = System::Drawing::Point(112, 365);
-			this->button_exit->Name = L"button_exit";
-			this->button_exit->Size = System::Drawing::Size(108, 24);
-			this->button_exit->TabIndex = 214;
-			this->button_exit->Tag = L"65";
-			this->button_exit->Text = L"SALIR";
-			this->button_exit->UseVisualStyleBackColor = false;
-			this->button_exit->Click += gcnew System::EventHandler(this, &ClientHelp::button_exit_Click);
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(554, 253);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(108, 19);
-			this->label2->TabIndex = 216;
-			this->label2->Text = L"RESPUESTAS";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(502, 26);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(212, 19);
-			this->label3->TabIndex = 217;
-			this->label3->Text = L"PREGUNTAS FRECUENTES";
 			// 
 			// Id
 			// 
 			this->Id->HeaderText = L"ID";
+			this->Id->MinimumWidth = 6;
 			this->Id->Name = L"Id";
 			this->Id->ReadOnly = true;
+			this->Id->Width = 125;
 			// 
 			// Name
 			// 
@@ -333,6 +276,74 @@ namespace ProjectView {
 			this->CommentDate->ReadOnly = true;
 			this->CommentDate->Width = 125;
 			// 
+			// CleanAll
+			// 
+			this->CleanAll->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->CleanAll->Location = System::Drawing::Point(237, 353);
+			this->CleanAll->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->CleanAll->Name = L"CleanAll";
+			this->CleanAll->Size = System::Drawing::Size(144, 37);
+			this->CleanAll->TabIndex = 206;
+			this->CleanAll->Tag = L"";
+			this->CleanAll->Text = L"Limpiar todo";
+			this->CleanAll->UseVisualStyleBackColor = true;
+			this->CleanAll->Click += gcnew System::EventHandler(this, &ClientHelp::CleanAll_Click);
+			// 
+			// ADD
+			// 
+			this->ADD->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->ADD->Location = System::Drawing::Point(64, 353);
+			this->ADD->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->ADD->Name = L"ADD";
+			this->ADD->Size = System::Drawing::Size(144, 37);
+			this->ADD->TabIndex = 208;
+			this->ADD->Tag = L"";
+			this->ADD->Text = L"Añadir";
+			this->ADD->UseVisualStyleBackColor = true;
+			this->ADD->Click += gcnew System::EventHandler(this, &ClientHelp::ADD_Click);
+			// 
+			// button_exit
+			// 
+			this->button_exit->BackColor = System::Drawing::Color::Maroon;
+			this->button_exit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_exit->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->button_exit->Location = System::Drawing::Point(149, 449);
+			this->button_exit->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_exit->Name = L"button_exit";
+			this->button_exit->Size = System::Drawing::Size(144, 30);
+			this->button_exit->TabIndex = 214;
+			this->button_exit->Tag = L"65";
+			this->button_exit->Text = L"SALIR";
+			this->button_exit->UseVisualStyleBackColor = false;
+			this->button_exit->Click += gcnew System::EventHandler(this, &ClientHelp::button_exit_Click);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(739, 311);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(135, 23);
+			this->label2->TabIndex = 216;
+			this->label2->Text = L"RESPUESTAS";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(669, 32);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(265, 23);
+			this->label3->TabIndex = 217;
+			this->label3->Text = L"PREGUNTAS FRECUENTES";
+			// 
 			// dgv_answer
 			// 
 			this->dgv_answer->AllowUserToAddRows = false;
@@ -342,18 +353,21 @@ namespace ProjectView {
 				this->dataGridViewTextBoxColumn1,
 					this->dataGridViewTextBoxColumn2, this->dataGridViewTextBoxColumn3, this->dataGridViewTextBoxColumn4, this->dataGridViewTextBoxColumn5
 			});
-			this->dgv_answer->Location = System::Drawing::Point(376, 287);
+			this->dgv_answer->Location = System::Drawing::Point(501, 353);
+			this->dgv_answer->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dgv_answer->Name = L"dgv_answer";
 			this->dgv_answer->ReadOnly = true;
 			this->dgv_answer->RowHeadersWidth = 51;
-			this->dgv_answer->Size = System::Drawing::Size(434, 181);
+			this->dgv_answer->Size = System::Drawing::Size(579, 223);
 			this->dgv_answer->TabIndex = 218;
 			// 
 			// dataGridViewTextBoxColumn1
 			// 
 			this->dataGridViewTextBoxColumn1->HeaderText = L"ID";
+			this->dataGridViewTextBoxColumn1->MinimumWidth = 6;
 			this->dataGridViewTextBoxColumn1->Name = L"dataGridViewTextBoxColumn1";
 			this->dataGridViewTextBoxColumn1->ReadOnly = true;
+			this->dataGridViewTextBoxColumn1->Width = 125;
 			// 
 			// dataGridViewTextBoxColumn2
 			// 
@@ -389,10 +403,10 @@ namespace ProjectView {
 			// 
 			// ClientHelp
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSeaGreen;
-			this->ClientSize = System::Drawing::Size(829, 474);
+			this->ClientSize = System::Drawing::Size(1105, 583);
 			this->Controls->Add(this->dgv_answer);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
@@ -403,8 +417,10 @@ namespace ProjectView {
 			this->Controls->Add(this->textBox_tcomment);
 			this->Controls->Add(this->label10);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			
 			this->Text = L"Sección de Ayuda";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &ClientHelp::ClientHelp_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &ClientHelp::ClientHelp_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_question))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_answer))->EndInit();
@@ -517,5 +533,8 @@ namespace ProjectView {
 
 
 	}
-	};
+	private: System::Void ClientHelp_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
+};
 }

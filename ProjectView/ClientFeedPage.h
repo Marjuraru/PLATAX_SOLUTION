@@ -227,13 +227,18 @@ namespace ProjectView {
 		}
 #pragma endregion
 	private: System::Void button_editprofile_Click(System::Object^ sender, System::EventArgs^ e) {
-		ClientEditProfilePage^ clientEditProfilePage = gcnew ClientEditProfilePage();
-		clientEditProfilePage->MdiParent = this->MdiParent;
-		if (clientEditProfilePage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			this->Show();
-			return;
+
+		
+		if (clientEditProfilePage == nullptr) {
+			clientEditProfilePage = gcnew ClientEditProfilePage();
+			clientEditProfilePage->MdiParent = this->MdiParent;
+			this->Hide();
+			if (clientEditProfilePage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				clientEditProfilePage = nullptr;
+			}
 		}
-		return;
+	return;
 	}
 	
 	private: System::Void button_logout_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -254,12 +259,15 @@ namespace ProjectView {
 	
 
 	private: System::Void button_help_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->Hide();
-		ClientHelp^ clientHelp = gcnew ClientHelp();
-		clientHelp->MdiParent = this->MdiParent;
-		if (clientHelp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			this->Show();
-			return;
+
+		if (clientHelp == nullptr) {
+			clientHelp = gcnew ClientHelp();
+			clientHelp->MdiParent = this->MdiParent;
+			this->Hide();
+			if (clientHelp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				clientHelp = nullptr;
+			}
 		}
 		return;
 	}
@@ -277,13 +285,15 @@ namespace ProjectView {
 	}
 	
 	private: System::Void button_mailbox_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->Hide();
-		ClientMailBox^ clientMailBox = gcnew ClientMailBox();
-		clientMailBox->MdiParent = this->MdiParent;
-
-		if (clientMailBox->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			this->Show();
-			return;
+		
+		if (clientMailBox == nullptr) {
+			clientMailBox = gcnew ClientMailBox();
+			clientMailBox->MdiParent = this->MdiParent;
+			this->Hide();
+			if (clientMailBox->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				clientMailBox = nullptr;
+			}
 		}
 		return;
 	}

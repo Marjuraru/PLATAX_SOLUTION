@@ -808,6 +808,7 @@ namespace ProjectView {
 			this->Controls->Add(this->groupBox2);
 			this->Name = L"ClientSearchVehiclePage";
 			this->Text = L"ClientSearchVehiclePage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &ClientSearchVehiclePage::ClientSearchVehiclePage_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &ClientSearchVehiclePage::ClientSearchVehiclePage_Load);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
@@ -1083,5 +1084,8 @@ private: System::Void button_clearall_Click(System::Object^ sender, System::Even
 
 
 
+private: System::Void ClientSearchVehiclePage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+}
 };
 }
