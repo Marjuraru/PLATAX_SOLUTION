@@ -244,6 +244,7 @@ namespace ProjectView {
 			this->button_color->Tag = L"";
 			this->button_color->Text = L"BUSCAR";
 			this->button_color->UseVisualStyleBackColor = true;
+			this->button_color->Click += gcnew System::EventHandler(this, &ClientSearchVehiclePage::button_color_Click);
 			// 
 			// button_operative
 			// 
@@ -270,6 +271,7 @@ namespace ProjectView {
 			this->button_plate->Tag = L"";
 			this->button_plate->Text = L"BUSCAR";
 			this->button_plate->UseVisualStyleBackColor = true;
+			this->button_plate->Click += gcnew System::EventHandler(this, &ClientSearchVehiclePage::button_plate_Click);
 			// 
 			// label19
 			// 
@@ -295,6 +297,7 @@ namespace ProjectView {
 			this->button_brand->Tag = L"";
 			this->button_brand->Text = L"BUSCAR";
 			this->button_brand->UseVisualStyleBackColor = true;
+			this->button_brand->Click += gcnew System::EventHandler(this, &ClientSearchVehiclePage::button_brand_Click);
 			// 
 			// textBox_id
 			// 
@@ -319,6 +322,7 @@ namespace ProjectView {
 			this->button_id->Tag = L"";
 			this->button_id->Text = L"BUSCAR";
 			this->button_id->UseVisualStyleBackColor = true;
+			this->button_id->Click += gcnew System::EventHandler(this, &ClientSearchVehiclePage::button_id_Click);
 			// 
 			// label17
 			// 
@@ -355,6 +359,7 @@ namespace ProjectView {
 			this->button_clearall->Tag = L"";
 			this->button_clearall->Text = L"Limpiar todo y/o Actualizar";
 			this->button_clearall->UseVisualStyleBackColor = true;
+			this->button_clearall->Click += gcnew System::EventHandler(this, &ClientSearchVehiclePage::button_clearall_Click);
 			// 
 			// label16
 			// 
@@ -996,12 +1001,85 @@ private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, Syst
 	}
 }
 
-
 private: System::Void ClientSearchVehiclePage_Load(System::Object^ sender, System::EventArgs^ e) {
 	InitializeDataGridView();
 	DataGridView_Load();
 	this->dgv_vehicles->SelectionChanged += gcnew System::EventHandler(this, &ClientSearchVehiclePage::dgv_vehicles_SelectionChanged);
 }
+
+private: System::Void button_id_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ tid = textBox_id->Text;
+	if (String::IsNullOrWhiteSpace(tid)) {
+		MessageBox::Show("Ingrese el id del vehículo a buscar");
+		return;
+	}
+	int id = 0;
+	if (!Int32::TryParse(tid, id)) {
+		MessageBox::Show("El id deben ser dígitos");
+		return;
+	}
+
+	List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
+	Vehicle^ v = Controller::QueryVehicleById(id);
+
+	Vehicles->Add(v);
+
+	dgv_vehicles->DataSource = Vehicles;
+}
+
+private: System::Void button_plate_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ tplate = textBox_plate->Text;
+	if (String::IsNullOrWhiteSpace(tplate)) {
+		MessageBox::Show("Ingrese la placa del vehículo a buscar");
+		return;
+	}
+	List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
+	Vehicle^ v = Controller::QueryVehicleByPlate(tplate);
+
+	Vehicles->Add(v);
+
+	dgv_vehicles->DataSource = Vehicles;
+}
+
+
+
+
+private: System::Void button_brand_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ tbrand = textBox_brand->Text;
+	if (String::IsNullOrWhiteSpace(tbrand)) {
+		MessageBox::Show("Ingrese la marca del vehículo a buscar");
+		return;
+	}
+
+	List<Vehicle^>^ v = Controller::QueryListVehicleByBrand(tbrand);
+
+	dgv_vehicles->DataSource = v;
+}
+private: System::Void button_color_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ tcolor = textBox_color->Text;
+	if (String::IsNullOrWhiteSpace(tcolor)) {
+		MessageBox::Show("Ingrese el color del vehículo a buscar");
+		return;
+	}
+
+	List<Vehicle^>^ v = Controller::QueryListVehicleByColor(tcolor);
+
+	dgv_vehicles->DataSource = v;
+}
+	void ClearTextBoxes() {
+		textBox_id->Clear();
+		textBox_plate->Clear();
+		textBox_brand->Clear();
+		textBox_color->Clear();
+		comboBox_operative->Items->Clear();
+		comboBox_condition->Items->Clear();
+	   }
+
+private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
+	ClearTextBoxes();
+	DataGridView_Load();
+}
+
 
 
 
