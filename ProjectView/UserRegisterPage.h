@@ -134,9 +134,10 @@ namespace ProjectView {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(63, 9);
+			this->label1->Location = System::Drawing::Point(84, 11);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(400, 31);
+			this->label1->Size = System::Drawing::Size(503, 38);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"FORMULARIO DE REGISTRO";
 			// 
@@ -145,9 +146,10 @@ namespace ProjectView {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(28, 74);
+			this->label2->Location = System::Drawing::Point(37, 91);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(70, 19);
+			this->label2->Size = System::Drawing::Size(85, 23);
 			this->label2->TabIndex = 7;
 			this->label2->Text = L"Nombres";
 			// 
@@ -155,9 +157,10 @@ namespace ProjectView {
 			// 
 			this->textBox_name->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_name->Location = System::Drawing::Point(31, 104);
+			this->textBox_name->Location = System::Drawing::Point(41, 128);
+			this->textBox_name->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_name->Name = L"textBox_name";
-			this->textBox_name->Size = System::Drawing::Size(210, 26);
+			this->textBox_name->Size = System::Drawing::Size(279, 30);
 			this->textBox_name->TabIndex = 5;
 			// 
 			// label3
@@ -165,9 +168,10 @@ namespace ProjectView {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(290, 74);
+			this->label3->Location = System::Drawing::Point(387, 91);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(71, 19);
+			this->label3->Size = System::Drawing::Size(87, 23);
 			this->label3->TabIndex = 9;
 			this->label3->Text = L"Apellidos";
 			// 
@@ -175,18 +179,20 @@ namespace ProjectView {
 			// 
 			this->textBox_lastname->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_lastname->Location = System::Drawing::Point(293, 104);
+			this->textBox_lastname->Location = System::Drawing::Point(391, 128);
+			this->textBox_lastname->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_lastname->Name = L"textBox_lastname";
-			this->textBox_lastname->Size = System::Drawing::Size(210, 26);
+			this->textBox_lastname->Size = System::Drawing::Size(279, 30);
 			this->textBox_lastname->TabIndex = 10;
 			// 
 			// textBox_phone
 			// 
 			this->textBox_phone->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_phone->Location = System::Drawing::Point(31, 174);
+			this->textBox_phone->Location = System::Drawing::Point(41, 214);
+			this->textBox_phone->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_phone->Name = L"textBox_phone";
-			this->textBox_phone->Size = System::Drawing::Size(210, 26);
+			this->textBox_phone->Size = System::Drawing::Size(279, 30);
 			this->textBox_phone->TabIndex = 15;
 			// 
 			// label4
@@ -194,9 +200,10 @@ namespace ProjectView {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(28, 144);
+			this->label4->Location = System::Drawing::Point(37, 177);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(67, 19);
+			this->label4->Size = System::Drawing::Size(82, 23);
 			this->label4->TabIndex = 11;
 			this->label4->Text = L"Teléfono";
 			// 
@@ -204,9 +211,10 @@ namespace ProjectView {
 			// 
 			this->textBox_email->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_email->Location = System::Drawing::Point(31, 238);
+			this->textBox_email->Location = System::Drawing::Point(41, 293);
+			this->textBox_email->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_email->Name = L"textBox_email";
-			this->textBox_email->Size = System::Drawing::Size(472, 26);
+			this->textBox_email->Size = System::Drawing::Size(628, 30);
 			this->textBox_email->TabIndex = 25;
 			// 
 			// label5
@@ -214,9 +222,10 @@ namespace ProjectView {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(28, 208);
+			this->label5->Location = System::Drawing::Point(37, 256);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(135, 19);
+			this->label5->Size = System::Drawing::Size(171, 23);
 			this->label5->TabIndex = 13;
 			this->label5->Text = L"Correo Electrónico";
 			// 
@@ -224,9 +233,10 @@ namespace ProjectView {
 			// 
 			this->textBox_dni->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_dni->Location = System::Drawing::Point(293, 174);
+			this->textBox_dni->Location = System::Drawing::Point(391, 214);
+			this->textBox_dni->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_dni->Name = L"textBox_dni";
-			this->textBox_dni->Size = System::Drawing::Size(210, 26);
+			this->textBox_dni->Size = System::Drawing::Size(279, 30);
 			this->textBox_dni->TabIndex = 20;
 			// 
 			// label6
@@ -234,9 +244,10 @@ namespace ProjectView {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(290, 144);
+			this->label6->Location = System::Drawing::Point(387, 177);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(39, 19);
+			this->label6->Size = System::Drawing::Size(45, 23);
 			this->label6->TabIndex = 15;
 			this->label6->Text = L"DNI";
 			// 
@@ -247,9 +258,10 @@ namespace ProjectView {
 			this->dtp_birthdate->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->dtp_birthdate->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->dtp_birthdate->Location = System::Drawing::Point(115, 361);
+			this->dtp_birthdate->Location = System::Drawing::Point(153, 444);
+			this->dtp_birthdate->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dtp_birthdate->Name = L"dtp_birthdate";
-			this->dtp_birthdate->Size = System::Drawing::Size(200, 26);
+			this->dtp_birthdate->Size = System::Drawing::Size(265, 30);
 			this->dtp_birthdate->TabIndex = 45;
 			// 
 			// label7
@@ -257,9 +269,10 @@ namespace ProjectView {
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(139, 341);
+			this->label7->Location = System::Drawing::Point(185, 420);
+			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(149, 19);
+			this->label7->Size = System::Drawing::Size(185, 23);
 			this->label7->TabIndex = 18;
 			this->label7->Text = L"Fecha de Nacimiento";
 			// 
@@ -268,9 +281,10 @@ namespace ProjectView {
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(53, 341);
+			this->label8->Location = System::Drawing::Point(71, 420);
+			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(42, 19);
+			this->label8->Size = System::Drawing::Size(51, 23);
 			this->label8->TabIndex = 20;
 			this->label8->Text = L"Sexo";
 			// 
@@ -278,9 +292,10 @@ namespace ProjectView {
 			// 
 			this->textBox_password->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_password->Location = System::Drawing::Point(331, 361);
+			this->textBox_password->Location = System::Drawing::Point(441, 444);
+			this->textBox_password->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_password->Name = L"textBox_password";
-			this->textBox_password->Size = System::Drawing::Size(172, 26);
+			this->textBox_password->Size = System::Drawing::Size(228, 30);
 			this->textBox_password->TabIndex = 50;
 			// 
 			// label9
@@ -288,9 +303,10 @@ namespace ProjectView {
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(351, 341);
+			this->label9->Location = System::Drawing::Point(468, 420);
+			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(136, 19);
+			this->label9->Size = System::Drawing::Size(172, 23);
 			this->label9->TabIndex = 22;
 			this->label9->Text = L"Crea tu contraseña";
 			// 
@@ -298,9 +314,10 @@ namespace ProjectView {
 			// 
 			this->button_register->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_register->Location = System::Drawing::Point(332, 393);
+			this->button_register->Location = System::Drawing::Point(443, 484);
+			this->button_register->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button_register->Name = L"button_register";
-			this->button_register->Size = System::Drawing::Size(171, 29);
+			this->button_register->Size = System::Drawing::Size(228, 36);
 			this->button_register->TabIndex = 55;
 			this->button_register->Text = L"REGISTRAR";
 			this->button_register->UseVisualStyleBackColor = true;
@@ -310,9 +327,10 @@ namespace ProjectView {
 			// 
 			this->textBox_address->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_address->Location = System::Drawing::Point(31, 303);
+			this->textBox_address->Location = System::Drawing::Point(41, 373);
+			this->textBox_address->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_address->Name = L"textBox_address";
-			this->textBox_address->Size = System::Drawing::Size(472, 26);
+			this->textBox_address->Size = System::Drawing::Size(628, 30);
 			this->textBox_address->TabIndex = 30;
 			// 
 			// label10
@@ -320,9 +338,10 @@ namespace ProjectView {
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(28, 273);
+			this->label10->Location = System::Drawing::Point(37, 336);
+			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(73, 19);
+			this->label10->Size = System::Drawing::Size(90, 23);
 			this->label10->TabIndex = 24;
 			this->label10->Text = L"Dirección";
 			// 
@@ -331,9 +350,10 @@ namespace ProjectView {
 			this->checkBox_female->AutoSize = true;
 			this->checkBox_female->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->checkBox_female->Location = System::Drawing::Point(31, 361);
+			this->checkBox_female->Location = System::Drawing::Point(41, 444);
+			this->checkBox_female->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->checkBox_female->Name = L"checkBox_female";
-			this->checkBox_female->Size = System::Drawing::Size(65, 23);
+			this->checkBox_female->Size = System::Drawing::Size(80, 26);
 			this->checkBox_female->TabIndex = 35;
 			this->checkBox_female->Text = L"Mujer";
 			this->checkBox_female->UseVisualStyleBackColor = true;
@@ -344,9 +364,10 @@ namespace ProjectView {
 			this->checkBox_male->AutoSize = true;
 			this->checkBox_male->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->checkBox_male->Location = System::Drawing::Point(31, 384);
+			this->checkBox_male->Location = System::Drawing::Point(41, 473);
+			this->checkBox_male->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->checkBox_male->Name = L"checkBox_male";
-			this->checkBox_male->Size = System::Drawing::Size(78, 23);
+			this->checkBox_male->Size = System::Drawing::Size(96, 26);
 			this->checkBox_male->TabIndex = 40;
 			this->checkBox_male->Text = L"Hombre";
 			this->checkBox_male->UseVisualStyleBackColor = true;
@@ -365,9 +386,10 @@ namespace ProjectView {
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(154, 388);
+			this->label11->Location = System::Drawing::Point(205, 478);
+			this->label11->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(112, 19);
+			this->label11->Size = System::Drawing::Size(139, 23);
 			this->label11->TabIndex = 56;
 			this->label11->Text = L"Tipo de usuario";
 			// 
@@ -376,9 +398,10 @@ namespace ProjectView {
 			this->checkBox_client->AutoSize = true;
 			this->checkBox_client->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->checkBox_client->Location = System::Drawing::Point(124, 410);
+			this->checkBox_client->Location = System::Drawing::Point(165, 505);
+			this->checkBox_client->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->checkBox_client->Name = L"checkBox_client";
-			this->checkBox_client->Size = System::Drawing::Size(70, 23);
+			this->checkBox_client->Size = System::Drawing::Size(89, 26);
 			this->checkBox_client->TabIndex = 57;
 			this->checkBox_client->Text = L"Cliente";
 			this->checkBox_client->UseVisualStyleBackColor = true;
@@ -389,9 +412,10 @@ namespace ProjectView {
 			this->checkBox_proprietor->AutoSize = true;
 			this->checkBox_proprietor->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->checkBox_proprietor->Location = System::Drawing::Point(218, 410);
+			this->checkBox_proprietor->Location = System::Drawing::Point(291, 505);
+			this->checkBox_proprietor->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->checkBox_proprietor->Name = L"checkBox_proprietor";
-			this->checkBox_proprietor->Size = System::Drawing::Size(68, 23);
+			this->checkBox_proprietor->Size = System::Drawing::Size(84, 26);
 			this->checkBox_proprietor->TabIndex = 58;
 			this->checkBox_proprietor->Text = L"Dueño";
 			this->checkBox_proprietor->UseVisualStyleBackColor = true;
@@ -399,10 +423,10 @@ namespace ProjectView {
 			// 
 			// UserRegisterPage
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(523, 432);
+			this->ClientSize = System::Drawing::Size(697, 532);
 			this->Controls->Add(this->checkBox_proprietor);
 			this->Controls->Add(this->checkBox_client);
 			this->Controls->Add(this->label11);
@@ -427,8 +451,10 @@ namespace ProjectView {
 			this->Controls->Add(this->textBox_name);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"UserRegisterPage";
 			this->Text = L"UserRegisterPage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &UserRegisterPage::UserRegisterPage_FormClosed);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -572,7 +598,7 @@ namespace ProjectView {
 
 			this->Close();
 
-			UserFeedPage^ userFeedPage = gcnew UserFeedPage();
+			UserFeedPage^ userFeedPage = gcnew UserFeedPage(); // modificar aquí - Diego
 			userFeedPage->MdiParent = this->MdiParent;
 			userFeedPage->Show();
 			notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado DUEÑO";
@@ -605,11 +631,11 @@ namespace ProjectView {
 
 			this->Close();
 
-			ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
+			ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();//modificar de aquí (Diego)
 			clientFeedPage->MdiParent = this->MdiParent;
 			clientFeedPage->Show();
 			notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado CLIENTE.";
-			notifyIcon1->ShowBalloonTip(2500);
+			notifyIcon1->ShowBalloonTip(2500);// hasta aquí
 
 		}
 	}
@@ -627,5 +653,8 @@ namespace ProjectView {
 	}
 
 
-	};
+	private: System::Void UserRegisterPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
+};
 }

@@ -34,10 +34,10 @@ namespace ProjectView {
 			//
 		}
 
-		//static RegisterPage^ registerPage;
+		static UserRegisterPage^ userRegisterPage;
 		static AdminFeedPage^ adminFeedPage;
 		static UserFeedPage^ userFeedPage;
-		//static AdminMainControlPage^ adminMainControlPage;
+		static ClientFeedPage^ clientFeedPage;
 
 	protected:
 		/// <summary>
@@ -243,10 +243,23 @@ namespace ProjectView {
 	}
 	*/
 	private: System::Void button_register_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-	
-			UserRegisterPage^ userRegisterPage = gcnew UserRegisterPage();
-			userRegisterPage->MdiParent = this->MdiParent;
-			userRegisterPage->Show();
+
+
+			if (userRegisterPage == nullptr) {
+
+				userRegisterPage = gcnew UserRegisterPage();
+				userRegisterPage->MdiParent = this->MdiParent;
+
+				this->Hide();//oculta la ventana madre(Login page)
+
+				if (userRegisterPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) { // muestra a la hija y tambien manda un valor boleano
+					this->Show();//Se muestra madre desde su código nuevamente
+					userRegisterPage = nullptr;// que raro, pero bueno, funciona poner nulo a este puntero para que se vuelva usar cuantas veces la ventana adminFeedPage
+					return;
+				}
+
+				return;
+			}
 	}
 	private: System::Void button_login_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ email = textBox_email->Text;
@@ -340,13 +353,21 @@ namespace ProjectView {
 					Client^ c = Controller::QueryClientByEmail(email);
 					if (c != nullptr) {
 						if (c->Password == password && c->client == true) {
-							Session::CurrentClient = c;
-							ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
-							clientFeedPage->MdiParent = this->MdiParent;
-							clientFeedPage->Show();
-							this->Hide();
 							notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado CLIENTE";
 							notifyIcon1->ShowBalloonTip(2500);
+							ClearTextBoxes();
+							Session::CurrentClient = c;
+
+							if (clientFeedPage == nullptr) {
+								clientFeedPage = gcnew ClientFeedPage();
+								clientFeedPage->MdiParent = this->MdiParent;
+								this->Hide();
+								if (clientFeedPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+									this->Show();
+									clientFeedPage = nullptr;
+								}
+							}
+
 							return;
 						}
 						else {
