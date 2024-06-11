@@ -895,12 +895,14 @@ namespace ProjectView {
 		if (vehicles->Count > 0) {
 			// Vincular los datos al DataGridView
 			dgv_vehicles->DataSource = vehicles;
-		}*/
+		}
+		*/
 		// Obtener todos los vehículos desde el controlador
 		List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
 
 		// Vincular los datos al DataGridView
 		dgv_vehicles->DataSource = vehicles;
+		
 	}
 
 
@@ -946,8 +948,10 @@ private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, Syst
 		for each (Proprietor^ proprietor in proprietors) {
 			// Iterar sobre los vehículos de cada propietario
 			for each (Vehicle^ vehicle in proprietor->ListVehicleProprietor) {
-				// Verificar si el vehículo actual es igual al vehículo seleccionado
+				if (selectedVehicle->Plate == vehicle->Plate) {
 					vehicleOwner = proprietor;
+					break;
+				}
 			}
 		}
 
