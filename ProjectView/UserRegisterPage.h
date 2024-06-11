@@ -429,6 +429,7 @@ namespace ProjectView {
 			this->Controls->Add(this->label1);
 			this->Name = L"UserRegisterPage";
 			this->Text = L"UserRegisterPage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &UserRegisterPage::UserRegisterPage_FormClosed);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -572,12 +573,8 @@ namespace ProjectView {
 
 			this->Close();
 
-			UserFeedPage^ userFeedPage = gcnew UserFeedPage();
-			userFeedPage->MdiParent = this->MdiParent;
-			userFeedPage->Show();
-			notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado DUEÑO";
-			notifyIcon1->ShowBalloonTip(2500);
-
+			//para que valide...
+			this->DialogResult = System::Windows::Forms::DialogResult::OK;
 
 		}
 		else if (client) {
@@ -605,11 +602,8 @@ namespace ProjectView {
 
 			this->Close();
 
-			ClientFeedPage^ clientFeedPage = gcnew ClientFeedPage();
-			clientFeedPage->MdiParent = this->MdiParent;
-			clientFeedPage->Show();
-			notifyIcon1->BalloonTipText = "Bienvenid@ a PlaTax estimado CLIENTE.";
-			notifyIcon1->ShowBalloonTip(2500);
+			//para que valide
+			this->DialogResult = System::Windows::Forms::DialogResult::OK;
 
 		}
 	}
@@ -627,5 +621,10 @@ namespace ProjectView {
 	}
 
 
-	};
+	private: System::Void UserRegisterPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+
+	}
+};
 }

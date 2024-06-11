@@ -461,9 +461,7 @@ namespace ProjectView {
 		}
 
 	private: System::Void button_cancel_Click_1(System::Object^ sender, System::EventArgs^ e) {
-
 		this->Close();
-
 	}
 	private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
 		Vehicle^ vehicle = gcnew Vehicle();
@@ -550,6 +548,7 @@ namespace ProjectView {
 		MessageBox::Show("Se ha agregado un nuevo vehículo");
 
 		this->Close();
+
 
 		/*
 		 property int Id;
