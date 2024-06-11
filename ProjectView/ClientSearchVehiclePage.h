@@ -820,17 +820,17 @@ namespace ProjectView {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
-private: System::Void button_Send_message_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Hide();
-	ClientMailBox^ clientMailBox = gcnew ClientMailBox();
-	clientMailBox->MdiParent = this->MdiParent;
+	private: System::Void button_Send_message_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		ClientMailBox^ clientMailBox = gcnew ClientMailBox();
+		clientMailBox->MdiParent = this->MdiParent;
 
-	if (clientMailBox->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-		this->Show();
+		if (clientMailBox->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			this->Show();
+			return;
+		}
 		return;
 	}
-	return;
-}
 
 	   private: System::Void InitializeDataGridView() {
 		   // Configurar el DataGridView para no generar columnas automáticamente
@@ -871,7 +871,8 @@ private: System::Void button_Send_message_Click(System::Object^ sender, System::
 	   }
 
 	private: System::Void DataGridView_Load() {
-		// Obtener todos los vehículos desde el controlador
+		/*
+		// Crear una nueva lista de vehículos
 		List<Vehicle^>^ vehicles = gcnew List<Vehicle^>();
 
 		// Obtener todos los propietarios desde el controlador
@@ -890,9 +891,18 @@ private: System::Void button_Send_message_Click(System::Object^ sender, System::
 			}
 		}
 
+		// Asegurarse de que la lista de vehículos no esté vacía
+		if (vehicles->Count > 0) {
+			// Vincular los datos al DataGridView
+			dgv_vehicles->DataSource = vehicles;
+		}*/
+		// Obtener todos los vehículos desde el controlador
+		List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
+
 		// Vincular los datos al DataGridView
 		dgv_vehicles->DataSource = vehicles;
 	}
+
 
 
 	void ShowImage(array<System::Byte>^ imageBytes, PictureBox^ pictureBox) {
@@ -958,7 +968,7 @@ private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, Syst
 		}
 		else {
 			// Limpiar los TextBoxes si no se encontró al propietario
-			textBox_name->Text = "Nombre";
+			textBox_name->Text = "NO SE ENCONTRÓ";
 			textBox_surname->Text = "Apellido";
 			textBox_phone->Text = "Número de teléfono";
 			textBox_dni->Text = "DNI";
@@ -987,18 +997,6 @@ private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, Syst
 
 
 private: System::Void ClientSearchVehiclePage_Load(System::Object^ sender, System::EventArgs^ e) {
-	///*FillCombos();*/
-	//textBox_name->Text = "Nombre";
-	//textBox_surname->Text = "Apellido";
-	//textBox_phone->Text = "Número de teléfono";
-	//textBox_dni->Text = "DNI";
-	//textBox_email->Text = "E-Mail";
-	//textBox_address->Text = "Dirección";
-	//textBox_Recommendations->Text = "#Recomendaciones";
-	//textBox_Deals_completed->Text = "#Tratos completados";
-	//pb_photo_proprietor->Image = nullptr;
-	//pb_photocar->Image = nullptr;
-	//dgv_vehicles->Rows->Clear();
 	InitializeDataGridView();
 	DataGridView_Load();
 	this->dgv_vehicles->SelectionChanged += gcnew System::EventHandler(this, &ClientSearchVehiclePage::dgv_vehicles_SelectionChanged);
