@@ -157,13 +157,23 @@ bool ProjectPersistance::Persistance::IsPlateRegistered(String^ plate)
 ///////////////////////////////////////////////////////////////////////////////////////////
 int ProjectPersistance::Persistance::GenerateUserId()
 {
-    UserList = (List<User^>^)Persistance::LoadBinaryFile(USER_FILE_BIN_NAME);
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    ClientList = (List<Client^>^)Persistance::LoadBinaryFile(CLIENT_FILE_BIN_NAME);
     int newID = 1;
-    if (UserList != nullptr) {
-        // Busca el último ID utilizado y elige un nuevo ID que sea único
-        for each (User ^ User in UserList) {
-            if (User->Id >= newID) {
-                newID = User->Id + 1;
+    // Verificar la lista de clientes y encontrar el ID más alto
+    if (ClientList != nullptr) {
+        for each (Client ^ client in ClientList) {
+            if (client->Id >= newID) {
+                newID = client->Id + 1;
+            }
+        }
+    }
+
+    // Verificar la lista de propietarios y encontrar el ID más alto
+    if (ProprietorList != nullptr) {
+        for each (Proprietor ^ proprietor in ProprietorList) {
+            if (proprietor->Id >= newID) {
+                newID = proprietor->Id + 1;
             }
         }
     }
