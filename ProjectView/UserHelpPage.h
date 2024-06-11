@@ -56,12 +56,16 @@ namespace ProjectView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(849, 524);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"UserHelpPage";
 			this->Text = L"UserHelpPage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &UserHelpPage::UserHelpPage_FormClosed);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+	private: System::Void UserHelpPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
 	};
 }

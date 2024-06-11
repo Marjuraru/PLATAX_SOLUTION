@@ -748,6 +748,7 @@ namespace ProjectView {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"UserMyReclamationsPage";
 			this->Text = L"UserMyReclamationsPage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &UserMyReclamationsPage::UserMyReclamationsPage_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &UserMyReclamationsPage::UserMyReclamationsPage_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_reclamation))->EndInit();
 			this->groupBox1->ResumeLayout(false);
@@ -780,7 +781,7 @@ namespace ProjectView {
 				}
 			}
 			else {
-				MessageBox::Show("No hay carros disponibles para mostrar");
+				MessageBox::Show("No hay reclamos disponibles para mostrar");
 			}
 		}
 
@@ -963,10 +964,13 @@ namespace ProjectView {
 	}
 
 
-private: System::Void UserMyReclamationsPage_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void UserMyReclamationsPage_Load(System::Object^ sender, System::EventArgs^ e) {
 
-	ShowInitialDgvReclamation();
+		ShowInitialDgvReclamation();
 
-}
+	}
+	private: System::Void UserMyReclamationsPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
 };
 }
