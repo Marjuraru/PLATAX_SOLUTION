@@ -41,6 +41,7 @@ namespace ProjectView {
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chart_pie_vehicle;
 	private: System::Windows::Forms::Button^ button_vehicle_model;
 	private: System::Windows::Forms::Button^ button_vehicle_marca;
+	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
 	protected:
 
 	protected:
@@ -70,6 +71,7 @@ namespace ProjectView {
 			this->chart_pie_vehicle = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button_vehicle_model = (gcnew System::Windows::Forms::Button());
 			this->button_vehicle_marca = (gcnew System::Windows::Forms::Button());
+			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart_pie_vehicle))->BeginInit();
 			this->SuspendLayout();
 			// 

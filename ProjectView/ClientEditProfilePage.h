@@ -636,7 +636,7 @@ namespace ProjectView {
 
 	}
 	private: System::Void button_back_Click_1(System::Object^ sender, System::EventArgs^ e) {
-
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 
 	}

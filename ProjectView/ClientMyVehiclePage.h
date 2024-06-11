@@ -1,5 +1,6 @@
 #pragma once
 #include "ClientMyStatisticsPage.h"
+#include "ClientStateNotificationsPage.h"
 
 namespace ProjectView {
 
@@ -117,6 +118,7 @@ namespace ProjectView {
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::Label^ label12;
 	private: System::Windows::Forms::Button^ button_view_statistics;
+	private: System::Windows::Forms::Button^ button_state_of_vehicle;
 
 
 
@@ -333,6 +335,7 @@ namespace ProjectView {
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->button_view_statistics = (gcnew System::Windows::Forms::Button());
+			this->button_state_of_vehicle = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -582,7 +585,7 @@ namespace ProjectView {
 			this->button_exit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_exit->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_exit->Location = System::Drawing::Point(981, 548);
+			this->button_exit->Location = System::Drawing::Point(988, 582);
 			this->button_exit->Margin = System::Windows::Forms::Padding(4);
 			this->button_exit->Name = L"button_exit";
 			this->button_exit->Size = System::Drawing::Size(165, 44);
@@ -711,7 +714,7 @@ namespace ProjectView {
 			// 
 			this->button_view_statistics->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_view_statistics->Location = System::Drawing::Point(943, 483);
+			this->button_view_statistics->Location = System::Drawing::Point(953, 527);
 			this->button_view_statistics->Margin = System::Windows::Forms::Padding(4);
 			this->button_view_statistics->Name = L"button_view_statistics";
 			this->button_view_statistics->Size = System::Drawing::Size(232, 37);
@@ -721,12 +724,27 @@ namespace ProjectView {
 			this->button_view_statistics->UseVisualStyleBackColor = true;
 			this->button_view_statistics->Click += gcnew System::EventHandler(this, &ClientMyVehiclePage::button_view_statistics_Click);
 			// 
+			// button_state_of_vehicle
+			// 
+			this->button_state_of_vehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_state_of_vehicle->Location = System::Drawing::Point(953, 442);
+			this->button_state_of_vehicle->Margin = System::Windows::Forms::Padding(4);
+			this->button_state_of_vehicle->Name = L"button_state_of_vehicle";
+			this->button_state_of_vehicle->Size = System::Drawing::Size(232, 70);
+			this->button_state_of_vehicle->TabIndex = 234;
+			this->button_state_of_vehicle->Tag = L"";
+			this->button_state_of_vehicle->Text = L"Ver notificaciones de estado";
+			this->button_state_of_vehicle->UseVisualStyleBackColor = true;
+			this->button_state_of_vehicle->Click += gcnew System::EventHandler(this, &ClientMyVehiclePage::button_state_of_vehicle_Click);
+			// 
 			// ClientMyVehiclePage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSeaGreen;
 			this->ClientSize = System::Drawing::Size(1234, 645);
+			this->Controls->Add(this->button_state_of_vehicle);
 			this->Controls->Add(this->button_view_statistics);
 			this->Controls->Add(this->label12);
 			this->Controls->Add(this->label11);
@@ -768,6 +786,7 @@ namespace ProjectView {
 #pragma endregion
 
 	private: System::Void button_exit_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
 
@@ -870,8 +889,7 @@ private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, Syst
 	}
 }
 
-private: System::Void InitializeDataGridView()
-{
+private: System::Void InitializeDataGridView(){
 	// Configurar el DataGridView para no generar columnas automáticamente
 	dgv_vehicles->AutoGenerateColumns = false;
 
@@ -911,6 +929,11 @@ private: System::Void InitializeDataGridView()
 		ClientMyStatisticsPage^ clientMyStatisticsPage = gcnew ClientMyStatisticsPage();
 		clientMyStatisticsPage->MdiParent = this->MdiParent;
 		clientMyStatisticsPage->Show();
+	}
+	private: System::Void button_state_of_vehicle_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClientStateNotificationsPage^ clientStateNotificationsPage = gcnew ClientStateNotificationsPage();
+		clientStateNotificationsPage->MdiParent = this->MdiParent;
+		clientStateNotificationsPage->Show();
 	}
 };
 }

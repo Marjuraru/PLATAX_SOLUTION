@@ -73,6 +73,7 @@ namespace ProjectView {
 	private: System::Windows::Forms::TabControl^ tabControl1;
 	private: System::Windows::Forms::TabPage^ tabPage_Sendmessage;
 	private: System::Windows::Forms::TabPage^ tabPage_Mailbox;
+	private: System::Windows::Forms::Button^ button_exit;
 
 
 
@@ -126,6 +127,7 @@ namespace ProjectView {
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage_Sendmessage = (gcnew System::Windows::Forms::TabPage());
 			this->tabPage_Mailbox = (gcnew System::Windows::Forms::TabPage());
+			this->button_exit = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -166,12 +168,29 @@ namespace ProjectView {
 			this->tabPage_Mailbox->Text = L"Buzón de entrada";
 			this->tabPage_Mailbox->UseVisualStyleBackColor = true;
 			// 
+			// button_exit
+			// 
+			this->button_exit->BackColor = System::Drawing::Color::Maroon;
+			this->button_exit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_exit->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->button_exit->Location = System::Drawing::Point(902, 527);
+			this->button_exit->Margin = System::Windows::Forms::Padding(4);
+			this->button_exit->Name = L"button_exit";
+			this->button_exit->Size = System::Drawing::Size(165, 44);
+			this->button_exit->TabIndex = 214;
+			this->button_exit->Tag = L"65";
+			this->button_exit->Text = L"SALIR";
+			this->button_exit->UseVisualStyleBackColor = false;
+			this->button_exit->Click += gcnew System::EventHandler(this, &ClientMailBox::button_exit_Click);
+			// 
 			// ClientMailBox
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSeaGreen;
 			this->ClientSize = System::Drawing::Size(1105, 584);
+			this->Controls->Add(this->button_exit);
 			this->Controls->Add(this->tabControl1);
 			this->Name = L"ClientMailBox";
 			this->Text = L"Sección de Buzón";
@@ -180,5 +199,9 @@ namespace ProjectView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button_exit_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		this->Close();
+	}
+};
 }

@@ -142,6 +142,7 @@
     <ClCompile Include="ClientMyStatisticsPage.cpp" />
     <ClCompile Include="ClientMyVehiclePage.cpp" />
     <ClCompile Include="ClientSearchVehiclePage.cpp" />
+    <ClCompile Include="ClientStateNotificationsPage.cpp" />
     <ClCompile Include="UserAddVehiclePage.cpp" />
     <ClCompile Include="UserFeedPage.cpp" />
     <ClCompile Include="UserHelpPage.cpp" />
@@ -185,6 +186,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ClientSearchVehiclePage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ClientStateNotificationsPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserAddVehiclePage.h">
@@ -245,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientSearchVehiclePage.resx">
       <DependentUpon>ClientSearchVehiclePage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientStateNotificationsPage.resx">
+      <DependentUpon>ClientStateNotificationsPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAddVehiclePage.resx">
       <DependentUpon>UserAddVehiclePage.h</DependentUpon>

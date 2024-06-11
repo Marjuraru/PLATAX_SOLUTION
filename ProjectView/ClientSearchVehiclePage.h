@@ -1,4 +1,5 @@
 #pragma once
+#include "ClientMailBox.h"
 
 namespace ProjectView {
 
@@ -57,26 +58,34 @@ namespace ProjectView {
 	private: System::Windows::Forms::Label^ label11;
 	private: System::Windows::Forms::ComboBox^ comboBox_condition;
 	private: System::Windows::Forms::DataGridView^ dgv_vehicles;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Id;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Plate;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Brand;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Color;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Operative;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Condition;
+
+
+
+
+
+
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ textBox_tid;
+	private: System::Windows::Forms::TextBox^ textBox_name;
+
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::TextBox^ textBox_tnumberseats;
-	private: System::Windows::Forms::TextBox^ textBox_tcolor;
-	private: System::Windows::Forms::TextBox^ textBox_tbrand;
-	private: System::Windows::Forms::TextBox^ textBox_tmodel;
-	private: System::Windows::Forms::TextBox^ textBox_tplate;
-	private: System::Windows::Forms::PictureBox^ pb_photo;
+	private: System::Windows::Forms::TextBox^ textBox_address;
+
+	private: System::Windows::Forms::TextBox^ textBox_email;
+
+	private: System::Windows::Forms::TextBox^ textBox_dni;
+
+	private: System::Windows::Forms::TextBox^ textBox_surname;
+	private: System::Windows::Forms::TextBox^ textBox_phone;
+	private: System::Windows::Forms::PictureBox^ pb_photo_proprietor;
+
+
+
+
 	private: System::Windows::Forms::GroupBox^ groupBox1;
 	private: System::Windows::Forms::PictureBox^ pb_photocar;
 
@@ -86,6 +95,7 @@ namespace ProjectView {
 	private: System::Windows::Forms::Label^ label8;
 	private: System::Windows::Forms::TextBox^ textBox_Recommendations;
 	private: System::Windows::Forms::Button^ button_Send_message;
+	private: System::Windows::Forms::Button^ button_exit;
 
 
 
@@ -130,37 +140,32 @@ namespace ProjectView {
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->comboBox_condition = (gcnew System::Windows::Forms::ComboBox());
 			this->dgv_vehicles = (gcnew System::Windows::Forms::DataGridView());
-			this->Id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Plate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Brand = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Color = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Operative = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Condition = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox_tid = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_name = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->textBox_tnumberseats = (gcnew System::Windows::Forms::TextBox());
-			this->textBox_tcolor = (gcnew System::Windows::Forms::TextBox());
-			this->textBox_tbrand = (gcnew System::Windows::Forms::TextBox());
-			this->textBox_tmodel = (gcnew System::Windows::Forms::TextBox());
-			this->textBox_tplate = (gcnew System::Windows::Forms::TextBox());
-			this->pb_photo = (gcnew System::Windows::Forms::PictureBox());
+			this->textBox_address = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_email = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_dni = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_surname = (gcnew System::Windows::Forms::TextBox());
+			this->textBox_phone = (gcnew System::Windows::Forms::TextBox());
+			this->pb_photo_proprietor = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->pb_photocar = (gcnew System::Windows::Forms::PictureBox());
-			this->label8 = (gcnew System::Windows::Forms::Label());
-			this->textBox_Recommendations = (gcnew System::Windows::Forms::TextBox());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->textBox_Deals_completed = (gcnew System::Windows::Forms::TextBox());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->pb_photocar = (gcnew System::Windows::Forms::PictureBox());
+			this->textBox_Recommendations = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button_Send_message = (gcnew System::Windows::Forms::Button());
+			this->button_exit = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo_proprietor))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photocar))->BeginInit();
 			this->SuspendLayout();
@@ -454,10 +459,6 @@ namespace ProjectView {
 			this->dgv_vehicles->AllowUserToAddRows = false;
 			this->dgv_vehicles->AllowUserToDeleteRows = false;
 			this->dgv_vehicles->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgv_vehicles->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
-				this->Id, this->Plate,
-					this->Brand, this->Color, this->Operative, this->Condition
-			});
 			this->dgv_vehicles->Location = System::Drawing::Point(23, 414);
 			this->dgv_vehicles->Margin = System::Windows::Forms::Padding(4);
 			this->dgv_vehicles->Name = L"dgv_vehicles";
@@ -465,54 +466,7 @@ namespace ProjectView {
 			this->dgv_vehicles->RowHeadersWidth = 51;
 			this->dgv_vehicles->Size = System::Drawing::Size(579, 354);
 			this->dgv_vehicles->TabIndex = 225;
-			// 
-			// Id
-			// 
-			this->Id->HeaderText = L"ID";
-			this->Id->MinimumWidth = 6;
-			this->Id->Name = L"Id";
-			this->Id->ReadOnly = true;
-			this->Id->Width = 30;
-			// 
-			// Plate
-			// 
-			this->Plate->HeaderText = L"Placa";
-			this->Plate->MinimumWidth = 6;
-			this->Plate->Name = L"Plate";
-			this->Plate->ReadOnly = true;
-			this->Plate->Width = 60;
-			// 
-			// Brand
-			// 
-			this->Brand->HeaderText = L"Marca";
-			this->Brand->MinimumWidth = 6;
-			this->Brand->Name = L"Brand";
-			this->Brand->ReadOnly = true;
-			this->Brand->Width = 60;
-			// 
-			// Color
-			// 
-			this->Color->HeaderText = L"Color";
-			this->Color->MinimumWidth = 6;
-			this->Color->Name = L"Color";
-			this->Color->ReadOnly = true;
-			this->Color->Width = 60;
-			// 
-			// Operative
-			// 
-			this->Operative->HeaderText = L"Estado de Operatividad";
-			this->Operative->MinimumWidth = 6;
-			this->Operative->Name = L"Operative";
-			this->Operative->ReadOnly = true;
-			this->Operative->Width = 90;
-			// 
-			// Condition
-			// 
-			this->Condition->HeaderText = L"Condición";
-			this->Condition->MinimumWidth = 6;
-			this->Condition->Name = L"Condition";
-			this->Condition->ReadOnly = true;
-			this->Condition->Width = 90;
+			this->dgv_vehicles->SelectionChanged += gcnew System::EventHandler(this, &ClientSearchVehiclePage::dgv_vehicles_SelectionChanged);
 			// 
 			// label1
 			// 
@@ -526,21 +480,21 @@ namespace ProjectView {
 			this->label1->TabIndex = 226;
 			this->label1->Text = L"PERFIL DEL PROPIETARIO";
 			// 
-			// textBox_tid
+			// textBox_name
 			// 
-			this->textBox_tid->Enabled = false;
-			this->textBox_tid->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->textBox_name->Enabled = false;
+			this->textBox_name->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_tid->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_tid->Location = System::Drawing::Point(736, 95);
-			this->textBox_tid->Margin = System::Windows::Forms::Padding(4);
-			this->textBox_tid->Name = L"textBox_tid";
-			this->textBox_tid->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
-			this->textBox_tid->Size = System::Drawing::Size(195, 30);
-			this->textBox_tid->TabIndex = 227;
-			this->textBox_tid->Tag = L"";
-			this->textBox_tid->Text = L"ID";
-			this->textBox_tid->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->textBox_name->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->textBox_name->Location = System::Drawing::Point(736, 95);
+			this->textBox_name->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_name->Name = L"textBox_name";
+			this->textBox_name->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
+			this->textBox_name->Size = System::Drawing::Size(195, 30);
+			this->textBox_name->TabIndex = 227;
+			this->textBox_name->Tag = L"";
+			this->textBox_name->Text = L"ID";
+			this->textBox_name->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// label7
 			// 
@@ -614,86 +568,86 @@ namespace ProjectView {
 			this->label2->TabIndex = 238;
 			this->label2->Text = L"Nombre";
 			// 
-			// textBox_tnumberseats
+			// textBox_address
 			// 
-			this->textBox_tnumberseats->Enabled = false;
-			this->textBox_tnumberseats->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->textBox_address->Enabled = false;
+			this->textBox_address->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_tnumberseats->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_tnumberseats->Location = System::Drawing::Point(736, 302);
-			this->textBox_tnumberseats->Margin = System::Windows::Forms::Padding(4);
-			this->textBox_tnumberseats->Name = L"textBox_tnumberseats";
-			this->textBox_tnumberseats->Size = System::Drawing::Size(195, 30);
-			this->textBox_tnumberseats->TabIndex = 232;
-			this->textBox_tnumberseats->Tag = L"";
-			this->textBox_tnumberseats->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->textBox_address->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->textBox_address->Location = System::Drawing::Point(736, 302);
+			this->textBox_address->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_address->Name = L"textBox_address";
+			this->textBox_address->Size = System::Drawing::Size(195, 30);
+			this->textBox_address->TabIndex = 232;
+			this->textBox_address->Tag = L"";
+			this->textBox_address->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// textBox_tcolor
+			// textBox_email
 			// 
-			this->textBox_tcolor->Enabled = false;
-			this->textBox_tcolor->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->textBox_email->Enabled = false;
+			this->textBox_email->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_tcolor->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_tcolor->Location = System::Drawing::Point(736, 259);
-			this->textBox_tcolor->Margin = System::Windows::Forms::Padding(4);
-			this->textBox_tcolor->Name = L"textBox_tcolor";
-			this->textBox_tcolor->Size = System::Drawing::Size(195, 30);
-			this->textBox_tcolor->TabIndex = 231;
-			this->textBox_tcolor->Tag = L"";
-			this->textBox_tcolor->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->textBox_email->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->textBox_email->Location = System::Drawing::Point(736, 259);
+			this->textBox_email->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_email->Name = L"textBox_email";
+			this->textBox_email->Size = System::Drawing::Size(195, 30);
+			this->textBox_email->TabIndex = 231;
+			this->textBox_email->Tag = L"";
+			this->textBox_email->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// textBox_tbrand
+			// textBox_dni
 			// 
-			this->textBox_tbrand->Enabled = false;
-			this->textBox_tbrand->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->textBox_dni->Enabled = false;
+			this->textBox_dni->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_tbrand->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_tbrand->Location = System::Drawing::Point(736, 216);
-			this->textBox_tbrand->Margin = System::Windows::Forms::Padding(4);
-			this->textBox_tbrand->Name = L"textBox_tbrand";
-			this->textBox_tbrand->Size = System::Drawing::Size(195, 30);
-			this->textBox_tbrand->TabIndex = 230;
-			this->textBox_tbrand->Tag = L"";
-			this->textBox_tbrand->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->textBox_dni->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->textBox_dni->Location = System::Drawing::Point(736, 216);
+			this->textBox_dni->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_dni->Name = L"textBox_dni";
+			this->textBox_dni->Size = System::Drawing::Size(195, 30);
+			this->textBox_dni->TabIndex = 230;
+			this->textBox_dni->Tag = L"";
+			this->textBox_dni->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// textBox_tmodel
+			// textBox_surname
 			// 
-			this->textBox_tmodel->Enabled = false;
-			this->textBox_tmodel->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->textBox_surname->Enabled = false;
+			this->textBox_surname->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_tmodel->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_tmodel->Location = System::Drawing::Point(736, 134);
-			this->textBox_tmodel->Margin = System::Windows::Forms::Padding(4);
-			this->textBox_tmodel->Name = L"textBox_tmodel";
-			this->textBox_tmodel->Size = System::Drawing::Size(195, 30);
-			this->textBox_tmodel->TabIndex = 228;
-			this->textBox_tmodel->Tag = L"";
-			this->textBox_tmodel->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->textBox_surname->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->textBox_surname->Location = System::Drawing::Point(736, 134);
+			this->textBox_surname->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_surname->Name = L"textBox_surname";
+			this->textBox_surname->Size = System::Drawing::Size(195, 30);
+			this->textBox_surname->TabIndex = 228;
+			this->textBox_surname->Tag = L"";
+			this->textBox_surname->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// textBox_tplate
+			// textBox_phone
 			// 
-			this->textBox_tplate->Enabled = false;
-			this->textBox_tplate->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+			this->textBox_phone->Enabled = false;
+			this->textBox_phone->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_tplate->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_tplate->Location = System::Drawing::Point(736, 174);
-			this->textBox_tplate->Margin = System::Windows::Forms::Padding(4);
-			this->textBox_tplate->Name = L"textBox_tplate";
-			this->textBox_tplate->Size = System::Drawing::Size(195, 30);
-			this->textBox_tplate->TabIndex = 229;
-			this->textBox_tplate->Tag = L"";
-			this->textBox_tplate->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			this->textBox_phone->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->textBox_phone->Location = System::Drawing::Point(736, 174);
+			this->textBox_phone->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_phone->Name = L"textBox_phone";
+			this->textBox_phone->Size = System::Drawing::Size(195, 30);
+			this->textBox_phone->TabIndex = 229;
+			this->textBox_phone->Tag = L"";
+			this->textBox_phone->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
-			// pb_photo
+			// pb_photo_proprietor
 			// 
-			this->pb_photo->BackColor = System::Drawing::Color::White;
-			this->pb_photo->Enabled = false;
-			this->pb_photo->Location = System::Drawing::Point(964, 85);
-			this->pb_photo->Margin = System::Windows::Forms::Padding(4);
-			this->pb_photo->Name = L"pb_photo";
-			this->pb_photo->Size = System::Drawing::Size(285, 260);
-			this->pb_photo->TabIndex = 233;
-			this->pb_photo->TabStop = false;
+			this->pb_photo_proprietor->BackColor = System::Drawing::Color::White;
+			this->pb_photo_proprietor->Enabled = false;
+			this->pb_photo_proprietor->Location = System::Drawing::Point(964, 85);
+			this->pb_photo_proprietor->Margin = System::Windows::Forms::Padding(4);
+			this->pb_photo_proprietor->Name = L"pb_photo_proprietor";
+			this->pb_photo_proprietor->Size = System::Drawing::Size(285, 260);
+			this->pb_photo_proprietor->TabIndex = 233;
+			this->pb_photo_proprietor->TabStop = false;
 			// 
 			// groupBox1
 			// 
@@ -715,57 +669,6 @@ namespace ProjectView {
 			this->groupBox1->TabIndex = 240;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Vehículo";
-			// 
-			// button1
-			// 
-			this->button1->BackColor = System::Drawing::Color::Maroon;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button1->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button1->Location = System::Drawing::Point(956, 74);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(151, 30);
-			this->button1->TabIndex = 40;
-			this->button1->Text = L"Cerrar sesión";
-			this->button1->UseVisualStyleBackColor = false;
-			// 
-			// pb_photocar
-			// 
-			this->pb_photocar->BackColor = System::Drawing::Color::White;
-			this->pb_photocar->Enabled = false;
-			this->pb_photocar->Location = System::Drawing::Point(74, 40);
-			this->pb_photocar->Margin = System::Windows::Forms::Padding(4);
-			this->pb_photocar->Name = L"pb_photocar";
-			this->pb_photocar->Size = System::Drawing::Size(417, 165);
-			this->pb_photocar->TabIndex = 241;
-			this->pb_photocar->TabStop = false;
-			// 
-			// label8
-			// 
-			this->label8->AutoSize = true;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(93, 225);
-			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(160, 23);
-			this->label8->TabIndex = 242;
-			this->label8->Text = L"Recomendaciones";
-			// 
-			// textBox_Recommendations
-			// 
-			this->textBox_Recommendations->Enabled = false;
-			this->textBox_Recommendations->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->textBox_Recommendations->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_Recommendations->Location = System::Drawing::Point(261, 223);
-			this->textBox_Recommendations->Margin = System::Windows::Forms::Padding(4);
-			this->textBox_Recommendations->Name = L"textBox_Recommendations";
-			this->textBox_Recommendations->Size = System::Drawing::Size(195, 30);
-			this->textBox_Recommendations->TabIndex = 241;
-			this->textBox_Recommendations->Tag = L"";
-			this->textBox_Recommendations->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// label9
 			// 
@@ -793,18 +696,85 @@ namespace ProjectView {
 			this->textBox_Deals_completed->Tag = L"";
 			this->textBox_Deals_completed->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(93, 225);
+			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(160, 23);
+			this->label8->TabIndex = 242;
+			this->label8->Text = L"Recomendaciones";
+			// 
+			// pb_photocar
+			// 
+			this->pb_photocar->BackColor = System::Drawing::Color::White;
+			this->pb_photocar->Enabled = false;
+			this->pb_photocar->Location = System::Drawing::Point(74, 40);
+			this->pb_photocar->Margin = System::Windows::Forms::Padding(4);
+			this->pb_photocar->Name = L"pb_photocar";
+			this->pb_photocar->Size = System::Drawing::Size(417, 165);
+			this->pb_photocar->TabIndex = 241;
+			this->pb_photocar->TabStop = false;
+			// 
+			// textBox_Recommendations
+			// 
+			this->textBox_Recommendations->Enabled = false;
+			this->textBox_Recommendations->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox_Recommendations->ForeColor = System::Drawing::SystemColors::GrayText;
+			this->textBox_Recommendations->Location = System::Drawing::Point(261, 223);
+			this->textBox_Recommendations->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_Recommendations->Name = L"textBox_Recommendations";
+			this->textBox_Recommendations->Size = System::Drawing::Size(195, 30);
+			this->textBox_Recommendations->TabIndex = 241;
+			this->textBox_Recommendations->Tag = L"";
+			this->textBox_Recommendations->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::Maroon;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->button1->Location = System::Drawing::Point(956, 74);
+			this->button1->Margin = System::Windows::Forms::Padding(4);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(151, 30);
+			this->button1->TabIndex = 40;
+			this->button1->Text = L"Cerrar sesión";
+			this->button1->UseVisualStyleBackColor = false;
+			// 
 			// button_Send_message
 			// 
 			this->button_Send_message->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_Send_message->Location = System::Drawing::Point(834, 731);
+			this->button_Send_message->Location = System::Drawing::Point(713, 742);
 			this->button_Send_message->Margin = System::Windows::Forms::Padding(4);
 			this->button_Send_message->Name = L"button_Send_message";
 			this->button_Send_message->Size = System::Drawing::Size(232, 37);
 			this->button_Send_message->TabIndex = 179;
 			this->button_Send_message->Tag = L"";
-			this->button_Send_message->Text = L"Enviar mensaje";
+			this->button_Send_message->Text = L"Ir a buzón a notificar";
 			this->button_Send_message->UseVisualStyleBackColor = true;
+			this->button_Send_message->Click += gcnew System::EventHandler(this, &ClientSearchVehiclePage::button_Send_message_Click);
+			// 
+			// button_exit
+			// 
+			this->button_exit->BackColor = System::Drawing::Color::Maroon;
+			this->button_exit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_exit->ForeColor = System::Drawing::SystemColors::ButtonFace;
+			this->button_exit->Location = System::Drawing::Point(992, 745);
+			this->button_exit->Margin = System::Windows::Forms::Padding(4);
+			this->button_exit->Name = L"button_exit";
+			this->button_exit->Size = System::Drawing::Size(197, 34);
+			this->button_exit->TabIndex = 241;
+			this->button_exit->Text = L"SALIR";
+			this->button_exit->UseVisualStyleBackColor = false;
+			this->button_exit->Click += gcnew System::EventHandler(this, &ClientSearchVehiclePage::button_exit_Click);
 			// 
 			// ClientSearchVehiclePage
 			// 
@@ -812,30 +782,32 @@ namespace ProjectView {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkSeaGreen;
 			this->ClientSize = System::Drawing::Size(1283, 811);
+			this->Controls->Add(this->button_exit);
 			this->Controls->Add(this->button_Send_message);
 			this->Controls->Add(this->groupBox1);
-			this->Controls->Add(this->textBox_tid);
+			this->Controls->Add(this->textBox_name);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->textBox_tnumberseats);
-			this->Controls->Add(this->textBox_tcolor);
-			this->Controls->Add(this->textBox_tbrand);
-			this->Controls->Add(this->textBox_tmodel);
-			this->Controls->Add(this->textBox_tplate);
-			this->Controls->Add(this->pb_photo);
+			this->Controls->Add(this->textBox_address);
+			this->Controls->Add(this->textBox_email);
+			this->Controls->Add(this->textBox_dni);
+			this->Controls->Add(this->textBox_surname);
+			this->Controls->Add(this->textBox_phone);
+			this->Controls->Add(this->pb_photo_proprietor);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dgv_vehicles);
 			this->Controls->Add(this->groupBox2);
 			this->Name = L"ClientSearchVehiclePage";
 			this->Text = L"ClientSearchVehiclePage";
+			this->Load += gcnew System::EventHandler(this, &ClientSearchVehiclePage::ClientSearchVehiclePage_Load);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo_proprietor))->EndInit();
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photocar))->EndInit();
@@ -844,5 +816,195 @@ namespace ProjectView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button_exit_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		this->Close();
+	}
+private: System::Void button_Send_message_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Hide();
+	ClientMailBox^ clientMailBox = gcnew ClientMailBox();
+	clientMailBox->MdiParent = this->MdiParent;
+
+	if (clientMailBox->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+		this->Show();
+		return;
+	}
+	return;
+}
+
+	   private: System::Void InitializeDataGridView() {
+		   // Configurar el DataGridView para no generar columnas automáticamente
+		   dgv_vehicles->AutoGenerateColumns = false;
+
+		   // Crear y agregar columnas manualmente
+		   DataGridViewTextBoxColumn^ idColumn = gcnew DataGridViewTextBoxColumn();
+		   idColumn->HeaderText = "ID";
+		   idColumn->DataPropertyName = "Id"; // Esto debe coincidir con el nombre de la propiedad en la clase de datos
+		   idColumn->Width = 25; // Ajustar el ancho de la columna
+		   dgv_vehicles->Columns->Add(idColumn);
+
+		   DataGridViewTextBoxColumn^ ColorColumn = gcnew DataGridViewTextBoxColumn();
+		   ColorColumn->HeaderText = "Color";
+		   ColorColumn->DataPropertyName = "Color";
+		   idColumn->Width = 5; // Ajustar el ancho de la columna
+		   dgv_vehicles->Columns->Add(ColorColumn);
+
+		   DataGridViewTextBoxColumn^ ModelColumn = gcnew DataGridViewTextBoxColumn();
+		   ModelColumn->HeaderText = "Modelo";
+		   ModelColumn->DataPropertyName = "Model";
+		   idColumn->Width = 25; // Ajustar el ancho de la columna
+		   dgv_vehicles->Columns->Add(ModelColumn);
+
+		   DataGridViewTextBoxColumn^ BrandColumn = gcnew DataGridViewTextBoxColumn();
+		   BrandColumn->HeaderText = "Marca";
+		   BrandColumn->DataPropertyName = "Brand";
+		   idColumn->Width = 25; // Ajustar el ancho de la columna
+		   dgv_vehicles->Columns->Add(BrandColumn);
+
+		   DataGridViewTextBoxColumn^ PlateColumn = gcnew DataGridViewTextBoxColumn();
+		   PlateColumn->HeaderText = "Placa";
+		   PlateColumn->DataPropertyName = "Plate";
+		   idColumn->Width = 25; // Ajustar el ancho de la columna
+		   dgv_vehicles->Columns->Add(PlateColumn);
+
+		   // Puedes agregar más columnas según sea necesario
+	   }
+
+	private: System::Void DataGridView_Load() {
+		// Obtener todos los vehículos desde el controlador
+		List<Vehicle^>^ vehicles = gcnew List<Vehicle^>();
+
+		// Obtener todos los propietarios desde el controlador
+		List<Proprietor^>^ proprietors = Controller::QueryAllProprietors();
+
+		// Recorrer la lista de propietarios y agregar todos sus vehículos a la lista de vehículos
+		for each (Proprietor ^ p in proprietors) {
+			// Verificar si el propietario tiene vehículos antes de agregarlos
+			if (p->ListVehicleProprietor->Count > 0) {
+				for each (Vehicle ^ vh in p->ListVehicleProprietor) {
+					// Verificar si el vehículo ya está en la lista antes de agregarlo
+					if (!vehicles->Contains(vh)) {
+						vehicles->Add(vh);
+					}
+				}
+			}
+		}
+
+		// Vincular los datos al DataGridView
+		dgv_vehicles->DataSource = vehicles;
+	}
+
+
+	void ShowImage(array<System::Byte>^ imageBytes, PictureBox^ pictureBox) {
+		if (imageBytes == nullptr || imageBytes->Length == 0 || pictureBox == nullptr) {
+			// Verificar si la matriz de bytes es nula o vacía, o si el PictureBox es nulo.
+			// Puedes manejar esto de acuerdo a tus necesidades, por ejemplo, mostrar un mensaje de error.
+			return;
+		}
+
+		// Crear un MemoryStream a partir de la matriz de bytes.
+		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(imageBytes);
+
+		try {
+			// Crear una imagen desde el MemoryStream.
+			System::Drawing::Image^ image = System::Drawing::Image::FromStream(ms);
+
+			// Mostrar la imagen en el PictureBox.
+			pictureBox->Image = image;
+		}
+		catch (Exception^ ex) {
+			// Manejar cualquier excepción que pueda ocurrir al cargar la imagen.
+			// Puedes mostrar un mensaje de error o realizar otra acción adecuada.
+			MessageBox::Show("Error al cargar la imagen: " + ex->Message);
+		}
+	}
+
+private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, System::EventArgs^ e) {
+	// Verificar si hay al menos una fila seleccionada en el DataGridView
+	if (dgv_vehicles->SelectedRows->Count > 0) {
+		// Obtener el índice de la fila seleccionada
+		int selectedRowIndex = dgv_vehicles->SelectedRows[0]->Index;
+
+		// Obtener el vehículo seleccionado en la fila
+		Vehicle^ selectedVehicle = dynamic_cast<Vehicle^>(dgv_vehicles->Rows[selectedRowIndex]->DataBoundItem);
+		
+		// Obtener todos los propietarios desde el controlador
+		List<Proprietor^>^ proprietors = Controller::QueryAllProprietors();
+
+		// Encontrar el propietario del vehículo
+		Proprietor^ vehicleOwner = nullptr;
+		for each (Proprietor^ proprietor in proprietors) {
+			// Iterar sobre los vehículos de cada propietario
+			for each (Vehicle^ vehicle in proprietor->ListVehicleProprietor) {
+				// Verificar si el vehículo actual es igual al vehículo seleccionado
+					vehicleOwner = proprietor;
+			}
+		}
+
+
+		// Verificar si se encontró al propietario del vehículo
+		if (vehicleOwner != nullptr) {
+			// Llenar los TextBoxes con los datos del propietario
+			textBox_name->Text = vehicleOwner->Name;
+			textBox_surname->Text = vehicleOwner->Lastname;
+			textBox_phone->Text = vehicleOwner->Phone.ToString();
+			textBox_dni->Text = vehicleOwner->Dni.ToString();
+			textBox_email->Text = vehicleOwner->Email;
+			textBox_address->Text = vehicleOwner->Address;
+			textBox_Recommendations->Text = vehicleOwner->NumberofRecommendations.ToString();
+			textBox_Deals_completed->Text = vehicleOwner->NumberofDeals.ToString();
+			pb_photo_proprietor->Image = nullptr;
+			pb_photocar->Image = nullptr;
+		}
+		else {
+			// Limpiar los TextBoxes si no se encontró al propietario
+			textBox_name->Text = "Nombre";
+			textBox_surname->Text = "Apellido";
+			textBox_phone->Text = "Número de teléfono";
+			textBox_dni->Text = "DNI";
+			textBox_email->Text = "E-Mail";
+			textBox_address->Text = "Dirección";
+			textBox_Recommendations->Text = "#Recomendaciones";
+			textBox_Deals_completed->Text = "#Tratos completados";
+			pb_photo_proprietor->Image = nullptr;
+			pb_photocar->Image = nullptr;
+		}
+	}
+	else {
+		// Limpiar los TextBoxes si no hay filas seleccionadas en el DataGridView
+		textBox_name->Text = "Nombre";
+		textBox_surname->Text = "Apellido";
+		textBox_phone->Text = "Número de teléfono";
+		textBox_dni->Text = "DNI";
+		textBox_email->Text = "E-Mail";
+		textBox_address->Text = "Dirección";
+		textBox_Recommendations->Text = "#Recomendaciones";
+		textBox_Deals_completed->Text = "#Tratos completados";
+		pb_photo_proprietor->Image = nullptr;
+		pb_photocar->Image = nullptr;
+	}
+}
+
+
+private: System::Void ClientSearchVehiclePage_Load(System::Object^ sender, System::EventArgs^ e) {
+	///*FillCombos();*/
+	//textBox_name->Text = "Nombre";
+	//textBox_surname->Text = "Apellido";
+	//textBox_phone->Text = "Número de teléfono";
+	//textBox_dni->Text = "DNI";
+	//textBox_email->Text = "E-Mail";
+	//textBox_address->Text = "Dirección";
+	//textBox_Recommendations->Text = "#Recomendaciones";
+	//textBox_Deals_completed->Text = "#Tratos completados";
+	//pb_photo_proprietor->Image = nullptr;
+	//pb_photocar->Image = nullptr;
+	//dgv_vehicles->Rows->Clear();
+	InitializeDataGridView();
+	DataGridView_Load();
+	this->dgv_vehicles->SelectionChanged += gcnew System::EventHandler(this, &ClientSearchVehiclePage::dgv_vehicles_SelectionChanged);
+}
+
+
+
+};
 }

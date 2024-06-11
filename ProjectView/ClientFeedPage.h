@@ -29,6 +29,12 @@ namespace ProjectView {
 			//
 		}
 
+		static ClientSearchVehiclePage^ clientSearchVehiclePage;
+		static ClientEditProfilePage^ clientEditProfilePage;
+		static ClientHelp^ clientHelp;
+		static ClientMyVehiclePage^ clientMyVehiclePage;
+		static ClientMailBox^ clientMailBox;
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -222,39 +228,62 @@ namespace ProjectView {
 	private: System::Void button_editprofile_Click(System::Object^ sender, System::EventArgs^ e) {
 		ClientEditProfilePage^ clientEditProfilePage = gcnew ClientEditProfilePage();
 		clientEditProfilePage->MdiParent = this->MdiParent;
-		clientEditProfilePage->Show();
-		//this->Close();
+		if (clientEditProfilePage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			this->Show();
+			return;
+		}
+		return;
 	}
+	
 	private: System::Void button_logout_Click(System::Object^ sender, System::EventArgs^ e) {
-
 		this->Close();
 	}
 	private: System::Void button_myvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		this->Hide();
 		ClientMyVehiclePage^ clientMyVehiclePage = gcnew ClientMyVehiclePage();
 		clientMyVehiclePage->MdiParent = this->MdiParent;
-		clientMyVehiclePage->Show();
-		//this->Close();
-
+		if (clientMyVehiclePage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			this->Show();
+			return;
+		}
+		return;
 	}
+
+	
 
 	private: System::Void button_help_Click(System::Object^ sender, System::EventArgs^ e) {
-
+		this->Hide();
 		ClientHelp^ clientHelp = gcnew ClientHelp();
 		clientHelp->MdiParent = this->MdiParent;
-		clientHelp->Show();
-		//this->Close();
+		if (clientHelp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			this->Show();
+			return;
+		}
+		return;
 	}
+	
 
 	private: System::Void button_searchvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
 		ClientSearchVehiclePage^ clientSearchVehiclePage = gcnew ClientSearchVehiclePage();
 		clientSearchVehiclePage->MdiParent = this->MdiParent;
-		clientSearchVehiclePage->Show();
+		if (clientSearchVehiclePage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			this->Show();
+			return;
+		}
+		return;
 	}
+	
 	private: System::Void button_mailbox_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
 		ClientMailBox^ clientMailBox = gcnew ClientMailBox();
 		clientMailBox->MdiParent = this->MdiParent;
-		clientMailBox->Show();
+
+		if (clientMailBox->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			this->Show();
+			return;
+		}
+		return;
 	}
 };
 }
