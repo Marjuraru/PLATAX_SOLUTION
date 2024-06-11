@@ -194,6 +194,7 @@ namespace ProjectView {
 			this->Controls->Add(this->tabControl1);
 			this->Name = L"ClientMailBox";
 			this->Text = L"Sección de Buzón";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &ClientMailBox::ClientMailBox_FormClosed);
 			this->tabControl1->ResumeLayout(false);
 			this->ResumeLayout(false);
 
@@ -203,5 +204,8 @@ namespace ProjectView {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
+private: System::Void ClientMailBox_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+}
 };
 }

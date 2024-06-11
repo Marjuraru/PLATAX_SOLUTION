@@ -129,6 +129,7 @@ namespace ProjectView {
 			this->Controls->Add(this->chart_pie_vehicle);
 			this->Name = L"ClientMyStatisticsPage";
 			this->Text = L"ClientMyStatisticsPage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &ClientMyStatisticsPage::ClientMyStatisticsPage_FormClosed);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart_pie_vehicle))->EndInit();
 			this->ResumeLayout(false);
 
@@ -272,5 +273,8 @@ namespace ProjectView {
 		chart_pie_vehicle->Visible = true;
 		ShowVehiclesByModelPieChart();
 	}
+private: System::Void ClientMyStatisticsPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+}
 };
 }

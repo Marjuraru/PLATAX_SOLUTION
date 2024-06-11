@@ -123,7 +123,7 @@ namespace ProjectView {
 			this->checkBox_male->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->checkBox_male->Location = System::Drawing::Point(41, 505);
-			this->checkBox_male->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->checkBox_male->Margin = System::Windows::Forms::Padding(4);
 			this->checkBox_male->Name = L"checkBox_male";
 			this->checkBox_male->Size = System::Drawing::Size(96, 26);
 			this->checkBox_male->TabIndex = 65;
@@ -137,7 +137,7 @@ namespace ProjectView {
 			this->checkBox_female->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->checkBox_female->Location = System::Drawing::Point(41, 476);
-			this->checkBox_female->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->checkBox_female->Margin = System::Windows::Forms::Padding(4);
 			this->checkBox_female->Name = L"checkBox_female";
 			this->checkBox_female->Size = System::Drawing::Size(80, 26);
 			this->checkBox_female->TabIndex = 60;
@@ -150,7 +150,7 @@ namespace ProjectView {
 			this->textBox_address->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_address->Location = System::Drawing::Point(41, 405);
-			this->textBox_address->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox_address->Margin = System::Windows::Forms::Padding(4);
 			this->textBox_address->Name = L"textBox_address";
 			this->textBox_address->Size = System::Drawing::Size(628, 30);
 			this->textBox_address->TabIndex = 55;
@@ -172,7 +172,7 @@ namespace ProjectView {
 			this->button_savechanges->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_savechanges->Location = System::Drawing::Point(185, 651);
-			this->button_savechanges->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_savechanges->Margin = System::Windows::Forms::Padding(4);
 			this->button_savechanges->Name = L"button_savechanges";
 			this->button_savechanges->Size = System::Drawing::Size(232, 37);
 			this->button_savechanges->TabIndex = 85;
@@ -197,7 +197,7 @@ namespace ProjectView {
 			this->textBox_password->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_password->Location = System::Drawing::Point(92, 602);
-			this->textBox_password->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox_password->Margin = System::Windows::Forms::Padding(4);
 			this->textBox_password->Name = L"textBox_password";
 			this->textBox_password->Size = System::Drawing::Size(228, 30);
 			this->textBox_password->TabIndex = 75;
@@ -234,7 +234,7 @@ namespace ProjectView {
 				static_cast<System::Byte>(0)));
 			this->dtp_birthdate->ImeMode = System::Windows::Forms::ImeMode::NoControl;
 			this->dtp_birthdate->Location = System::Drawing::Point(337, 498);
-			this->dtp_birthdate->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dtp_birthdate->Margin = System::Windows::Forms::Padding(4);
 			this->dtp_birthdate->Name = L"dtp_birthdate";
 			this->dtp_birthdate->Size = System::Drawing::Size(332, 30);
 			this->dtp_birthdate->TabIndex = 70;
@@ -244,7 +244,7 @@ namespace ProjectView {
 			this->textBox_dni->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_dni->Location = System::Drawing::Point(391, 246);
-			this->textBox_dni->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox_dni->Margin = System::Windows::Forms::Padding(4);
 			this->textBox_dni->Name = L"textBox_dni";
 			this->textBox_dni->Size = System::Drawing::Size(279, 30);
 			this->textBox_dni->TabIndex = 45;
@@ -266,7 +266,7 @@ namespace ProjectView {
 			this->textBox_email->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_email->Location = System::Drawing::Point(41, 325);
-			this->textBox_email->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox_email->Margin = System::Windows::Forms::Padding(4);
 			this->textBox_email->Name = L"textBox_email";
 			this->textBox_email->Size = System::Drawing::Size(628, 30);
 			this->textBox_email->TabIndex = 50;
@@ -288,7 +288,7 @@ namespace ProjectView {
 			this->textBox_phone->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_phone->Location = System::Drawing::Point(41, 246);
-			this->textBox_phone->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox_phone->Margin = System::Windows::Forms::Padding(4);
 			this->textBox_phone->Name = L"textBox_phone";
 			this->textBox_phone->Size = System::Drawing::Size(279, 30);
 			this->textBox_phone->TabIndex = 40;
@@ -310,7 +310,7 @@ namespace ProjectView {
 			this->textBox_lastname->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_lastname->Location = System::Drawing::Point(391, 160);
-			this->textBox_lastname->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox_lastname->Margin = System::Windows::Forms::Padding(4);
 			this->textBox_lastname->Name = L"textBox_lastname";
 			this->textBox_lastname->Size = System::Drawing::Size(279, 30);
 			this->textBox_lastname->TabIndex = 35;
@@ -332,7 +332,7 @@ namespace ProjectView {
 			this->textBox_name->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_name->Location = System::Drawing::Point(41, 160);
-			this->textBox_name->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox_name->Margin = System::Windows::Forms::Padding(4);
 			this->textBox_name->Name = L"textBox_name";
 			this->textBox_name->Size = System::Drawing::Size(279, 30);
 			this->textBox_name->TabIndex = 30;
@@ -365,7 +365,7 @@ namespace ProjectView {
 			// 
 			this->pb_photo->BackColor = System::Drawing::Color::White;
 			this->pb_photo->Location = System::Drawing::Point(803, 160);
-			this->pb_photo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pb_photo->Margin = System::Windows::Forms::Padding(4);
 			this->pb_photo->Name = L"pb_photo";
 			this->pb_photo->Size = System::Drawing::Size(285, 226);
 			this->pb_photo->TabIndex = 49;
@@ -376,7 +376,7 @@ namespace ProjectView {
 			this->button_insertphoto->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_insertphoto->Location = System::Drawing::Point(836, 421);
-			this->button_insertphoto->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_insertphoto->Margin = System::Windows::Forms::Padding(4);
 			this->button_insertphoto->Name = L"button_insertphoto";
 			this->button_insertphoto->Size = System::Drawing::Size(232, 37);
 			this->button_insertphoto->TabIndex = 50;
@@ -389,7 +389,7 @@ namespace ProjectView {
 			this->textBox_newpassword->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_newpassword->Location = System::Drawing::Point(441, 602);
-			this->textBox_newpassword->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->textBox_newpassword->Margin = System::Windows::Forms::Padding(4);
 			this->textBox_newpassword->Name = L"textBox_newpassword";
 			this->textBox_newpassword->Size = System::Drawing::Size(228, 30);
 			this->textBox_newpassword->TabIndex = 80;
@@ -425,7 +425,7 @@ namespace ProjectView {
 				static_cast<System::Byte>(0)));
 			this->button_back->ForeColor = System::Drawing::SystemColors::ButtonFace;
 			this->button_back->Location = System::Drawing::Point(603, 651);
-			this->button_back->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_back->Margin = System::Windows::Forms::Padding(4);
 			this->button_back->Name = L"button_back";
 			this->button_back->Size = System::Drawing::Size(232, 37);
 			this->button_back->TabIndex = 91;
@@ -466,9 +466,10 @@ namespace ProjectView {
 			this->Controls->Add(this->textBox_name);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ClientEditProfilePage";
 			this->Text = L",";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &ClientEditProfilePage::ClientEditProfilePage_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &ClientEditProfilePage::ClientProfilePage_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
 			this->ResumeLayout(false);
@@ -640,5 +641,8 @@ namespace ProjectView {
 		this->Close();
 
 	}
-	};
+	private: System::Void ClientEditProfilePage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
+};
 }

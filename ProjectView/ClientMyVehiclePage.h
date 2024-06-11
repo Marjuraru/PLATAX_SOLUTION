@@ -775,6 +775,7 @@ namespace ProjectView {
 			this->Name = L"ClientMyVehiclePage";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ClientMyVehiclesPage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &ClientMyVehiclePage::ClientMyVehiclePage_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &ClientMyVehiclePage::UserMyVehiclesPage_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_vehicles))->EndInit();
@@ -935,5 +936,8 @@ private: System::Void InitializeDataGridView(){
 		clientStateNotificationsPage->MdiParent = this->MdiParent;
 		clientStateNotificationsPage->Show();
 	}
+private: System::Void ClientMyVehiclePage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+	this->DialogResult = System::Windows::Forms::DialogResult::OK;
+}
 };
 }
