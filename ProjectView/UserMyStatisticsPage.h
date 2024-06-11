@@ -62,14 +62,14 @@ namespace ProjectView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series5 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series6 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series7 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series8 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->chart_column = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->chart_pie = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->button_color = (gcnew System::Windows::Forms::Button());
@@ -82,45 +82,45 @@ namespace ProjectView {
 			// 
 			// chart_column
 			// 
-			chartArea3->Name = L"ChartArea1";
-			this->chart_column->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->chart_column->Legends->Add(legend3);
+			chartArea1->Name = L"ChartArea1";
+			this->chart_column->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart_column->Legends->Add(legend1);
 			this->chart_column->Location = System::Drawing::Point(673, 168);
 			this->chart_column->Margin = System::Windows::Forms::Padding(4);
 			this->chart_column->Name = L"chart_column";
-			series5->ChartArea = L"ChartArea1";
-			series5->Legend = L"Legend1";
-			series5->Name = L"car_category";
-			series6->ChartArea = L"ChartArea1";
-			series6->Legend = L"Legend1";
-			series6->Name = L"car_color";
-			series7->ChartArea = L"ChartArea1";
-			series7->Legend = L"Legend1";
-			series7->Name = L"car_operativ";
-			this->chart_column->Series->Add(series5);
-			this->chart_column->Series->Add(series6);
-			this->chart_column->Series->Add(series7);
+			series1->ChartArea = L"ChartArea1";
+			series1->Legend = L"Legend1";
+			series1->Name = L"car_category";
+			series2->ChartArea = L"ChartArea1";
+			series2->Legend = L"Legend1";
+			series2->Name = L"car_color";
+			series3->ChartArea = L"ChartArea1";
+			series3->Legend = L"Legend1";
+			series3->Name = L"car_operativ";
+			this->chart_column->Series->Add(series1);
+			this->chart_column->Series->Add(series2);
+			this->chart_column->Series->Add(series3);
 			this->chart_column->Size = System::Drawing::Size(700, 438);
 			this->chart_column->TabIndex = 0;
 			this->chart_column->Text = L"chart1";
 			// 
 			// chart_pie
 			// 
-			chartArea4->Name = L"ChartArea1";
-			this->chart_pie->ChartAreas->Add(chartArea4);
-			legend4->Name = L"Legend1";
-			this->chart_pie->Legends->Add(legend4);
+			chartArea2->Name = L"ChartArea1";
+			this->chart_pie->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->chart_pie->Legends->Add(legend2);
 			this->chart_pie->Location = System::Drawing::Point(29, 168);
 			this->chart_pie->Margin = System::Windows::Forms::Padding(4);
 			this->chart_pie->Name = L"chart_pie";
-			series8->ChartArea = L"ChartArea1";
-			series8->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
-			series8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			series4->ChartArea = L"ChartArea1";
+			series4->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
+			series4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			series8->Legend = L"Legend1";
-			series8->Name = L"serie";
-			this->chart_pie->Series->Add(series8);
+			series4->Legend = L"Legend1";
+			series4->Name = L"serie";
+			this->chart_pie->Series->Add(series4);
 			this->chart_pie->Size = System::Drawing::Size(611, 438);
 			this->chart_pie->TabIndex = 1;
 			this->chart_pie->Text = L"chart1";
@@ -192,6 +192,7 @@ namespace ProjectView {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"UserMyStatisticsPage";
 			this->Text = L" ";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &UserMyStatisticsPage::UserMyStatisticsPage_FormClosed);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart_column))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart_pie))->EndInit();
 			this->ResumeLayout(false);
@@ -466,6 +467,9 @@ namespace ProjectView {
 
 		ShowCarsByColorColumnChart();
 		ShowCarsByColorPieChart();
+	}
+	private: System::Void UserMyStatisticsPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {	
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	}
 };
 }

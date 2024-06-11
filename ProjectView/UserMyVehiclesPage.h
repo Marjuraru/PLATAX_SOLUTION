@@ -1041,6 +1041,7 @@ namespace ProjectView {
 			this->Name = L"UserMyVehiclesPage";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"UserMyVehiclesPage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &UserMyVehiclesPage::UserMyVehiclesPage_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &UserMyVehiclesPage::UserMyVehiclesPage_Load);
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
@@ -1536,5 +1537,8 @@ namespace ProjectView {
 		MessageBox::Show("El ID ingresado no existe");
 
 	}
-	};
+	private: System::Void UserMyVehiclesPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
+};
 }

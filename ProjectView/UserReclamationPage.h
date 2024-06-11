@@ -91,9 +91,10 @@ namespace ProjectView {
 			this->button_cancel->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_cancel->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_cancel->Location = System::Drawing::Point(282, 293);
+			this->button_cancel->Location = System::Drawing::Point(376, 361);
+			this->button_cancel->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button_cancel->Name = L"button_cancel";
-			this->button_cancel->Size = System::Drawing::Size(105, 31);
+			this->button_cancel->Size = System::Drawing::Size(140, 38);
 			this->button_cancel->TabIndex = 174;
 			this->button_cancel->Tag = L"65";
 			this->button_cancel->Text = L"CANCELAR";
@@ -104,9 +105,10 @@ namespace ProjectView {
 			// 
 			this->button_send->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_send->Location = System::Drawing::Point(282, 244);
+			this->button_send->Location = System::Drawing::Point(376, 300);
+			this->button_send->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button_send->Name = L"button_send";
-			this->button_send->Size = System::Drawing::Size(103, 30);
+			this->button_send->Size = System::Drawing::Size(137, 37);
 			this->button_send->TabIndex = 167;
 			this->button_send->Tag = L"60";
 			this->button_send->Text = L"ENVIAR";
@@ -117,9 +119,10 @@ namespace ProjectView {
 			// 
 			this->button_clearall->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_clearall->Location = System::Drawing::Point(157, 244);
+			this->button_clearall->Location = System::Drawing::Point(209, 300);
+			this->button_clearall->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button_clearall->Name = L"button_clearall";
-			this->button_clearall->Size = System::Drawing::Size(108, 30);
+			this->button_clearall->Size = System::Drawing::Size(144, 37);
 			this->button_clearall->TabIndex = 166;
 			this->button_clearall->Tag = L"55";
 			this->button_clearall->Text = L"Limpiar todo";
@@ -130,9 +133,10 @@ namespace ProjectView {
 			// 
 			this->button_insertphoto->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_insertphoto->Location = System::Drawing::Point(496, 43);
+			this->button_insertphoto->Location = System::Drawing::Point(661, 53);
+			this->button_insertphoto->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button_insertphoto->Name = L"button_insertphoto";
-			this->button_insertphoto->Size = System::Drawing::Size(174, 30);
+			this->button_insertphoto->Size = System::Drawing::Size(232, 37);
 			this->button_insertphoto->TabIndex = 165;
 			this->button_insertphoto->Tag = L"50";
 			this->button_insertphoto->Text = L"Adjuntar imagen";
@@ -149,9 +153,10 @@ namespace ProjectView {
 				L"Leve o Crítico", L"Moderado o Urgente",
 					L"Grave o Emergente"
 			});
-			this->comboBox_category->Location = System::Drawing::Point(281, 46);
+			this->comboBox_category->Location = System::Drawing::Point(375, 57);
+			this->comboBox_category->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->comboBox_category->Name = L"comboBox_category";
-			this->comboBox_category->Size = System::Drawing::Size(106, 27);
+			this->comboBox_category->Size = System::Drawing::Size(140, 30);
 			this->comboBox_category->TabIndex = 162;
 			this->comboBox_category->Tag = L"5";
 			// 
@@ -162,9 +167,10 @@ namespace ProjectView {
 				static_cast<System::Byte>(0)));
 			this->comboBox_type->FormattingEnabled = true;
 			this->comboBox_type->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"AYUDA", L"RECLAMO", L"SUGERENCIA", L"QUEJA" });
-			this->comboBox_type->Location = System::Drawing::Point(64, 46);
+			this->comboBox_type->Location = System::Drawing::Point(85, 57);
+			this->comboBox_type->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->comboBox_type->Name = L"comboBox_type";
-			this->comboBox_type->Size = System::Drawing::Size(106, 27);
+			this->comboBox_type->Size = System::Drawing::Size(140, 30);
 			this->comboBox_type->TabIndex = 161;
 			this->comboBox_type->Tag = L"0";
 			// 
@@ -172,19 +178,21 @@ namespace ProjectView {
 			// 
 			this->textBox_description->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_description->Location = System::Drawing::Point(20, 130);
+			this->textBox_description->Location = System::Drawing::Point(27, 160);
+			this->textBox_description->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_description->Multiline = true;
 			this->textBox_description->Name = L"textBox_description";
-			this->textBox_description->Size = System::Drawing::Size(367, 83);
+			this->textBox_description->Size = System::Drawing::Size(488, 101);
 			this->textBox_description->TabIndex = 164;
 			this->textBox_description->Tag = L"20";
 			// 
 			// pb_photo
 			// 
 			this->pb_photo->BackColor = System::Drawing::Color::White;
-			this->pb_photo->Location = System::Drawing::Point(422, 79);
+			this->pb_photo->Location = System::Drawing::Point(563, 97);
+			this->pb_photo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pb_photo->Name = L"pb_photo";
-			this->pb_photo->Size = System::Drawing::Size(322, 134);
+			this->pb_photo->Size = System::Drawing::Size(429, 165);
 			this->pb_photo->TabIndex = 173;
 			this->pb_photo->TabStop = false;
 			// 
@@ -193,9 +201,10 @@ namespace ProjectView {
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(203, 50);
+			this->label10->Location = System::Drawing::Point(271, 62);
+			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(75, 19);
+			this->label10->Size = System::Drawing::Size(95, 23);
 			this->label10->TabIndex = 172;
 			this->label10->Text = L"Categoría";
 			// 
@@ -204,9 +213,10 @@ namespace ProjectView {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(17, 108);
+			this->label5->Location = System::Drawing::Point(23, 133);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(88, 19);
+			this->label5->Size = System::Drawing::Size(108, 23);
 			this->label5->TabIndex = 171;
 			this->label5->Text = L"Descripción";
 			// 
@@ -214,9 +224,10 @@ namespace ProjectView {
 			// 
 			this->textBox_title->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_title->Location = System::Drawing::Point(64, 79);
+			this->textBox_title->Location = System::Drawing::Point(85, 97);
+			this->textBox_title->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->textBox_title->Name = L"textBox_title";
-			this->textBox_title->Size = System::Drawing::Size(323, 26);
+			this->textBox_title->Size = System::Drawing::Size(429, 30);
 			this->textBox_title->TabIndex = 163;
 			this->textBox_title->Tag = L"15";
 			// 
@@ -225,9 +236,10 @@ namespace ProjectView {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(18, 83);
+			this->label4->Location = System::Drawing::Point(24, 102);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(48, 19);
+			this->label4->Size = System::Drawing::Size(61, 23);
 			this->label4->TabIndex = 170;
 			this->label4->Text = L"Título";
 			// 
@@ -236,9 +248,10 @@ namespace ProjectView {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(18, 46);
+			this->label3->Location = System::Drawing::Point(24, 57);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(39, 19);
+			this->label3->Size = System::Drawing::Size(48, 23);
 			this->label3->TabIndex = 169;
 			this->label3->Text = L"Tipo";
 			// 
@@ -247,18 +260,19 @@ namespace ProjectView {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(169, 9);
+			this->label1->Location = System::Drawing::Point(225, 11);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(467, 31);
+			this->label1->Size = System::Drawing::Size(588, 38);
 			this->label1->TabIndex = 168;
 			this->label1->Text = L"FORMULARIO DE RECLAMACIÓN";
 			// 
 			// UserReclamationPage
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(760, 332);
+			this->ClientSize = System::Drawing::Size(1013, 409);
 			this->Controls->Add(this->button_cancel);
 			this->Controls->Add(this->button_send);
 			this->Controls->Add(this->button_clearall);
@@ -273,8 +287,10 @@ namespace ProjectView {
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"UserReclamationPage";
 			this->Text = L"UserReclamationPage";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &UserReclamationPage::UserReclamationPage_FormClosed);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pb_photo))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -389,5 +405,8 @@ namespace ProjectView {
 
 	}
 
-	};
+	private: System::Void UserReclamationPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
+};
 }

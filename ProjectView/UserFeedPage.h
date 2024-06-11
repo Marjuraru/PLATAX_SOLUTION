@@ -31,6 +31,11 @@ namespace ProjectView {
 		}
 		static UserAddVehiclePage^ userAddVehiclePage;
 		static UserMyVehiclesPage^ userMyVehiclesPage;
+		static UserProfilePage^ userProfilePage;
+		static UserMyStatisticsPage^ userMyStatisticsPage;
+		static UserHelpPage^ userHelpPage;
+		static UserReclamationPage^ userReclamationPage;
+		static UserMyReclamationsPage^ userMyReclamationsPage;
 
 	protected:
 		/// <summary>
@@ -233,9 +238,19 @@ namespace ProjectView {
 		}
 #pragma endregion
 	private: System::Void button_editprofile_Click(System::Object^ sender, System::EventArgs^ e) {
-		UserProfilePage^ userProfilePage = gcnew UserProfilePage();
-		userProfilePage->MdiParent = this->MdiParent;
-		userProfilePage->Show();
+		//UserProfilePage^ userProfilePage = gcnew UserProfilePage();
+		//userProfilePage->MdiParent = this->MdiParent;
+		//userProfilePage->Show();
+		if (userProfilePage == nullptr) {
+			userProfilePage = gcnew UserProfilePage();
+			userProfilePage->MdiParent = this->MdiParent;
+			this->Hide();
+			if (userProfilePage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				userProfilePage = nullptr;
+			}
+		}
+		return;
 		//this->Close();
 	}
 	private: System::Void button_logout_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -249,57 +264,102 @@ namespace ProjectView {
 		if (userAddVehiclePage == nullptr) {
 			userAddVehiclePage = gcnew UserAddVehiclePage();
 			userAddVehiclePage->MdiParent = this->MdiParent;
-			userAddVehiclePage->Show();
+			this->Hide();
+			if (userAddVehiclePage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				userAddVehiclePage = nullptr;
+			}
+			//userAddVehiclePage->Show();
 		}
-		else {
+		/*else {
 			userAddVehiclePage->BringToFront();
-		}
+		}*/
 		
 		/*this->Hide(); */
+		return;
 	}
 	private: System::Void button_myvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		if (userMyVehiclesPage == nullptr) {
 			userMyVehiclesPage = gcnew UserMyVehiclesPage();
 			userMyVehiclesPage->MdiParent = this->MdiParent;
-			userMyVehiclesPage->Show();
+			this->Hide();
+			if (userMyVehiclesPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				userMyVehiclesPage = nullptr;
+			}
+			//userMyVehiclesPage->Show();
 
 		}
-		else {
+		/*else {
 			userMyVehiclesPage->BringToFront();
-		}
+		}*/
 		
 		//this->Close();
-
+		return;
 	}
 
 private: System::Void button_help_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		UserHelpPage^ userHelpPage = gcnew UserHelpPage();
-		userHelpPage->MdiParent = this->MdiParent;
-		userHelpPage->Show();
+
 		//this->Close();
+		if (userHelpPage == nullptr) {
+			userHelpPage = gcnew UserHelpPage();
+			userHelpPage ->MdiParent = this->MdiParent;
+			this->Hide();
+			if (userHelpPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				userHelpPage = nullptr;
+			}
+		}
+		return;
 }
 private: System::Void button_statistics_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		UserMyStatisticsPage^ userMyStatisticsPage = gcnew UserMyStatisticsPage();
-		userMyStatisticsPage->MdiParent = this->MdiParent;
-		userMyStatisticsPage->Show();
+		//UserMyStatisticsPage^ userMyStatisticsPage = gcnew UserMyStatisticsPage();
+		//userMyStatisticsPage->MdiParent = this->MdiParent;
+		//userMyStatisticsPage->Show();
+		if (userMyStatisticsPage == nullptr) {
+			userMyStatisticsPage = gcnew UserMyStatisticsPage();
+			userMyStatisticsPage->MdiParent = this->MdiParent;
+			this->Hide();
+			if (userMyStatisticsPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				userMyStatisticsPage = nullptr;
+			}
+		}
+		return;
 		//this->Close();
 }
 private: System::Void button_reclamation_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		UserReclamationPage^ userReclamationPage = gcnew UserReclamationPage();
-		userReclamationPage->MdiParent = this->MdiParent;
-		userReclamationPage->Show();
+
 		//this->Close();
+		if (userReclamationPage == nullptr) {
+			userReclamationPage = gcnew UserReclamationPage();
+			userReclamationPage->MdiParent = this->MdiParent;
+			this->Hide();
+			if (userReclamationPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				userReclamationPage = nullptr;
+			}
+		}
+		return;
 }
 private: System::Void button_myreclamations_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		UserMyReclamationsPage^ userMyReclamationsPage = gcnew UserMyReclamationsPage();
-		userMyReclamationsPage->MdiParent = this->MdiParent;
-		userMyReclamationsPage->Show();
+
 		//this->Close();
+		if (userMyReclamationsPage == nullptr) {
+			userMyReclamationsPage = gcnew UserMyReclamationsPage();
+			userMyReclamationsPage->MdiParent = this->MdiParent;
+			this->Hide();
+			if (userMyReclamationsPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				userMyReclamationsPage = nullptr;
+			}
+		}
+		return;
 }
 private: System::Void UserFeedPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 	this->DialogResult = System::Windows::Forms::DialogResult::OK;
