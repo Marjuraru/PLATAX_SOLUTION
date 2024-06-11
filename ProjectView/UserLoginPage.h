@@ -37,6 +37,7 @@ namespace ProjectView {
 		//static RegisterPage^ registerPage;
 		static AdminFeedPage^ adminFeedPage;
 		static UserFeedPage^ userFeedPage;
+		static UserRegisterPage^ userRegisterPage;
 		//static AdminMainControlPage^ adminMainControlPage;
 
 	protected:
@@ -243,10 +244,19 @@ namespace ProjectView {
 	}
 	*/
 	private: System::Void button_register_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-	
-			UserRegisterPage^ userRegisterPage = gcnew UserRegisterPage();
-			userRegisterPage->MdiParent = this->MdiParent;
-			userRegisterPage->Show();
+
+			if (userRegisterPage == nullptr) {
+				userRegisterPage = gcnew UserRegisterPage();
+				userRegisterPage->MdiParent = this->MdiParent;
+
+				if (userRegisterPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) { // muestra a la hija y tambien manda un valor boleano
+					this->Show();//Se muestra madre desde su código nuevamente
+					userRegisterPage = nullptr;// que raro, pero bueno, funciona poner nulo a este puntero para que se vuelva usar cuantas veces la ventana adminFeedPage
+					return;
+				}
+				return;
+			}
+
 	}
 	private: System::Void button_login_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ email = textBox_email->Text;
@@ -361,8 +371,6 @@ namespace ProjectView {
 					}
 
 				}
-
-
 
 			} 
 			

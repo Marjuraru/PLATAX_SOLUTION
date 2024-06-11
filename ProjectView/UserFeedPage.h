@@ -29,6 +29,8 @@ namespace ProjectView {
 			//TODO: agregar código de constructor aquí
 			//
 		}
+		static UserAddVehiclePage^ userAddVehiclePage;
+		static UserMyVehiclesPage^ userMyVehiclesPage;
 
 	protected:
 		/// <summary>
@@ -234,16 +236,29 @@ namespace ProjectView {
 
 	private: System::Void button_addvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		UserAddVehiclePage^ userAddVehiclePage = gcnew UserAddVehiclePage();
-		userAddVehiclePage->MdiParent = this->MdiParent;
-		userAddVehiclePage->Show();
+		if (userAddVehiclePage == nullptr) {
+			userAddVehiclePage = gcnew UserAddVehiclePage();
+			userAddVehiclePage->MdiParent = this->MdiParent;
+			userAddVehiclePage->Show();
+		}
+		else {
+			userAddVehiclePage->BringToFront();
+		}
+		
 		/*this->Hide(); */
 	}
 	private: System::Void button_myvehicle_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		UserMyVehiclesPage^ userMyVehiclesPage = gcnew UserMyVehiclesPage();
-		userMyVehiclesPage->MdiParent = this->MdiParent;
-		userMyVehiclesPage->Show();
+		if (userMyVehiclesPage == nullptr) {
+			userMyVehiclesPage = gcnew UserMyVehiclesPage();
+			userMyVehiclesPage->MdiParent = this->MdiParent;
+			userMyVehiclesPage->Show();
+
+		}
+		else {
+			userMyVehiclesPage->BringToFront();
+		}
+		
 		//this->Close();
 
 	}
