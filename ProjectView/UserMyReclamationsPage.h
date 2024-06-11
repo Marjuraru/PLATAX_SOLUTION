@@ -765,7 +765,7 @@ namespace ProjectView {
 
 		void ShowInitialDgvReclamation() {
 			List<Reclamation^>^ reclamations = Controller::QueryAllReclamations();
-			if (reclamations->Count != 0) {
+			if (reclamations != nullptr) {
 				dgv_reclamation->Rows->Clear();
 				for (int i = 0; i < reclamations->Count; i++) {
 					Reclamation^ c = reclamations[i];
