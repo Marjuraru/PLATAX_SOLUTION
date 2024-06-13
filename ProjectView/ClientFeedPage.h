@@ -152,7 +152,7 @@ namespace ProjectView {
 			this->button_myreclamations->Name = L"button_myreclamations";
 			this->button_myreclamations->Size = System::Drawing::Size(165, 32);
 			this->button_myreclamations->TabIndex = 42;
-			this->button_myreclamations->Text = L"Mis Reclamos";
+			this->button_myreclamations->Text = L"Consultas";
 			this->button_myreclamations->UseVisualStyleBackColor = true;
 			// 
 			// button_help

@@ -120,7 +120,7 @@ namespace ProjectView {
 			this->button_help->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_help->Location = System::Drawing::Point(1092, 30);
-			this->button_help->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_help->Margin = System::Windows::Forms::Padding(4);
 			this->button_help->Name = L"button_help";
 			this->button_help->Size = System::Drawing::Size(151, 32);
 			this->button_help->TabIndex = 41;
@@ -133,11 +133,11 @@ namespace ProjectView {
 			this->button_myreclamations->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_myreclamations->Location = System::Drawing::Point(904, 30);
-			this->button_myreclamations->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_myreclamations->Margin = System::Windows::Forms::Padding(4);
 			this->button_myreclamations->Name = L"button_myreclamations";
 			this->button_myreclamations->Size = System::Drawing::Size(165, 32);
 			this->button_myreclamations->TabIndex = 35;
-			this->button_myreclamations->Text = L"Mis Reclamos";
+			this->button_myreclamations->Text = L"Consulta";
 			this->button_myreclamations->UseVisualStyleBackColor = true;
 			this->button_myreclamations->Click += gcnew System::EventHandler(this, &UserFeedPage::button_myreclamations_Click);
 			// 
@@ -148,7 +148,7 @@ namespace ProjectView {
 				static_cast<System::Byte>(0)));
 			this->button_logout->ForeColor = System::Drawing::SystemColors::ButtonFace;
 			this->button_logout->Location = System::Drawing::Point(1061, 69);
-			this->button_logout->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_logout->Margin = System::Windows::Forms::Padding(4);
 			this->button_logout->Name = L"button_logout";
 			this->button_logout->Size = System::Drawing::Size(197, 34);
 			this->button_logout->TabIndex = 40;
@@ -161,7 +161,7 @@ namespace ProjectView {
 			this->button_myvehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_myvehicle->Location = System::Drawing::Point(373, 30);
-			this->button_myvehicle->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_myvehicle->Margin = System::Windows::Forms::Padding(4);
 			this->button_myvehicle->Name = L"button_myvehicle";
 			this->button_myvehicle->Size = System::Drawing::Size(151, 32);
 			this->button_myvehicle->TabIndex = 10;
@@ -174,7 +174,7 @@ namespace ProjectView {
 			this->button_editprofile->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_editprofile->Location = System::Drawing::Point(7, 30);
-			this->button_editprofile->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_editprofile->Margin = System::Windows::Forms::Padding(4);
 			this->button_editprofile->Name = L"button_editprofile";
 			this->button_editprofile->Size = System::Drawing::Size(151, 32);
 			this->button_editprofile->TabIndex = 15;
@@ -187,7 +187,7 @@ namespace ProjectView {
 			this->button_statistics->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_statistics->Location = System::Drawing::Point(177, 30);
-			this->button_statistics->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_statistics->Margin = System::Windows::Forms::Padding(4);
 			this->button_statistics->Name = L"button_statistics";
 			this->button_statistics->Size = System::Drawing::Size(171, 32);
 			this->button_statistics->TabIndex = 20;
@@ -200,7 +200,7 @@ namespace ProjectView {
 			this->button_reclamation->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_reclamation->Location = System::Drawing::Point(733, 30);
-			this->button_reclamation->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_reclamation->Margin = System::Windows::Forms::Padding(4);
 			this->button_reclamation->Name = L"button_reclamation";
 			this->button_reclamation->Size = System::Drawing::Size(151, 32);
 			this->button_reclamation->TabIndex = 30;
@@ -213,7 +213,7 @@ namespace ProjectView {
 			this->button_addvehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_addvehicle->Location = System::Drawing::Point(549, 30);
-			this->button_addvehicle->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button_addvehicle->Margin = System::Windows::Forms::Padding(4);
 			this->button_addvehicle->Name = L"button_addvehicle";
 			this->button_addvehicle->Size = System::Drawing::Size(157, 32);
 			this->button_addvehicle->TabIndex = 25;
@@ -228,7 +228,7 @@ namespace ProjectView {
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(1321, 138);
 			this->Controls->Add(this->groupBox2);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"UserFeedPage";
 			this->Text = L"UserFeedPage";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &UserFeedPage::UserFeedPage_FormClosed);
