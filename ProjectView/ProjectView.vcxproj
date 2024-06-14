@@ -139,6 +139,7 @@
     <ClCompile Include="ClientFeedPage.cpp" />
     <ClCompile Include="ClientHelp.cpp" />
     <ClCompile Include="ClientMailBox.cpp" />
+    <ClCompile Include="ClientMyReclamationPage.cpp" />
     <ClCompile Include="ClientMyStatisticsPage.cpp" />
     <ClCompile Include="ClientMyVehiclePage.cpp" />
     <ClCompile Include="ClientSearchVehiclePage.cpp" />
@@ -177,6 +178,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ClientMailBox.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ClientMyReclamationPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ClientMyStatisticsPage.h">
@@ -243,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientMailBox.resx">
       <DependentUpon>ClientMailBox.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientMyReclamationPage.resx">
+      <DependentUpon>ClientMyReclamationPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientMyStatisticsPage.resx">
       <DependentUpon>ClientMyStatisticsPage.h</DependentUpon>
