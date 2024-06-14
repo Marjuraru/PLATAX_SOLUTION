@@ -41,6 +41,7 @@ namespace ProjectView {
 	private: System::Windows::Forms::TextBox^ textBox_tid;
 	protected:
 	private: System::Windows::Forms::ComboBox^ comboBox_status;
+	private: System::Windows::Forms::NotifyIcon^ notifyIcon1;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label10;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Title;
@@ -721,9 +722,9 @@ namespace ProjectView {
 			this->label1->Location = System::Drawing::Point(425, 6);
 			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(287, 38);
+			this->label1->Size = System::Drawing::Size(293, 38);
 			this->label1->TabIndex = 232;
-			this->label1->Text = L"MIS RECLAMOS";
+			this->label1->Text = L"MIS CONSULTAS";
 			// 
 			// UserMyReclamationsPage
 			// 
@@ -862,7 +863,7 @@ namespace ProjectView {
 	}
 	private: System::Void button_type_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ ttype = comboBox_type->Items[comboBox_type->SelectedIndex]->ToString();
+		String^ ttype = comboBox_type->Text;
 		if (String::IsNullOrWhiteSpace(ttype)) {
 			MessageBox::Show("Ingrese el tipo de reclamo a buscar");
 			return;
@@ -874,13 +875,14 @@ namespace ProjectView {
 			return;
 		}
 
+
 		ShowSearchedReclamation(cList[0]);
 		FillReclamationTextBoxes(cList[0]);
 	}
 
 	private: System::Void button_category_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ tcategory = comboBox_category->Items[comboBox_category->SelectedIndex]->ToString();
+		String^ tcategory = comboBox_category->Text;
 
 		if (String::IsNullOrWhiteSpace(tcategory)) {
 			MessageBox::Show("Ingrese el categoría de reclamo a buscar");
@@ -899,7 +901,7 @@ namespace ProjectView {
 
 	private: System::Void button_status_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ tstate = comboBox_status->Items[comboBox_status->SelectedIndex]->ToString();
+		String^ tstate = comboBox_status->Text;
 
 		if (String::IsNullOrWhiteSpace(tstate)) {
 			MessageBox::Show("Ingrese el estado del reclamo a buscar");

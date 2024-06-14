@@ -137,7 +137,7 @@ namespace ProjectView {
 			this->button_myreclamations->Name = L"button_myreclamations";
 			this->button_myreclamations->Size = System::Drawing::Size(165, 32);
 			this->button_myreclamations->TabIndex = 35;
-			this->button_myreclamations->Text = L"Consulta";
+			this->button_myreclamations->Text = L"Mis Consultas";
 			this->button_myreclamations->UseVisualStyleBackColor = true;
 			this->button_myreclamations->Click += gcnew System::EventHandler(this, &UserFeedPage::button_myreclamations_Click);
 			// 
@@ -204,7 +204,7 @@ namespace ProjectView {
 			this->button_reclamation->Name = L"button_reclamation";
 			this->button_reclamation->Size = System::Drawing::Size(151, 32);
 			this->button_reclamation->TabIndex = 30;
-			this->button_reclamation->Text = L"Reclamar";
+			this->button_reclamation->Text = L"Consultas";
 			this->button_reclamation->UseVisualStyleBackColor = true;
 			this->button_reclamation->Click += gcnew System::EventHandler(this, &UserFeedPage::button_reclamation_Click);
 			// 
