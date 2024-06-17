@@ -153,6 +153,7 @@
     <ClCompile Include="UserProfilePage.cpp" />
     <ClCompile Include="UserReclamationPage.cpp" />
     <ClCompile Include="UserRegisterPage.cpp" />
+    <ClCompile Include="UserShockSensorPage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdmDataBaseUsers.h">
@@ -221,6 +222,9 @@
     <ClInclude Include="UserRegisterPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="UserShockSensorPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AdminFeedPage .resx">
@@ -282,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserRegisterPage.resx">
       <DependentUpon>UserRegisterPage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserShockSensorPage.resx">
+      <DependentUpon>UserShockSensorPage.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

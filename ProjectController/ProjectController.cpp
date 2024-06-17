@@ -2,6 +2,7 @@
 
 #include "ProjectController.h" 
 
+
 bool ProjectController::Controller::validateAccess(String^ email, String^ password)
 {
 	if (email == "hola" && password == "mundo") {
@@ -324,6 +325,55 @@ List<HelpPls^>^ ProjectController::Controller::QueryAllHelpsPls()
 	return ProjectPersistance::Persistance::QueryAllHelpsPls();
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*********************************** Arduino y Visual *****************************************************/
+String^ ProjectController::Controller::EnviarRobotALaMesa(int robotId, int mesanum)
+{
+	String^ result;
+	try {
+		AbrirPuerto();
+		ArduinoPuerto->Write(Convert::ToString(mesanum));
+		result = ArduinoPuerto->ReadLine();
+		
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		CerrarPuerto();
+	}
+
+	return result;
+}
+
+void ProjectController::Controller::AbrirPuerto()
+{
+	try {
+		ArduinoPuerto = gcnew SerialPort();
+		ArduinoPuerto->PortName = "COM8";
+		ArduinoPuerto->BaudRate = 9600;
+		ArduinoPuerto->Open();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+
+}
+
+void ProjectController::Controller::CerrarPuerto()
+{
+	try {
+		if (ArduinoPuerto->IsOpen)
+			ArduinoPuerto->Close();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+}
+
+										/*Fin*/
 
 
 

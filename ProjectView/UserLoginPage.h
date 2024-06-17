@@ -3,6 +3,7 @@
 #include "UserRegisterPage.h"
 #include "ClientFeedPage.h"
 #include "AdminFeedPage .h"
+#include "UserShockSensorPage.h" 
 
 namespace ProjectView {
 
@@ -38,6 +39,10 @@ namespace ProjectView {
 		static AdminFeedPage^ adminFeedPage;
 		static UserFeedPage^ userFeedPage;
 		static UserRegisterPage^ userRegisterPage;
+		static UserShockSensorPage^ userShockSensorPage;
+
+
+	public:
 		static ClientFeedPage^ clientFeedPage;
 
 	protected:
@@ -109,20 +114,18 @@ namespace ProjectView {
 			this->textBox_email->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_email->ForeColor = System::Drawing::SystemColors::WindowFrame;
-			this->textBox_email->Location = System::Drawing::Point(111, 178);
-			this->textBox_email->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_email->Location = System::Drawing::Point(83, 145);
 			this->textBox_email->Name = L"textBox_email";
-			this->textBox_email->Size = System::Drawing::Size(279, 30);
+			this->textBox_email->Size = System::Drawing::Size(210, 26);
 			this->textBox_email->TabIndex = 0;
 			// 
 			// button_login
 			// 
 			this->button_login->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_login->Location = System::Drawing::Point(111, 318);
-			this->button_login->Margin = System::Windows::Forms::Padding(4);
+			this->button_login->Location = System::Drawing::Point(83, 258);
 			this->button_login->Name = L"button_login";
-			this->button_login->Size = System::Drawing::Size(280, 46);
+			this->button_login->Size = System::Drawing::Size(210, 37);
 			this->button_login->TabIndex = 10;
 			this->button_login->Text = L"Iniciar sesión";
 			this->button_login->UseVisualStyleBackColor = true;
@@ -132,21 +135,19 @@ namespace ProjectView {
 			// 
 			this->textBox_password->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox_password->Location = System::Drawing::Point(111, 256);
-			this->textBox_password->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_password->Location = System::Drawing::Point(83, 208);
 			this->textBox_password->Name = L"textBox_password";
 			this->textBox_password->PasswordChar = '*';
-			this->textBox_password->Size = System::Drawing::Size(279, 30);
+			this->textBox_password->Size = System::Drawing::Size(210, 26);
 			this->textBox_password->TabIndex = 5;
 			// 
 			// button_register
 			// 
 			this->button_register->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_register->Location = System::Drawing::Point(111, 370);
-			this->button_register->Margin = System::Windows::Forms::Padding(4);
+			this->button_register->Location = System::Drawing::Point(83, 301);
 			this->button_register->Name = L"button_register";
-			this->button_register->Size = System::Drawing::Size(280, 46);
+			this->button_register->Size = System::Drawing::Size(210, 37);
 			this->button_register->TabIndex = 15;
 			this->button_register->Text = L"Crear cuenta";
 			this->button_register->UseVisualStyleBackColor = true;
@@ -157,10 +158,9 @@ namespace ProjectView {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(155, 59);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(116, 48);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(189, 38);
+			this->label1->Size = System::Drawing::Size(150, 31);
 			this->label1->TabIndex = 5;
 			this->label1->Text = L"\"PLATAX\"";
 			// 
@@ -169,10 +169,9 @@ namespace ProjectView {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(171, 155);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(128, 126);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(145, 23);
+			this->label2->Size = System::Drawing::Size(117, 19);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Ingresa tu email";
 			// 
@@ -181,10 +180,9 @@ namespace ProjectView {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(152, 231);
-			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Location = System::Drawing::Point(114, 188);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(193, 23);
+			this->label3->Size = System::Drawing::Size(154, 19);
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"Ingresa tu contraseña";
 			// 
@@ -198,10 +196,10 @@ namespace ProjectView {
 			// 
 			// UserLoginPage
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Peru;
-			this->ClientSize = System::Drawing::Size(496, 434);
+			this->ClientSize = System::Drawing::Size(374, 359);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
@@ -209,10 +207,9 @@ namespace ProjectView {
 			this->Controls->Add(this->textBox_password);
 			this->Controls->Add(this->button_login);
 			this->Controls->Add(this->textBox_email);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
-			this->MaximumSize = System::Drawing::Size(514, 481);
-			this->MinimumSize = System::Drawing::Size(514, 481);
+			this->MaximumSize = System::Drawing::Size(390, 398);
+			this->MinimumSize = System::Drawing::Size(390, 398);
 			this->Name = L"UserLoginPage";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"UserLoginPage";
@@ -278,7 +275,26 @@ namespace ProjectView {
 		//analizar login
 
 
+		if (email == "prueba" && password == "prueba") {
 
+			/*Session::CurrentProprietor = p;*/
+
+
+			notifyIcon1->BalloonTipText = "¡Modo Prueba de Sensor Ultrasónico ACTIVADO!";
+			notifyIcon1->ShowBalloonTip(2500);
+			ClearTextBoxes();
+
+			if (userShockSensorPage == nullptr) {
+				userShockSensorPage = gcnew UserShockSensorPage();
+				userShockSensorPage->MdiParent = this->MdiParent;
+				this->Hide();
+				if (userShockSensorPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+					this->Show();
+					userShockSensorPage = nullptr;
+					MessageBox::Show("Modo Prueba de Sensor Ultrasónico FINALIZADO");
+				}
+			}
+		}
 
 		if (email == "admin" && password == "admin") {
 
@@ -383,8 +399,9 @@ namespace ProjectView {
 			} 
 			
 		}
+
 		
-		
+
 
 		/*if (email == "user") {
 			if (password == "user") {
@@ -426,6 +443,5 @@ namespace ProjectView {
 		}
 		*/
 	}
-
 };
 }
