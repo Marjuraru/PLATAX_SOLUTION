@@ -6,6 +6,7 @@
 #include "UserReclamationPage.h"
 #include "UserMyReclamationsPage.h"
 #include "UserHelpPage.h"
+#include "UserMailBoxPage.h"
 
 namespace ProjectView {
 
@@ -35,6 +36,14 @@ namespace ProjectView {
 		static UserMyStatisticsPage^ userMyStatisticsPage;
 		static UserHelpPage^ userHelpPage;
 		static UserReclamationPage^ userReclamationPage;
+		static UserMailBoxPage^ userMailBoxPage;
+
+	private: System::Windows::Forms::Button^ button_mailbox;
+	public:
+
+	public:
+
+	public:
 		static UserMyReclamationsPage^ userMyReclamationsPage;
 
 	protected:
@@ -71,7 +80,7 @@ namespace ProjectView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -89,12 +98,14 @@ namespace ProjectView {
 			this->button_statistics = (gcnew System::Windows::Forms::Button());
 			this->button_reclamation = (gcnew System::Windows::Forms::Button());
 			this->button_addvehicle = (gcnew System::Windows::Forms::Button());
+			this->button_mailbox = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox2
 			// 
 			this->groupBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->groupBox2->Controls->Add(this->button_mailbox);
 			this->groupBox2->Controls->Add(this->button_help);
 			this->groupBox2->Controls->Add(this->button_myreclamations);
 			this->groupBox2->Controls->Add(this->button_logout);
@@ -137,7 +148,7 @@ namespace ProjectView {
 			this->button_myreclamations->Name = L"button_myreclamations";
 			this->button_myreclamations->Size = System::Drawing::Size(165, 32);
 			this->button_myreclamations->TabIndex = 35;
-			this->button_myreclamations->Text = L"Mis Consultas";
+			this->button_myreclamations->Text = L"Mis Reclamos";
 			this->button_myreclamations->UseVisualStyleBackColor = true;
 			this->button_myreclamations->Click += gcnew System::EventHandler(this, &UserFeedPage::button_myreclamations_Click);
 			// 
@@ -204,7 +215,7 @@ namespace ProjectView {
 			this->button_reclamation->Name = L"button_reclamation";
 			this->button_reclamation->Size = System::Drawing::Size(151, 32);
 			this->button_reclamation->TabIndex = 30;
-			this->button_reclamation->Text = L"Consultas";
+			this->button_reclamation->Text = L"Reclamar";
 			this->button_reclamation->UseVisualStyleBackColor = true;
 			this->button_reclamation->Click += gcnew System::EventHandler(this, &UserFeedPage::button_reclamation_Click);
 			// 
@@ -220,6 +231,19 @@ namespace ProjectView {
 			this->button_addvehicle->Text = L"Agregar Carro";
 			this->button_addvehicle->UseVisualStyleBackColor = true;
 			this->button_addvehicle->Click += gcnew System::EventHandler(this, &UserFeedPage::button_addvehicle_Click);
+			// 
+			// button_mailbox
+			// 
+			this->button_mailbox->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_mailbox->Location = System::Drawing::Point(555, 71);
+			this->button_mailbox->Margin = System::Windows::Forms::Padding(4);
+			this->button_mailbox->Name = L"button_mailbox";
+			this->button_mailbox->Size = System::Drawing::Size(151, 32);
+			this->button_mailbox->TabIndex = 42;
+			this->button_mailbox->Text = L"Buzón";
+			this->button_mailbox->UseVisualStyleBackColor = true;
+			this->button_mailbox->Click += gcnew System::EventHandler(this, &UserFeedPage::button_mailbox_Click);
 			// 
 			// UserFeedPage
 			// 
@@ -274,7 +298,7 @@ namespace ProjectView {
 		/*else {
 			userAddVehiclePage->BringToFront();
 		}*/
-		
+
 		/*this->Hide(); */
 		return;
 	}
@@ -294,18 +318,18 @@ namespace ProjectView {
 		/*else {
 			userMyVehiclesPage->BringToFront();
 		}*/
-		
+
 		//this->Close();
 		return;
 	}
 
-private: System::Void button_help_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button_help_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
 		//this->Close();
 		if (userHelpPage == nullptr) {
 			userHelpPage = gcnew UserHelpPage();
-			userHelpPage ->MdiParent = this->MdiParent;
+			userHelpPage->MdiParent = this->MdiParent;
 			this->Hide();
 			if (userHelpPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 				this->Show();
@@ -313,8 +337,8 @@ private: System::Void button_help_Click(System::Object^ sender, System::EventArg
 			}
 		}
 		return;
-}
-private: System::Void button_statistics_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button_statistics_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		//UserMyStatisticsPage^ userMyStatisticsPage = gcnew UserMyStatisticsPage();
 		//userMyStatisticsPage->MdiParent = this->MdiParent;
@@ -330,8 +354,8 @@ private: System::Void button_statistics_Click(System::Object^ sender, System::Ev
 		}
 		return;
 		//this->Close();
-}
-private: System::Void button_reclamation_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button_reclamation_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
 		//this->Close();
@@ -345,8 +369,8 @@ private: System::Void button_reclamation_Click(System::Object^ sender, System::E
 			}
 		}
 		return;
-}
-private: System::Void button_myreclamations_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void button_myreclamations_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
 		//this->Close();
@@ -360,9 +384,21 @@ private: System::Void button_myreclamations_Click(System::Object^ sender, System
 			}
 		}
 		return;
-}
-private: System::Void UserFeedPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-	this->DialogResult = System::Windows::Forms::DialogResult::OK;
-}
-};
+	}
+	private: System::Void UserFeedPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
+	private: System::Void button_mailbox_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (userMailBoxPage == nullptr) {
+			userMailBoxPage = gcnew UserMailBoxPage();
+			userMailBoxPage->MdiParent = this->MdiParent;
+			this->Hide();
+			if (userMailBoxPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				userMailBoxPage = nullptr;
+			}
+		}
+		return;
+	}
+	};
 }
