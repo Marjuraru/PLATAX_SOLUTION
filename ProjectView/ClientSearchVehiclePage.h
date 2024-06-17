@@ -827,9 +827,13 @@ namespace ProjectView {
 		this->Close();
 	}
 	private: System::Void button_Send_message_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ textbox_email = textBox_email->Text;
 		this->Hide();
+
 		ClientMailBox^ clientMailBox = gcnew ClientMailBox();
 		clientMailBox->MdiParent = this->MdiParent;
+
+		clientMailBox->textBox_enter_email->Text = textbox_email;
 
 		if (clientMailBox->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
 			this->Show();
@@ -877,31 +881,6 @@ namespace ProjectView {
 	   }
 
 	private: System::Void DataGridView_Load() {
-		/*
-		// Crear una nueva lista de vehículos
-		List<Vehicle^>^ vehicles = gcnew List<Vehicle^>();
-
-		// Obtener todos los propietarios desde el controlador
-		List<Proprietor^>^ proprietors = Controller::QueryAllProprietors();
-
-		// Recorrer la lista de propietarios y agregar todos sus vehículos a la lista de vehículos
-		for each (Proprietor ^ p in proprietors) {
-			// Verificar si el propietario tiene vehículos antes de agregarlos
-			if (p->ListVehicleProprietor->Count > 0) {
-				for each (Vehicle ^ vh in p->ListVehicleProprietor) {
-					// Verificar si el vehículo ya está en la lista antes de agregarlo
-					if (!vehicles->Contains(vh)) {
-						vehicles->Add(vh);
-					}
-				}
-			}
-		}
-
-		// Asegurarse de que la lista de vehículos no esté vacía
-		if (vehicles->Count > 0) {
-			// Vincular los datos al DataGridView
-			dgv_vehicles->DataSource = vehicles;
-		}*/
 		// Obtener todos los vehículos desde el controlador
 		List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
 

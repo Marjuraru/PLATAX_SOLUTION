@@ -29,6 +29,7 @@ namespace ProjectView {
 			//
 		}
 
+
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -81,7 +82,7 @@ namespace ProjectView {
 
 
 	private: System::Windows::Forms::Button^ button_clearall;
-	private: System::Windows::Forms::TextBox^ textBox_enter_email;
+	public: System::Windows::Forms::TextBox^ textBox_enter_email;
 
 	private: System::Windows::Forms::Label^ label1;
 
@@ -801,7 +802,6 @@ namespace ProjectView {
 			MessageBox::Show("Error al cargar los mails: " + ex->Message);
 		}
 	}
-
 
 
 	};
