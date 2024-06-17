@@ -59,6 +59,9 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
             else if (fileName->Equals(HELPPLS_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
+            else if (fileName->Equals(MAIL_FILE_BIN_NAME)) {
+                result = formatter->Deserialize(file);
+            }
         }
     }
     catch (Exception^ ex) {
@@ -255,6 +258,20 @@ int ProjectPersistance::Persistance::GenerateHelpPlsId()
     return newID;
 }
 
+int ProjectPersistance::Persistance::GenerateMailId() {
+    MailList = (List<Mail^>^)Persistance::LoadBinaryFile(MAIL_FILE_BIN_NAME);
+    int newID = 1;
+    if (MailList != nullptr) {
+        // Busca el último ID utilizado y elige un nuevo ID que sea único
+        for each (Mail ^ mail in MailList) {
+            if (mail->Id >= newID) {
+                newID = mail->Id + 1;
+            }
+        }
+    }
+    return newID;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 void ProjectPersistance::Persistance::CreateProprietor(Proprietor^ c)
 {
@@ -323,6 +340,17 @@ void ProjectPersistance::Persistance::CreateHelpPls(HelpPls^ c)
     PersistBinaryFile(HELPPLS_FILE_BIN_NAME, HelpPlsList);
 }
 
+void ProjectPersistance::Persistance::CreateMail(Mail^ c)
+{
+    MailList = (List<Mail^>^)Persistance::LoadBinaryFile(MAIL_FILE_BIN_NAME);
+    if (MailList == nullptr) {
+        // Si la lista no se cargó correctamente, crea una nueva lista
+        MailList = gcnew List<Mail^>();
+    }
+    MailList->Add(c);
+    PersistBinaryFile(MAIL_FILE_BIN_NAME, MailList);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 void ProjectPersistance::Persistance::UpdateProprietor(Proprietor^ c)
@@ -367,15 +395,8 @@ void ProjectPersistance::Persistance::UpdateClient(Client^ c)
                 ClientList[i] = c;
             }
         }
-        /*
-        for each (Client^ client in ClientList){
-            if (c->Id == ClientList[i]->Id) {
-                ClientList[i] = c;
-            }
-        }
-        */
     }
-    PersistBinaryFile(PROPRIETOR_FILE_BIN_NAME, ProprietorList);
+    PersistBinaryFile(CLIENT_FILE_BIN_NAME, ClientList);
 }
 
 void ProjectPersistance::Persistance::UpdateReclamation(Reclamation^ c)
@@ -408,7 +429,7 @@ void ProjectPersistance::Persistance::UpdateAdm(Adm^ c)
         }
         */
     }
-    PersistBinaryFile(PROPRIETOR_FILE_BIN_NAME, ProprietorList);
+    PersistBinaryFile(ADM_FILE_BIN_NAME, AdmList);
 }
 
 void ProjectPersistance::Persistance::UpdateHelpPls(HelpPls^ c)
@@ -506,6 +527,20 @@ void ProjectPersistance::Persistance::DeleteHelpPls(int id)
         }
         // Guardar la lista actualizada en el archivo binario
         PersistBinaryFile(HELPPLS_FILE_BIN_NAME, ReclamationList);
+    }
+}
+
+void ProjectPersistance::Persistance::DeleteMail(int id)
+{
+    MailList = (List<Mail^>^)Persistance::LoadBinaryFile(MAIL_FILE_BIN_NAME);
+    if (MailList != nullptr) {
+        for (int i = MailList->Count - 1; i >= 0; i--) {
+            if (id == MailList[i]->Id) {
+                MailList->RemoveAt(i);
+            }
+        }
+        // Guardar la lista actualizada en el archivo binario
+        PersistBinaryFile(MAIL_FILE_BIN_NAME, MailList);
     }
 }
 
@@ -628,6 +663,19 @@ Client^ ProjectPersistance::Persistance::QueryClientById(int id)
         for (int i = 0; i < ClientList->Count; i++) {
             if (ClientList[i]->Id == id) {
                 return ClientList[i];
+            }
+        }
+    }
+    return nullptr;
+}
+
+Mail^ ProjectPersistance::Persistance::QueryMailById(int id)
+{
+    MailList = (List<Mail^>^)Persistance::LoadBinaryFile(MAIL_FILE_BIN_NAME);
+    if (MailList->Count != 0) {
+        for (int i = 0; i < MailList->Count; i++) {
+            if (MailList[i]->Id == id) {
+                return MailList[i];
             }
         }
     }
@@ -957,6 +1005,24 @@ List<Reclamation^>^ ProjectPersistance::Persistance::QueryListReclamationByDate(
 List<HelpPls^>^ ProjectPersistance::Persistance::QueryAllHelpsPls()
 {
     return HelpPlsList = (List<HelpPls^>^)Persistance::LoadBinaryFile(HELPPLS_FILE_BIN_NAME);
+}
+
+List<Mail^>^ ProjectPersistance::Persistance::QueryAllMails()
+{
+    return MailList = (List<Mail^>^)Persistance::LoadBinaryFile(MAIL_FILE_BIN_NAME);
+}
+
+Mail^ ProjectPersistance::Persistance::QueryMailBySubject(String^ subject)
+{
+    MailList = (List<Mail^>^)Persistance::LoadBinaryFile(MAIL_FILE_BIN_NAME);
+    if (MailList->Count != 0) {  //Count < 1 (para List)= nullptr (para no List)
+        for (int i = 0; i < MailList->Count; i++) {
+            if (MailList[i]->Subject == subject) {
+                return MailList[i];
+            }
+        }
+    }
+    return nullptr;
 }
 
 //void ProjectPersistance::Persistance::Asignarvehiculo(Vehicle^ current_vehicle, Proprietor^ current_proprietor) {

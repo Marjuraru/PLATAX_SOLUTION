@@ -148,6 +148,7 @@
     <ClCompile Include="UserFeedPage.cpp" />
     <ClCompile Include="UserHelpPage.cpp" />
     <ClCompile Include="UserLoginPage.cpp" />
+    <ClCompile Include="UserMailBoxPage.cpp" />
     <ClCompile Include="UserMyVehiclesPage.cpp" />
     <ClCompile Include="UserMyReclamationsPage.cpp" />
     <ClCompile Include="UserMyStatisticsPage.cpp" />
@@ -205,6 +206,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserLoginPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="UserMailBoxPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserMyVehiclesPage.h">

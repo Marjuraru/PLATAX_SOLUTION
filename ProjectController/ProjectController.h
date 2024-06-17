@@ -23,6 +23,7 @@ namespace ProjectController { //marcelos version
 		static int GenerateReclamationId();
 		//ADMINISTRADOR SE REGISTRA A NIVEL DE CÓDIGO
 		static int GenerateHelpPlsId();//--
+		static int GenerateMailId();
 
 		//Mantenimiento de las Clases
 			//Mantenimiento de Proprietor
@@ -50,6 +51,12 @@ namespace ProjectController { //marcelos version
 		static void CreateHelpPls(HelpPls^ c);
 		static void UpdateHelpPls(HelpPls^ c);
 		static void DeleteHelpPls(int id);
+
+
+		//Metodos de mantenimiento de Mail - CRUD  -------
+		static void CreateMail(Mail^ c);
+		//static void UpdateMail(HelpPls^ c);
+		static void DeleteMail(int id);
 
 		//Atributos que no deben repetirse
 		static bool IsDniRegistered(int dni);
@@ -103,6 +110,11 @@ namespace ProjectController { //marcelos version
 		//Búsqueda de Help 
 
 		static List<HelpPls^>^ QueryAllHelpsPls();
+
+		//Búsqueda de Mails 
+		static List<Mail^>^ QueryAllMails();
+		static Mail^ QueryMailById(int id);
+		static Mail^ QueryMailBySubject(String^ subject);
 
 	};
 }

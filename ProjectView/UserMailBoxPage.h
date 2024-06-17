@@ -18,10 +18,10 @@ namespace ProjectView {
 	/// <summary>
 	/// Resumen de ClientMailBox
 	/// </summary>
-	public ref class ClientMailBox : public System::Windows::Forms::Form
+	public ref class UserMailBoxPage : public System::Windows::Forms::Form
 	{
 	public:
-		ClientMailBox(void)
+		UserMailBoxPage(void)
 		{
 			InitializeComponent();
 			//
@@ -33,7 +33,7 @@ namespace ProjectView {
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
 		/// </summary>
-		~ClientMailBox()
+		~UserMailBoxPage()
 		{
 			if (components)
 			{
@@ -216,7 +216,7 @@ namespace ProjectView {
 			this->tabControl1->SelectedIndex = 0;
 			this->tabControl1->Size = System::Drawing::Size(1080, 571);
 			this->tabControl1->TabIndex = 209;
-			this->tabControl1->SelectedIndexChanged += gcnew System::EventHandler(this, &ClientMailBox::tabControl1_SelectedIndexChanged);
+			this->tabControl1->SelectedIndexChanged += gcnew System::EventHandler(this, &UserMailBoxPage::tabControl1_SelectedIndexChanged);
 			// 
 			// tabPage_Sendmessage
 			// 
@@ -393,7 +393,7 @@ namespace ProjectView {
 			this->button_confirmexistence->Tag = L"55";
 			this->button_confirmexistence->Text = L"Confirmar existencia";
 			this->button_confirmexistence->UseVisualStyleBackColor = true;
-			this->button_confirmexistence->Click += gcnew System::EventHandler(this, &ClientMailBox::button_confirmexistence_Click);
+			this->button_confirmexistence->Click += gcnew System::EventHandler(this, &UserMailBoxPage::button_confirmexistence_Click);
 			// 
 			// label7
 			// 
@@ -458,7 +458,7 @@ namespace ProjectView {
 			this->button_send_message->Tag = L"55";
 			this->button_send_message->Text = L"Enviar mensaje";
 			this->button_send_message->UseVisualStyleBackColor = true;
-			this->button_send_message->Click += gcnew System::EventHandler(this, &ClientMailBox::button_send_message_Click);
+			this->button_send_message->Click += gcnew System::EventHandler(this, &UserMailBoxPage::button_send_message_Click);
 			// 
 			// button_clearall
 			// 
@@ -472,7 +472,7 @@ namespace ProjectView {
 			this->button_clearall->Tag = L"55";
 			this->button_clearall->Text = L"Limpiar todo";
 			this->button_clearall->UseVisualStyleBackColor = true;
-			this->button_clearall->Click += gcnew System::EventHandler(this, &ClientMailBox::button_clearall_Click);
+			this->button_clearall->Click += gcnew System::EventHandler(this, &UserMailBoxPage::button_clearall_Click);
 			// 
 			// richTextBox_content
 			// 
@@ -546,7 +546,7 @@ namespace ProjectView {
 			this->button_exit->Tag = L"65";
 			this->button_exit->Text = L"SALIR";
 			this->button_exit->UseVisualStyleBackColor = false;
-			this->button_exit->Click += gcnew System::EventHandler(this, &ClientMailBox::button_exit_Click);
+			this->button_exit->Click += gcnew System::EventHandler(this, &UserMailBoxPage::button_exit_Click);
 			// 
 			// ClientMailBox
 			// 
@@ -558,7 +558,7 @@ namespace ProjectView {
 			this->Controls->Add(this->tabControl1);
 			this->Name = L"ClientMailBox";
 			this->Text = L"Sección de Buzón";
-			this->Load += gcnew System::EventHandler(this, &ClientMailBox::ClientMailBox_Load);
+			this->Load += gcnew System::EventHandler(this, &UserMailBoxPage::ClientMailBox_Load);
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage_Sendmessage->ResumeLayout(false);
 			this->tabPage_Sendmessage->PerformLayout();
@@ -602,21 +602,21 @@ namespace ProjectView {
 			List<Client^>^ clients = Controller::QueryAllClients();
 
 			if ((clients != nullptr) && (proprietors != nullptr)) {
-				for each (Client ^ client in clients) {
-					if (tenter_email == Session::CurrentClient->Email) {
+				for each (Proprietor ^ proprietor in proprietors) {
+					if (tenter_email == Session::CurrentProprietor->Email) {
 						return false;
 						break;
 					}
 					else {
-						if (client->Email == tenter_email) {
+						if (proprietor->Email == tenter_email) {
 							return true;
 							break;
 						}
 					}
 				}
 
-				for each (Proprietor ^ proprietor in proprietors) {
-					if (proprietor->Email == tenter_email) {
+				for each (Client ^ client in clients) {
+					if (client->Email == tenter_email) {
 						return true;
 						break;
 					}
@@ -625,7 +625,6 @@ namespace ProjectView {
 			else {
 				return false;
 			}
-
 		}
 
 
@@ -640,29 +639,29 @@ namespace ProjectView {
 		List<Client^>^ clients = Controller::QueryAllClients();
 
 		if ((clients != nullptr) && (proprietors != nullptr)) {
-			for each (Client ^ client in clients) {
-				if (tenter_email == Session::CurrentClient->Email) {
+			for each (Proprietor ^ proprietor in proprietors) {
+				if (tenter_email == Session::CurrentProprietor->Email) {
 					MessageBox::Show("Está ingresando el suyo :p");
 					ClearTextBoxes();
 					break;
 				}
 				else {
-					if (client->Email == tenter_email) {
-						textBox_name->Text = client->Name;
-						textBox_surname->Text = client->Lastname;
-						textBox_phone->Text = client->Phone.ToString();
-						textBox_dni->Text = client->Dni.ToString();
+					if (proprietor->Email == tenter_email) {
+						textBox_name->Text = proprietor->Name;
+						textBox_surname->Text = proprietor->Lastname;
+						textBox_phone->Text = proprietor->Phone.ToString();
+						textBox_dni->Text = proprietor->Dni.ToString();
 						break;
 					}
 				}
 			}
 
-			for each (Proprietor ^ proprietor in proprietors) {
-				if (proprietor->Email == tenter_email) {
-					textBox_name->Text = proprietor->Name;
-					textBox_surname->Text = proprietor->Lastname;
-					textBox_phone->Text = proprietor->Phone.ToString();
-					textBox_dni->Text = proprietor->Dni.ToString();
+			for each (Client ^ client in clients) {
+				if (client->Email == tenter_email) {
+					textBox_name->Text = client->Name;
+					textBox_surname->Text = client->Lastname;
+					textBox_phone->Text = client->Phone.ToString();
+					textBox_dni->Text = client->Dni.ToString();
 					break;
 				}
 			}
@@ -683,11 +682,11 @@ namespace ProjectView {
 		idColumn->Width = 25; // Ajustar el ancho de la columna
 		dgv_mails->Columns->Add(idColumn);
 
-		DataGridViewTextBoxColumn^ UserreceiverColumn = gcnew DataGridViewTextBoxColumn();
-		UserreceiverColumn->HeaderText = "Propietario";
-		UserreceiverColumn->DataPropertyName = "UserreceiverName";
-		UserreceiverColumn->Width = 80; // Ajustar el ancho de la columna
-		dgv_mails->Columns->Add(UserreceiverColumn);
+		//DataGridViewTextBoxColumn^ UserreceiverColumn = gcnew DataGridViewTextBoxColumn();
+		//UserreceiverColumn->HeaderText = "Propietario";
+		//UserreceiverColumn->DataPropertyName = "UserreceiverName";
+		//UserreceiverColumn->Width = 80; // Ajustar el ancho de la columna
+		//dgv_mails->Columns->Add(UserreceiverColumn);
 
 		DataGridViewTextBoxColumn^ SubjectColumn = gcnew DataGridViewTextBoxColumn();
 		SubjectColumn->HeaderText = "Asunto";
@@ -716,41 +715,32 @@ namespace ProjectView {
 
 		if (Confirmarexistencia()) {
 			mail->Id = Controller::GenerateMailId();
-			mail->Usertransmitter = Session::CurrentClient;
+			mail->Usertransmitter = Session::CurrentProprietor;
 
-			Proprietor^ receiverProprietor = Controller::QueryProprietorByEmail(textBox_enter_email->Text);
-			Client^ receiverClient = Controller::QueryClientByEmail(textBox_enter_email->Text);
-
-			if (receiverProprietor != nullptr) {
-				mail->Userreceiver = receiverProprietor;
+			if (Controller::QueryProprietorByEmail(textBox_enter_email->Text) != nullptr) {
+				mail->Userreceiver = Controller::QueryProprietorByEmail(textBox_enter_email->Text);
 			}
 			else {
-				if (receiverClient != nullptr) {
-					mail->Userreceiver = receiverClient;
+				if (Controller::QueryClientByEmail(textBox_enter_email->Text) != nullptr) {
+					mail->Userreceiver = Controller::QueryClientByEmail(textBox_enter_email->Text);
 				}
 			}
 
 			mail->Content = richTextBox_content->Text;
 			mail->Subject = textBox_subject->Text;
-			mail->MadeDate = System::DateTime::Now; // Toma la hora y fecha del sistema
+			mail->MadeDate = System::DateTime::Now;//toma hora y fecha del sistema
 
 			Controller::CreateMail(mail);
-			Client^ clientP = Session::CurrentClient;
-			clientP->ListEmailSentClient->Add(mail);
-			Controller::UpdateClient(clientP);
 
-			// Método de búsqueda
+			Proprietor^ ProprietorP = Session::CurrentProprietor;
+			ProprietorP->ListEmailSentProprietor->Add(mail);
+			Controller::UpdateProprietor(ProprietorP);
+
+			//Hacemos método de búsqueda
 			List<Proprietor^>^ proprietors = Controller::QueryAllProprietors();
 			List<Client^>^ clients = Controller::QueryAllClients();
 
 			if ((clients != nullptr) && (proprietors != nullptr)) {
-				for each (Client ^ client in clients) {
-					if (client->Email == tenter_email) {
-						client->ListEmailReceivedClient->Add(mail);
-						Controller::UpdateClient(client);
-						break;
-					}
-				}
 				for each (Proprietor ^ proprietor in proprietors) {
 					if (proprietor->Email == tenter_email) {
 						proprietor->ListEmailReceivedProprietor->Add(mail);
@@ -758,10 +748,19 @@ namespace ProjectView {
 						break;
 					}
 				}
+				for each (Client ^ client in clients) {
+					if (client->Email == tenter_email) {
+						client->ListEmailReceivedClient->Add(mail);
+						Controller::UpdateClient(client);
+						break;
+					}
+				}
 			}
 			else {
-				MessageBox::Show("No se encontraron propietarios o clientes.");
+				MessageBox::Show("No existe el email ingresado");
 			}
+
+
 			MessageBox::Show("El mensaje se envió correctamente");
 			ClearTextBoxes();
 		}
@@ -769,7 +768,9 @@ namespace ProjectView {
 			MessageBox::Show("No se envió mensaje");
 			ClearTextBoxes();
 		}
+
 	}
+
 
 	private: System::Void tabControl1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		try {
@@ -777,21 +778,17 @@ namespace ProjectView {
 			List<Mail^>^ mails = Controller::QueryAllMails();
 			// Inicializa la lista de mails filtrados
 			List<Mail^>^ m = gcnew List<Mail^>();
-
 			// Filtra los mails
-			if (Session::CurrentClient->ListEmailReceivedClient->Count > 0) {
-				// Filtra los mails recibidos por el cliente actual
+
+			if (mails != nullptr) {
 				for each (Mail ^ ma in mails) {
-					for each (Mail ^ mai in Session::CurrentClient->ListEmailReceivedClient) {
+					for each (Mail ^ mai in Session::CurrentProprietor->ListEmailReceivedProprietor) {
 						if (ma->Id == mai->Id) {
 							m->Add(ma);
 							break;
 						}
 					}
 				}
-			}
-			else {
-				MessageBox::Show("No hay correos recibidos para mostrar.");
 			}
 			// Asigna la lista filtrada como fuente de datos
 			dgv_mails->DataSource = m;
@@ -801,6 +798,7 @@ namespace ProjectView {
 			MessageBox::Show("Error al cargar los mails: " + ex->Message);
 		}
 	}
+
 
 
 
