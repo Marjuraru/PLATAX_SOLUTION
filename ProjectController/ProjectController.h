@@ -75,6 +75,7 @@ namespace ProjectController { //marcelos version
 		static Proprietor^ QueryProprietorById(int id);
 		static Proprietor^ QueryProprietorByDni(int dni);
 		static Proprietor^ QueryProprietorByEmail(String^ email);
+		static Proprietor^ QueryProprietorByVehicleSelected();
 
 		static List<Proprietor^>^ QueryListProprietorByName(String^ name);
 		static List<Proprietor^>^ QueryListProprietorByLastname(String^ lastname);

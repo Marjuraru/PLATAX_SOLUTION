@@ -554,6 +554,8 @@ namespace ProjectView {
 		vehicle->Brand = brand;
 		vehicle->Plate = plate;
 		vehicle->Condition = condition;
+		vehicle->Selected = false;
+		vehicle->VehicleAvailable = true;
 
 		if (pb_photo->Image != nullptr) {
 

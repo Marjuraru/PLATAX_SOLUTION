@@ -109,7 +109,7 @@ namespace ProjectView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -826,59 +826,80 @@ namespace ProjectView {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 		this->Close();
 	}
+
 	private: System::Void button_Send_message_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ textbox_email = textBox_email->Text;
-		this->Hide();
+		int selectedRowIndex = dgv_vehicles->SelectedRows[0]->Index;
+		Vehicle^ selectedVehicle = dynamic_cast<Vehicle^>(dgv_vehicles->Rows[selectedRowIndex]->DataBoundItem);
 
-		ClientMailBox^ clientMailBox = gcnew ClientMailBox();
-		clientMailBox->MdiParent = this->MdiParent;
+		List<Proprietor^>^ ProprietorList = Controller::QueryAllProprietors();
 
-		clientMailBox->textBox_enter_email->Text = textbox_email;
+		// Verificar que se haya seleccionado un vehículo válido
+		if (selectedVehicle != nullptr) {
+			for each (Proprietor ^ p in ProprietorList) {
+				for each (Vehicle ^ v in p->ListVehicleProprietor) {
+					if (selectedVehicle->Id == v->Id) {
+						// Actualizar directamente el vehículo en la lista del propietario
+						v->Selected = true;
 
-		if (clientMailBox->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			this->Show();
-			return;
+						// Actualizar el vehículo en la base de datos
+						Controller::UpdateProprietor(p);
+						Controller::UpdateVehicle(v);
+						break;
+					}
+				}
+			}
+
+			this->Hide();
+
+			ClientMailBox^ clientMailBox = gcnew ClientMailBox();
+			clientMailBox->MdiParent = this->MdiParent;
+
+			if (clientMailBox->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				return;
+			}
 		}
-		return;
 	}
 
-	   private: System::Void InitializeDataGridView() {
-		   // Configurar el DataGridView para no generar columnas automáticamente
-		   dgv_vehicles->AutoGenerateColumns = false;
 
-		   // Crear y agregar columnas manualmente
-		   DataGridViewTextBoxColumn^ idColumn = gcnew DataGridViewTextBoxColumn();
-		   idColumn->HeaderText = "ID";
-		   idColumn->DataPropertyName = "Id"; // Esto debe coincidir con el nombre de la propiedad en la clase de datos
-		   idColumn->Width = 25; // Ajustar el ancho de la columna
-		   dgv_vehicles->Columns->Add(idColumn);
 
-		   DataGridViewTextBoxColumn^ ColorColumn = gcnew DataGridViewTextBoxColumn();
-		   ColorColumn->HeaderText = "Color";
-		   ColorColumn->DataPropertyName = "Color";
-		   idColumn->Width = 5; // Ajustar el ancho de la columna
-		   dgv_vehicles->Columns->Add(ColorColumn);
+	private: System::Void InitializeDataGridView() {
+		// Configurar el DataGridView para no generar columnas automáticamente
+		dgv_vehicles->AutoGenerateColumns = false;
 
-		   DataGridViewTextBoxColumn^ ModelColumn = gcnew DataGridViewTextBoxColumn();
-		   ModelColumn->HeaderText = "Modelo";
-		   ModelColumn->DataPropertyName = "Model";
-		   idColumn->Width = 25; // Ajustar el ancho de la columna
-		   dgv_vehicles->Columns->Add(ModelColumn);
+		// Crear y agregar columnas manualmente
+		DataGridViewTextBoxColumn^ idColumn = gcnew DataGridViewTextBoxColumn();
+		idColumn->HeaderText = "ID";
+		idColumn->DataPropertyName = "Id"; // Esto debe coincidir con el nombre de la propiedad en la clase de datos
+		idColumn->Width = 25; // Ajustar el ancho de la columna
+		dgv_vehicles->Columns->Add(idColumn);
 
-		   DataGridViewTextBoxColumn^ BrandColumn = gcnew DataGridViewTextBoxColumn();
-		   BrandColumn->HeaderText = "Marca";
-		   BrandColumn->DataPropertyName = "Brand";
-		   idColumn->Width = 25; // Ajustar el ancho de la columna
-		   dgv_vehicles->Columns->Add(BrandColumn);
+		DataGridViewTextBoxColumn^ ColorColumn = gcnew DataGridViewTextBoxColumn();
+		ColorColumn->HeaderText = "Color";
+		ColorColumn->DataPropertyName = "Color";
+		idColumn->Width = 5; // Ajustar el ancho de la columna
+		dgv_vehicles->Columns->Add(ColorColumn);
 
-		   DataGridViewTextBoxColumn^ PlateColumn = gcnew DataGridViewTextBoxColumn();
-		   PlateColumn->HeaderText = "Placa";
-		   PlateColumn->DataPropertyName = "Plate";
-		   idColumn->Width = 25; // Ajustar el ancho de la columna
-		   dgv_vehicles->Columns->Add(PlateColumn);
+		DataGridViewTextBoxColumn^ ModelColumn = gcnew DataGridViewTextBoxColumn();
+		ModelColumn->HeaderText = "Modelo";
+		ModelColumn->DataPropertyName = "Model";
+		idColumn->Width = 25; // Ajustar el ancho de la columna
+		dgv_vehicles->Columns->Add(ModelColumn);
 
-		   // Puedes agregar más columnas según sea necesario
-	   }
+		DataGridViewTextBoxColumn^ BrandColumn = gcnew DataGridViewTextBoxColumn();
+		BrandColumn->HeaderText = "Marca";
+		BrandColumn->DataPropertyName = "Brand";
+		idColumn->Width = 25; // Ajustar el ancho de la columna
+		dgv_vehicles->Columns->Add(BrandColumn);
+
+		DataGridViewTextBoxColumn^ PlateColumn = gcnew DataGridViewTextBoxColumn();
+		PlateColumn->HeaderText = "Placa";
+		PlateColumn->DataPropertyName = "Plate";
+		idColumn->Width = 25; // Ajustar el ancho de la columna
+		dgv_vehicles->Columns->Add(PlateColumn);
+
+		// Puedes agregar más columnas según sea necesario
+	}
 
 	private: System::Void DataGridView_Load() {
 		// Obtener todos los vehículos desde el controlador
@@ -890,71 +911,85 @@ namespace ProjectView {
 
 
 
-	void ShowImage(array<System::Byte>^ imageBytes, PictureBox^ pictureBox) {
-		if (imageBytes == nullptr || imageBytes->Length == 0 || pictureBox == nullptr) {
-			// Verificar si la matriz de bytes es nula o vacía, o si el PictureBox es nulo.
-			// Puedes manejar esto de acuerdo a tus necesidades, por ejemplo, mostrar un mensaje de error.
-			return;
-		}
+		   void ShowImage(array<System::Byte>^ imageBytes, PictureBox^ pictureBox) {
+			   if (imageBytes == nullptr || imageBytes->Length == 0 || pictureBox == nullptr) {
+				   // Verificar si la matriz de bytes es nula o vacía, o si el PictureBox es nulo.
+				   // Puedes manejar esto de acuerdo a tus necesidades, por ejemplo, mostrar un mensaje de error.
+				   return;
+			   }
 
-		// Crear un MemoryStream a partir de la matriz de bytes.
-		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(imageBytes);
+			   // Crear un MemoryStream a partir de la matriz de bytes.
+			   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(imageBytes);
 
-		try {
-			// Crear una imagen desde el MemoryStream.
-			System::Drawing::Image^ image = System::Drawing::Image::FromStream(ms);
+			   try {
+				   // Crear una imagen desde el MemoryStream.
+				   System::Drawing::Image^ image = System::Drawing::Image::FromStream(ms);
 
-			// Mostrar la imagen en el PictureBox.
-			pictureBox->Image = image;
-		}
-		catch (Exception^ ex) {
-			// Manejar cualquier excepción que pueda ocurrir al cargar la imagen.
-			// Puedes mostrar un mensaje de error o realizar otra acción adecuada.
-			MessageBox::Show("Error al cargar la imagen: " + ex->Message);
-		}
-	}
+				   // Mostrar la imagen en el PictureBox.
+				   pictureBox->Image = image;
+			   }
+			   catch (Exception^ ex) {
+				   // Manejar cualquier excepción que pueda ocurrir al cargar la imagen.
+				   // Puedes mostrar un mensaje de error o realizar otra acción adecuada.
+				   MessageBox::Show("Error al cargar la imagen: " + ex->Message);
+			   }
+		   }
 
-private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, System::EventArgs^ e) {
-	// Verificar si hay al menos una fila seleccionada en el DataGridView
-	if (dgv_vehicles->SelectedRows->Count > 0) {
-		// Obtener el índice de la fila seleccionada
-		int selectedRowIndex = dgv_vehicles->SelectedRows[0]->Index;
+	private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, System::EventArgs^ e) {
+		// Verificar si hay al menos una fila seleccionada en el DataGridView
+		if (dgv_vehicles->SelectedRows->Count > 0) {
+			// Obtener el índice de la fila seleccionada
+			int selectedRowIndex = dgv_vehicles->SelectedRows[0]->Index;
 
-		// Obtener el vehículo seleccionado en la fila
-		Vehicle^ selectedVehicle = dynamic_cast<Vehicle^>(dgv_vehicles->Rows[selectedRowIndex]->DataBoundItem);
-		
-		// Obtener todos los propietarios desde el controlador
-		List<Proprietor^>^ proprietors = Controller::QueryAllProprietors();
+			// Obtener el vehículo seleccionado en la fila
+			Vehicle^ selectedVehicle = dynamic_cast<Vehicle^>(dgv_vehicles->Rows[selectedRowIndex]->DataBoundItem);
 
-		// Encontrar el propietario del vehículo
-		Proprietor^ vehicleOwner = nullptr;
-		for each (Proprietor^ proprietor in proprietors) {
-			// Iterar sobre los vehículos de cada propietario
-			for each (Vehicle^ vehicle in proprietor->ListVehicleProprietor) {
-				if(selectedVehicle->Plate == vehicle->Plate){
-					vehicleOwner = proprietor;
-				}		
+			// Obtener todos los propietarios desde el controlador
+			List<Proprietor^>^ proprietors = Controller::QueryAllProprietors();
+
+			// Encontrar el propietario del vehículo
+			Proprietor^ vehicleOwner = nullptr;
+			for each (Proprietor ^ proprietor in proprietors) {
+				// Iterar sobre los vehículos de cada propietario
+				for each (Vehicle ^ vehicle in proprietor->ListVehicleProprietor) {
+					if (selectedVehicle->Plate == vehicle->Plate) {
+						vehicleOwner = proprietor;
+					}
+				}
+			}
+
+
+			// Verificar si se encontró al propietario del vehículo
+			if (vehicleOwner != nullptr) {
+				// Llenar los TextBoxes con los datos del propietario
+				textBox_name->Text = vehicleOwner->Name;
+				textBox_surname->Text = vehicleOwner->Lastname;
+				textBox_phone->Text = vehicleOwner->Phone.ToString();
+				textBox_dni->Text = vehicleOwner->Dni.ToString();
+				textBox_email->Text = vehicleOwner->Email;
+				textBox_address->Text = vehicleOwner->Address;
+				textBox_Recommendations->Text = vehicleOwner->NumberofRecommendations.ToString();
+				textBox_Deals_completed->Text = vehicleOwner->NumberofDeals.ToString();
+				pb_photo_proprietor->Image = nullptr;
+				pb_photocar->Image = nullptr;
+			}
+			else {
+				// Limpiar los TextBoxes si no se encontró al propietario
+				textBox_name->Text = "Nombre";
+				textBox_surname->Text = "Apellido";
+				textBox_phone->Text = "Número de teléfono";
+				textBox_dni->Text = "DNI";
+				textBox_email->Text = "E-Mail";
+				textBox_address->Text = "Dirección";
+				textBox_Recommendations->Text = "#Recomendaciones";
+				textBox_Deals_completed->Text = "#Tratos completados";
+				pb_photo_proprietor->Image = nullptr;
+				pb_photocar->Image = nullptr;
 			}
 		}
-
-
-		// Verificar si se encontró al propietario del vehículo
-		if (vehicleOwner != nullptr) {
-			// Llenar los TextBoxes con los datos del propietario
-			textBox_name->Text = vehicleOwner->Name;
-			textBox_surname->Text = vehicleOwner->Lastname;
-			textBox_phone->Text = vehicleOwner->Phone.ToString();
-			textBox_dni->Text = vehicleOwner->Dni.ToString();
-			textBox_email->Text = vehicleOwner->Email;
-			textBox_address->Text = vehicleOwner->Address;
-			textBox_Recommendations->Text = vehicleOwner->NumberofRecommendations.ToString();
-			textBox_Deals_completed->Text = vehicleOwner->NumberofDeals.ToString();
-			pb_photo_proprietor->Image = nullptr;
-			pb_photocar->Image = nullptr;
-		}
 		else {
-			// Limpiar los TextBoxes si no se encontró al propietario
-			textBox_name->Text = "NO SE ENCONTRÓ";
+			// Limpiar los TextBoxes si no hay filas seleccionadas en el DataGridView
+			textBox_name->Text = "Nombre";
 			textBox_surname->Text = "Apellido";
 			textBox_phone->Text = "Número de teléfono";
 			textBox_dni->Text = "DNI";
@@ -966,105 +1001,91 @@ private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, Syst
 			pb_photocar->Image = nullptr;
 		}
 	}
-	else {
-		// Limpiar los TextBoxes si no hay filas seleccionadas en el DataGridView
-		textBox_name->Text = "Nombre";
-		textBox_surname->Text = "Apellido";
-		textBox_phone->Text = "Número de teléfono";
-		textBox_dni->Text = "DNI";
-		textBox_email->Text = "E-Mail";
-		textBox_address->Text = "Dirección";
-		textBox_Recommendations->Text = "#Recomendaciones";
-		textBox_Deals_completed->Text = "#Tratos completados";
-		pb_photo_proprietor->Image = nullptr;
-		pb_photocar->Image = nullptr;
-	}
-}
 
-private: System::Void ClientSearchVehiclePage_Load(System::Object^ sender, System::EventArgs^ e) {
-	InitializeDataGridView();
-	DataGridView_Load();
-	this->dgv_vehicles->SelectionChanged += gcnew System::EventHandler(this, &ClientSearchVehiclePage::dgv_vehicles_SelectionChanged);
-}
-
-private: System::Void button_id_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ tid = textBox_id->Text;
-	if (String::IsNullOrWhiteSpace(tid)) {
-		MessageBox::Show("Ingrese el id del vehículo a buscar");
-		return;
-	}
-	int id = 0;
-	if (!Int32::TryParse(tid, id)) {
-		MessageBox::Show("El id deben ser dígitos");
-		return;
+	private: System::Void ClientSearchVehiclePage_Load(System::Object^ sender, System::EventArgs^ e) {
+		InitializeDataGridView();
+		DataGridView_Load();
+		this->dgv_vehicles->SelectionChanged += gcnew System::EventHandler(this, &ClientSearchVehiclePage::dgv_vehicles_SelectionChanged);
 	}
 
-	List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
-	Vehicle^ v = Controller::QueryVehicleById(id);
+	private: System::Void button_id_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ tid = textBox_id->Text;
+		if (String::IsNullOrWhiteSpace(tid)) {
+			MessageBox::Show("Ingrese el id del vehículo a buscar");
+			return;
+		}
+		int id = 0;
+		if (!Int32::TryParse(tid, id)) {
+			MessageBox::Show("El id deben ser dígitos");
+			return;
+		}
 
-	Vehicles->Add(v);
+		List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
+		Vehicle^ v = Controller::QueryVehicleById(id);
 
-	dgv_vehicles->DataSource = Vehicles;
-}
+		Vehicles->Add(v);
 
-private: System::Void button_plate_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ tplate = textBox_plate->Text;
-	if (String::IsNullOrWhiteSpace(tplate)) {
-		MessageBox::Show("Ingrese la placa del vehículo a buscar");
-		return;
-	}
-	List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
-	Vehicle^ v = Controller::QueryVehicleByPlate(tplate);
-
-	Vehicles->Add(v);
-
-	dgv_vehicles->DataSource = Vehicles;
-}
-
-
-
-
-private: System::Void button_brand_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ tbrand = textBox_brand->Text;
-	if (String::IsNullOrWhiteSpace(tbrand)) {
-		MessageBox::Show("Ingrese la marca del vehículo a buscar");
-		return;
+		dgv_vehicles->DataSource = Vehicles;
 	}
 
-	List<Vehicle^>^ v = Controller::QueryListVehicleByBrand(tbrand);
+	private: System::Void button_plate_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ tplate = textBox_plate->Text;
+		if (String::IsNullOrWhiteSpace(tplate)) {
+			MessageBox::Show("Ingrese la placa del vehículo a buscar");
+			return;
+		}
+		List<Vehicle^>^ Vehicles = gcnew List<Vehicle^>();
+		Vehicle^ v = Controller::QueryVehicleByPlate(tplate);
 
-	dgv_vehicles->DataSource = v;
-}
-private: System::Void button_color_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ tcolor = textBox_color->Text;
-	if (String::IsNullOrWhiteSpace(tcolor)) {
-		MessageBox::Show("Ingrese el color del vehículo a buscar");
-		return;
+		Vehicles->Add(v);
+
+		dgv_vehicles->DataSource = Vehicles;
 	}
 
-	List<Vehicle^>^ v = Controller::QueryListVehicleByColor(tcolor);
-
-	dgv_vehicles->DataSource = v;
-}
-	void ClearTextBoxes() {
-		textBox_id->Clear();
-		textBox_plate->Clear();
-		textBox_brand->Clear();
-		textBox_color->Clear();
-		comboBox_operative->Items->Clear();
-		comboBox_condition->Items->Clear();
-	   }
-
-private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClearTextBoxes();
-	DataGridView_Load();
-}
 
 
 
+	private: System::Void button_brand_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ tbrand = textBox_brand->Text;
+		if (String::IsNullOrWhiteSpace(tbrand)) {
+			MessageBox::Show("Ingrese la marca del vehículo a buscar");
+			return;
+		}
 
-private: System::Void ClientSearchVehiclePage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-	this->DialogResult = System::Windows::Forms::DialogResult::OK;
-}
-};
+		List<Vehicle^>^ v = Controller::QueryListVehicleByBrand(tbrand);
+
+		dgv_vehicles->DataSource = v;
+	}
+	private: System::Void button_color_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ tcolor = textBox_color->Text;
+		if (String::IsNullOrWhiteSpace(tcolor)) {
+			MessageBox::Show("Ingrese el color del vehículo a buscar");
+			return;
+		}
+
+		List<Vehicle^>^ v = Controller::QueryListVehicleByColor(tcolor);
+
+		dgv_vehicles->DataSource = v;
+	}
+		   void ClearTextBoxes() {
+			   textBox_id->Clear();
+			   textBox_plate->Clear();
+			   textBox_brand->Clear();
+			   textBox_color->Clear();
+			   comboBox_operative->Items->Clear();
+			   comboBox_condition->Items->Clear();
+		   }
+
+	private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClearTextBoxes();
+		DataGridView_Load();
+	}
+
+
+
+
+	private: System::Void ClientSearchVehiclePage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
+	};
 }

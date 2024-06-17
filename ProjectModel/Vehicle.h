@@ -5,12 +5,12 @@ using namespace System::Collections::Generic;
 
 namespace ProjectModel {
 	[Serializable]
-	public ref class Vehicle
+		public ref class Vehicle
 	{
 
 	public:
 		property int Id;
-		property int NumberOfSeats;   
+		property int NumberOfSeats;
 		property String^ Color;
 		property String^ Model;
 		property String^ Brand;
@@ -18,6 +18,8 @@ namespace ProjectModel {
 		property String^ Condition;// Condición del auto
 		property bool Operative; //Indica el estado de operatividad del vehículo
 		property bool SpareTire; //llanta de repuesto
+		property bool Selected;
+		property bool VehicleAvailable;
 		property array<Byte>^ Photo; // Matris de bytes
 		property DateTime AquisitionDate;
 		property DateTime ExpirationDate;

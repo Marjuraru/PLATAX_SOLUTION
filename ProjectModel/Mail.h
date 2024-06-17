@@ -1,6 +1,7 @@
 #pragma once
 
 #include "User.h"
+#include "Vehicle.h"
 
 using namespace System;
 
@@ -15,10 +16,11 @@ namespace ProjectModel {
 		property String^ Content;
 		property String^ Subject;
 		property DateTime MadeDate;
+		property Vehicle^ vehicle;
 
-		property String^ UserreceiverName {
+		property String^ UsertransmitterName {
 			String^ get() {
-				return Userreceiver != nullptr ? Userreceiver->Name : String::Empty;
+				return Usertransmitter != nullptr ? Usertransmitter->Name : String::Empty;
 			}
 		}
 

@@ -815,12 +815,19 @@ namespace ProjectView {
 		}
 	}
 
-	private: System::Void DataGridView_Load(){
-		// Obtener todos los vehículos desde el controlador
+	private: System::Void DataGridView_Load() {
 		List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
+		List<Vehicle^>^ v = gcnew List<Vehicle^>();
 
-		// Vincular los datos al DataGridView
-		dgv_vehicles->DataSource = vehicles;
+		for each (Vehicle ^ veh in vehicles) {
+			for each (Vehicle ^ vej in Session::CurrentClient->ListVehicleClient) {
+				if (veh->Id == vej->Id) {
+					v->Add(veh);
+					break;
+				}
+			}
+		}
+		dgv_vehicles->DataSource = v;
 	}
 
 	private: System::Void UserMyVehiclesPage_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -839,7 +846,7 @@ namespace ProjectView {
 		DataGridView_Load();
 		this->dgv_vehicles->SelectionChanged += gcnew System::EventHandler(this, &ClientMyVehiclePage::dgv_vehicles_SelectionChanged);
 	}
-    void FillVehicleTextBoxes(Vehicle^ c) {
+		   void FillVehicleTextBoxes(Vehicle^ c) {
 			   textBox_tid->Text = Convert::ToString(c->Id);
 			   textBox_tmodel->Text = c->Model;
 			   textBox_tplate->Text = c->Plate;
@@ -853,76 +860,76 @@ namespace ProjectView {
 			   if (c->Photo != nullptr) {
 				   ShowImage(c->Photo, pb_photo);
 			   }
-	}
+		   }
 
-    void ClearTextBoxes() {
-		textBox_tid->Clear();
-		textBox_tmodel->Clear();
-		textBox_tplate->Clear();
-		textBox_tbrand->Clear();
-		textBox_tcolor->Clear();
-		textBox_tnumberseats->Clear();
-	}
-
-
+		   void ClearTextBoxes() {
+			   textBox_tid->Clear();
+			   textBox_tmodel->Clear();
+			   textBox_tplate->Clear();
+			   textBox_tbrand->Clear();
+			   textBox_tcolor->Clear();
+			   textBox_tnumberseats->Clear();
+		   }
 
 
-private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, System::EventArgs^ e) {
 
-	if (dgv_vehicles->SelectedRows->Count > 0){
-		// Obtener la fila seleccionada
-		DataGridViewRow^ selectedRow = dgv_vehicles->SelectedRows[0];
-		// Obtener el elemento de datos vinculado a la fila seleccionada y convertirlo a Vehicle^
-		Vehicle^ selectedData = dynamic_cast<Vehicle^>(selectedRow->DataBoundItem);
-		
-		if (selectedData != nullptr){
-			// Mostrar los detalles del registro seleccionado en los TextBox
-			textBox_tid->Text = selectedData->Id.ToString(); // Convertir entero a cadena
-			textBox_tmodel->Text = selectedData->Model; // Asignar directamente si es cadena
-			textBox_tplate->Text = selectedData->Plate;
-			textBox_tbrand->Text = selectedData->Brand;
-			textBox_tcolor->Text = selectedData->Color;
-			textBox_tnumberseats->Text = selectedData->NumberOfSeats.ToString(); // Convertir entero a cadena si NumberSeats es entero
-			textBox_tspareTire->Text = selectedData->SpareTire.ToString(); // Convertir booleano a cadena
-			textBox_toperative->Text = selectedData->Operative.ToString(); // Convertir booleano a cadena
-			textBox_tcondition->Text = selectedData->Condition; // Asignar directamente si es cadena
+
+	private: System::Void dgv_vehicles_SelectionChanged(System::Object^ sender, System::EventArgs^ e) {
+
+		if (dgv_vehicles->SelectedRows->Count > 0) {
+			// Obtener la fila seleccionada
+			DataGridViewRow^ selectedRow = dgv_vehicles->SelectedRows[0];
+			// Obtener el elemento de datos vinculado a la fila seleccionada y convertirlo a Vehicle^
+			Vehicle^ selectedData = dynamic_cast<Vehicle^>(selectedRow->DataBoundItem);
+
+			if (selectedData != nullptr) {
+				// Mostrar los detalles del registro seleccionado en los TextBox
+				textBox_tid->Text = selectedData->Id.ToString(); // Convertir entero a cadena
+				textBox_tmodel->Text = selectedData->Model; // Asignar directamente si es cadena
+				textBox_tplate->Text = selectedData->Plate;
+				textBox_tbrand->Text = selectedData->Brand;
+				textBox_tcolor->Text = selectedData->Color;
+				textBox_tnumberseats->Text = selectedData->NumberOfSeats.ToString(); // Convertir entero a cadena si NumberSeats es entero
+				textBox_tspareTire->Text = selectedData->SpareTire.ToString(); // Convertir booleano a cadena
+				textBox_toperative->Text = selectedData->Operative.ToString(); // Convertir booleano a cadena
+				textBox_tcondition->Text = selectedData->Condition; // Asignar directamente si es cadena
+			}
 		}
 	}
-}
 
-private: System::Void InitializeDataGridView(){
-	// Configurar el DataGridView para no generar columnas automáticamente
-	dgv_vehicles->AutoGenerateColumns = false;
+	private: System::Void InitializeDataGridView() {
+		// Configurar el DataGridView para no generar columnas automáticamente
+		dgv_vehicles->AutoGenerateColumns = false;
 
-	// Crear y agregar columnas manualmente
-	DataGridViewTextBoxColumn^ idColumn = gcnew DataGridViewTextBoxColumn();
-	idColumn->HeaderText = "ID";
-	idColumn->DataPropertyName = "Id"; // Esto debe coincidir con el nombre de la propiedad en la clase de datos
-	idColumn->Width = 25; // Ajustar el ancho de la columna
-	dgv_vehicles->Columns->Add(idColumn);
+		// Crear y agregar columnas manualmente
+		DataGridViewTextBoxColumn^ idColumn = gcnew DataGridViewTextBoxColumn();
+		idColumn->HeaderText = "ID";
+		idColumn->DataPropertyName = "Id"; // Esto debe coincidir con el nombre de la propiedad en la clase de datos
+		idColumn->Width = 25; // Ajustar el ancho de la columna
+		dgv_vehicles->Columns->Add(idColumn);
 
-	DataGridViewTextBoxColumn^ aquisitionDateColumn = gcnew DataGridViewTextBoxColumn();
-	aquisitionDateColumn->HeaderText = "Fecha de adquisición";
-	aquisitionDateColumn->DataPropertyName = "AquisitionDate";
-	aquisitionDateColumn->DefaultCellStyle->Format = "dd/MM/yyyy";
-	idColumn->Width = 100; // Ajustar el ancho de la columna
-	dgv_vehicles->Columns->Add(aquisitionDateColumn);
+		DataGridViewTextBoxColumn^ aquisitionDateColumn = gcnew DataGridViewTextBoxColumn();
+		aquisitionDateColumn->HeaderText = "Fecha de adquisición";
+		aquisitionDateColumn->DataPropertyName = "AquisitionDate";
+		aquisitionDateColumn->DefaultCellStyle->Format = "dd/MM/yyyy";
+		idColumn->Width = 100; // Ajustar el ancho de la columna
+		dgv_vehicles->Columns->Add(aquisitionDateColumn);
 
-	DataGridViewTextBoxColumn^ expirationDateColumn = gcnew DataGridViewTextBoxColumn();
-	expirationDateColumn->HeaderText = "Fecha de expiración";
-	expirationDateColumn->DataPropertyName = "ExpirationDate";
-	expirationDateColumn->DefaultCellStyle->Format = "dd/MM/yyyy";
-	idColumn->Width = 100; // Ajustar el ancho de la columna
-	dgv_vehicles->Columns->Add(expirationDateColumn);
+		DataGridViewTextBoxColumn^ expirationDateColumn = gcnew DataGridViewTextBoxColumn();
+		expirationDateColumn->HeaderText = "Fecha de expiración";
+		expirationDateColumn->DataPropertyName = "ExpirationDate";
+		expirationDateColumn->DefaultCellStyle->Format = "dd/MM/yyyy";
+		idColumn->Width = 100; // Ajustar el ancho de la columna
+		dgv_vehicles->Columns->Add(expirationDateColumn);
 
-	DataGridViewTextBoxColumn^ DaysremainingColumn = gcnew DataGridViewTextBoxColumn();
-	DaysremainingColumn->HeaderText = "Días restantes";
-	DaysremainingColumn->DataPropertyName = "Plate";
-	idColumn->Width = 25; // Ajustar el ancho de la columna
-	dgv_vehicles->Columns->Add(DaysremainingColumn);
+		DataGridViewTextBoxColumn^ DaysremainingColumn = gcnew DataGridViewTextBoxColumn();
+		DaysremainingColumn->HeaderText = "Días restantes";
+		DaysremainingColumn->DataPropertyName = "Plate";
+		idColumn->Width = 25; // Ajustar el ancho de la columna
+		dgv_vehicles->Columns->Add(DaysremainingColumn);
 
-	// Puedes agregar más columnas según sea necesario
-}
+		// Puedes agregar más columnas según sea necesario
+	}
 
 
 
@@ -936,8 +943,8 @@ private: System::Void InitializeDataGridView(){
 		clientStateNotificationsPage->MdiParent = this->MdiParent;
 		clientStateNotificationsPage->Show();
 	}
-private: System::Void ClientMyVehiclePage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-	this->DialogResult = System::Windows::Forms::DialogResult::OK;
-}
-};
+	private: System::Void ClientMyVehiclePage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+	}
+	};
 }

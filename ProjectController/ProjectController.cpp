@@ -189,6 +189,11 @@ Proprietor^ ProjectController::Controller::QueryProprietorById(int id)
 	return ProjectPersistance::Persistance::QueryProprietorById(id);
 }
 
+Proprietor^ ProjectController::Controller::QueryProprietorByVehicleSelected()
+{
+	return ProjectPersistance::Persistance::QueryProprietorByVehicleSelected();
+}
+
 Proprietor^ ProjectController::Controller::QueryProprietorByDni(int dni)
 {
 	return ProjectPersistance::Persistance::QueryProprietorByDni(dni);

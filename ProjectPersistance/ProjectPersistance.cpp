@@ -609,6 +609,21 @@ Proprietor^ ProjectPersistance::Persistance::QueryProprietorByEmail(String^ emai
 
 }
 
+Proprietor^ ProjectPersistance::Persistance::QueryProprietorByVehicleSelected() {
+    ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME);
+    VehicleList = (List<Vehicle^>^)Persistance::LoadBinaryFile(VEHICLE_FILE_BIN_NAME);
+    Proprietor^ vehicleowner = gcnew Proprietor();
+
+    for each (Proprietor ^ proprietor in ProprietorList) {
+        for each (Vehicle ^ vehicle in proprietor->ListVehicleProprietor) {
+            if (vehicle->Selected) {
+                vehicleowner = proprietor;
+                return vehicleowner;
+            }
+        }
+    }
+}
+
 List<Proprietor^>^ ProjectPersistance::Persistance::QueryListProprietorByName(String^ name)
 {
     ProprietorList = (List<Proprietor^>^)Persistance::LoadBinaryFile(PROPRIETOR_FILE_BIN_NAME); //lista de almacenamiento total
