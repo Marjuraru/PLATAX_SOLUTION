@@ -9,6 +9,9 @@ namespace ProjectView {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::IO::Ports; /*<<< 1*/
+	using namespace ProjectController; //<---
+	using namespace ProjectModel; //<---
+	
 
 	/// <summary>
 	/// Resumen de TestSensorsPage
@@ -44,6 +47,8 @@ namespace ProjectView {
 		}
 	private: System::Windows::Forms::TextBox^ textBox_lectura;
 	private: System::Windows::Forms::Timer^ timer;
+	private: System::Windows::Forms::ComboBox^ comboBox;
+	private: System::Windows::Forms::Button^ button;
 
 	private:
 		/// <summary>
@@ -59,20 +64,42 @@ namespace ProjectView {
 		void InitializeComponent(void)
 		{
 			this->textBox_lectura = (gcnew System::Windows::Forms::TextBox());
+			this->comboBox = (gcnew System::Windows::Forms::ComboBox());
+			this->button = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// textBox_lectura
 			// 
-			this->textBox_lectura->Location = System::Drawing::Point(144, 57);
+			this->textBox_lectura->Location = System::Drawing::Point(76, 43);
 			this->textBox_lectura->Name = L"textBox_lectura";
-			this->textBox_lectura->Size = System::Drawing::Size(128, 20);
+			this->textBox_lectura->Size = System::Drawing::Size(137, 20);
 			this->textBox_lectura->TabIndex = 0;
+			// 
+			// comboBox
+			// 
+			this->comboBox->FormattingEnabled = true;
+			this->comboBox->Location = System::Drawing::Point(85, 103);
+			this->comboBox->Name = L"comboBox";
+			this->comboBox->Size = System::Drawing::Size(121, 21);
+			this->comboBox->TabIndex = 1;
+			// 
+			// button
+			// 
+			this->button->Location = System::Drawing::Point(111, 159);
+			this->button->Name = L"button";
+			this->button->Size = System::Drawing::Size(75, 23);
+			this->button->TabIndex = 2;
+			this->button->Text = L"button1";
+			this->button->UseVisualStyleBackColor = true;
+			this->button->Click += gcnew System::EventHandler(this, &TestSensorsPage::button_Click_1);
 			// 
 			// TestSensorsPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 261);
+			this->Controls->Add(this->button);
+			this->Controls->Add(this->comboBox);
 			this->Controls->Add(this->textBox_lectura);
 			this->Name = L"TestSensorsPage";
 			this->Text = L"TestSensorsPage";
@@ -113,5 +140,44 @@ namespace ProjectView {
 
 
 
-	};
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*********************************** Arduino y Visual *****************************************************/
+							//Esto se debe hacer en el diseño
+
+//1.- agregar: using namespace ProjectModel; using namespace ProjectController; -->>
+
+//
+		   void Ejecutar(int robotID, int mesanum) {
+
+			   try {
+				   String^ result = Controller::EnviarRobotALaMesa(robotID, mesanum); //es controller no ProjectController
+
+				   if (result->Equals("")) {
+					   MessageBox::Show("JIJIJI");
+				   }
+				   else {
+					   MessageBox::Show("AJIOAJIO");
+				   }
+			   }
+			   catch (Exception^ ex) {
+				   MessageBox::Show("Ha ocurrido un problema: " + ex->Message);
+			   }
+		   }
+		   //
+
+
+		   /* Siguiente: Ir a ProjectController.h*/
+
+	private: System::Void button_Click_1(System::Object^ sender, System::EventArgs^ e) {
+
+		if (comboBox->SelectedIndex >= 0) {
+			int robotID = Convert::ToInt32(comboBox->Items[comboBox->SelectedIndex]->ToString());
+			Ejecutar(robotID, 1);
+		}
+		else {
+			MessageBox::Show("Debe seleccionar un robot.");
+		}
+
+	}
+};
 }

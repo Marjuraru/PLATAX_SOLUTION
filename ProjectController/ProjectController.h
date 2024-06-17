@@ -5,13 +5,15 @@ using namespace ProjectModel;
 using namespace ProjectPersistance;
 using namespace System::Collections::Generic;
 using namespace System::Xml::Serialization;
-using namespace System::IO;
 using namespace System::Runtime::Serialization::Formatters::Binary;
+using namespace System::IO::Ports;//<<-- 1.-         //using namespace System::IO;
 
 namespace ProjectController { //marcelos version
 	public ref class Controller
 	{
 	public:
+		static SerialPort^ ArduinoPuerto; // <<--
+
 
 		static bool validateAccess(String^ email, String^ password);
 
@@ -115,6 +117,23 @@ namespace ProjectController { //marcelos version
 		static List<Mail^>^ QueryAllMails();
 		static Mail^ QueryMailById(int id);
 		static Mail^ QueryMailBySubject(String^ subject);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*********************************** Arduino y Visual *****************************************************/
+
+// 1.- using namespace System::IO::Ports;  -->>
+// 2.- static SerialPort^ ArduinoPuerto;  -->>
+// 3.- codificar con la otra pagina para que le llame(ventana...)/ conexion entre madre e hija en
+//
+
+		static String^ EnviarRobotALaMesa(int robotId, int mesanum);
+		static void AbrirPuerto();
+		static void CerrarPuerto();
+
+		/*Ir al cpp de este*/
+
+
 
 	};
 }
