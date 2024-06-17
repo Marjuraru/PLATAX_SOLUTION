@@ -49,7 +49,7 @@ namespace ProjectView {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -86,30 +86,30 @@ namespace ProjectView {
 		/*<> 3*/
 
 
-		private: System::Void OnTimerTick(System::Object^ sender, System::EventArgs^ e) {
-			try {
-				SerialPort^ PuertoDelArduino = gcnew SerialPort("COM8", 9600);
-				PuertoDelArduino->Open();
-				String^ Lectura = PuertoDelArduino->ReadLine();
-				PuertoDelArduino->Close();
-				textBox_lectura->Text = "Distancia:  " + Lectura + " cm";
-			}
-			catch (Exception^ ex) {
-				// Manejar la excepción si es necesario
-				textBox_lectura->Text = "Error al leer datos";
-			}
+	private: System::Void OnTimerTick(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			SerialPort^ PuertoDelArduino = gcnew SerialPort("COM8", 9600);
+			PuertoDelArduino->Open();
+			String^ Lectura = PuertoDelArduino->ReadLine();
+			PuertoDelArduino->Close();
+			textBox_lectura->Text = "Distancia:  " + Lectura + " cm";
 		}
-
-
-		private: System::Void TestSensorsPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-
-			this->DialogResult = System::Windows::Forms::DialogResult::OK;
-			timer->Stop();
-
-
+		catch (Exception^ ex) {
+			// Manejar la excepción si es necesario
+			textBox_lectura->Text = "Error al leer datos";
 		}
+	}
 
-		/*<> Fin aquí, ir a UserLogin */
+
+	private: System::Void TestSensorsPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+
+		this->DialogResult = System::Windows::Forms::DialogResult::OK;
+		timer->Stop();
+
+
+	}
+
+		   /*<> Fin aquí, ir a UserLogin */
 
 
 

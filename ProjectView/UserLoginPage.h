@@ -3,6 +3,7 @@
 #include "UserRegisterPage.h"
 #include "ClientFeedPage.h"
 #include "AdminFeedPage .h"
+#include "TestSensorsPage.h"
 
 namespace ProjectView {
 
@@ -39,6 +40,7 @@ namespace ProjectView {
 		static UserFeedPage^ userFeedPage;
 		static UserRegisterPage^ userRegisterPage;
 		static ClientFeedPage^ clientFeedPage;
+		static TestSensorsPage^ testSensorsPage;
 
 	protected:
 		/// <summary>
@@ -277,7 +279,33 @@ namespace ProjectView {
 
 		//analizar login
 
+		if (email == "prueba" && password == "prueba") {
 
+
+			notifyIcon1->BalloonTipText = "¡Modo Prueba de Sensor Ultrasónico ACTIVADO!";
+			notifyIcon1->ShowBalloonTip(2500);
+			ClearTextBoxes();
+
+			if (testSensorsPage == nullptr) { //al inicio del programa es nulo, pero a la segunda vez no lo es
+
+				testSensorsPage = gcnew TestSensorsPage();
+				testSensorsPage->MdiParent = this->MdiParent;
+
+				this->Hide();//oculta la ventana madre(Login page)
+
+				if (testSensorsPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) { // muestra a la hija y tambien manda un valor boleano
+					this->Show();//Se muestra madre desde su código nuevamente
+					testSensorsPage = nullptr;// que raro, pero bueno, funciona poner nulo a este puntero para que se vuelva usar cuantas veces la ventana adminFeedPage
+					MessageBox::Show("Modo Prueba de Sensor Ultrasónico FINALIZADO");
+
+
+					
+					return;
+				}
+
+				return;
+			}
+		}
 
 
 		if (email == "admin" && password == "admin") {
