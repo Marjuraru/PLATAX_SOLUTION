@@ -15,6 +15,7 @@ namespace ProjectPersistance { //marcelos version
         static List<Reclamation^>^ ReclamationList = gcnew List<Reclamation^>();
         static List<Adm^>^ AdmList = gcnew List<Adm^>();
         static List<HelpPls^>^ HelpPlsList = gcnew List<HelpPls^>();
+        static List<Mail^>^ MailList = gcnew List<Mail^>();
     public:                     //(1°)
         static String^ USER_FILE_BIN_NAME = "User.bin";
         static String^ PROPRIETOR_FILE_BIN_NAME = "Proprietor.bin";
@@ -23,6 +24,7 @@ namespace ProjectPersistance { //marcelos version
         static String^ RECLAMATION_FILE_BIN_NAME = "Reclamation.bin";
         static String^ ADM_FILE_BIN_NAME = "Adm.bin";
         static String^ HELPPLS_FILE_BIN_NAME = "HelpPls.bin";
+        static String^ MAIL_FILE_BIN_NAME = "Mail.bin";
 
 
         //Persistencia binaria
@@ -36,7 +38,9 @@ namespace ProjectPersistance { //marcelos version
         //static int GenerateClientId();
         static int GenerateReclamationId();
         //ADMINISTRADOR SE REGISTRA A NIVEL DE CÓDIGO
-        static int GenerateHelpPlsId();//--
+        static int GenerateHelpPlsId();
+        //ADMINISTRADOR SE REGISTRA A NIVEL DE CÓDIGO
+        static int GenerateMailId();
 
         // Metodos de mantenimiento del Proprietario - CRUD
         static void CreateProprietor(Proprietor^ c);
@@ -63,6 +67,11 @@ namespace ProjectPersistance { //marcelos version
         static void CreateHelpPls(HelpPls^ c);
         static void UpdateHelpPls(HelpPls^ c);
         static void DeleteHelpPls(int id);
+
+        //Metodos de mantenimiento de Mail - CRUD  -------
+        static void CreateMail(Mail^ c);
+        //static void UpdateMail(HelpPls^ c);
+        static void DeleteMail(int id);
 
         //Atributos que no deben repetirse
         static bool IsDniRegistered(int dni);
@@ -115,6 +124,11 @@ namespace ProjectPersistance { //marcelos version
 
         //Búsqueda de HelpPls 
         static List<HelpPls^>^ QueryAllHelpsPls();
+
+        //Búsqueda de Mails 
+        static List<Mail^>^ QueryAllMails();
+        static Mail^ QueryMailById(int id);
+        static Mail^ QueryMailBySubject(String^ subject);
 
         //Asignaciones de Vehículos
  //       static void Asignarvehiculo(Vehicle^ current_vehicle,Proprietor^ current_proprietor);//

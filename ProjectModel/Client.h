@@ -3,6 +3,7 @@
 #include "User.h"
 #include "Commendation.h"
 #include "Vehicle.h"
+#include "Mail.h"
 
 using namespace System;
 
@@ -16,5 +17,7 @@ namespace ProjectModel {
 			property String^ Licensename;
 			property Commendation^ recommend;
 			property List<Vehicle^>^ ListVehicleClient;
+			property List<Mail^>^ ListEmailSentClient;
+			property List<Mail^>^ ListEmailReceivedClient;
 	};
 };

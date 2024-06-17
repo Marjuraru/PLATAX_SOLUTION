@@ -564,6 +564,8 @@ namespace ProjectView {
 			p->proprietor = checkBox_proprietor->Checked;
 			p->SignDate = System::DateTime::Now;//toma hora y fecha del sistema
 			p->ListVehicleProprietor = gcnew List<Vehicle^>();
+			p->ListEmailSentProprietor = gcnew List<Mail^>();
+			p->ListEmailReceivedProprietor = gcnew List<Mail^>();
 
 
 			Session::CurrentProprietor = p;
@@ -594,6 +596,8 @@ namespace ProjectView {
 			c->proprietor = checkBox_proprietor->Checked;
 			c->SignDate = System::DateTime::Now;//toma hora y fecha del sistema
 			c->ListVehicleClient = gcnew List<Vehicle^>();
+			c->ListEmailSentClient = gcnew List<Mail^>();
+			c->ListEmailReceivedClient = gcnew List<Mail^>();
 
 			Session::CurrentClient = c;
 			Controller::CreateClient(c);
@@ -626,5 +630,5 @@ namespace ProjectView {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 
 	}
-};
+	};
 }

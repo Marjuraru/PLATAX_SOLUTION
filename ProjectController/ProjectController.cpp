@@ -62,6 +62,11 @@ int ProjectController::Controller::GenerateHelpPlsId()
 	return ProjectPersistance::Persistance::GenerateHelpPlsId();
 }
 
+int ProjectController::Controller::GenerateMailId()
+{
+	return ProjectPersistance::Persistance::GenerateMailId();
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 void ProjectController::Controller::CreateProprietor(Proprietor^ c)
 {
@@ -91,6 +96,11 @@ void ProjectController::Controller::CreateAdm(Adm^ c)
 void ProjectController::Controller::CreateHelpPls(HelpPls^ c)
 {
 	return ProjectPersistance::Persistance::CreateHelpPls(c);
+}
+
+void ProjectController::Controller::CreateMail(Mail^ c)
+{
+	return ProjectPersistance::Persistance::CreateMail(c);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -156,6 +166,11 @@ void ProjectController::Controller::DeleteAdm(int id)
 void ProjectController::Controller::DeleteHelpPls(int id)
 {
 	return ProjectPersistance::Persistance::DeleteHelpPls(id);
+}
+
+void ProjectController::Controller::DeleteMail(int id)
+{
+	return ProjectPersistance::Persistance::DeleteMail(id);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -254,6 +269,11 @@ Vehicle^ ProjectController::Controller::QueryVehicleByPlate(String^ plate)
 	return ProjectPersistance::Persistance::QueryVehicleByPlate(plate);
 }
 
+Mail^ ProjectController::Controller::QueryMailBySubject(String^ subject)
+{
+	return ProjectPersistance::Persistance::QueryMailBySubject(subject);
+}
+
 //
 
 List<Vehicle^>^ ProjectController::Controller::QueryListVehiclesByProprietorId(int Id)
@@ -292,6 +312,11 @@ Reclamation^ ProjectController::Controller::QueryReclamationById(int id)
 	return ProjectPersistance::Persistance::QueryReclamationById(id);
 }
 
+Mail^ ProjectController::Controller::QueryMailById(int id)
+{
+	return ProjectPersistance::Persistance::QueryMailById(id);
+}
+
 Reclamation^ ProjectController::Controller::QueryReclamationByTitle(String^ title)
 {
 	return ProjectPersistance::Persistance::QueryReclamationByTitle(title);
@@ -322,6 +347,11 @@ List<Reclamation^>^ ProjectController::Controller::QueryListReclamationByDate(Da
 List<HelpPls^>^ ProjectController::Controller::QueryAllHelpsPls()
 {
 	return ProjectPersistance::Persistance::QueryAllHelpsPls();
+}
+
+List<Mail^>^ ProjectController::Controller::QueryAllMails()
+{
+	return ProjectPersistance::Persistance::QueryAllMails();
 }
 
 

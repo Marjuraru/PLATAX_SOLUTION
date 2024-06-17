@@ -139,6 +139,7 @@
     <ClCompile Include="ClientFeedPage.cpp" />
     <ClCompile Include="ClientHelp.cpp" />
     <ClCompile Include="ClientMailBox.cpp" />
+    <ClCompile Include="ClientMyReclamationPage.cpp" />
     <ClCompile Include="ClientMyStatisticsPage.cpp" />
     <ClCompile Include="ClientMyVehiclePage.cpp" />
     <ClCompile Include="ClientSearchVehiclePage.cpp" />
@@ -147,6 +148,7 @@
     <ClCompile Include="UserFeedPage.cpp" />
     <ClCompile Include="UserHelpPage.cpp" />
     <ClCompile Include="UserLoginPage.cpp" />
+    <ClCompile Include="UserMailBoxPage.cpp" />
     <ClCompile Include="UserMyVehiclesPage.cpp" />
     <ClCompile Include="UserMyReclamationsPage.cpp" />
     <ClCompile Include="UserMyStatisticsPage.cpp" />
@@ -179,6 +181,9 @@
     <ClInclude Include="ClientMailBox.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ClientMyReclamationPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ClientMyStatisticsPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -201,6 +206,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserLoginPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="UserMailBoxPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserMyVehiclesPage.h">
@@ -243,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientMailBox.resx">
       <DependentUpon>ClientMailBox.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientMyReclamationPage.resx">
+      <DependentUpon>ClientMyReclamationPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientMyStatisticsPage.resx">
       <DependentUpon>ClientMyStatisticsPage.h</DependentUpon>

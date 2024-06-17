@@ -4,6 +4,7 @@
 #include "ClientHelp.h"
 #include "ClientMyVehiclePage.h"
 #include "ClientMailBox.h"
+#include "ClientMyReclamationPage.h"
 
 
 namespace ProjectView {
@@ -34,6 +35,7 @@ namespace ProjectView {
 		static ClientHelp^ clientHelp;
 		static ClientMyVehiclePage^ clientMyVehiclePage;
 		static ClientMailBox^ clientMailBox;
+		static ClientMyReclamationPage^ clientMyReclamationPage;
 
 	protected:
 		/// <summary>
@@ -152,8 +154,9 @@ namespace ProjectView {
 			this->button_myreclamations->Name = L"button_myreclamations";
 			this->button_myreclamations->Size = System::Drawing::Size(165, 32);
 			this->button_myreclamations->TabIndex = 42;
-			this->button_myreclamations->Text = L"Mis Reclamos";
+			this->button_myreclamations->Text = L"Consultas";
 			this->button_myreclamations->UseVisualStyleBackColor = true;
+			this->button_myreclamations->Click += gcnew System::EventHandler(this, &ClientFeedPage::button_myreclamations_Click);
 			// 
 			// button_help
 			// 
@@ -302,5 +305,18 @@ namespace ProjectView {
 
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	}
+private: System::Void button_myreclamations_Click(System::Object^ sender, System::EventArgs^ e) {
+	//this->Close();
+	if (clientMyReclamationPage == nullptr) {
+		clientMyReclamationPage = gcnew ClientMyReclamationPage();
+		clientMyReclamationPage->MdiParent = this->MdiParent;
+		this->Hide();
+		if (clientMyReclamationPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			this->Show();
+			clientMyReclamationPage = nullptr;
+		}
+	}
+	return;
+}
 };
 }

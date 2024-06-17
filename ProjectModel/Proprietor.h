@@ -3,13 +3,14 @@
 #include "User.h"
 #include "Commendation.h"
 #include "Vehicle.h"
+#include "Mail.h"
 
 using namespace System;
 
 namespace ProjectModel {
 	[Serializable]
-	public ref class Proprietor : public User {
-		
+		public ref class Proprietor : public User {
+
 		public:
 			property int NumberofRecommendations;
 			property int NumberofDeals;
@@ -19,5 +20,7 @@ namespace ProjectModel {
 			property String^ Licensename;
 			property Commendation^ recommend;
 			property List<Vehicle^>^ ListVehicleProprietor;
+			property List<Mail^>^ ListEmailSentProprietor;
+			property List<Mail^>^ ListEmailReceivedProprietor;
 	};
 };

@@ -123,6 +123,7 @@
     <ClInclude Include="Adm.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="HelpPls.h" />
+    <ClInclude Include="Mail.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="Proprietor.h" />
     <ClInclude Include="Commendation.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="HelpPls.cpp" />
+    <ClCompile Include="Mail.cpp" />
     <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="Proprietor.cpp" />
     <ClCompile Include="Commendation.cpp" />

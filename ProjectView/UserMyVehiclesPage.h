@@ -362,6 +362,7 @@ namespace ProjectView {
 			this->button_condition->Tag = L"";
 			this->button_condition->Text = L"BUSCAR";
 			this->button_condition->UseVisualStyleBackColor = true;
+			this->button_condition->Click += gcnew System::EventHandler(this, &UserMyVehiclesPage::button_condition_Click_1);
 			// 
 			// button_color
 			// 
@@ -1339,7 +1340,7 @@ namespace ProjectView {
 
 	}
 
-	private: System::Void button_condition_Click(System::Object^ sender, System::EventArgs^ e) {
+	/*private: System::Void button_condition_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		String^ tcondition = comboBox_condition->Text;
 		if (String::IsNullOrWhiteSpace(tcondition)) {
@@ -1358,7 +1359,7 @@ namespace ProjectView {
 
 		ShowSearchedVehicle(cList[0]);
 
-	}
+	}*/
 
 	private: System::Void UserMyVehiclesPage_Load(System::Object^ sender, System::EventArgs^ e) {
 		/*FillCombos();*/
@@ -1540,5 +1541,23 @@ namespace ProjectView {
 	private: System::Void UserMyVehiclesPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	}
+private: System::Void button_condition_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	String^ tcondition = comboBox_condition->Text;
+	if (String::IsNullOrWhiteSpace(tcondition)) {
+		MessageBox::Show("Ingrese la condición del vehículo a buscar");
+		return;
+	}
+
+	List<Vehicle^>^ cList = Controller::QueryListVehicleByCondition(tcondition);
+	if (cList->Count < 1) {
+		notifyIcon1->BalloonTipText = "La condición del vehículo ingresado no existe.";
+		notifyIcon1->ShowBalloonTip(2500);
+		return;
+	}
+
+	FillVehicleTextBoxes(cList[0]);
+
+	ShowSearchedVehicle(cList[0]);
+}
 };
 }
