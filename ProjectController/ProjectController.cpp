@@ -178,6 +178,11 @@ List<User^>^ ProjectController::Controller::QueryAllUsers()
 {
 	return ProjectPersistance::Persistance::QueryAllUsers();
 }
+List<Adm^>^ ProjectController::Controller::QueryAllAdms()
+{
+	return ProjectPersistance::Persistance::QueryAllAdms();
+	// TODO: Insertar una instrucción "return" aquí
+}
 ///////////////////////////////////////////////////////////////////////////////////////////
 List<Proprietor^>^ ProjectController::Controller::QueryAllProprietors()
 {

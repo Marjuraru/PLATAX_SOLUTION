@@ -4,6 +4,8 @@
 #include "Commendation.h"
 #include "Vehicle.h"
 #include "Mail.h"
+#include "Reclamation.h"
+
 
 using namespace System;
 
@@ -19,5 +21,7 @@ namespace ProjectModel {
 			property List<Vehicle^>^ ListVehicleClient;
 			property List<Mail^>^ ListEmailSentClient;
 			property List<Mail^>^ ListEmailReceivedClient;
+			property List<Reclamation^>^ ListReclamationSentClient;
+			property List<Reclamation^>^ ListReclamationReceivedClient;
 	};
 };

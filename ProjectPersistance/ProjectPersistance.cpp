@@ -551,6 +551,12 @@ List<User^>^ ProjectPersistance::Persistance::QueryAllUsers()
     // TODO: Insertar una instrucción "return" aquí
 }
 
+List<Adm^>^ ProjectPersistance::Persistance::QueryAllAdms()
+{
+    return AdmList = (List<Adm^>^)Persistance::LoadBinaryFile(ADM_FILE_BIN_NAME);
+    // TODO: Insertar una instrucción "return" aquí
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 List<Proprietor^>^ ProjectPersistance::Persistance::QueryAllProprietors()
 {

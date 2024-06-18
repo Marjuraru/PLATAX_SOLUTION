@@ -82,6 +82,9 @@ namespace ProjectPersistance { //marcelos version
 
         //Búsqueda de User solo por Id:
         static List<User^>^ QueryAllUsers();
+        
+        //Búsqueda del Administrador
+        static List<Adm^>^ QueryAllAdms();
 
         //Búsqueda de Proprietor
         static List<Proprietor^>^ QueryAllProprietors();
