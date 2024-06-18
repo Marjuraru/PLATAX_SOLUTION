@@ -70,6 +70,9 @@ namespace ProjectController { //marcelos version
 			//Búsqueda de User solo por Id:
 		static List<User^>^ QueryAllUsers();
 
+		//Búsqueda al administrador
+		static List<Adm^>^ QueryAllAdms();
+
 		//Bússqueda de Proprietor
 		static List<Proprietor^>^ QueryAllProprietors();
 		static Proprietor^ QueryProprietorById(int id);

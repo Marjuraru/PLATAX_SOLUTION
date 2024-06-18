@@ -814,18 +814,18 @@ namespace ProjectView {
 	}
 
 	private: System::Void button_send_message_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ tenter_email = textBox_enter_email->Text;
+		String^ tenter_email = textBox_enter_email->Text; 
 		Mail^ mail = gcnew Mail();
 
 		if (Confirmarexistencia()) {
-			mail->Id = Controller::GenerateMailId();
-			mail->Usertransmitter = Session::CurrentProprietor;
+			mail->Id = Controller::GenerateMailId(); //extrae el atributo Id para que se guarde uno nuevo
+			mail->Usertransmitter = Session::CurrentProprietor; // extrae el atributo Usertransmitter para que se pueda almacenar 
 
-			if (Controller::QueryProprietorByEmail(textBox_enter_email->Text) != nullptr) {
+			if (Controller::QueryProprietorByEmail(textBox_enter_email->Text) != nullptr) { //verifica si email ingresado coinside con el respectivo propietario existe
 				mail->Userreceiver = Controller::QueryProprietorByEmail(textBox_enter_email->Text);
 			}
 			else {
-				if (Controller::QueryClientByEmail(textBox_enter_email->Text) != nullptr) {
+				if (Controller::QueryClientByEmail(textBox_enter_email->Text) != nullptr) { //verifica si email ingresado coinside con el respectivo cliente existe
 					mail->Userreceiver = Controller::QueryClientByEmail(textBox_enter_email->Text);
 				}
 			}
@@ -843,6 +843,7 @@ namespace ProjectView {
 			//Hacemos método de búsqueda
 			List<Proprietor^>^ proprietors = Controller::QueryAllProprietors();
 			List<Client^>^ clients = Controller::QueryAllClients();
+			
 
 			if ((clients != nullptr) && (proprietors != nullptr)) {
 				for each (Proprietor ^ proprietor in proprietors) {
@@ -859,6 +860,7 @@ namespace ProjectView {
 						break;
 					}
 				}
+
 			}
 			else {
 				MessageBox::Show("No existe el email ingresado");

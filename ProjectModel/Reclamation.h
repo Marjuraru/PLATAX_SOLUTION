@@ -1,5 +1,5 @@
 #pragma once
-
+#include "User.h"
 
 using namespace System;
 
@@ -18,5 +18,14 @@ namespace ProjectModel {
 		property DateTime SearchDate; //fecha de reclamo
 		property DateTime SystemDate;
 		property array<Byte>^ Photo;
+
+		property User^ Usertransmitter;
+		property User^ Userreceiver;
+
+		property String^ UsertransmitterName {
+			String^ get() {
+				return Usertransmitter != nullptr ? Usertransmitter->Name : String::Empty;
+			}
+		}
 	};
 };

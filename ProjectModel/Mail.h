@@ -18,6 +18,7 @@ namespace ProjectModel {
 		property DateTime MadeDate;
 		property Vehicle^ vehicle;
 
+
 		property String^ UsertransmitterName {
 			String^ get() {
 				return Usertransmitter != nullptr ? Usertransmitter->Name : String::Empty;
