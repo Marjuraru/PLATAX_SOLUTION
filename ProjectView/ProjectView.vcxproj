@@ -293,6 +293,9 @@
     <EmbeddedResource Include="UserLoginPage.resx">
       <DependentUpon>UserLoginPage.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserMailBoxPage.resx">
+      <DependentUpon>UserMailBoxPage.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserMyVehiclesPage.resx">
       <DependentUpon>UserMyVehiclesPage.h</DependentUpon>
     </EmbeddedResource>

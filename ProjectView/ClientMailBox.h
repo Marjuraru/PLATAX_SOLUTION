@@ -220,6 +220,7 @@ namespace ProjectView {
 			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
 			this->tabPage_Sendmessage = (gcnew System::Windows::Forms::TabPage());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->button_request_vehicle = (gcnew System::Windows::Forms::Button());
 			this->textBox_condition = (gcnew System::Windows::Forms::TextBox());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->label16 = (gcnew System::Windows::Forms::Label());
@@ -264,7 +265,6 @@ namespace ProjectView {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->dgv_mails = (gcnew System::Windows::Forms::DataGridView());
 			this->button_exit = (gcnew System::Windows::Forms::Button());
-			this->button_request_vehicle = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->tabPage_Sendmessage->SuspendLayout();
 			this->groupBox1->SuspendLayout();
@@ -284,10 +284,11 @@ namespace ProjectView {
 			// 
 			this->tabControl1->Controls->Add(this->tabPage_Sendmessage);
 			this->tabControl1->Controls->Add(this->tabPage_Mailbox);
-			this->tabControl1->Location = System::Drawing::Point(13, 13);
+			this->tabControl1->Location = System::Drawing::Point(10, 11);
+			this->tabControl1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(1296, 668);
+			this->tabControl1->Size = System::Drawing::Size(972, 543);
 			this->tabControl1->TabIndex = 209;
 			this->tabControl1->SelectedIndexChanged += gcnew System::EventHandler(this, &ClientMailBox::tabControl1_SelectedIndexChanged);
 			// 
@@ -303,10 +304,11 @@ namespace ProjectView {
 			this->tabPage_Sendmessage->Controls->Add(this->button_send_message);
 			this->tabPage_Sendmessage->Controls->Add(this->button_clearall);
 			this->tabPage_Sendmessage->Controls->Add(this->richTextBox_content);
-			this->tabPage_Sendmessage->Location = System::Drawing::Point(4, 25);
+			this->tabPage_Sendmessage->Location = System::Drawing::Point(4, 22);
+			this->tabPage_Sendmessage->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->tabPage_Sendmessage->Name = L"tabPage_Sendmessage";
-			this->tabPage_Sendmessage->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage_Sendmessage->Size = System::Drawing::Size(1288, 639);
+			this->tabPage_Sendmessage->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tabPage_Sendmessage->Size = System::Drawing::Size(964, 517);
 			this->tabPage_Sendmessage->TabIndex = 0;
 			this->tabPage_Sendmessage->Text = L"Escribir mensaje";
 			this->tabPage_Sendmessage->UseVisualStyleBackColor = true;
@@ -333,14 +335,27 @@ namespace ProjectView {
 			this->groupBox1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->groupBox1->Location = System::Drawing::Point(898, 14);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox1->Location = System::Drawing::Point(674, 11);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox1->Size = System::Drawing::Size(368, 500);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Size = System::Drawing::Size(276, 406);
 			this->groupBox1->TabIndex = 248;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Vehículo";
+			// 
+			// button_request_vehicle
+			// 
+			this->button_request_vehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_request_vehicle->Location = System::Drawing::Point(84, 323);
+			this->button_request_vehicle->Name = L"button_request_vehicle";
+			this->button_request_vehicle->Size = System::Drawing::Size(131, 30);
+			this->button_request_vehicle->TabIndex = 249;
+			this->button_request_vehicle->Tag = L"55";
+			this->button_request_vehicle->Text = L"Solicitar vehículo";
+			this->button_request_vehicle->UseVisualStyleBackColor = true;
+			this->button_request_vehicle->Click += gcnew System::EventHandler(this, &ClientMailBox::button_request_vehicle_Click);
 			// 
 			// textBox_condition
 			// 
@@ -348,11 +363,10 @@ namespace ProjectView {
 			this->textBox_condition->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_condition->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_condition->Location = System::Drawing::Point(154, 196);
-			this->textBox_condition->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_condition->Location = System::Drawing::Point(116, 159);
 			this->textBox_condition->Name = L"textBox_condition";
 			this->textBox_condition->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
-			this->textBox_condition->Size = System::Drawing::Size(195, 30);
+			this->textBox_condition->Size = System::Drawing::Size(147, 26);
 			this->textBox_condition->TabIndex = 248;
 			this->textBox_condition->Tag = L"";
 			this->textBox_condition->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -362,10 +376,9 @@ namespace ProjectView {
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label10->Location = System::Drawing::Point(13, 242);
-			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label10->Location = System::Drawing::Point(10, 197);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(121, 23);
+			this->label10->Size = System::Drawing::Size(96, 19);
 			this->label10->TabIndex = 255;
 			this->label10->Text = L"Operatividad";
 			// 
@@ -374,10 +387,9 @@ namespace ProjectView {
 			this->label16->AutoSize = true;
 			this->label16->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label16->Location = System::Drawing::Point(13, 277);
-			this->label16->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label16->Location = System::Drawing::Point(10, 225);
 			this->label16->Name = L"label16";
-			this->label16->Size = System::Drawing::Size(127, 23);
+			this->label16->Size = System::Drawing::Size(104, 19);
 			this->label16->TabIndex = 252;
 			this->label16->Text = L"Disponibilidad";
 			// 
@@ -386,10 +398,9 @@ namespace ProjectView {
 			this->label17->AutoSize = true;
 			this->label17->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label17->Location = System::Drawing::Point(21, 203);
-			this->label17->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label17->Location = System::Drawing::Point(16, 165);
 			this->label17->Name = L"label17";
-			this->label17->Size = System::Drawing::Size(93, 23);
+			this->label17->Size = System::Drawing::Size(75, 19);
 			this->label17->TabIndex = 254;
 			this->label17->Text = L"Condición";
 			// 
@@ -399,10 +410,9 @@ namespace ProjectView {
 			this->textBox_operative->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_operative->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_operative->Location = System::Drawing::Point(154, 235);
-			this->textBox_operative->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_operative->Location = System::Drawing::Point(116, 191);
 			this->textBox_operative->Name = L"textBox_operative";
-			this->textBox_operative->Size = System::Drawing::Size(195, 30);
+			this->textBox_operative->Size = System::Drawing::Size(147, 26);
 			this->textBox_operative->TabIndex = 249;
 			this->textBox_operative->Tag = L"";
 			this->textBox_operative->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -413,10 +423,9 @@ namespace ProjectView {
 			this->textBox_available->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_available->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_available->Location = System::Drawing::Point(154, 275);
-			this->textBox_available->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_available->Location = System::Drawing::Point(116, 223);
 			this->textBox_available->Name = L"textBox_available";
-			this->textBox_available->Size = System::Drawing::Size(195, 30);
+			this->textBox_available->Size = System::Drawing::Size(147, 26);
 			this->textBox_available->TabIndex = 250;
 			this->textBox_available->Tag = L"";
 			this->textBox_available->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -427,11 +436,10 @@ namespace ProjectView {
 			this->textBox_model->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_model->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_model->Location = System::Drawing::Point(154, 37);
-			this->textBox_model->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_model->Location = System::Drawing::Point(116, 30);
 			this->textBox_model->Name = L"textBox_model";
 			this->textBox_model->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
-			this->textBox_model->Size = System::Drawing::Size(195, 30);
+			this->textBox_model->Size = System::Drawing::Size(147, 26);
 			this->textBox_model->TabIndex = 240;
 			this->textBox_model->Tag = L"";
 			this->textBox_model->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -441,10 +449,9 @@ namespace ProjectView {
 			this->label11->AutoSize = true;
 			this->label11->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label11->Location = System::Drawing::Point(39, 83);
-			this->label11->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label11->Location = System::Drawing::Point(29, 67);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(65, 23);
+			this->label11->Size = System::Drawing::Size(54, 19);
 			this->label11->TabIndex = 247;
 			this->label11->Text = L"Marca";
 			// 
@@ -453,10 +460,9 @@ namespace ProjectView {
 			this->label12->AutoSize = true;
 			this->label12->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(47, 160);
-			this->label12->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label12->Location = System::Drawing::Point(35, 130);
 			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(57, 23);
+			this->label12->Size = System::Drawing::Size(46, 19);
 			this->label12->TabIndex = 245;
 			this->label12->Text = L"Color";
 			// 
@@ -465,10 +471,9 @@ namespace ProjectView {
 			this->label13->AutoSize = true;
 			this->label13->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label13->Location = System::Drawing::Point(47, 119);
-			this->label13->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label13->Location = System::Drawing::Point(35, 97);
 			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(56, 23);
+			this->label13->Size = System::Drawing::Size(45, 19);
 			this->label13->TabIndex = 244;
 			this->label13->Text = L"Placa";
 			// 
@@ -477,10 +482,9 @@ namespace ProjectView {
 			this->label14->AutoSize = true;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label14->Location = System::Drawing::Point(31, 44);
-			this->label14->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label14->Location = System::Drawing::Point(23, 36);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(73, 23);
+			this->label14->Size = System::Drawing::Size(61, 19);
 			this->label14->TabIndex = 246;
 			this->label14->Text = L"Modelo";
 			// 
@@ -490,10 +494,9 @@ namespace ProjectView {
 			this->textBox_color->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_color->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_color->Location = System::Drawing::Point(154, 158);
-			this->textBox_color->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_color->Location = System::Drawing::Point(116, 128);
 			this->textBox_color->Name = L"textBox_color";
-			this->textBox_color->Size = System::Drawing::Size(195, 30);
+			this->textBox_color->Size = System::Drawing::Size(147, 26);
 			this->textBox_color->TabIndex = 243;
 			this->textBox_color->Tag = L"";
 			this->textBox_color->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -504,10 +507,9 @@ namespace ProjectView {
 			this->textBox_brand->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_brand->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_brand->Location = System::Drawing::Point(154, 76);
-			this->textBox_brand->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_brand->Location = System::Drawing::Point(116, 62);
 			this->textBox_brand->Name = L"textBox_brand";
-			this->textBox_brand->Size = System::Drawing::Size(195, 30);
+			this->textBox_brand->Size = System::Drawing::Size(147, 26);
 			this->textBox_brand->TabIndex = 241;
 			this->textBox_brand->Tag = L"";
 			this->textBox_brand->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -518,10 +520,9 @@ namespace ProjectView {
 			this->textBox_plate->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_plate->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_plate->Location = System::Drawing::Point(154, 116);
-			this->textBox_plate->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_plate->Location = System::Drawing::Point(116, 94);
 			this->textBox_plate->Name = L"textBox_plate";
-			this->textBox_plate->Size = System::Drawing::Size(195, 30);
+			this->textBox_plate->Size = System::Drawing::Size(147, 26);
 			this->textBox_plate->TabIndex = 242;
 			this->textBox_plate->Tag = L"";
 			this->textBox_plate->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -532,10 +533,9 @@ namespace ProjectView {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button1->Location = System::Drawing::Point(956, 74);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
+			this->button1->Location = System::Drawing::Point(717, 60);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(151, 30);
+			this->button1->Size = System::Drawing::Size(113, 24);
 			this->button1->TabIndex = 40;
 			this->button1->Text = L"Cerrar sesión";
 			this->button1->UseVisualStyleBackColor = false;
@@ -555,11 +555,11 @@ namespace ProjectView {
 			this->groupBox2->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->groupBox2->Location = System::Drawing::Point(531, 14);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->groupBox2->Location = System::Drawing::Point(398, 11);
+			this->groupBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox2->Size = System::Drawing::Size(335, 209);
+			this->groupBox2->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Size = System::Drawing::Size(251, 170);
 			this->groupBox2->TabIndex = 245;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Perfil";
@@ -570,11 +570,10 @@ namespace ProjectView {
 			this->textBox_name->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_name->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_name->Location = System::Drawing::Point(112, 37);
-			this->textBox_name->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_name->Location = System::Drawing::Point(84, 30);
 			this->textBox_name->Name = L"textBox_name";
 			this->textBox_name->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
-			this->textBox_name->Size = System::Drawing::Size(195, 30);
+			this->textBox_name->Size = System::Drawing::Size(147, 26);
 			this->textBox_name->TabIndex = 240;
 			this->textBox_name->Tag = L"";
 			this->textBox_name->Text = L"Nombre";
@@ -585,10 +584,9 @@ namespace ProjectView {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(25, 80);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(19, 65);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(79, 23);
+			this->label2->Size = System::Drawing::Size(64, 19);
 			this->label2->TabIndex = 247;
 			this->label2->Text = L"Apellido";
 			// 
@@ -597,10 +595,9 @@ namespace ProjectView {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(41, 160);
-			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label4->Location = System::Drawing::Point(31, 130);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(45, 23);
+			this->label4->Size = System::Drawing::Size(39, 19);
 			this->label4->TabIndex = 245;
 			this->label4->Text = L"DNI";
 			// 
@@ -609,10 +606,9 @@ namespace ProjectView {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(22, 119);
-			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Location = System::Drawing::Point(16, 97);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(82, 23);
+			this->label3->Size = System::Drawing::Size(67, 19);
 			this->label3->TabIndex = 244;
 			this->label3->Text = L"Teléfono";
 			// 
@@ -621,10 +617,9 @@ namespace ProjectView {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(27, 39);
-			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label5->Location = System::Drawing::Point(20, 32);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(77, 23);
+			this->label5->Size = System::Drawing::Size(63, 19);
 			this->label5->TabIndex = 246;
 			this->label5->Text = L"Nombre";
 			// 
@@ -634,10 +629,9 @@ namespace ProjectView {
 			this->textBox_dni->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_dni->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_dni->Location = System::Drawing::Point(112, 158);
-			this->textBox_dni->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_dni->Location = System::Drawing::Point(84, 128);
 			this->textBox_dni->Name = L"textBox_dni";
-			this->textBox_dni->Size = System::Drawing::Size(195, 30);
+			this->textBox_dni->Size = System::Drawing::Size(147, 26);
 			this->textBox_dni->TabIndex = 243;
 			this->textBox_dni->Tag = L"";
 			this->textBox_dni->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -648,10 +642,9 @@ namespace ProjectView {
 			this->textBox_surname->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_surname->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_surname->Location = System::Drawing::Point(112, 76);
-			this->textBox_surname->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_surname->Location = System::Drawing::Point(84, 62);
 			this->textBox_surname->Name = L"textBox_surname";
-			this->textBox_surname->Size = System::Drawing::Size(195, 30);
+			this->textBox_surname->Size = System::Drawing::Size(147, 26);
 			this->textBox_surname->TabIndex = 241;
 			this->textBox_surname->Tag = L"";
 			this->textBox_surname->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -662,10 +655,9 @@ namespace ProjectView {
 			this->textBox_phone->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_phone->ForeColor = System::Drawing::SystemColors::GrayText;
-			this->textBox_phone->Location = System::Drawing::Point(112, 116);
-			this->textBox_phone->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_phone->Location = System::Drawing::Point(84, 94);
 			this->textBox_phone->Name = L"textBox_phone";
-			this->textBox_phone->Size = System::Drawing::Size(195, 30);
+			this->textBox_phone->Size = System::Drawing::Size(147, 26);
 			this->textBox_phone->TabIndex = 242;
 			this->textBox_phone->Tag = L"";
 			this->textBox_phone->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -676,10 +668,9 @@ namespace ProjectView {
 			this->button_logout->Font = (gcnew System::Drawing::Font(L"Times New Roman", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_logout->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_logout->Location = System::Drawing::Point(956, 74);
-			this->button_logout->Margin = System::Windows::Forms::Padding(4);
+			this->button_logout->Location = System::Drawing::Point(717, 60);
 			this->button_logout->Name = L"button_logout";
-			this->button_logout->Size = System::Drawing::Size(151, 30);
+			this->button_logout->Size = System::Drawing::Size(113, 24);
 			this->button_logout->TabIndex = 40;
 			this->button_logout->Text = L"Cerrar sesión";
 			this->button_logout->UseVisualStyleBackColor = false;
@@ -688,10 +679,9 @@ namespace ProjectView {
 			// 
 			this->button_confirmexistence->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_confirmexistence->Location = System::Drawing::Point(363, 28);
-			this->button_confirmexistence->Margin = System::Windows::Forms::Padding(4);
+			this->button_confirmexistence->Location = System::Drawing::Point(272, 23);
 			this->button_confirmexistence->Name = L"button_confirmexistence";
-			this->button_confirmexistence->Size = System::Drawing::Size(130, 74);
+			this->button_confirmexistence->Size = System::Drawing::Size(98, 60);
 			this->button_confirmexistence->TabIndex = 244;
 			this->button_confirmexistence->Tag = L"55";
 			this->button_confirmexistence->Text = L"Confirmar existencia";
@@ -703,10 +693,9 @@ namespace ProjectView {
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(65, 79);
-			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label7->Location = System::Drawing::Point(49, 64);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(76, 23);
+			this->label7->Size = System::Drawing::Size(61, 19);
 			this->label7->TabIndex = 243;
 			this->label7->Text = L"Asunto:";
 			// 
@@ -715,10 +704,9 @@ namespace ProjectView {
 			this->textBox_subject->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_subject->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->textBox_subject->Location = System::Drawing::Point(156, 72);
-			this->textBox_subject->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_subject->Location = System::Drawing::Point(117, 58);
 			this->textBox_subject->Name = L"textBox_subject";
-			this->textBox_subject->Size = System::Drawing::Size(195, 30);
+			this->textBox_subject->Size = System::Drawing::Size(147, 26);
 			this->textBox_subject->TabIndex = 242;
 			this->textBox_subject->Tag = L"";
 			this->textBox_subject->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -728,11 +716,10 @@ namespace ProjectView {
 			this->textBox_enter_email->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_enter_email->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->textBox_enter_email->Location = System::Drawing::Point(156, 28);
-			this->textBox_enter_email->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_enter_email->Location = System::Drawing::Point(117, 23);
 			this->textBox_enter_email->Name = L"textBox_enter_email";
 			this->textBox_enter_email->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
-			this->textBox_enter_email->Size = System::Drawing::Size(195, 30);
+			this->textBox_enter_email->Size = System::Drawing::Size(147, 26);
 			this->textBox_enter_email->TabIndex = 239;
 			this->textBox_enter_email->Tag = L"";
 			this->textBox_enter_email->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -742,10 +729,9 @@ namespace ProjectView {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(18, 28);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(14, 23);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(123, 23);
+			this->label1->Size = System::Drawing::Size(96, 19);
 			this->label1->TabIndex = 240;
 			this->label1->Text = L"Para(e-mail):";
 			// 
@@ -753,10 +739,9 @@ namespace ProjectView {
 			// 
 			this->button_send_message->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_send_message->Location = System::Drawing::Point(349, 477);
-			this->button_send_message->Margin = System::Windows::Forms::Padding(4);
+			this->button_send_message->Location = System::Drawing::Point(262, 388);
 			this->button_send_message->Name = L"button_send_message";
-			this->button_send_message->Size = System::Drawing::Size(144, 37);
+			this->button_send_message->Size = System::Drawing::Size(108, 30);
 			this->button_send_message->TabIndex = 168;
 			this->button_send_message->Tag = L"55";
 			this->button_send_message->Text = L"Enviar mensaje";
@@ -767,10 +752,9 @@ namespace ProjectView {
 			// 
 			this->button_clearall->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_clearall->Location = System::Drawing::Point(40, 477);
-			this->button_clearall->Margin = System::Windows::Forms::Padding(4);
+			this->button_clearall->Location = System::Drawing::Point(30, 388);
 			this->button_clearall->Name = L"button_clearall";
-			this->button_clearall->Size = System::Drawing::Size(144, 37);
+			this->button_clearall->Size = System::Drawing::Size(108, 30);
 			this->button_clearall->TabIndex = 167;
 			this->button_clearall->Tag = L"55";
 			this->button_clearall->Text = L"Limpiar todo";
@@ -779,9 +763,10 @@ namespace ProjectView {
 			// 
 			// richTextBox_content
 			// 
-			this->richTextBox_content->Location = System::Drawing::Point(40, 129);
+			this->richTextBox_content->Location = System::Drawing::Point(30, 105);
+			this->richTextBox_content->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->richTextBox_content->Name = L"richTextBox_content";
-			this->richTextBox_content->Size = System::Drawing::Size(453, 320);
+			this->richTextBox_content->Size = System::Drawing::Size(341, 261);
 			this->richTextBox_content->TabIndex = 1;
 			this->richTextBox_content->Text = L"";
 			// 
@@ -796,10 +781,11 @@ namespace ProjectView {
 			this->tabPage_Mailbox->Controls->Add(this->richTextBox_showmessage);
 			this->tabPage_Mailbox->Controls->Add(this->comboBox1);
 			this->tabPage_Mailbox->Controls->Add(this->dgv_mails);
-			this->tabPage_Mailbox->Location = System::Drawing::Point(4, 25);
+			this->tabPage_Mailbox->Location = System::Drawing::Point(4, 22);
+			this->tabPage_Mailbox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->tabPage_Mailbox->Name = L"tabPage_Mailbox";
-			this->tabPage_Mailbox->Padding = System::Windows::Forms::Padding(3);
-			this->tabPage_Mailbox->Size = System::Drawing::Size(1264, 639);
+			this->tabPage_Mailbox->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->tabPage_Mailbox->Size = System::Drawing::Size(964, 517);
 			this->tabPage_Mailbox->TabIndex = 1;
 			this->tabPage_Mailbox->Text = L"Buzón de entrada";
 			this->tabPage_Mailbox->UseVisualStyleBackColor = true;
@@ -810,11 +796,10 @@ namespace ProjectView {
 			this->textBox_showsbuject->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_showsbuject->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->textBox_showsbuject->Location = System::Drawing::Point(1002, 136);
-			this->textBox_showsbuject->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_showsbuject->Location = System::Drawing::Point(752, 110);
 			this->textBox_showsbuject->Name = L"textBox_showsbuject";
 			this->textBox_showsbuject->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
-			this->textBox_showsbuject->Size = System::Drawing::Size(195, 30);
+			this->textBox_showsbuject->Size = System::Drawing::Size(147, 26);
 			this->textBox_showsbuject->TabIndex = 256;
 			this->textBox_showsbuject->Tag = L"";
 			this->textBox_showsbuject->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -824,10 +809,9 @@ namespace ProjectView {
 			this->label9->AutoSize = true;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(867, 136);
-			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label9->Location = System::Drawing::Point(650, 110);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(76, 23);
+			this->label9->Size = System::Drawing::Size(61, 19);
 			this->label9->TabIndex = 255;
 			this->label9->Text = L"Asunto:";
 			// 
@@ -837,11 +821,10 @@ namespace ProjectView {
 			this->textBox_showname->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_showname->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->textBox_showname->Location = System::Drawing::Point(1002, 81);
-			this->textBox_showname->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_showname->Location = System::Drawing::Point(752, 66);
 			this->textBox_showname->Name = L"textBox_showname";
 			this->textBox_showname->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
-			this->textBox_showname->Size = System::Drawing::Size(195, 30);
+			this->textBox_showname->Size = System::Drawing::Size(147, 26);
 			this->textBox_showname->TabIndex = 254;
 			this->textBox_showname->Tag = L"";
 			this->textBox_showname->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -851,10 +834,9 @@ namespace ProjectView {
 			this->label8->AutoSize = true;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(867, 88);
-			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label8->Location = System::Drawing::Point(650, 72);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(84, 23);
+			this->label8->Size = System::Drawing::Size(68, 19);
 			this->label8->TabIndex = 253;
 			this->label8->Text = L"Nombre:";
 			// 
@@ -864,11 +846,10 @@ namespace ProjectView {
 			this->textBox_from->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Italic, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox_from->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->textBox_from->Location = System::Drawing::Point(1002, 39);
-			this->textBox_from->Margin = System::Windows::Forms::Padding(4);
+			this->textBox_from->Location = System::Drawing::Point(752, 32);
 			this->textBox_from->Name = L"textBox_from";
 			this->textBox_from->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
-			this->textBox_from->Size = System::Drawing::Size(195, 30);
+			this->textBox_from->Size = System::Drawing::Size(147, 26);
 			this->textBox_from->TabIndex = 251;
 			this->textBox_from->Tag = L"";
 			this->textBox_from->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
@@ -878,19 +859,19 @@ namespace ProjectView {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(867, 41);
-			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label6->Location = System::Drawing::Point(650, 33);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(41, 23);
+			this->label6->Size = System::Drawing::Size(34, 19);
 			this->label6->TabIndex = 252;
 			this->label6->Text = L"De:";
 			// 
 			// richTextBox_showmessage
 			// 
 			this->richTextBox_showmessage->Enabled = false;
-			this->richTextBox_showmessage->Location = System::Drawing::Point(822, 207);
+			this->richTextBox_showmessage->Location = System::Drawing::Point(616, 168);
+			this->richTextBox_showmessage->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->richTextBox_showmessage->Name = L"richTextBox_showmessage";
-			this->richTextBox_showmessage->Size = System::Drawing::Size(411, 389);
+			this->richTextBox_showmessage->Size = System::Drawing::Size(309, 317);
 			this->richTextBox_showmessage->TabIndex = 215;
 			this->richTextBox_showmessage->Text = L"";
 			// 
@@ -899,20 +880,22 @@ namespace ProjectView {
 			this->comboBox1->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(17, 19);
+			this->comboBox1->Location = System::Drawing::Point(13, 15);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(121, 24);
+			this->comboBox1->Size = System::Drawing::Size(92, 21);
 			this->comboBox1->TabIndex = 246;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &ClientMailBox::comboBox1_SelectedIndexChanged);
 			// 
 			// dgv_mails
 			// 
 			this->dgv_mails->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgv_mails->Location = System::Drawing::Point(17, 49);
+			this->dgv_mails->Location = System::Drawing::Point(13, 40);
+			this->dgv_mails->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dgv_mails->Name = L"dgv_mails";
 			this->dgv_mails->RowHeadersWidth = 51;
 			this->dgv_mails->RowTemplate->Height = 24;
-			this->dgv_mails->Size = System::Drawing::Size(768, 547);
+			this->dgv_mails->Size = System::Drawing::Size(576, 444);
 			this->dgv_mails->TabIndex = 0;
 			this->dgv_mails->SelectionChanged += gcnew System::EventHandler(this, &ClientMailBox::dgv_mails_SelectionChanged);
 			// 
@@ -922,38 +905,24 @@ namespace ProjectView {
 			this->button_exit->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_exit->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_exit->Location = System::Drawing::Point(1085, 688);
-			this->button_exit->Margin = System::Windows::Forms::Padding(4);
+			this->button_exit->Location = System::Drawing::Point(814, 559);
 			this->button_exit->Name = L"button_exit";
-			this->button_exit->Size = System::Drawing::Size(165, 44);
+			this->button_exit->Size = System::Drawing::Size(124, 36);
 			this->button_exit->TabIndex = 214;
 			this->button_exit->Tag = L"65";
 			this->button_exit->Text = L"SALIR";
 			this->button_exit->UseVisualStyleBackColor = false;
 			this->button_exit->Click += gcnew System::EventHandler(this, &ClientMailBox::button_exit_Click);
 			// 
-			// button_request_vehicle
-			// 
-			this->button_request_vehicle->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button_request_vehicle->Location = System::Drawing::Point(112, 398);
-			this->button_request_vehicle->Margin = System::Windows::Forms::Padding(4);
-			this->button_request_vehicle->Name = L"button_request_vehicle";
-			this->button_request_vehicle->Size = System::Drawing::Size(175, 37);
-			this->button_request_vehicle->TabIndex = 249;
-			this->button_request_vehicle->Tag = L"55";
-			this->button_request_vehicle->Text = L"Solicitar vehículo";
-			this->button_request_vehicle->UseVisualStyleBackColor = true;
-			this->button_request_vehicle->Click += gcnew System::EventHandler(this, &ClientMailBox::button_request_vehicle_Click);
-			// 
 			// ClientMailBox
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::DarkSeaGreen;
-			this->ClientSize = System::Drawing::Size(1333, 745);
+			this->BackColor = System::Drawing::Color::Peru;
+			this->ClientSize = System::Drawing::Size(1000, 605);
 			this->Controls->Add(this->button_exit);
 			this->Controls->Add(this->tabControl1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"ClientMailBox";
 			this->Text = L"Sección de Buzón";
 			this->Load += gcnew System::EventHandler(this, &ClientMailBox::ClientMailBox_Load);
