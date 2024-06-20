@@ -64,8 +64,9 @@ namespace ProjectView {
 	private: System::Windows::Forms::TextBox^ textBox_model;
 
 	private: System::Windows::Forms::DataGridView^ dgv_emails_admin;
-	private: System::Windows::Forms::Label^ label9;
+
 	private: System::Windows::Forms::Button^ button_exit;
+	private: System::Windows::Forms::Label^ label9;
 
 	protected:
 
@@ -100,8 +101,8 @@ namespace ProjectView {
 			this->textBox_brand = (gcnew System::Windows::Forms::TextBox());
 			this->textBox_model = (gcnew System::Windows::Forms::TextBox());
 			this->dgv_emails_admin = (gcnew System::Windows::Forms::DataGridView());
-			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->button_exit = (gcnew System::Windows::Forms::Button());
+			this->label9 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_emails_admin))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -323,17 +324,7 @@ namespace ProjectView {
 			this->dgv_emails_admin->RowHeadersWidth = 51;
 			this->dgv_emails_admin->Size = System::Drawing::Size(456, 178);
 			this->dgv_emails_admin->TabIndex = 299;
-			// 
-			// label9
-			// 
-			this->label9->AutoSize = true;
-			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(483, 210);
-			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(61, 19);
-			this->label9->TabIndex = 300;
-			this->label9->Text = L"Asunto:";
+			this->dgv_emails_admin->SelectionChanged += gcnew System::EventHandler(this, &AdminEmailsPage::dgv_emails_admin_SelectionChanged);
 			// 
 			// button_exit
 			// 
@@ -350,13 +341,24 @@ namespace ProjectView {
 			this->button_exit->UseVisualStyleBackColor = false;
 			this->button_exit->Click += gcnew System::EventHandler(this, &AdminEmailsPage::button_exit_Click);
 			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->Location = System::Drawing::Point(481, 210);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(73, 19);
+			this->label9->TabIndex = 302;
+			this->label9->Text = L"Mensaje:";
+			// 
 			// AdminEmailsPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(839, 432);
-			this->Controls->Add(this->button_exit);
 			this->Controls->Add(this->label9);
+			this->Controls->Add(this->button_exit);
 			this->Controls->Add(this->dgv_emails_admin);
 			this->Controls->Add(this->textBox_model);
 			this->Controls->Add(this->textBox_brand);
@@ -392,31 +394,31 @@ namespace ProjectView {
 				  DataGridViewTextBoxColumn^ UsertransmitterColumn = gcnew DataGridViewTextBoxColumn();
 				  UsertransmitterColumn->HeaderText = "Emisor";
 				  UsertransmitterColumn->DataPropertyName = "UsertransmitterName"; // Esto debe coincidir con el nombre de la propiedad en la clase de datos
-				  UsertransmitterColumn->Width = 25; // Ajustar el ancho de la columna
+				  UsertransmitterColumn->Width = 60; // Ajustar el ancho de la columna
 				  dgv_emails_admin->Columns->Add(UsertransmitterColumn);
 
 				  DataGridViewTextBoxColumn^ UserreceiverColumn = gcnew DataGridViewTextBoxColumn();
 				  UserreceiverColumn->HeaderText = "Receptor";
 				  UserreceiverColumn->DataPropertyName = "UserreceiverName";
-				  UserreceiverColumn->Width = 25; // Ajustar el ancho de la columna
+				  UserreceiverColumn->Width = 60; // Ajustar el ancho de la columna
 				  dgv_emails_admin->Columns->Add(UserreceiverColumn);
 
 				  DataGridViewTextBoxColumn^ SubjectColumn = gcnew DataGridViewTextBoxColumn();
 				  SubjectColumn->HeaderText = "Asunto";
 				  SubjectColumn->DataPropertyName = "Subject";
-				  SubjectColumn->Width = 25; // Ajustar el ancho de la columna
+				  SubjectColumn->Width = 150; // Ajustar el ancho de la columna
 				  dgv_emails_admin->Columns->Add(SubjectColumn);
 
 				  DataGridViewTextBoxColumn^ MadeDateColumn = gcnew DataGridViewTextBoxColumn();
 				  MadeDateColumn->HeaderText = "Fecha";
 				  MadeDateColumn->DataPropertyName = "GetFormattedDate";
-				  MadeDateColumn->Width = 25; // Ajustar el ancho de la columna
+				  MadeDateColumn->Width = 60; // Ajustar el ancho de la columna
 				  dgv_emails_admin->Columns->Add(MadeDateColumn);
 
 				  DataGridViewTextBoxColumn^ vehiclePlateColumn = gcnew DataGridViewTextBoxColumn();
 				  vehiclePlateColumn->HeaderText = "Placa";
 				  vehiclePlateColumn->DataPropertyName = "Plate";
-				  vehiclePlateColumn->Width = 25; // Ajustar el ancho de la columna
+				  vehiclePlateColumn->Width = 60; // Ajustar el ancho de la columna
 				  dgv_emails_admin->Columns->Add(vehiclePlateColumn);
 
 				  // Puedes agregar más columnas según sea necesario
@@ -455,7 +457,7 @@ namespace ProjectView {
 		textBox_model->Text = "Modelo";
 		textBox_brand->Text = "Marca";
 		textBox_plate->Text = "Placa";
-		
+
 
 		List<Mail^>^ mails = Controller::QueryAllMails();
 
@@ -463,45 +465,48 @@ namespace ProjectView {
 		dgv_emails_admin->DataSource = mails;
 
 	}
+    
 
-	private: System::Void dgv_mails_SelectionChanged(System::Object^ sender, System::EventArgs^ e) {
-		// Verificar si hay al menos una fila seleccionada en el DataGridView de mails
-		if (dgv_emails_admin->SelectedRows->Count > 0) {
-			// Obtener el índice de la fila seleccionada
-			int selectedRowIndex = dgv_emails_admin->SelectedRows[0]->Index;
 
-			// Obtener el cliente seleccionado en la fila
-			Mail^ selectedEmail = dynamic_cast<Mail^>(dgv_emails_admin->Rows[selectedRowIndex]->DataBoundItem);
 
-			// Obtener todos los clientes desde el controlador
-			//List<Client^>^ clients = Controller::QueryAllClients(); //no
 
-			textBox_emissor->Text = selectedEmail->Usertransmitter->Name;
-			textBox_receptor->Text = selectedEmail->Userreceiver->Name;
-			textBox_subject->Text = selectedEmail->Subject;
-			textBox_madedate->Text = selectedEmail->MadeDate.ToString("dd/MM/yyyy");
-			textBox_model->Text = selectedEmail->vehicle->Model;
-			textBox_brand->Text = selectedEmail->vehicle->Brand;
-			textBox_plate->Text = selectedEmail->vehicle->Plate;
-			
-		}
-		else {
-			// Limpiar los TextBoxes si no hay filas seleccionadas en el DataGridView
 
-			textBox_emissor->Text = "Emisor";
-			textBox_receptor->Text = "Receptor";
-			textBox_subject->Text = "Asunto";
-			textBox_madedate->Text = "Fecha";
-			textBox_model->Text = "Modelo";
-			textBox_brand->Text = "Marca";
-			textBox_plate->Text = "Placa";
-			
-			//definir esto
-		}
+
+private: System::Void dgv_emails_admin_SelectionChanged(System::Object^ sender, System::EventArgs^ e) {
+	// Verificar si hay al menos una fila seleccionada en el DataGridView de mails
+	if (dgv_emails_admin->SelectedRows->Count > 0) {
+		// Obtener el índice de la fila seleccionada
+		int selectedRowIndex = dgv_emails_admin->SelectedRows[0]->Index;
+
+		// Obtener el cliente seleccionado en la fila
+		Mail^ selectedEmail = dynamic_cast<Mail^>(dgv_emails_admin->Rows[selectedRowIndex]->DataBoundItem);
+
+		// Obtener todos los clientes desde el controlador
+		//List<Client^>^ clients = Controller::QueryAllClients(); //no
+
+		textBox_emissor->Text = selectedEmail->Usertransmitter->Name;
+		textBox_receptor->Text = selectedEmail->Userreceiver->Name;
+		textBox_subject->Text = selectedEmail->Subject;
+		textBox_madedate->Text = selectedEmail->MadeDate.ToString("dd/MM/yyyy");
+		textBox_model->Text = selectedEmail->vehicle->Model;
+		textBox_brand->Text = selectedEmail->vehicle->Brand;
+		textBox_plate->Text = selectedEmail->vehicle->Plate;
+
 	}
+	else {
+		// Limpiar los TextBoxes si no hay filas seleccionadas en el DataGridView
 
+		textBox_emissor->Text = "Emisor";
+		textBox_receptor->Text = "Receptor";
+		textBox_subject->Text = "Asunto";
+		textBox_madedate->Text = "Fecha";
+		textBox_model->Text = "Modelo";
+		textBox_brand->Text = "Marca";
+		textBox_plate->Text = "Placa";
 
-
+		//definir esto
+	}
+}
 
 };
 }
