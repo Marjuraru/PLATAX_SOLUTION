@@ -7,6 +7,7 @@
 #include "UserMyReclamationsPage.h"
 #include "UserHelpPage.h"
 #include "UserMailBoxPage.h"
+#include "SensorSectionPage.h"
 
 namespace ProjectView {
 
@@ -37,8 +38,11 @@ namespace ProjectView {
 		static UserHelpPage^ userHelpPage;
 		static UserReclamationPage^ userReclamationPage;
 		static UserMailBoxPage^ userMailBoxPage;
+		static SensorSectionPage^ sensorSectionPage;
 
 	private: System::Windows::Forms::Button^ button_mailbox;
+	private: System::Windows::Forms::Button^ button_sensors;
+
 	public:
 
 	public:
@@ -99,12 +103,14 @@ namespace ProjectView {
 			this->button_statistics = (gcnew System::Windows::Forms::Button());
 			this->button_reclamation = (gcnew System::Windows::Forms::Button());
 			this->button_addvehicle = (gcnew System::Windows::Forms::Button());
+			this->button_sensors = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox2
 			// 
 			this->groupBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->groupBox2->Controls->Add(this->button_sensors);
 			this->groupBox2->Controls->Add(this->button_mailbox);
 			this->groupBox2->Controls->Add(this->button_help);
 			this->groupBox2->Controls->Add(this->button_myreclamations);
@@ -118,9 +124,9 @@ namespace ProjectView {
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->groupBox2->Location = System::Drawing::Point(31, 11);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Margin = System::Windows::Forms::Padding(2);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Padding = System::Windows::Forms::Padding(2);
 			this->groupBox2->Size = System::Drawing::Size(949, 151);
 			this->groupBox2->TabIndex = 47;
 			this->groupBox2->TabStop = false;
@@ -235,6 +241,18 @@ namespace ProjectView {
 			this->button_addvehicle->Text = L"Agregar Carro";
 			this->button_addvehicle->UseVisualStyleBackColor = true;
 			this->button_addvehicle->Click += gcnew System::EventHandler(this, &UserFeedPage::button_addvehicle_Click);
+			// 
+			// button_sensors
+			// 
+			this->button_sensors->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_sensors->Location = System::Drawing::Point(5, 73);
+			this->button_sensors->Name = L"button_sensors";
+			this->button_sensors->Size = System::Drawing::Size(118, 56);
+			this->button_sensors->TabIndex = 43;
+			this->button_sensors->Text = L"Sensores";
+			this->button_sensors->UseVisualStyleBackColor = true;
+			this->button_sensors->Click += gcnew System::EventHandler(this, &UserFeedPage::button_sensors_Click);
 			// 
 			// UserFeedPage
 			// 
@@ -390,5 +408,19 @@ namespace ProjectView {
 		}
 		return;
 	}
-	};
+	private: System::Void button_sensors_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (sensorSectionPage == nullptr) {
+			sensorSectionPage = gcnew SensorSectionPage();
+			sensorSectionPage->MdiParent = this->MdiParent;
+			this->Hide();
+			if (sensorSectionPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+				this->Show();
+				sensorSectionPage = nullptr;
+			}
+		}
+		return;
+
+
+	}
+};
 }

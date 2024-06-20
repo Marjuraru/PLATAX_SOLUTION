@@ -11,8 +11,8 @@ namespace ProjectModel {
             Proprietor^ get() {
                 return currentProprietor;
             }
-            void set(Proprietor^ user) {
-                currentProprietor = user;
+            void set(Proprietor^ proprietor) {
+                currentProprietor = proprietor;
             }
         }
         

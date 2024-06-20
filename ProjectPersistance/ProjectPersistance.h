@@ -16,6 +16,7 @@ namespace ProjectPersistance { //marcelos version
         static List<Adm^>^ AdmList = gcnew List<Adm^>();
         static List<HelpPls^>^ HelpPlsList = gcnew List<HelpPls^>();
         static List<Mail^>^ MailList = gcnew List<Mail^>();
+
     public:                     //(1°)
         static String^ USER_FILE_BIN_NAME = "User.bin";
         static String^ PROPRIETOR_FILE_BIN_NAME = "Proprietor.bin";

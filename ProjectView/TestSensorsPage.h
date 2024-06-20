@@ -28,7 +28,7 @@ namespace ProjectView {
 
 			/* <Temporizar para refrezcar> 2*/
 			timer = gcnew System::Windows::Forms::Timer();
-			timer->Interval = 100; // Intervalo de 1 segundo
+			timer->Interval = 1000; // Intervalo de 1 segundo
 			timer->Tick += gcnew System::EventHandler(this, &TestSensorsPage::OnTimerTick);
 			timer->Start();
 
@@ -46,7 +46,7 @@ namespace ProjectView {
 			}
 		}
 	private: System::Windows::Forms::TextBox^ textBox_lectura;
-	private: System::Windows::Forms::Timer^ timer;
+	private: System::Windows::Forms::Timer^ timer;  /*<< 3 */
 	private: System::Windows::Forms::ComboBox^ comboBox;
 	private: System::Windows::Forms::Button^ button;
 
@@ -110,7 +110,7 @@ namespace ProjectView {
 		}
 #pragma endregion
 
-		/*<> 3*/
+		/*<> 4*/
 
 
 	private: System::Void OnTimerTick(System::Object^ sender, System::EventArgs^ e) {

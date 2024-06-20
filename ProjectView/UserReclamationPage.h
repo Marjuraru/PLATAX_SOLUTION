@@ -611,6 +611,9 @@ namespace ProjectView {
 
 		/////AQUÍ EL PROPIETARIO SE COMUNICARÁ CON OTROS USUARIOS DE TODO TIPO//////
 		
+		r->Id = Controller::GenerateReclamationId();
+		r->Usertransmitter = Session::CurrentProprietor;
+
 		r->SystemDate = System::DateTime::Now;
 		r->Description = description;
 		r->Title = title;
@@ -624,6 +627,9 @@ namespace ProjectView {
 			r->Photo = ms->ToArray();
 			ms->Close();
 		}
+
+		Controller::CreateReclamation(r);
+
 
 		Proprietor^ ProprietorP = Session::CurrentProprietor;
 		ProprietorP->ListReclamationSentProprietor->Add(r);
