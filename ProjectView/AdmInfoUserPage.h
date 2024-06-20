@@ -139,84 +139,7 @@ namespace ProjectView {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private: System::ComponentModel::IContainer^ components;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   private: System::ComponentModel::IContainer^ components;
 
 
 
@@ -957,7 +880,7 @@ namespace ProjectView {
             this->button_stats->Tag = L"";
             this->button_stats->Text = L"Stats";
             this->button_stats->UseVisualStyleBackColor = false;
-            this->button_stats->Click += gcnew System::EventHandler(this, &AdmInfoUserPage::button_stats_Click);
+        //    this->button_stats->Click += gcnew System::EventHandler(this, &AdmInfoUserPage::button_stats_Click);
             // 
             // dgv_proprietors
             // 
@@ -1221,9 +1144,7 @@ namespace ProjectView {
         //ShowInitialDgvProprietors();
 
     }
-    private: System::Void button_stats_Click(System::Object^ sender, System::EventArgs^ e) {
 
-    }
     private: System::Void AdmInfoUserPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
         this->DialogResult = System::Windows::Forms::DialogResult::OK;
     }
@@ -1327,7 +1248,6 @@ private: System::Void button_eliminate_Click(System::Object^ sender, System::Eve
         }
     }
     MessageBox::Show("El ID ingresado no existe");
-
 }
 };
 }

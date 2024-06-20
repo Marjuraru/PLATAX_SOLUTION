@@ -1,6 +1,7 @@
 #pragma once
 #include "AdmNotifyPage.h"
 #include "AdmInfoUserPage.h"
+#include "AdminEmailsPage.h"
 
 namespace ProjectView {
 
@@ -25,6 +26,9 @@ namespace ProjectView {
 			//
 		}
 		static AdmInfoUserPage^ admInfoUserPage;
+		static AdminEmailsPage^ adminEmailsPage; 
+	private: System::Windows::Forms::Button^ button_emails;
+	public:
 		static AdmNotifyPage^ admnotifypage;
 
 	protected:
@@ -61,12 +65,14 @@ namespace ProjectView {
 			this->button_logout = (gcnew System::Windows::Forms::Button());
 			this->button_usersinfo = (gcnew System::Windows::Forms::Button());
 			this->button_notifyusers = (gcnew System::Windows::Forms::Button());
+			this->button_emails = (gcnew System::Windows::Forms::Button());
 			this->groupBoxx->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBoxx
 			// 
 			this->groupBoxx->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->groupBoxx->Controls->Add(this->button_emails);
 			this->groupBoxx->Controls->Add(this->button_logout);
 			this->groupBoxx->Controls->Add(this->button_usersinfo);
 			this->groupBoxx->Controls->Add(this->button_notifyusers);
@@ -74,10 +80,10 @@ namespace ProjectView {
 			this->groupBoxx->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->groupBoxx->Location = System::Drawing::Point(12, 25);
-			this->groupBoxx->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBoxx->Margin = System::Windows::Forms::Padding(2);
 			this->groupBoxx->Name = L"groupBoxx";
-			this->groupBoxx->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
-			this->groupBoxx->Size = System::Drawing::Size(497, 202);
+			this->groupBoxx->Padding = System::Windows::Forms::Padding(2);
+			this->groupBoxx->Size = System::Drawing::Size(709, 202);
 			this->groupBoxx->TabIndex = 48;
 			this->groupBoxx->TabStop = false;
 			this->groupBoxx->Text = L"Seleccione opcion";
@@ -88,7 +94,7 @@ namespace ProjectView {
 			this->button_logout->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_logout->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_logout->Location = System::Drawing::Point(319, 169);
+			this->button_logout->Location = System::Drawing::Point(556, 169);
 			this->button_logout->Name = L"button_logout";
 			this->button_logout->Size = System::Drawing::Size(148, 28);
 			this->button_logout->TabIndex = 40;
@@ -101,7 +107,7 @@ namespace ProjectView {
 			this->button_usersinfo->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->button_usersinfo->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_usersinfo->Location = System::Drawing::Point(120, 37);
+			this->button_usersinfo->Location = System::Drawing::Point(286, 48);
 			this->button_usersinfo->Name = L"button_usersinfo";
 			this->button_usersinfo->Size = System::Drawing::Size(122, 91);
 			this->button_usersinfo->TabIndex = 15;
@@ -114,7 +120,7 @@ namespace ProjectView {
 			this->button_notifyusers->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->button_notifyusers->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button_notifyusers->Location = System::Drawing::Point(301, 37);
+			this->button_notifyusers->Location = System::Drawing::Point(523, 48);
 			this->button_notifyusers->Name = L"button_notifyusers";
 			this->button_notifyusers->Size = System::Drawing::Size(137, 91);
 			this->button_notifyusers->TabIndex = 20;
@@ -122,11 +128,24 @@ namespace ProjectView {
 			this->button_notifyusers->UseVisualStyleBackColor = false;
 			this->button_notifyusers->Click += gcnew System::EventHandler(this, &AdminFeedPage::button_notifyusers_Click);
 			// 
+			// button_emails
+			// 
+			this->button_emails->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->button_emails->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_emails->Location = System::Drawing::Point(47, 48);
+			this->button_emails->Name = L"button_emails";
+			this->button_emails->Size = System::Drawing::Size(137, 91);
+			this->button_emails->TabIndex = 41;
+			this->button_emails->Text = L"Emails";
+			this->button_emails->UseVisualStyleBackColor = false;
+			this->button_emails->Click += gcnew System::EventHandler(this, &AdminFeedPage::button_emails_Click);
+			// 
 			// AdminFeedPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(520, 238);
+			this->ClientSize = System::Drawing::Size(732, 238);
 			this->Controls->Add(this->groupBoxx);
 			this->Name = L"AdminFeedPage";
 			this->Text = L"AdminFeedPage";
@@ -170,5 +189,17 @@ namespace ProjectView {
 	private: System::Void AdminFeedPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	}
+private: System::Void button_emails_Click(System::Object^ sender, System::EventArgs^ e) {//boton email
+	if (adminEmailsPage == nullptr) {
+		adminEmailsPage = gcnew AdminEmailsPage();
+		adminEmailsPage->MdiParent = this->MdiParent;
+		this->Hide();
+		if (adminEmailsPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			this->Show();
+			adminEmailsPage = nullptr;
+		}
+	}
+	return;
+}
 };
 }
