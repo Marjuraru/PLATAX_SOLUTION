@@ -489,7 +489,6 @@ namespace ProjectView {
 	}
 	private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
 		Vehicle^ vehicle = gcnew Vehicle();
-
 		String^ model = textBox_model->Text;
 		String^ plate = textBox_plate->Text;
 		String^ brand = textBox_brand->Text;

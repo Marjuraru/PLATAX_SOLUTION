@@ -135,6 +135,10 @@ void ProjectController::Controller::UpdateHelpPls(HelpPls^ c)
 	return ProjectPersistance::Persistance::UpdateHelpPls(c);
 }
 
+void ProjectController::Controller::UpdateMail(Mail^ c)
+{
+	return ProjectPersistance::Persistance::UpdateMail(c);
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 

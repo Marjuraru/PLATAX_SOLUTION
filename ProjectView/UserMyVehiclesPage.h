@@ -1035,38 +1035,47 @@ namespace ProjectView {
 			List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
 			List<Vehicle^>^ v = gcnew List<Vehicle^>();
 
-			for each(Vehicle^ veh in vehicles){
-				for each (Vehicle^ vej in Session::CurrentProprietor->ListVehicleProprietor) {
-					if (veh->Id == vej->Id) {
-						v->Add(veh);
+			if (vehicles != nullptr) {
+				for each (Vehicle ^ veh in vehicles) {
+					for each (Vehicle ^ vej in Session::CurrentProprietor->ListVehicleProprietor) {
+						if (veh->Id == vej->Id) {
+							v->Add(veh);
+						}
 					}
 				}
-			}
-
-			if (v->Count != 0) {
-				dgv_vehicles->Rows->Clear();
-				for (int i = 0; i < v->Count; i++) {
-					Vehicle^ c = v[i];
-					String^ atributobooleanoYes;
-					if (c->Operative == true) {
-						atributobooleanoYes = "Operativo";
+				if (v->Count != 0) {
+					dgv_vehicles->Rows->Clear();
+					for (int i = 0; i < v->Count; i++) {
+						Vehicle^ c = v[i];
+						String^ atributobooleanoYes;
+						if (c->Operative == true) {
+							atributobooleanoYes = "Operativo";
+						}
+						else {
+							atributobooleanoYes = "Inoperativo";
+						}
+						dgv_vehicles->Rows->Add(gcnew array<String^> {
+							"" + c->Id,
+								"" + c->Plate,
+								"" + c->Brand,
+								"" + c->Color,
+								"" + atributobooleanoYes,
+								"" + c->Condition,
+						});
 					}
-					else {
-						atributobooleanoYes = "Inoperativo";
-					}
-					dgv_vehicles->Rows->Add(gcnew array<String^> {
-						"" + c->Id,
-							"" + c->Plate,
-							"" + c->Brand,
-							"" + c->Color,
-							"" + atributobooleanoYes,
-							"" + c->Condition,
-					});
+				}
+				else {
+					MessageBox::Show("No hay vehículos disponibles para mostrar");
+					v->Clear();
+					this->Close();
 				}
 			}
 			else {
 				MessageBox::Show("No hay vehículos disponibles para mostrar");
+				v->Clear();
+				this->Close();
 			}
+
 		}
 		void ShowSearchedVehicle(Vehicle^ c) {
 			dgv_vehicles->Rows->Clear();

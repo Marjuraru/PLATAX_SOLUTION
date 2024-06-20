@@ -145,6 +145,7 @@
     <ClCompile Include="ClientSearchVehiclePage.cpp" />
     <ClCompile Include="ClientStateNotificationsPage.cpp" />
     <ClCompile Include="SensorSectionPage.cpp" />
+    <ClCompile Include="ShowVehiclePage.cpp" />
     <ClCompile Include="TestSensorsPage.cpp" />
     <ClCompile Include="UserAddVehiclePage.cpp" />
     <ClCompile Include="UserFeedPage.cpp" />
@@ -199,6 +200,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SensorSectionPage.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ShowVehiclePage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="TestSensorsPage.h">
@@ -277,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SensorSectionPage.resx">
       <DependentUpon>SensorSectionPage.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowVehiclePage.resx">
+      <DependentUpon>ShowVehiclePage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestSensorsPage.resx">
       <DependentUpon>TestSensorsPage.h</DependentUpon>
