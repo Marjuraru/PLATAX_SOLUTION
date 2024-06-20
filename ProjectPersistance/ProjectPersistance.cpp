@@ -7,6 +7,7 @@ using namespace System;
 using namespace System::IO;
 using namespace System::Collections::Generic;
 using namespace System::Xml::Serialization; //por si acaso
+
 using namespace System::Runtime::Serialization::Formatters::Binary;
 using namespace ProjectModel;
 using namespace ProjectPersistance;
@@ -62,6 +63,9 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
             else if (fileName->Equals(MAIL_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
+            else if (fileName->Equals(MEASUREMENT_FILE_BIN_NAME)) {
+                result = formatter->Deserialize(file);
+            }
         }
     }
     catch (Exception^ ex) {
@@ -72,6 +76,169 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
     }
     return result;
 }
+
+// PERSISTENCIA TEXTUAL
+void ProjectPersistance::Persistance::PersistTextFile(String^ fileName, Object^ persistObject)
+{
+    FileStream^ file;
+    StreamWriter^ writer;
+    file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
+    writer = gcnew StreamWriter(file);
+    if (persistObject->GetType() == List<Measurement^>::typeid) {
+        List<Measurement^>^ measurements = (List<Measurement^>^)persistObject;
+        for (int i = 0; i < measurements->Count; i++) {
+            Measurement^ measurement = measurements[i];
+            writer->WriteLine(measurement->Id + "," + measurement->ValueMeasure + "," + measurement->TypeOfMeasure + "," + measurement->MadeDate);
+        }
+    }
+
+    if (writer != nullptr) writer->Close();
+    if (file != nullptr) file->Close();
+}
+
+Object^ ProjectPersistance::Persistance::LoadTextFile(String^ fileName)
+{
+    FileStream^ file;
+    StreamReader^ reader;
+    Object^ result;
+    if (File::Exists(fileName)) {
+        file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
+        reader = gcnew StreamReader(file);
+        int i = 1;
+        if (fileName->Equals(MEASUREMENT_FILE_TXT_NAME)) {
+            result = gcnew List<Measurement^>();
+            while (true) {
+                String^ line = reader->ReadLine();
+                if (line == nullptr) break;
+                array<String^>^ record = line->Split(',');
+                Measurement^ measurement = gcnew Measurement();
+                measurement->Id = Convert::ToInt32(record[0]);
+                measurement->ValueMeasure = Convert::ToDouble(record[1]);
+                measurement->TypeOfMeasure = record[2];
+                measurement->MadeDate = Convert::ToDateTime(record[3]);
+                ((List<Measurement^>^)result)->Add(measurement);
+            }
+        }
+
+        if (reader != nullptr) reader->Close();
+        if (file != nullptr) file->Close();
+    }
+    return result;
+}
+
+
+// PERSISTENCIA EN CSV
+void ProjectPersistance::Persistance::PersistCSVFile(String^ fileName, Object^ persistObject)
+{
+    FileStream^ file;
+    StreamWriter^ writer;
+    try {
+        file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
+        writer = gcnew StreamWriter(file);
+        if (persistObject->GetType() == List<Measurement^>::typeid) {
+            List<Measurement^>^ measurements = (List<Measurement^>^)persistObject;
+            for (int i = 0; i < measurements->Count; i++) {
+                Measurement^ measurement = measurements[i];
+                writer->WriteLine(measurement->Id + "," + measurement->ValueMeasure + "," + measurement->TypeOfMeasure + "," + measurement->MadeDate);
+            }
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (writer != nullptr) writer->Close();
+        if (file != nullptr) file->Close();
+    }
+}
+
+Object^ ProjectPersistance::Persistance::LoadCSVFile(String^ fileName)
+{
+    FileStream^ file;
+    StreamReader^ reader;
+    Object^ result = nullptr;
+    try {
+        if (File::Exists(fileName)) {
+            file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
+            reader = gcnew StreamReader(file);
+            int i = 1;
+            if (fileName->Equals(MEASUREMENT_FILE_CSV_NAME)) {
+                result = gcnew List<Measurement^>();
+                while (true) {
+                    String^ line = reader->ReadLine();
+                    if (line == nullptr) break;
+                    array<String^>^ record = line->Split(',');
+                    Measurement^ measurement = gcnew Measurement();
+                    measurement->Id = Convert::ToInt32(record[0]);
+                    measurement->ValueMeasure = Convert::ToDouble(record[1]);
+                    measurement->TypeOfMeasure = record[2];
+                    measurement->MadeDate = Convert::ToDateTime(record[3]);
+
+                    ((List<Measurement^>^)result)->Add(measurement);
+                }
+            }
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (reader != nullptr) reader->Close();
+        if (file != nullptr) file->Close();
+    }
+    return result;
+}
+
+// PERSISTENCIA EN XML
+void ProjectPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ persistObject)
+{
+    StreamWriter^ writer;
+    try {
+        writer = gcnew StreamWriter(fileName);
+        if (persistObject->GetType() == List<Measurement^>::typeid) {
+            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Measurement^>::typeid);
+            xmlSerializer->Serialize(writer, persistObject);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (writer != nullptr) writer->Close();
+    }
+}
+
+Object^ ProjectPersistance::Persistance::LoadXMLFile(String^ fileName)
+{
+    StreamReader^ reader;
+    Object^ result;
+    XmlSerializer^ xmlSerializer;
+    try {
+        if (File::Exists(fileName)) {
+            reader = gcnew StreamReader(fileName);
+            if (fileName->Equals(MEASUREMENT_FILE_XML_NAME)) {
+                xmlSerializer = gcnew XmlSerializer(List<Measurement^>::typeid);
+                result = xmlSerializer->Deserialize(reader);
+            }
+            //if (fileName->Equals(XML_BRAND_FILE_NAME)) {
+            //    xmlSerializer = gcnew XmlSerializer(List<String^>::typeid);
+            //    result = xmlSerializer->Deserialize(reader);
+            //}
+
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (reader != nullptr) reader->Close();
+    }
+
+    return result;
+}
+
+
+
 
 bool ProjectPersistance::Persistance::IsDniRegistered(int dni)
 {
@@ -272,6 +439,82 @@ int ProjectPersistance::Persistance::GenerateMailId() {
     return newID;
 }
 
+
+int ProjectPersistance::Persistance::BINGenerateMeasurementId()
+{
+
+
+    MeasurementListBIN = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_BIN_NAME);
+    
+    
+
+    int newID = 1;
+    if (MeasurementListBIN != nullptr) {
+        // Busca el último ID utilizado y elige un nuevo ID que sea único
+        for each (Measurement ^ measurementBIN in MeasurementListBIN) {
+            if (measurementBIN->Id >= newID) {
+                newID = measurementBIN->Id + 1;
+            }
+        }
+    }
+
+    return newID;
+}
+
+int ProjectPersistance::Persistance::TXTGenerateMeasurementId()
+{
+    MeasurementListTXT = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_TXT_NAME);
+
+    int newID = 1;
+    if (MeasurementListTXT != nullptr) {
+        // Busca el último ID utilizado y elige un nuevo ID que sea único
+        for each (Measurement ^ measurementTXT in MeasurementListTXT) {
+            if (measurementTXT->Id >= newID) {
+                newID = measurementTXT->Id + 1;
+            }
+        }
+    }
+
+    return newID;
+
+}
+
+int ProjectPersistance::Persistance::CSVGenerateMeasurementId()
+{
+    MeasurementListCSV = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_CSV_NAME);
+
+    int newID = 1;
+    if (MeasurementListCSV != nullptr) {
+        // Busca el último ID utilizado y elige un nuevo ID que sea único
+        for each (Measurement ^ measurementCSV in MeasurementListCSV) {
+            if (measurementCSV->Id >= newID) {
+                newID = measurementCSV->Id + 1;
+            }
+        }
+    }
+
+    return newID;
+
+}
+
+int ProjectPersistance::Persistance::XMLGenerateMeasurementId()
+{
+    MeasurementListXML = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_XML_NAME);
+
+    int newID = 1;
+    if (MeasurementListXML != nullptr) {
+        // Busca el último ID utilizado y elige un nuevo ID que sea único
+        for each (Measurement ^ measurementXML in MeasurementListXML) {
+            if (measurementXML->Id >= newID) {
+                newID = measurementXML->Id + 1;
+            }
+        }
+    }
+
+    return newID;
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 void ProjectPersistance::Persistance::CreateProprietor(Proprietor^ c)
 {
@@ -350,6 +593,63 @@ void ProjectPersistance::Persistance::CreateMail(Mail^ c)
     MailList->Add(c);
     PersistBinaryFile(MAIL_FILE_BIN_NAME, MailList);
 }
+
+
+void ProjectPersistance::Persistance::BINCreateMeasurement(Measurement^ c)
+{
+
+
+    MeasurementListBIN = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_BIN_NAME);
+
+
+    if (MeasurementListBIN == nullptr) {
+        // Si la lista no se cargó correctamente, crea una nueva lista
+        MeasurementListBIN = gcnew List<Measurement^>();
+    }
+    MeasurementListBIN->Add(c);
+    PersistBinaryFile(MEASUREMENT_FILE_BIN_NAME, MeasurementListBIN);
+}
+
+void ProjectPersistance::Persistance::TXTCreateMeasurement(Measurement^ c)
+{
+
+    MeasurementListTXT = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_TXT_NAME);
+
+
+    if (MeasurementListTXT == nullptr) {
+        // Si la lista no se cargó correctamente, crea una nueva lista
+        MeasurementListTXT = gcnew List<Measurement^>();
+    }
+    MeasurementListTXT->Add(c);
+    PersistBinaryFile(MEASUREMENT_FILE_TXT_NAME, MeasurementListTXT);
+}
+
+void ProjectPersistance::Persistance::CSVCreateMeasurement(Measurement^ c)
+{
+    MeasurementListCSV = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_CSV_NAME);
+
+
+    if (MeasurementListCSV == nullptr) {
+        // Si la lista no se cargó correctamente, crea una nueva lista
+        MeasurementListCSV = gcnew List<Measurement^>();
+    }
+    MeasurementListCSV->Add(c);
+    PersistBinaryFile(MEASUREMENT_FILE_CSV_NAME, MeasurementListCSV);
+}
+
+void ProjectPersistance::Persistance::XMLCreateMeasurement(Measurement^ c)
+{
+    MeasurementListXML = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_XML_NAME);
+
+
+    if (MeasurementListXML == nullptr) {
+        // Si la lista no se cargó correctamente, crea una nueva lista
+        MeasurementListXML = gcnew List<Measurement^>();
+    }
+    MeasurementListXML->Add(c);
+    PersistBinaryFile(MEASUREMENT_FILE_XML_NAME, MeasurementListXML);
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -444,6 +744,60 @@ void ProjectPersistance::Persistance::UpdateHelpPls(HelpPls^ c)
     }
     PersistBinaryFile(HELPPLS_FILE_BIN_NAME, ReclamationList);
 }
+
+
+void ProjectPersistance::Persistance::BINUpdateMeasurement(Measurement^ c)
+{
+    MeasurementListBIN = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_BIN_NAME);
+    if (MeasurementListBIN != nullptr) {
+        for (int i = 0; i < MeasurementListBIN->Count; i++) {
+            if (c->Id == MeasurementListBIN[i]->Id) {
+                MeasurementListBIN[i] = c;
+            }
+        }
+    }
+    PersistBinaryFile(MEASUREMENT_FILE_BIN_NAME, MeasurementListBIN);
+}
+
+void ProjectPersistance::Persistance::TXTUpdateMeasurement(Measurement^ c)
+{
+    MeasurementListTXT = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_TXT_NAME);
+    if (MeasurementListTXT != nullptr) {
+        for (int i = 0; i < MeasurementListTXT->Count; i++) {
+            if (c->Id == MeasurementListTXT[i]->Id) {
+                MeasurementListTXT[i] = c;
+            }
+        }
+    }
+    PersistBinaryFile(MEASUREMENT_FILE_TXT_NAME, MeasurementListTXT);
+}
+
+void ProjectPersistance::Persistance::CSVUpdateMeasurement(Measurement^ c)
+{
+    MeasurementListCSV = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_CSV_NAME);
+    if (MeasurementListCSV != nullptr) {
+        for (int i = 0; i < MeasurementListCSV->Count; i++) {
+            if (c->Id == MeasurementListCSV[i]->Id) {
+                MeasurementListCSV[i] = c;
+            }
+        }
+    }
+    PersistBinaryFile(MEASUREMENT_FILE_CSV_NAME, MeasurementListCSV);
+}
+
+void ProjectPersistance::Persistance::XMLUpdateMeasurement(Measurement^ c)
+{
+    MeasurementListXML = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_XML_NAME);
+    if (MeasurementListXML != nullptr) {
+        for (int i = 0; i < MeasurementListXML->Count; i++) {
+            if (c->Id == MeasurementListXML[i]->Id) {
+                MeasurementListXML[i] = c;
+            }
+        }
+    }
+    PersistBinaryFile(MEASUREMENT_FILE_XML_NAME, MeasurementListXML);
+}
+
 
 /// ///////////////////////////////////////////////////////////////////////////////////////////////////////
 void ProjectPersistance::Persistance::DeleteProprietor(int id)
@@ -543,6 +897,65 @@ void ProjectPersistance::Persistance::DeleteMail(int id)
         PersistBinaryFile(MAIL_FILE_BIN_NAME, MailList);
     }
 }
+
+
+void ProjectPersistance::Persistance::BINDeleteMeasurement(int id)
+{
+    MeasurementListBIN = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_BIN_NAME);
+    if (MeasurementListBIN != nullptr) {
+        for (int i = MeasurementListBIN->Count - 1; i >= 0; i--) {
+            if (id == MeasurementListBIN[i]->Id) {
+                MeasurementListBIN->RemoveAt(i);
+            }
+        }
+        // Guardar la lista actualizada en el archivo binario
+        PersistBinaryFile(MEASUREMENT_FILE_BIN_NAME, MeasurementListBIN);
+    }
+}
+
+void ProjectPersistance::Persistance::TXTDeleteMeasurement(int id)
+{
+    MeasurementListTXT = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_TXT_NAME);
+    if (MeasurementListTXT != nullptr) {
+        for (int i = MeasurementListTXT->Count - 1; i >= 0; i--) {
+            if (id == MeasurementListTXT[i]->Id) {
+                MeasurementListTXT->RemoveAt(i);
+            }
+        }
+        // Guardar la lista actualizada en el archivo binario
+        PersistBinaryFile(MEASUREMENT_FILE_TXT_NAME, MeasurementListTXT);
+    }
+}
+
+void ProjectPersistance::Persistance::CSVDeleteMeasurement(int id)
+{
+    MeasurementListCSV = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_CSV_NAME);
+    if (MeasurementListCSV != nullptr) {
+        for (int i = MeasurementListCSV->Count - 1; i >= 0; i--) {
+            if (id == MeasurementListCSV[i]->Id) {
+                MeasurementListCSV->RemoveAt(i);
+            }
+        }
+        // Guardar la lista actualizada en el archivo cSV
+        PersistBinaryFile(MEASUREMENT_FILE_CSV_NAME, MeasurementListCSV);
+    }
+}
+
+void ProjectPersistance::Persistance::XMLDeleteMeasurement(int id)
+{
+    MeasurementListXML = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_XML_NAME);
+    if (MeasurementListXML != nullptr) {
+        for (int i = MeasurementListXML->Count - 1; i >= 0; i--) {
+            if (id == MeasurementListXML[i]->Id) {
+                MeasurementListXML->RemoveAt(i);
+            }
+        }
+        // Guardar la lista actualizada en el archivo XML
+        PersistBinaryFile(MEASUREMENT_FILE_XML_NAME, MeasurementListXML);
+
+    }
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 List<User^>^ ProjectPersistance::Persistance::QueryAllUsers()
@@ -1045,6 +1458,30 @@ Mail^ ProjectPersistance::Persistance::QueryMailBySubject(String^ subject)
     }
     return nullptr;
 }
+
+
+List<Measurement^>^ ProjectPersistance::Persistance::QueryAllMeasurementsBIN()
+{
+    return MeasurementListBIN = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_BIN_NAME);
+}
+
+List<Measurement^>^ ProjectPersistance::Persistance::QueryAllMeasurementsTXT()
+{
+    return MeasurementListTXT = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_TXT_NAME);
+}
+
+List<Measurement^>^ ProjectPersistance::Persistance::QueryAllMeasurementsCSV()
+{
+    return MeasurementListCSV = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_CSV_NAME);
+}
+
+List<Measurement^>^ ProjectPersistance::Persistance::QueryAllMeasurementsXML()
+{
+    return MeasurementListXML = (List<Measurement^>^)Persistance::LoadBinaryFile(MEASUREMENT_FILE_XML_NAME);
+
+}
+
+
 
 //void ProjectPersistance::Persistance::Asignarvehiculo(Vehicle^ current_vehicle, Proprietor^ current_proprietor) {
 //    current_proprietor->List = current_vehicle;

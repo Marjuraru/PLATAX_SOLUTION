@@ -60,6 +60,9 @@
     <ClInclude Include="Mail.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Measurement.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProjectModel.cpp">
@@ -105,6 +108,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="Mail.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Measurement.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
