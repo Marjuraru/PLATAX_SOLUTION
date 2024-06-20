@@ -377,6 +377,7 @@ namespace ProjectView {
 			this->Controls->Add(this->label1);
 			this->Name = L"AdminEmailsPage";
 			this->Text = L"AdminEmailsPage";
+			this->Load += gcnew System::EventHandler(this, &AdminEmailsPage::AdminEmailsPage_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_emails_admin))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -390,25 +391,25 @@ namespace ProjectView {
 				  // Crear y agregar columnas manualmente
 				  DataGridViewTextBoxColumn^ UsertransmitterColumn = gcnew DataGridViewTextBoxColumn();
 				  UsertransmitterColumn->HeaderText = "Emisor";
-				  UsertransmitterColumn->DataPropertyName = "Id"; // Esto debe coincidir con el nombre de la propiedad en la clase de datos
+				  UsertransmitterColumn->DataPropertyName = "UsertransmitterName"; // Esto debe coincidir con el nombre de la propiedad en la clase de datos
 				  UsertransmitterColumn->Width = 25; // Ajustar el ancho de la columna
 				  dgv_emails_admin->Columns->Add(UsertransmitterColumn);
 
 				  DataGridViewTextBoxColumn^ UserreceiverColumn = gcnew DataGridViewTextBoxColumn();
 				  UserreceiverColumn->HeaderText = "Receptor";
-				  UserreceiverColumn->DataPropertyName = "Phone";
+				  UserreceiverColumn->DataPropertyName = "UserreceiverName";
 				  UserreceiverColumn->Width = 25; // Ajustar el ancho de la columna
 				  dgv_emails_admin->Columns->Add(UserreceiverColumn);
 
 				  DataGridViewTextBoxColumn^ SubjectColumn = gcnew DataGridViewTextBoxColumn();
 				  SubjectColumn->HeaderText = "Asunto";
-				  SubjectColumn->DataPropertyName = "Dni";
+				  SubjectColumn->DataPropertyName = "Subject";
 				  SubjectColumn->Width = 25; // Ajustar el ancho de la columna
 				  dgv_emails_admin->Columns->Add(SubjectColumn);
 
 				  DataGridViewTextBoxColumn^ MadeDateColumn = gcnew DataGridViewTextBoxColumn();
 				  MadeDateColumn->HeaderText = "Fecha";
-				  MadeDateColumn->DataPropertyName = "Name";
+				  MadeDateColumn->DataPropertyName = "GetFormattedDate";
 				  MadeDateColumn->Width = 25; // Ajustar el ancho de la columna
 				  dgv_emails_admin->Columns->Add(MadeDateColumn);
 
