@@ -93,6 +93,7 @@ namespace ProjectView {
 		void InitializeComponent(void)
 		{
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->button = (gcnew System::Windows::Forms::Button());
 			this->button_mailbox = (gcnew System::Windows::Forms::Button());
 			this->button_help = (gcnew System::Windows::Forms::Button());
 			this->button_myreclamations = (gcnew System::Windows::Forms::Button());
@@ -102,7 +103,6 @@ namespace ProjectView {
 			this->button_statistics = (gcnew System::Windows::Forms::Button());
 			this->button_reclamation = (gcnew System::Windows::Forms::Button());
 			this->button_addvehicle = (gcnew System::Windows::Forms::Button());
-			this->button = (gcnew System::Windows::Forms::Button());
 			this->groupBox2->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -130,6 +130,18 @@ namespace ProjectView {
 			this->groupBox2->TabIndex = 47;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Ir a";
+			// 
+			// button
+			// 
+			this->button->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button->Location = System::Drawing::Point(5, 73);
+			this->button->Name = L"button";
+			this->button->Size = System::Drawing::Size(113, 56);
+			this->button->TabIndex = 43;
+			this->button->Text = L"Sensores";
+			this->button->UseVisualStyleBackColor = true;
+			this->button->Click += gcnew System::EventHandler(this, &UserFeedPage::button_Click);
 			// 
 			// button_mailbox
 			// 
@@ -240,18 +252,6 @@ namespace ProjectView {
 			this->button_addvehicle->Text = L"Agregar Carro";
 			this->button_addvehicle->UseVisualStyleBackColor = true;
 			this->button_addvehicle->Click += gcnew System::EventHandler(this, &UserFeedPage::button_addvehicle_Click);
-			// 
-			// button
-			// 
-			this->button->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button->Location = System::Drawing::Point(5, 90);
-			this->button->Name = L"button";
-			this->button->Size = System::Drawing::Size(118, 56);
-			this->button->TabIndex = 43;
-			this->button->Text = L"Sensores";
-			this->button->UseVisualStyleBackColor = true;
-			this->button->Click += gcnew System::EventHandler(this, &UserFeedPage::button_Click);
 			// 
 			// UserFeedPage
 			// 

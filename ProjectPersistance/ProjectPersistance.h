@@ -16,6 +16,14 @@ namespace ProjectPersistance { //marcelos version
         static List<Adm^>^ AdmList = gcnew List<Adm^>();
         static List<HelpPls^>^ HelpPlsList = gcnew List<HelpPls^>();
         static List<Mail^>^ MailList = gcnew List<Mail^>();
+        static List<Measurement^>^ MeasurementListBIN = gcnew List<Measurement^>();
+
+        static List<Measurement^>^ MeasurementListTXT = gcnew List<Measurement^>();
+
+        static List<Measurement^>^ MeasurementListCSV = gcnew List<Measurement^>();
+
+        static List<Measurement^>^ MeasurementListXML = gcnew List<Measurement^>();
+
     public:                     //(1°)
         static String^ USER_FILE_BIN_NAME = "User.bin";
         static String^ PROPRIETOR_FILE_BIN_NAME = "Proprietor.bin";
@@ -25,11 +33,27 @@ namespace ProjectPersistance { //marcelos version
         static String^ ADM_FILE_BIN_NAME = "Adm.bin";
         static String^ HELPPLS_FILE_BIN_NAME = "HelpPls.bin";
         static String^ MAIL_FILE_BIN_NAME = "Mail.bin";
+        static String^ MEASUREMENT_FILE_BIN_NAME = "Measurement.bin";
 
+        static String^ MEASUREMENT_FILE_TXT_NAME = "Measurement.txt";
+
+        static String^ MEASUREMENT_FILE_CSV_NAME = "Measurement.csv";
+
+        static String^ MEASUREMENT_FILE_XML_NAME = "Measurement.xml";
 
         //Persistencia binaria
         static void PersistBinaryFile(String^ fileName, Object^ persistObject); //metodo de escritura/creación de archivos binarios
         static Object^ LoadBinaryFile(String^ fileName); //metodo de lectura/carga de archivos binarios
+        //Persistencia textual
+        static void PersistTextFile(String^ fileName, Object^ persistObject);
+        static Object^ LoadTextFile(String^ fileName);
+        //Pesistencia en CSV
+        static void PersistCSVFile(String^ fileName, Object^ persistObject);
+        static Object^ LoadCSVFile(String^ fileName);
+        //Pesistencia en XML
+        static void PersistXMLFile(String^ fileName, Object^ persistObject);
+        static Object^ LoadXMLFile(String^ fileName);
+
 
         //Generar Id para cada clase (comenzar 1° con esto)
         static int GenerateUserId();
@@ -41,6 +65,13 @@ namespace ProjectPersistance { //marcelos version
         static int GenerateHelpPlsId();
         //ADMINISTRADOR SE REGISTRA A NIVEL DE CÓDIGO
         static int GenerateMailId();
+        //
+        static int BINGenerateMeasurementId();
+        static int TXTGenerateMeasurementId();
+        static int CSVGenerateMeasurementId();
+        static int XMLGenerateMeasurementId();
+
+ 
 
         // Metodos de mantenimiento del Proprietario - CRUD
         static void CreateProprietor(Proprietor^ c);
@@ -62,6 +93,24 @@ namespace ProjectPersistance { //marcelos version
         static void CreateAdm(Adm^ c);
         static void UpdateAdm(Adm^ c);
         static void DeleteAdm(int id);
+        //Metodos de mantenimiento del Measurement - CRUD  
+        static void BINCreateMeasurement(Measurement^ c);
+        static void BINUpdateMeasurement(Measurement^ c);
+        static void BINDeleteMeasurement(int id);
+
+        static void TXTCreateMeasurement(Measurement^ c);
+        static void TXTUpdateMeasurement(Measurement^ c);
+        static void TXTDeleteMeasurement(int id);
+
+
+        static void CSVCreateMeasurement(Measurement^ c);
+        static void CSVUpdateMeasurement(Measurement^ c);
+        static void CSVDeleteMeasurement(int id);
+
+
+        static void XMLCreateMeasurement(Measurement^ c);
+        static void XMLUpdateMeasurement(Measurement^ c);
+        static void XMLDeleteMeasurement(int id);
 
         //Metodos de mantenimiento de HelpPls - CRUD  -------
         static void CreateHelpPls(HelpPls^ c);
@@ -133,6 +182,13 @@ namespace ProjectPersistance { //marcelos version
         static List<Mail^>^ QueryAllMails();
         static Mail^ QueryMailById(int id);
         static Mail^ QueryMailBySubject(String^ subject);
+
+        //Búsqueda de Measurement
+        static List<Measurement^>^ QueryAllMeasurementsBIN();
+        static List<Measurement^>^ QueryAllMeasurementsTXT();
+        static List<Measurement^>^ QueryAllMeasurementsCSV();
+        static List<Measurement^>^ QueryAllMeasurementsXML();
+
 
         //Asignaciones de Vehículos
  //       static void Asignarvehiculo(Vehicle^ current_vehicle,Proprietor^ current_proprietor);//

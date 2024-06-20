@@ -67,6 +67,29 @@ int ProjectController::Controller::GenerateMailId()
 	return ProjectPersistance::Persistance::GenerateMailId();
 }
 
+
+int ProjectController::Controller::BINGenerateMeasurementId()
+{
+	return ProjectPersistance::Persistance::BINGenerateMeasurementId();
+}
+
+int ProjectController::Controller::TXTGenerateMeasurementId()
+{
+	return ProjectPersistance::Persistance::TXTGenerateMeasurementId();
+}
+
+int ProjectController::Controller::CSVGenerateMeasurementId()
+{
+	return ProjectPersistance::Persistance::CSVGenerateMeasurementId();
+}
+
+int ProjectController::Controller::XMLGenerateMeasurementId()
+{
+	return ProjectPersistance::Persistance::XMLGenerateMeasurementId();
+}
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 void ProjectController::Controller::CreateProprietor(Proprietor^ c)
 {
@@ -103,6 +126,29 @@ void ProjectController::Controller::CreateMail(Mail^ c)
 	return ProjectPersistance::Persistance::CreateMail(c);
 }
 
+
+void ProjectController::Controller::BINCreateMeasurement(Measurement^ c)
+{
+	return ProjectPersistance::Persistance::BINCreateMeasurement(c);
+}
+
+void ProjectController::Controller::TXTCreateMeasurement(Measurement^ c)
+{
+	return ProjectPersistance::Persistance::TXTCreateMeasurement(c);
+}
+
+void ProjectController::Controller::CSVCreateMeasurement(Measurement^ c)
+{
+	return ProjectPersistance::Persistance::CSVCreateMeasurement(c);
+}
+
+void ProjectController::Controller::XMLCreateMeasurement(Measurement^ c)
+{
+	return ProjectPersistance::Persistance::XMLCreateMeasurement(c);
+}
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 void ProjectController::Controller::UpdateProprietor(Proprietor^ c)
@@ -133,6 +179,27 @@ void ProjectController::Controller::UpdateAdm(Adm^ c)
 void ProjectController::Controller::UpdateHelpPls(HelpPls^ c)
 {
 	return ProjectPersistance::Persistance::UpdateHelpPls(c);
+}
+
+
+void ProjectController::Controller::BINUpdateMeasurement(Measurement^ c)
+{
+	return ProjectPersistance::Persistance::BINUpdateMeasurement(c);
+}
+
+void ProjectController::Controller::TXTUpdateMeasurement(Measurement^ c)
+{
+	return ProjectPersistance::Persistance::TXTUpdateMeasurement(c);
+}
+
+void ProjectController::Controller::CSVUpdateMeasurement(Measurement^ c)
+{
+	return ProjectPersistance::Persistance::CSVUpdateMeasurement(c);
+}
+
+void ProjectController::Controller::XMLUpdateMeasurement(Measurement^ c)
+{
+	return ProjectPersistance::Persistance::XMLUpdateMeasurement(c);
 }
 
 
@@ -171,6 +238,27 @@ void ProjectController::Controller::DeleteHelpPls(int id)
 void ProjectController::Controller::DeleteMail(int id)
 {
 	return ProjectPersistance::Persistance::DeleteMail(id);
+}
+
+
+void ProjectController::Controller::BINDeleteMeasurement(int id)
+{
+	return ProjectPersistance::Persistance::BINDeleteMeasurement(id);
+}
+
+void ProjectController::Controller::TXTDeleteMeasurement(int id)
+{
+	return ProjectPersistance::Persistance::BINDeleteMeasurement(id);
+}
+
+void ProjectController::Controller::CSVDeleteMeasurement(int id)
+{
+	return ProjectPersistance::Persistance::CSVDeleteMeasurement(id);
+}
+
+void ProjectController::Controller::XMLDeleteMeasurement(int id)
+{
+	return ProjectPersistance::Persistance::XMLDeleteMeasurement(id);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -264,6 +352,7 @@ List<Client^>^ ProjectController::Controller::QueryListClientByLicensetype(Strin
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////
+
 List<Vehicle^>^ ProjectController::Controller::QueryAllVehicles()
 {
 	return ProjectPersistance::Persistance::QueryAllVehicles();
@@ -359,10 +448,38 @@ List<HelpPls^>^ ProjectController::Controller::QueryAllHelpsPls()
 	return ProjectPersistance::Persistance::QueryAllHelpsPls();
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////
 List<Mail^>^ ProjectController::Controller::QueryAllMails()
 {
 	return ProjectPersistance::Persistance::QueryAllMails();
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+List<Measurement^>^ ProjectController::Controller::QueryAllMeasurementsBIN()
+{
+	return ProjectPersistance::Persistance::QueryAllMeasurementsBIN();
+
+}
+
+List<Measurement^>^ ProjectController::Controller::QueryAllMeasurementsTXT()
+{
+	return ProjectPersistance::Persistance::QueryAllMeasurementsTXT();
+
+}
+
+List<Measurement^>^ ProjectController::Controller::QueryAllMeasurementsCSV()
+{
+	return ProjectPersistance::Persistance::QueryAllMeasurementsCSV();
+
+}
+
+List<Measurement^>^ ProjectController::Controller::QueryAllMeasurementsXML()
+{
+	return ProjectPersistance::Persistance::QueryAllMeasurementsXML();
+
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 

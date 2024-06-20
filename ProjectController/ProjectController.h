@@ -26,6 +26,11 @@ namespace ProjectController { //marcelos version
 		//ADMINISTRADOR SE REGISTRA A NIVEL DE CÓDIGO
 		static int GenerateHelpPlsId();//--
 		static int GenerateMailId();
+		//
+		static int BINGenerateMeasurementId();
+		static int TXTGenerateMeasurementId();
+		static int CSVGenerateMeasurementId();
+		static int XMLGenerateMeasurementId();
 
 		//Mantenimiento de las Clases
 			//Mantenimiento de Proprietor
@@ -44,10 +49,28 @@ namespace ProjectController { //marcelos version
 		static void CreateReclamation(Reclamation^ c);
 		static void UpdateReclamation(Reclamation^ c);
 		static void DeleteReclamation(int id);
-		//Mantenimiento de Adm
+		//Mantenimiento de Adm -CRUD
 		static void CreateAdm(Adm^ c);
 		static void UpdateAdm(Adm^ c);
 		static void DeleteAdm(int id);
+		//Metodos de mantenimiento del Measurement - CRUD  
+		static void BINCreateMeasurement(Measurement^ c);
+		static void BINUpdateMeasurement(Measurement^ c);
+		static void BINDeleteMeasurement(int id);
+
+		static void TXTCreateMeasurement(Measurement^ c);
+		static void TXTUpdateMeasurement(Measurement^ c);
+		static void TXTDeleteMeasurement(int id);
+
+
+		static void CSVCreateMeasurement(Measurement^ c);
+		static void CSVUpdateMeasurement(Measurement^ c);
+		static void CSVDeleteMeasurement(int id);
+
+
+		static void XMLCreateMeasurement(Measurement^ c);
+		static void XMLUpdateMeasurement(Measurement^ c);
+		static void XMLDeleteMeasurement(int id);
 
 		//Metodos de mantenimiento de Help - CRUD  -------
 		static void CreateHelpPls(HelpPls^ c);
@@ -121,6 +144,12 @@ namespace ProjectController { //marcelos version
 		static List<Mail^>^ QueryAllMails();
 		static Mail^ QueryMailById(int id);
 		static Mail^ QueryMailBySubject(String^ subject);
+
+		//Búsqueda de Measurement
+		static List<Measurement^>^ QueryAllMeasurementsBIN();
+		static List<Measurement^>^ QueryAllMeasurementsTXT();
+		static List<Measurement^>^ QueryAllMeasurementsCSV();
+		static List<Measurement^>^ QueryAllMeasurementsXML();
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

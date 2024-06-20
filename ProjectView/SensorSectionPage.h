@@ -27,7 +27,7 @@ namespace ProjectView {
 			timer->Interval = 1000; // Intervalo de 1 segundo
 			timer->Tick += gcnew System::EventHandler(this, &SensorSectionPage::OnTimerTick);
 			timer->Start();
-
+			rowIndex = 0; // Inicializar el contador de filas
 		}
 
 	protected:
@@ -41,16 +41,22 @@ namespace ProjectView {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::TextBox^ textBox_lectura;
+
 	protected:
 
 	protected:
 	private: System::Windows::Forms::Timer^ timer;  /*<< 3 */
-	private: System::Windows::Forms::Button^ button;
 
-	private: System::Windows::Forms::TextBox^ textBox_lectura2;
+
+
 
 	private: String^ ultimaLectura; // Variable para almacenar la última lectura
+
+
+
+
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chart1;
+	private: int rowIndex; // Contador de filas
 
 	protected:
 
@@ -73,49 +79,44 @@ namespace ProjectView {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->textBox_lectura = (gcnew System::Windows::Forms::TextBox());
-			this->button = (gcnew System::Windows::Forms::Button());
-			this->textBox_lectura2 = (gcnew System::Windows::Forms::TextBox());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// textBox_lectura
+			// chart1
 			// 
-			this->textBox_lectura->Location = System::Drawing::Point(313, 106);
-			this->textBox_lectura->Name = L"textBox_lectura";
-			this->textBox_lectura->Size = System::Drawing::Size(100, 20);
-			this->textBox_lectura->TabIndex = 0;
-			// 
-			// button
-			// 
-			this->button->Location = System::Drawing::Point(324, 168);
-			this->button->Name = L"button";
-			this->button->Size = System::Drawing::Size(75, 23);
-			this->button->TabIndex = 1;
-			this->button->Text = L"button1";
-			this->button->UseVisualStyleBackColor = true;
-			this->button->Click += gcnew System::EventHandler(this, &SensorSectionPage::button_Click);
-			// 
-			// textBox_lectura2
-			// 
-			this->textBox_lectura2->Location = System::Drawing::Point(305, 223);
-			this->textBox_lectura2->Name = L"textBox_lectura2";
-			this->textBox_lectura2->Size = System::Drawing::Size(115, 20);
-			this->textBox_lectura2->TabIndex = 2;
+			chartArea2->AxisY->Maximum = 500;
+			chartArea2->AxisY->Minimum = 0;
+			chartArea2->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->chart1->Legends->Add(legend2);
+			this->chart1->Location = System::Drawing::Point(279, 43);
+			this->chart1->Name = L"chart1";
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series2->Legend = L"Legend1";
+			series2->Name = L"Series1";
+			this->chart1->Series->Add(series2);
+			this->chart1->Size = System::Drawing::Size(419, 386);
+			this->chart1->TabIndex = 203;
+			this->chart1->Text = L"chart1";
 			// 
 			// SensorSectionPage
 			// 
 			this->AccessibleRole = System::Windows::Forms::AccessibleRole::TitleBar;
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(787, 474);
-			this->Controls->Add(this->textBox_lectura2);
-			this->Controls->Add(this->button);
-			this->Controls->Add(this->textBox_lectura);
+			this->ClientSize = System::Drawing::Size(1235, 474);
+			this->Controls->Add(this->chart1);
 			this->Name = L"SensorSectionPage";
 			this->Text = L"SensorSectionPage";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &SensorSectionPage::SensorSectionPage_FormClosed);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -126,12 +127,32 @@ namespace ProjectView {
 			PuertoDelArduino->Open();
 			String^ Lectura = PuertoDelArduino->ReadLine();
 			PuertoDelArduino->Close();
-			textBox_lectura->Text = "Distancia:  " + Lectura + " cm";
+			//textBox_lectura->Text = "Distancia:  " + Lectura + " cm";
 			ultimaLectura = Lectura; // Almacenar la última lectura
+
+
+			//// Agregar o actualizar la fila en el DataGridView
+			//String^ timestamp = DateTime::Now.ToString();
+			//dgv->Rows[rowIndex]->Cells[0]->Value = timestamp;
+			//dgv->Rows[rowIndex]->Cells[1]->Value = Lectura;
+
+			//// Incrementar el contador de filas y reiniciarlo si llega a 10
+			//rowIndex = (rowIndex + 1) % 10;
+
+						// Actualizar el Chart con la nueva lectura
+			String^ timestamp = DateTime::Now.ToString();
+			chart1->Series[L"Series1"]->Points->AddXY(timestamp, Convert::ToDouble(Lectura));
+
+			// Mantener solo las últimas 10 lecturas en el Chart
+			if (chart1->Series[L"Series1"]->Points->Count > 5) {
+				chart1->Series[L"Series1"]->Points->RemoveAt(0);
+			}
+
 		}
 		catch (Exception^ ex) {
 			// Manejar la excepción si es necesario
-			textBox_lectura->Text = "Error al leer datos";
+			//textBox_lectura->Text = "Error al leer datos";
+
 		}
 	}
 
@@ -148,10 +169,13 @@ namespace ProjectView {
 	private: System::Void button_Click(System::Object^ sender, System::EventArgs^ e) {
 
 		if (!String::IsNullOrEmpty(ultimaLectura)) {
-			textBox_lectura2->Text = "Lectura anterior: " + ultimaLectura + " cm";
+			//textBox_lectura2->Text = "Lectura anterior: " + ultimaLectura + " cm";
 		}
 
 
 	}
+
+
+
 };
 }
