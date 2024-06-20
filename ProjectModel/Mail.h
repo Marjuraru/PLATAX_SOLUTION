@@ -24,6 +24,21 @@ namespace ProjectModel {
 				return Usertransmitter != nullptr ? Usertransmitter->Name : String::Empty;
 			}
 		}
+		property String^ UserreceiverName {
+			String^ get() {
+				return Userreceiver != nullptr ? Userreceiver->Name : String::Empty;
+			}
+		}
+
+		String^ GetFormattedDate() {
+			return MadeDate.ToString("dd/MM/yyyy");
+		}
+
+		property String^ vehiclePlate {
+			String^ get() {
+				return vehicle != nullptr ? vehicle->Plate : String::Empty;
+			}
+		}
 
 	};
 };
