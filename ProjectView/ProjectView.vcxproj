@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdmDataBaseUsers.cpp" />
+    <ClCompile Include="AdminEmailsPage.cpp" />
     <ClCompile Include="AdminFeedPage .cpp" />
     <ClCompile Include="AdmInfoUserPage.cpp" />
     <ClCompile Include="AdmNotifyPage.cpp" />
@@ -160,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdmDataBaseUsers.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AdminEmailsPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AdminFeedPage .h">
@@ -239,6 +243,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminEmailsPage.resx">
+      <DependentUpon>AdminEmailsPage.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminFeedPage .resx">
       <DependentUpon>AdminFeedPage .h</DependentUpon>
     </EmbeddedResource>
