@@ -1469,41 +1469,49 @@ private: System::Void dgv_mails_SelectionChanged(System::Object^ sender, System:
 		// Obtener el elemento de datos vinculado a la fila seleccionada y convertirlo a Mail^
 		Mail^ selectedData = dynamic_cast<Mail^>(selectedRow->DataBoundItem);
 
+		
+
 		if (selectedData != nullptr) {
-			// Mostrar los detalles del registro seleccionado en los TextBox
-			if (comboBox1->Text == "Recibidos") {
-				textBox_from->Text = selectedData->Usertransmitter->Email;
-				textBox_showname->Text = selectedData->Usertransmitter->Name;
-			}
-			else {
-				textBox_from->Text = selectedData->Userreceiver->Email;
-				textBox_showname->Text = selectedData->Userreceiver->Name;
-			}
-			textBox_showsbuject->Text = selectedData->Subject;
-			richTextBox_showmessage->Text = selectedData->Content;
-
-			// Verificar si selectedData->vehicle y selectedData->vehicle->Plate no son nulos
-			if (selectedData->vehicle != nullptr && selectedData->vehicle->Plate != nullptr) {
-				button_showvehicle->Enabled = true;
-				textBox_days->Text = selectedData->DaysAgreed.ToString();
-			}
-			else {
-				button_showvehicle->Enabled = false;
-				textBox_days->Text = "No hay vehículo adjunto";
-			}
-
-			// Inicializar los mails seleccionados
-			List<Mail^>^ MailList = Controller::QueryAllMails();
-			for each (Mail ^ mail in MailList) {
-				if (mail->MailSelected) {
-					mail->MailSelected = false;
-					Controller::UpdateMail(mail);
+			if (selectedData->Subject != nullptr) {
+				// Mostrar los detalles del registro seleccionado en los TextBox
+				if (comboBox1->Text == "Recibidos") {
+					textBox_from->Text = selectedData->Usertransmitter->Email;
+					textBox_showname->Text = selectedData->Usertransmitter->Name;
 				}
-			}
+				else {
+					textBox_from->Text = selectedData->Userreceiver->Email;
+					textBox_showname->Text = selectedData->Userreceiver->Name;
+				}
+				textBox_showsbuject->Text = selectedData->Subject;
+				richTextBox_showmessage->Text = selectedData->Content;
 
-			// Marcar el mail seleccionado
-			selectedData->MailSelected = true;
-			Controller::UpdateMail(selectedData);
+				// Verificar si selectedData->vehicle y selectedData->vehicle->Plate no son nulos
+				if (selectedData->vehicle != nullptr && selectedData->vehicle->Plate != nullptr) {
+					button_showvehicle->Enabled = true;
+					textBox_days->Text = selectedData->DaysAgreed.ToString();
+				}
+				else {
+					button_showvehicle->Enabled = false;
+					textBox_days->Text = "No hay vehículo adjunto";
+				}
+
+				// Inicializar los mails seleccionados
+				List<Mail^>^ MailList = Controller::QueryAllMails();
+				for each (Mail ^ mail in MailList) {
+					if (mail->MailSelected) {
+						mail->MailSelected = false;
+						Controller::UpdateMail(mail);
+					}
+				}
+
+				// Marcar el mail seleccionado
+				selectedData->MailSelected = true;
+				Controller::UpdateMail(selectedData);
+			}
+			else {
+				selectedData->MailSelected = false;
+				Controller::UpdateMail(selectedData);
+			}
 		}
 	}
 }
@@ -1551,7 +1559,12 @@ private: System::Void button_reply_message_Click(System::Object^ sender, System:
 
 	// Si se encuentra un correo seleccionado
 	if (mailselected != nullptr) {
-		textBox_enter_email->Text = mailselected->Usertransmitter->Email;
+		if (mailselected->Usertransmitter->Email == Session::CurrentClient->Email) {
+			textBox_enter_email->Text = mailselected->Userreceiver->Email;
+		}
+		else {
+			textBox_enter_email->Text = mailselected->Usertransmitter->Email;
+		}
 
 		textBox_name->Text = mailselected->Usertransmitter->Name;
 		textBox_surname->Text = mailselected->Usertransmitter->Lastname;
