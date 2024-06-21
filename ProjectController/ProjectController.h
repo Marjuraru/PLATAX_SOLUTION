@@ -80,7 +80,7 @@ namespace ProjectController { //marcelos version
 
 		//Metodos de mantenimiento de Mail - CRUD  -------
 		static void CreateMail(Mail^ c);
-		//static void UpdateMail(HelpPls^ c);
+		static void UpdateMail(Mail^ c);
 		static void DeleteMail(int id);
 
 		//Atributos que no deben repetirse

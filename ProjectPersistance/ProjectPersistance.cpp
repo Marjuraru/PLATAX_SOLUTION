@@ -745,6 +745,18 @@ void ProjectPersistance::Persistance::UpdateHelpPls(HelpPls^ c)
     PersistBinaryFile(HELPPLS_FILE_BIN_NAME, ReclamationList);
 }
 
+void ProjectPersistance::Persistance::UpdateMail(Mail^ c)
+{
+    MailList = (List<Mail^>^)Persistance::LoadBinaryFile(MAIL_FILE_BIN_NAME);
+    if (MailList != nullptr) {
+        for (int i = 0; i < MailList->Count; i++) {
+            if (c->Id == MailList[i]->Id) {
+                MailList[i] = c;
+            }
+        }
+    }
+    PersistBinaryFile(MAIL_FILE_BIN_NAME, MailList);
+}
 
 void ProjectPersistance::Persistance::BINUpdateMeasurement(Measurement^ c)
 {
