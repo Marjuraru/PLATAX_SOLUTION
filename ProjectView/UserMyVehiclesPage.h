@@ -1009,164 +1009,173 @@ namespace ProjectView {
 #pragma endregion
 
 	private:void ShowImage(array<System::Byte>^ imageBytes, PictureBox^ pictureBox) {
-			if (imageBytes == nullptr || imageBytes->Length == 0 || pictureBox == nullptr) {
-				// Verificar si la matriz de bytes es nula o vacía, o si el PictureBox es nulo.
-				// Puedes manejar esto de acuerdo a tus necesidades, por ejemplo, mostrar un mensaje de error.
-				return;
-			}
-
-			// Crear un MemoryStream a partir de la matriz de bytes.
-			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(imageBytes);
-
-			try {
-				// Crear una imagen desde el MemoryStream.
-				System::Drawing::Image^ image = System::Drawing::Image::FromStream(ms);
-
-				// Mostrar la imagen en el PictureBox.
-				pictureBox->Image = image;
-			}
-			catch (Exception^ ex) {
-				// Manejar cualquier excepción que pueda ocurrir al cargar la imagen.
-				// Puedes mostrar un mensaje de error o realizar otra acción adecuada.
-				MessageBox::Show("Error al cargar la imagen: " + ex->Message);
-			}
-		}
-		void ShowInitialDgvVehicles() {
-			List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
-			List<Vehicle^>^ v = gcnew List<Vehicle^>();
-
-			for each(Vehicle^ veh in vehicles){
-				for each (Vehicle^ vej in Session::CurrentProprietor->ListVehicleProprietor) {
-					if (veh->Id == vej->Id) {
-						v->Add(veh);
-					}
-				}
-			}
-
-			if (v->Count != 0) {
-				dgv_vehicles->Rows->Clear();
-				for (int i = 0; i < v->Count; i++) {
-					Vehicle^ c = v[i];
-					String^ atributobooleanoYes;
-					if (c->Operative == true) {
-						atributobooleanoYes = "Operativo";
-					}
-					else {
-						atributobooleanoYes = "Inoperativo";
-					}
-					dgv_vehicles->Rows->Add(gcnew array<String^> {
-						"" + c->Id,
-							"" + c->Plate,
-							"" + c->Brand,
-							"" + c->Color,
-							"" + atributobooleanoYes,
-							"" + c->Condition,
-					});
-				}
-			}
-			else {
-				MessageBox::Show("No hay vehículos disponibles para mostrar");
-			}
-		}
-		void ShowSearchedVehicle(Vehicle^ c) {
-			dgv_vehicles->Rows->Clear();
-			String^ atributobooleanoYes;
-			if (c->Operative == true) {
-				atributobooleanoYes = "Operativo";
-			}
-			else {
-				atributobooleanoYes = "Inoperativo";
-			}
-
-			dgv_vehicles->Rows->Add(gcnew array<String^> {
-				"" + c->Id,
-					"" + c->Plate,
-					"" + c->Brand,
-					"" + c->Color,
-					"" + atributobooleanoYes,
-					"" + c->Condition,
-
-			});
-		}
-		void ClearTextBoxes() {
-			//función para limpiar todas las textboxes
-
-			textBox_id->Clear();
-			textBox_plate->Clear();
-			textBox_brand->Clear();
-			textBox_color->Clear();
-			comboBox_operative->Items->Clear();
-			comboBox_condition->Items->Clear();
-
-			textBox_tid->Clear();
-			textBox_tmodel->Clear();
-			textBox_tplate->Clear();
-			textBox_tbrand->Clear();
-			textBox_tcolor->Clear();
-			textBox_tnumberseats->Clear();
-
-			//Falta que a la hora de limpiar se elimine el item seleccionando en el combo
-
+		if (imageBytes == nullptr || imageBytes->Length == 0 || pictureBox == nullptr) {
+			// Verificar si la matriz de bytes es nula o vacía, o si el PictureBox es nulo.
+			// Puedes manejar esto de acuerdo a tus necesidades, por ejemplo, mostrar un mensaje de error.
+			return;
 		}
 
-		//void FillCombos() {
-		//	comboBox_operative->Items->Clear();//parte de una buena práctica...
-		//	comboBox_condition->Items->Clear();
-		//	comboBox_operative->Items->Add("Operativo");
-		//	comboBox_operative->Items->Add("Inoperativo");
-		//	comboBox_condition->Items->Add("Nuevo");
-		//	comboBox_condition->Items->Add("Usado");
-		//	comboBox_condition->Items->Add("Antiguo");
-		//	comboBox_tsparetire->Items->Add("Sí");
-		//	comboBox_tsparetire->Items->Add("No");
-		//	comboBox_toperative->Items->Add("Operativa");
-		//	comboBox_toperative->Items->Add("Inoperativa");
-		//	comboBox_tcondition->Items->Add("Nuevo");
-		//	comboBox_tcondition->Items->Add("Usado");
-		//	comboBox_tcondition->Items->Add("Antiguo");
-		//}
+		// Crear un MemoryStream a partir de la matriz de bytes.
+		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(imageBytes);
 
-		void FillVehicleTextBoxes(Vehicle^ c) {
+		try {
+			// Crear una imagen desde el MemoryStream.
+			System::Drawing::Image^ image = System::Drawing::Image::FromStream(ms);
 
-			textBox_tid->Text = Convert::ToString(c->Id);
-			textBox_tmodel->Text = c->Model;
-			textBox_tplate->Text = c->Plate;
-			textBox_tbrand->Text = c->Brand;
-			textBox_tcolor->Text = c->Color;
-			textBox_tnumberseats->Text = Convert::ToString(c->NumberOfSeats);
-			comboBox_tcondition->Text = Convert::ToString(c->Condition);
-			//comboBox_tsparetire->Text = Convert::ToString(c->SpareTire);
-			//comboBox_toperative->Text = Convert::ToString(c->Operative);
-
-			String^ sparetire_ = Convert::ToString(c->SpareTire);
-			if (sparetire_ == "True") {
-
-				comboBox_tsparetire->Text = "Sí";
-
-			}
-			else if (sparetire_ == "False") {
-
-				comboBox_tsparetire->Text = "No";
-
-			}
-
-			String^ operative_ = Convert::ToString(c->Operative);
-			if (operative_ == "True") {
-
-				comboBox_toperative->Text = "Operativo";
-
-			}
-			else if (operative_ == "False") {
-
-				comboBox_toperative->Text = "Inoperativo";
-
-			}
-
-
-			if (c->Photo != nullptr) {
-				ShowImage(c->Photo, pb_photo);
-			}
+			// Mostrar la imagen en el PictureBox.
+			pictureBox->Image = image;
 		}
+		catch (Exception^ ex) {
+			// Manejar cualquier excepción que pueda ocurrir al cargar la imagen.
+			// Puedes mostrar un mensaje de error o realizar otra acción adecuada.
+			MessageBox::Show("Error al cargar la imagen: " + ex->Message);
+		}
+	}
+		   void ShowInitialDgvVehicles() {
+			   List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
+			   List<Vehicle^>^ v = gcnew List<Vehicle^>();
+
+			   if (vehicles != nullptr) {
+				   for each (Vehicle ^ veh in vehicles) {
+					   for each (Vehicle ^ vej in Session::CurrentProprietor->ListVehicleProprietor) {
+						   if (veh->Id == vej->Id) {
+							   v->Add(veh);
+						   }
+					   }
+				   }
+				   if (v->Count != 0) {
+					   dgv_vehicles->Rows->Clear();
+					   for (int i = 0; i < v->Count; i++) {
+						   Vehicle^ c = v[i];
+						   String^ atributobooleanoYes;
+						   if (c->Operative == true) {
+							   atributobooleanoYes = "Operativo";
+						   }
+						   else {
+							   atributobooleanoYes = "Inoperativo";
+						   }
+						   dgv_vehicles->Rows->Add(gcnew array<String^> {
+							   "" + c->Id,
+								   "" + c->Plate,
+								   "" + c->Brand,
+								   "" + c->Color,
+								   "" + atributobooleanoYes,
+								   "" + c->Condition,
+						   });
+					   }
+				   }
+				   else {
+					   MessageBox::Show("No hay vehículos disponibles para mostrar");
+					   v->Clear();
+					   this->Close();
+				   }
+			   }
+			   else {
+				   MessageBox::Show("No hay vehículos disponibles para mostrar");
+				   v->Clear();
+				   this->Close();
+			   }
+
+		   }
+		   void ShowSearchedVehicle(Vehicle^ c) {
+			   dgv_vehicles->Rows->Clear();
+			   String^ atributobooleanoYes;
+			   if (c->Operative == true) {
+				   atributobooleanoYes = "Operativo";
+			   }
+			   else {
+				   atributobooleanoYes = "Inoperativo";
+			   }
+
+			   dgv_vehicles->Rows->Add(gcnew array<String^> {
+				   "" + c->Id,
+					   "" + c->Plate,
+					   "" + c->Brand,
+					   "" + c->Color,
+					   "" + atributobooleanoYes,
+					   "" + c->Condition,
+
+			   });
+		   }
+		   void ClearTextBoxes() {
+			   //función para limpiar todas las textboxes
+
+			   textBox_id->Clear();
+			   textBox_plate->Clear();
+			   textBox_brand->Clear();
+			   textBox_color->Clear();
+			   comboBox_operative->Items->Clear();
+			   comboBox_condition->Items->Clear();
+
+			   textBox_tid->Clear();
+			   textBox_tmodel->Clear();
+			   textBox_tplate->Clear();
+			   textBox_tbrand->Clear();
+			   textBox_tcolor->Clear();
+			   textBox_tnumberseats->Clear();
+
+			   //Falta que a la hora de limpiar se elimine el item seleccionando en el combo
+
+		   }
+
+		   //void FillCombos() {
+		   //	comboBox_operative->Items->Clear();//parte de una buena práctica...
+		   //	comboBox_condition->Items->Clear();
+		   //	comboBox_operative->Items->Add("Operativo");
+		   //	comboBox_operative->Items->Add("Inoperativo");
+		   //	comboBox_condition->Items->Add("Nuevo");
+		   //	comboBox_condition->Items->Add("Usado");
+		   //	comboBox_condition->Items->Add("Antiguo");
+		   //	comboBox_tsparetire->Items->Add("Sí");
+		   //	comboBox_tsparetire->Items->Add("No");
+		   //	comboBox_toperative->Items->Add("Operativa");
+		   //	comboBox_toperative->Items->Add("Inoperativa");
+		   //	comboBox_tcondition->Items->Add("Nuevo");
+		   //	comboBox_tcondition->Items->Add("Usado");
+		   //	comboBox_tcondition->Items->Add("Antiguo");
+		   //}
+
+		   void FillVehicleTextBoxes(Vehicle^ c) {
+
+			   textBox_tid->Text = Convert::ToString(c->Id);
+			   textBox_tmodel->Text = c->Model;
+			   textBox_tplate->Text = c->Plate;
+			   textBox_tbrand->Text = c->Brand;
+			   textBox_tcolor->Text = c->Color;
+			   textBox_tnumberseats->Text = Convert::ToString(c->NumberOfSeats);
+			   comboBox_tcondition->Text = Convert::ToString(c->Condition);
+			   //comboBox_tsparetire->Text = Convert::ToString(c->SpareTire);
+			   //comboBox_toperative->Text = Convert::ToString(c->Operative);
+
+			   String^ sparetire_ = Convert::ToString(c->SpareTire);
+			   if (sparetire_ == "True") {
+
+				   comboBox_tsparetire->Text = "Sí";
+
+			   }
+			   else if (sparetire_ == "False") {
+
+				   comboBox_tsparetire->Text = "No";
+
+			   }
+
+			   String^ operative_ = Convert::ToString(c->Operative);
+			   if (operative_ == "True") {
+
+				   comboBox_toperative->Text = "Operativo";
+
+			   }
+			   else if (operative_ == "False") {
+
+				   comboBox_toperative->Text = "Inoperativo";
+
+			   }
+
+
+			   if (c->Photo != nullptr) {
+				   ShowImage(c->Photo, pb_photo);
+			   }
+		   }
 
 
 	private: System::Void button_exit_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1294,26 +1303,26 @@ namespace ProjectView {
 
 	}
 
-	/*private: System::Void button_condition_Click(System::Object^ sender, System::EventArgs^ e) {
+		   /*private: System::Void button_condition_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ tcondition = comboBox_condition->Text;
-		if (String::IsNullOrWhiteSpace(tcondition)) {
-			MessageBox::Show("Ingrese la condición del vehículo a buscar");
-			return;
-		}
+			   String^ tcondition = comboBox_condition->Text;
+			   if (String::IsNullOrWhiteSpace(tcondition)) {
+				   MessageBox::Show("Ingrese la condición del vehículo a buscar");
+				   return;
+			   }
 
-		List<Vehicle^>^ cList = Controller::QueryListVehicleByCondition(tcondition);
-		if (cList->Count < 1) {
-			notifyIcon1->BalloonTipText = "La condición del vehículo ingresado no existe.";
-			notifyIcon1->ShowBalloonTip(2500);
-			return;
-		}
+			   List<Vehicle^>^ cList = Controller::QueryListVehicleByCondition(tcondition);
+			   if (cList->Count < 1) {
+				   notifyIcon1->BalloonTipText = "La condición del vehículo ingresado no existe.";
+				   notifyIcon1->ShowBalloonTip(2500);
+				   return;
+			   }
 
-		FillVehicleTextBoxes(cList[0]);
+			   FillVehicleTextBoxes(cList[0]);
 
-		ShowSearchedVehicle(cList[0]);
+			   ShowSearchedVehicle(cList[0]);
 
-	}*/
+		   }*/
 
 	private: System::Void UserMyVehiclesPage_Load(System::Object^ sender, System::EventArgs^ e) {
 		/*FillCombos();*/
@@ -1495,23 +1504,23 @@ namespace ProjectView {
 	private: System::Void UserMyVehiclesPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	}
-private: System::Void button_condition_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	String^ tcondition = comboBox_condition->Text;
-	if (String::IsNullOrWhiteSpace(tcondition)) {
-		MessageBox::Show("Ingrese la condición del vehículo a buscar");
-		return;
+	private: System::Void button_condition_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		String^ tcondition = comboBox_condition->Text;
+		if (String::IsNullOrWhiteSpace(tcondition)) {
+			MessageBox::Show("Ingrese la condición del vehículo a buscar");
+			return;
+		}
+
+		List<Vehicle^>^ cList = Controller::QueryListVehicleByCondition(tcondition);
+		if (cList->Count < 1) {
+			notifyIcon1->BalloonTipText = "La condición del vehículo ingresado no existe.";
+			notifyIcon1->ShowBalloonTip(2500);
+			return;
+		}
+
+		FillVehicleTextBoxes(cList[0]);
+
+		ShowSearchedVehicle(cList[0]);
 	}
-
-	List<Vehicle^>^ cList = Controller::QueryListVehicleByCondition(tcondition);
-	if (cList->Count < 1) {
-		notifyIcon1->BalloonTipText = "La condición del vehículo ingresado no existe.";
-		notifyIcon1->ShowBalloonTip(2500);
-		return;
-	}
-
-	FillVehicleTextBoxes(cList[0]);
-
-	ShowSearchedVehicle(cList[0]);
-}
-};
+	};
 }

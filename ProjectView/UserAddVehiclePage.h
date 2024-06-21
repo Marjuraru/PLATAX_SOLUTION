@@ -489,7 +489,6 @@ namespace ProjectView {
 	}
 	private: System::Void button_add_Click(System::Object^ sender, System::EventArgs^ e) {
 		Vehicle^ vehicle = gcnew Vehicle();
-
 		String^ model = textBox_model->Text;
 		String^ plate = textBox_plate->Text;
 		String^ brand = textBox_brand->Text;
@@ -566,7 +565,7 @@ namespace ProjectView {
 		}
 
 		Controller::CreateVehicle(vehicle);
-		
+
 		Proprietor^ ProprietorP = Session::CurrentProprietor;
 		ProprietorP->ListVehicleProprietor->Add(vehicle);
 		Controller::UpdateProprietor(ProprietorP);
@@ -627,5 +626,5 @@ namespace ProjectView {
 	private: System::Void UserAddVehiclePage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	}
-};
+	};
 }

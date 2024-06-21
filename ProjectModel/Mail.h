@@ -17,7 +17,8 @@ namespace ProjectModel {
 		property String^ Subject;
 		property DateTime MadeDate;
 		property Vehicle^ vehicle;
-
+		property bool MailSelected;
+		property int DaysAgreed;
 
 		property String^ UsertransmitterName {
 			String^ get() {
