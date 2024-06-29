@@ -1096,6 +1096,21 @@ namespace ProjectView {
 
 	private: System::Void button_clearall_Click(System::Object^ sender, System::EventArgs^ e) {
 		richTextBox_content->Clear();
+		textBox_subject->Clear();
+		textBox_enter_email->Clear();
+
+		textBox_name->Text = "Nombre";
+		textBox_surname->Text = "Apellido";
+		textBox_phone->Text = "Teléfono";
+		textBox_dni->Text = "DNI";
+
+		textBox_model->Text = "Model";
+		textBox_brand->Text = "Marca";
+		textBox_plate->Text = "Placa";
+		textBox_color->Text = "Color";
+		textBox_condition->Text = "Condición";
+		textBox_operative->Text = "Operatividad";
+		textBox_available->Text = "Disponibilidad";
 	}
 
 
@@ -1267,18 +1282,18 @@ namespace ProjectView {
 		InitializeDataGridView();
 		ClearTextBoxes();
 		//Inicializar los mail selected
-		List<Mail^>^ MailList = Controller::QueryAllMails();
-		for each (Mail ^ mail in MailList) {
-			mail->MailSelected = false;
-			Controller::UpdateMail(mail);
-		}
+		//List<Mail^>^ MailList = Controller::QueryAllMails();
+		//for each (Mail ^ mail in MailList) {
+		//	mail->MailSelected = false;
+		//	Controller::UpdateMail(mail);
+		//}
 	}
 
 	private: System::Void button_send_message_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ tenter_email = textBox_enter_email->Text;
 		Mail^ mail = gcnew Mail();
 
-		if (Confirmarexistencia()) {
+		if (Confirmarexistencia() && comboBox2->Text != "") {
 			mail->Id = Controller::GenerateMailId();
 			mail->Usertransmitter = Session::CurrentClient;
 
@@ -1295,7 +1310,7 @@ namespace ProjectView {
 			mail->Subject = textBox_subject->Text;
 			mail->MadeDate = System::DateTime::Now;//toma hora y fecha del sistema
 
-			if (textBox_plate->Text != "Plate") {
+			if (textBox_plate->Text != "Placa") {
 				mail->vehicle = Controller::QueryVehicleByPlate(textBox_plate->Text);
 			}
 			else {
@@ -1355,6 +1370,7 @@ namespace ProjectView {
 			textBox_phone->Clear();
 			textBox_dni->Clear();
 			textBox_enter_email->Clear();
+			comboBox2->Enabled = true;
 
 			textBox_model->Text = "Model";
 			textBox_brand->Text = "Marca";
@@ -1375,42 +1391,11 @@ namespace ProjectView {
 
 
 	private: System::Void tabControl1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		try {
 			// Establecer "Recibidos" como la opción seleccionada por defecto
 			comboBox1->SelectedIndex = 0;
-
-			// Llama a QueryAllMails y verifica que no devuelva null
-			List<Mail^>^ mails = Controller::QueryAllMails();
-			// Inicializa la lista de mails filtrados
-			List<Mail^>^ m = gcnew List<Mail^>();
-			// Filtra los mails
-
-			if (mails != nullptr) {
-				for each (Mail ^ ma in mails) {
-					for each (Mail ^ mai in Session::CurrentClient->ListEmailReceivedClient) {
-						if (ma->Id == mai->Id) {
-							m->Add(ma);
-							break;
-						}
-					}
-				}
-			}
-			// Asigna la lista filtrada como fuente de datos
-			dgv_mails->DataSource = m;
-		}
-		catch (Exception^ ex) {
-			// Maneja la excepción, mostrando un mensaje al usuario
-			MessageBox::Show("Error al cargar los mails: " + ex->Message);
-		}
 	}
 
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-
-		List<Mail^>^ MailList = Controller::QueryAllMails();
-		for each (Mail ^ mail in MailList) {
-			mail->MailSelected = false;
-			Controller::UpdateMail(mail);
-		}
 
 		ComboBox^ comboBox = dynamic_cast<ComboBox^>(sender);
 
@@ -1421,38 +1406,55 @@ namespace ProjectView {
 			if (comboBox->SelectedIndex == 0) {
 				ClearTextBoxes_Mail();
 				// Filtrar correos recibidos
-				List<Mail^>^ filteredMails = gcnew List<Mail^>();
+				List<Mail^>^ filteredMailsReceived = gcnew List<Mail^>();
 				label_from_to->Text = "De: ";
 				if (mails != nullptr && Session::CurrentClient->ListEmailReceivedClient != nullptr) {
 					for each (Mail ^ ma in mails) {
 						for each (Mail ^ mai in Session::CurrentClient->ListEmailReceivedClient) {
 							if (ma->Id == mai->Id) {
-								filteredMails->Add(ma);
+								filteredMailsReceived->Add(ma);
 								break;
 							}
 						}
 					}
 				}
 				// Asignar la lista filtrada como fuente de datos
-				dgv_mails->DataSource = filteredMails;
+				dgv_mails->DataSource = filteredMailsReceived;
+
+				if (filteredMailsReceived->Count == 0) {
+					button_showvehicle->Enabled = false;
+					button_reply_message->Enabled = false;
+				}else {
+					button_reply_message->Enabled = true;
+				}
+
 			}
 			else if (comboBox->SelectedIndex == 1) {
 				ClearTextBoxes_Mail();
 				// Filtrar correos enviados
-				List<Mail^>^ filteredMails = gcnew List<Mail^>();
+				List<Mail^>^ filteredMailsSent = gcnew List<Mail^>();
 				label_from_to->Text = "Para: ";
 				if (mails != nullptr && Session::CurrentClient->ListEmailSentClient != nullptr) {
 					for each (Mail ^ ma in mails) {
 						for each (Mail ^ mai in Session::CurrentClient->ListEmailSentClient) {
 							if (ma->Id == mai->Id) {
-								filteredMails->Add(ma);
+								filteredMailsSent->Add(ma);
 								break;
 							}
 						}
 					}
 				}
 				// Asignar la lista filtrada como fuente de datos
-				dgv_mails->DataSource = filteredMails;
+				dgv_mails->DataSource = filteredMailsSent;
+
+				if (filteredMailsSent->Count == 0) {
+					button_showvehicle->Enabled = false;
+					button_reply_message->Enabled = false;
+				}
+				else {
+					button_reply_message->Enabled = true;
+				}
+
 			}
 		}
 		else {
@@ -1498,10 +1500,8 @@ private: System::Void dgv_mails_SelectionChanged(System::Object^ sender, System:
 				// Inicializar los mails seleccionados
 				List<Mail^>^ MailList = Controller::QueryAllMails();
 				for each (Mail ^ mail in MailList) {
-					if (mail->MailSelected) {
-						mail->MailSelected = false;
-						Controller::UpdateMail(mail);
-					}
+					mail->MailSelected = false;
+					Controller::UpdateMail(mail);
 				}
 
 				// Marcar el mail seleccionado
@@ -1541,7 +1541,7 @@ private: System::Void dgv_mails_SelectionChanged(System::Object^ sender, System:
 
 		comboBox2->Enabled = false;
 	}
-private: System::Void button_reply_message_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void button_reply_message_Click(System::Object^ sender, System::EventArgs^ e){
 	// Cambia a la pestaña "Sendmessage"
 	this->tabControl1->SelectedTab = this->tabPage_Sendmessage;
 
@@ -1561,24 +1561,36 @@ private: System::Void button_reply_message_Click(System::Object^ sender, System:
 	if (mailselected != nullptr) {
 		if (mailselected->Usertransmitter->Email == Session::CurrentClient->Email) {
 			textBox_enter_email->Text = mailselected->Userreceiver->Email;
+
+			textBox_name->Text = mailselected->Userreceiver->Name;
+			textBox_surname->Text = mailselected->Userreceiver->Lastname;
+			textBox_phone->Text = mailselected->Userreceiver->Phone.ToString();
+			textBox_dni->Text = mailselected->Userreceiver->Dni.ToString();
 		}
 		else {
 			textBox_enter_email->Text = mailselected->Usertransmitter->Email;
+
+			textBox_name->Text = mailselected->Usertransmitter->Name;
+			textBox_surname->Text = mailselected->Usertransmitter->Lastname;
+			textBox_phone->Text = mailselected->Usertransmitter->Phone.ToString();
+			textBox_dni->Text = mailselected->Usertransmitter->Dni.ToString();
 		}
 
-		textBox_name->Text = mailselected->Usertransmitter->Name;
-		textBox_surname->Text = mailselected->Usertransmitter->Lastname;
-		textBox_phone->Text = mailselected->Usertransmitter->Phone.ToString();
-		textBox_dni->Text = mailselected->Usertransmitter->Dni.ToString();
-
 		if (mailselected->vehicle != nullptr && mailselected->vehicle->Plate != nullptr) {
-			comboBox2->Enabled = true;
-
 			// Limpia y añade opciones a comboBox2
-			comboBox2->Items->Clear();
-			comboBox2->Items->Add("30 días");
-			comboBox2->Items->Add("60 días");
-			comboBox2->Items->Add("90 días");
+			comboBox2->Enabled = false;
+
+			if (mailselected->DaysAgreed == 90) {
+				comboBox2->Text = "90 días";
+			}
+			else {
+				if (mailselected->DaysAgreed == 60) {
+					comboBox2->Text = "60 días";
+				}
+				else {
+					comboBox2->Text = "30 días";
+				}
+			}
 
 			textBox_model->Text = mailselected->vehicle->Model;
 			textBox_brand->Text = mailselected->vehicle->Brand;

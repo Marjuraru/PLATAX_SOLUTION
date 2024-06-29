@@ -888,12 +888,6 @@ namespace ProjectView {
 		comboBox1->Items->Add("Enviados");
 		InitializeDataGridView();
 		ClearTextBoxes();
-
-		List<Mail^>^ MailList = Controller::QueryAllMails();
-		for each (Mail ^ mail in MailList) {
-			mail->MailSelected = false;
-			Controller::UpdateMail(mail);
-		}
 	}
 
 	private: System::Void button_send_message_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -962,42 +956,11 @@ namespace ProjectView {
 
 
 	private: System::Void tabControl1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		try {
 			// Establecer "Recibidos" como la opción seleccionada por defecto
 			comboBox1->SelectedIndex = 0;
-
-			// Llama a QueryAllMails y verifica que no devuelva null
-			List<Mail^>^ mails = Controller::QueryAllMails();
-			// Inicializa la lista de mails filtrados
-			List<Mail^>^ m = gcnew List<Mail^>();
-			// Filtra los mails
-
-			if (mails != nullptr) {
-				for each (Mail ^ ma in mails) {
-					for each (Mail ^ mai in Session::CurrentProprietor->ListEmailReceivedProprietor) {
-						if (ma->Id == mai->Id) {
-							m->Add(ma);
-							break;
-						}
-					}
-				}
-			}
-			// Asigna la lista filtrada como fuente de datos
-			dgv_mails->DataSource = m;
-		}
-		catch (Exception^ ex) {
-			// Maneja la excepción, mostrando un mensaje al usuario
-			MessageBox::Show("Error al cargar los mails: " + ex->Message);
-		}
 	}
 
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		List<Mail^>^ MailList = Controller::QueryAllMails();
-		for each (Mail ^ mail in MailList) {
-			mail->MailSelected = false;
-			Controller::UpdateMail(mail);
-		}
-
 		ComboBox^ comboBox = dynamic_cast<ComboBox^>(sender);
 
 		if (comboBox != nullptr) {
@@ -1078,7 +1041,12 @@ namespace ProjectView {
 				// Verificar si selectedData->vehicle y selectedData->vehicle->Plate no son nulos
 				if (selectedData->vehicle != nullptr && selectedData->vehicle->Plate != nullptr) {
 					button_showvehicle->Enabled = true;
-					button_accept->Enabled = true;
+					if (!(Controller::QueryVehicleByPlate(selectedData->vehicle->Plate)->VehicleAvailable)) {
+						button_accept->Enabled = false;
+					}
+					else {
+						button_accept->Enabled = true;
+					}
 					textBox_days->Text = selectedData->DaysAgreed.ToString();
 				}
 				else {
@@ -1102,18 +1070,26 @@ namespace ProjectView {
 			Mail^ selectedData = dynamic_cast<Mail^>(selectedRow->DataBoundItem);
 
 			if (selectedData != nullptr) {
-				if (selectedData->vehicle != nullptr) {
-					Vehicle^ v = Controller::QueryVehicleByPlate(selectedData->vehicle->Plate);
-					Client^ c = Controller::QueryClientByEmail(selectedData->Usertransmitter->Email);
+				if (selectedData->vehicle != nullptr){
+					if (selectedData->vehicle->VehicleAvailable){
+						Vehicle^ v = Controller::QueryVehicleByPlate(selectedData->vehicle->Plate);
+						Client^ c = Controller::QueryClientByEmail(selectedData->Usertransmitter->Email);
 
-					v->VehicleAvailable = false;
-					c->ListVehicleClient->Add(v);
+						v->AquisitionDate = System::DateTime::Now;
+						v->ExpirationDate = System::DateTime::Now.AddDays(selectedData->DaysAgreed);
+						v->VehicleAvailable = false;
+						c->ListVehicleClient->Add(v);
 
-					Controller::UpdateVehicle(v);
-					Controller::UpdateClient(c);
-					Controller::UpdateProprietor(Session::CurrentProprietor);
+						Controller::UpdateVehicle(v);
+						Controller::UpdateClient(c);
+						Controller::UpdateMail(selectedData);
+						Controller::UpdateProprietor(Session::CurrentProprietor);
 
-					MessageBox::Show("SE ACEPTÓ LA SOLICITUD CORRECTAMENTE");
+						MessageBox::Show("SE ACEPTÓ LA SOLICITUD CORRECTAMENTE");
+					}
+					else {
+						button_accept->Enabled = false;
+					}
 				}
 				else {
 					MessageBox::Show("No hay un vehículo adjunto");
@@ -1133,12 +1109,15 @@ namespace ProjectView {
 		}
 		return;
 	}
-	private: System::Void button_reply_message_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void button_reply_message_Click(System::Object^ sender, System::EventArgs^ e){
+		// Cambia a la pestaña "Sendmessage"
 		this->tabControl1->SelectedTab = this->tabPage_Sendmessage;
 
+		// Consulta todos los correos
 		List<Mail^>^ MailList = Controller::QueryAllMails();
 		Mail^ mailselected = nullptr;
 
+		// Encuentra el correo seleccionado
 		for each (Mail ^ mail in MailList) {
 			if (mail->MailSelected) {
 				mailselected = mail;
@@ -1146,14 +1125,25 @@ namespace ProjectView {
 			}
 		}
 
+		// Si se encuentra un correo seleccionado
 		if (mailselected != nullptr) {
-			if (mailselected->MailSelected) {
+			if (mailselected->Usertransmitter->Email == Session::CurrentProprietor->Email) {
+				textBox_enter_email->Text = mailselected->Userreceiver->Email;
+
+				textBox_name->Text = mailselected->Userreceiver->Name;
+				textBox_surname->Text = mailselected->Userreceiver->Lastname;
+				textBox_phone->Text = mailselected->Userreceiver->Phone.ToString();
+				textBox_dni->Text = mailselected->Userreceiver->Dni.ToString();
+			}
+			else {
 				textBox_enter_email->Text = mailselected->Usertransmitter->Email;
+
 				textBox_name->Text = mailselected->Usertransmitter->Name;
 				textBox_surname->Text = mailselected->Usertransmitter->Lastname;
 				textBox_phone->Text = mailselected->Usertransmitter->Phone.ToString();
 				textBox_dni->Text = mailselected->Usertransmitter->Dni.ToString();
 			}
+			// Desmarca el correo seleccionado
 			mailselected->MailSelected = false;
 			Controller::UpdateMail(mailselected);
 		}

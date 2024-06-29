@@ -525,123 +525,80 @@ namespace ProjectView {
 		}
 	}
 
-	private: System::Void button_savechanges_Click(System::Object^ sender, System::EventArgs^ e) {
-		Proprietor^ c = Session::CurrentProprietor;
+private: System::Void button_savechanges_Click(System::Object^ sender, System::EventArgs^ e) {
+	Proprietor^ c = Session::CurrentProprietor;
 
-		String^ name = textBox_name->Text;
-		String^ lastname = textBox_lastname->Text;
-		String^ _dni = textBox_dni->Text;
-		String^ _phone = textBox_phone->Text;
-		String^ email = textBox_email->Text;
-		String^ address = textBox_address->Text;
-		String^ password = textBox_password->Text;
-		String^ newpassword = textBox_newpassword->Text;
-		DateTime birthdate = dtp_birthdate->Value;
+	String^ name = textBox_name->Text;
+	String^ lastname = textBox_lastname->Text;
+	String^ _dni = textBox_dni->Text;
+	String^ _phone = textBox_phone->Text;
+	String^ email = textBox_email->Text;
+	String^ address = textBox_address->Text;
+	String^ password = textBox_password->Text;
+	String^ newpassword = textBox_newpassword->Text;
 
-		bool male = checkBox_male->Checked;
-		bool female = checkBox_female->Checked;
+	bool male = checkBox_male->Checked;
+	bool female = checkBox_female->Checked;
 
-		if (String::IsNullOrWhiteSpace(name) || String::IsNullOrWhiteSpace(lastname) || String::IsNullOrWhiteSpace(_dni) ||
-			String::IsNullOrWhiteSpace(_phone) || String::IsNullOrWhiteSpace(address)) {
-			MessageBox::Show("Es necesario que se completen todos los datos de registro");
-			return;
-		}
-		if (!String::IsNullOrWhiteSpace(password) && !String::IsNullOrWhiteSpace(newpassword)) {
+	if (String::IsNullOrWhiteSpace(name) || String::IsNullOrWhiteSpace(lastname) || String::IsNullOrWhiteSpace(_dni) ||
+		String::IsNullOrWhiteSpace(_phone) || String::IsNullOrWhiteSpace(address)) {
+		MessageBox::Show("Es necesario que se completen todos los datos de registro");
+		return;
+	}
 
-			Proprietor^ c = Controller::QueryProprietorById(Session::CurrentProprietor->Id); //el id aun no lo sabemos
-			if (password == c->Password) {
-				c->Password = newpassword;
-			}
-			else {
-				// La contraseña actual no coincide, mostrar un mensaje de error.
-				MessageBox::Show("La contraseña actual ingresada es incorrecta");
-				return;
-			}
+	if (!String::IsNullOrWhiteSpace(password) && !String::IsNullOrWhiteSpace(newpassword)) {
+		Proprietor^ currentproprietor = Controller::QueryProprietorById(Session::CurrentProprietor->Id);
+		if (password == currentproprietor->Password) {
+			c->Password = newpassword;
 		}
 		else {
-			MessageBox::Show("Por favor ingrese las contraseñas para actualizarla");
+			MessageBox::Show("La contraseña actual ingresada es incorrecta");
 			return;
 		}
-
-
-		// String::IsNullOrWhiteSpace(password) || String::IsNullOrWhiteSpace(newpassword)
-		int phone = 0, dni = 0;
-		if (_phone->Length != 9) {
-			MessageBox::Show("El número de telefono ingresado debe tener 9 dígitos");
-			return;
-		}
-		if (_dni->Length != 8) {
-			MessageBox::Show("El número de DNI ingresado debe tener 8 dígitos");
-			return;
-		}
-
-		if (!Int32::TryParse(_phone, phone)) {
-			MessageBox::Show("Ingrese solo números para el teléfono");
-			return;
-		}
-		if (!Int32::TryParse(_dni, dni)) {
-			MessageBox::Show("Ingrese solo números para el DNI");
-			return;
-		}
-
-		if (!male && !female) {
-			MessageBox::Show("Seleccione su sexo");
-			return;
-		}
-
-		DateTime today = DateTime::Now;
-		DateTime minimumDate = today.AddYears(-18);
-		if (birthdate > minimumDate) {
-			MessageBox::Show("Debe ser mayor de 18 años para registrarse.");
-			return;
-		}
-
-		int _phone_ = Convert::ToInt32(textBox_phone->Text);
-		if (Controller::IsPhoneRegistered(_phone_)) {
-			MessageBox::Show("El número de teléfono ingresado ya ha sido registrado");
-			return;
-		}
-
-		int _dni_ = Convert::ToInt32(textBox_dni->Text);
-
-		if (Controller::IsDniRegistered(_dni_)) {
-			MessageBox::Show("El DNI ingresado ya ha sido registrado");
-			return;
-		}
-
-
-		if (Controller::IsEmailRegistered(email)) {
-			MessageBox::Show("El Email ingresado ya ha sido registrado");
-			return;
-		}
-		
-		//no se va generar ID
-		c->Name = textBox_name->Text;
-		c->Lastname = textBox_lastname->Text;
-		c->Dni = Convert::ToInt32(textBox_dni->Text);
-		c->Phone = Int32::Parse(textBox_phone->Text);
-		c->Email = textBox_email->Text;
-		c->Address = textBox_address->Text;
-		c->BirthDate = dtp_birthdate->Value;
-		c->female = checkBox_female->Checked;
-		c->male = checkBox_male->Checked;
-		
-
-		if (pb_photo->Image != nullptr) {
-
-			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
-			pb_photo->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
-			c->Photo = ms->ToArray();
-			ms->Close();
-		} 
-
-		//Session::CurrentClient = c;
-		Controller::UpdateProprietor(c);
-		MessageBox::Show("¡Se editó correctamente!");
-		Session::CurrentProprietor = c;
-		this->Close();
-
 	}
+	else if (!String::IsNullOrWhiteSpace(password) || !String::IsNullOrWhiteSpace(newpassword)) {
+		MessageBox::Show("Por favor ingrese ambas contraseñas para actualizarla");
+		return;
+	}
+
+	int phone = 0, dni = 0;
+	if (_phone->Length != 9 || !Int32::TryParse(_phone, phone)) {
+		MessageBox::Show("El número de telefono ingresado debe tener 9 dígitos y contener solo números");
+		return;
+	}
+	if (_dni->Length != 8 || !Int32::TryParse(_dni, dni)) {
+		MessageBox::Show("El número de DNI ingresado debe tener 8 dígitos y contener solo números");
+		return;
+	}
+
+	if (!male && !female) {
+		MessageBox::Show("Seleccione su sexo");
+		return;
+	}
+
+	c->Name = name;
+	c->Lastname = lastname;
+	c->Dni = dni;
+	c->Phone = phone;
+	c->Email = email;
+	c->Address = address;
+	c->BirthDate = dtp_birthdate->Value;
+	c->female = female;
+	c->male = male;
+
+	if (pb_photo->Image != nullptr) {
+		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+		pb_photo->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+		c->Photo = ms->ToArray();
+		ms->Close();
+	}
+
+	Controller::UpdateProprietor(c);
+	MessageBox::Show("¡Se editó correctamente!");
+	Session::CurrentProprietor = c;
+	this->Close();
+}
+
 
 
 	private: System::Void UserProfilePage_Load(System::Object^ sender, System::EventArgs^ e) {
