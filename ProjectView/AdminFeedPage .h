@@ -1,5 +1,4 @@
 #pragma once
-#include "AdmNotifyPage.h"
 #include "AdmInfoUserPage.h"
 #include "AdminEmailsPage.h"
 
@@ -29,7 +28,6 @@ namespace ProjectView {
 		static AdminEmailsPage^ adminEmailsPage; 
 	private: System::Windows::Forms::Button^ button_emails;
 	public:
-		static AdmNotifyPage^ admnotifypage;
 
 	protected:
 		/// <summary>
@@ -46,7 +44,7 @@ namespace ProjectView {
 	protected:
 	private: System::Windows::Forms::Button^ button_logout;
 	private: System::Windows::Forms::Button^ button_usersinfo;
-	private: System::Windows::Forms::Button^ button_notifyusers;
+
 
 	private:
 		/// <summary>
@@ -62,10 +60,9 @@ namespace ProjectView {
 		void InitializeComponent(void)
 		{
 			this->groupBoxx = (gcnew System::Windows::Forms::GroupBox());
+			this->button_emails = (gcnew System::Windows::Forms::Button());
 			this->button_logout = (gcnew System::Windows::Forms::Button());
 			this->button_usersinfo = (gcnew System::Windows::Forms::Button());
-			this->button_notifyusers = (gcnew System::Windows::Forms::Button());
-			this->button_emails = (gcnew System::Windows::Forms::Button());
 			this->groupBoxx->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -75,7 +72,6 @@ namespace ProjectView {
 			this->groupBoxx->Controls->Add(this->button_emails);
 			this->groupBoxx->Controls->Add(this->button_logout);
 			this->groupBoxx->Controls->Add(this->button_usersinfo);
-			this->groupBoxx->Controls->Add(this->button_notifyusers);
 			this->groupBoxx->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->groupBoxx->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -88,13 +84,26 @@ namespace ProjectView {
 			this->groupBoxx->TabStop = false;
 			this->groupBoxx->Text = L"Seleccione opcion";
 			// 
+			// button_emails
+			// 
+			this->button_emails->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->button_emails->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button_emails->Location = System::Drawing::Point(47, 48);
+			this->button_emails->Name = L"button_emails";
+			this->button_emails->Size = System::Drawing::Size(137, 91);
+			this->button_emails->TabIndex = 41;
+			this->button_emails->Text = L"Emails";
+			this->button_emails->UseVisualStyleBackColor = false;
+			this->button_emails->Click += gcnew System::EventHandler(this, &AdminFeedPage::button_emails_Click);
+			// 
 			// button_logout
 			// 
 			this->button_logout->BackColor = System::Drawing::Color::Maroon;
 			this->button_logout->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button_logout->ForeColor = System::Drawing::SystemColors::ButtonFace;
-			this->button_logout->Location = System::Drawing::Point(556, 169);
+			this->button_logout->Location = System::Drawing::Point(260, 169);
 			this->button_logout->Name = L"button_logout";
 			this->button_logout->Size = System::Drawing::Size(148, 28);
 			this->button_logout->TabIndex = 40;
@@ -115,37 +124,11 @@ namespace ProjectView {
 			this->button_usersinfo->UseVisualStyleBackColor = false;
 			this->button_usersinfo->Click += gcnew System::EventHandler(this, &AdminFeedPage::button_usersinfo_Click);
 			// 
-			// button_notifyusers
-			// 
-			this->button_notifyusers->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->button_notifyusers->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button_notifyusers->Location = System::Drawing::Point(523, 48);
-			this->button_notifyusers->Name = L"button_notifyusers";
-			this->button_notifyusers->Size = System::Drawing::Size(137, 91);
-			this->button_notifyusers->TabIndex = 20;
-			this->button_notifyusers->Text = L"Notificar";
-			this->button_notifyusers->UseVisualStyleBackColor = false;
-			this->button_notifyusers->Click += gcnew System::EventHandler(this, &AdminFeedPage::button_notifyusers_Click);
-			// 
-			// button_emails
-			// 
-			this->button_emails->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->button_emails->Font = (gcnew System::Drawing::Font(L"Times New Roman", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button_emails->Location = System::Drawing::Point(47, 48);
-			this->button_emails->Name = L"button_emails";
-			this->button_emails->Size = System::Drawing::Size(137, 91);
-			this->button_emails->TabIndex = 41;
-			this->button_emails->Text = L"Emails";
-			this->button_emails->UseVisualStyleBackColor = false;
-			this->button_emails->Click += gcnew System::EventHandler(this, &AdminFeedPage::button_emails_Click);
-			// 
 			// AdminFeedPage
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(732, 238);
+			this->ClientSize = System::Drawing::Size(442, 238);
 			this->Controls->Add(this->groupBoxx);
 			this->Name = L"AdminFeedPage";
 			this->Text = L"AdminFeedPage";
@@ -157,16 +140,7 @@ namespace ProjectView {
 #pragma endregion
 	private: System::Void button_notifyusers_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		if (admnotifypage == nullptr) {
-			admnotifypage = gcnew AdmNotifyPage();
-			admnotifypage->MdiParent = this->MdiParent;
-			this->Hide();
-			if (admnotifypage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-				this->Show();
-				admnotifypage = nullptr;
-			}
-		}
-		return;
+
 	}
 	private: System::Void button_usersinfo_Click(System::Object^ sender, System::EventArgs^ e) {
 

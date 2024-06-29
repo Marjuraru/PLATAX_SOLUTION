@@ -43,18 +43,9 @@ namespace ProjectView {
 		}
 
 	protected:
-
 	protected:
 	private: System::Windows::Forms::Timer^ timer;  /*<< 3 */
-
-
-
-
 	private: String^ ultimaLectura; // Variable para almacenar la última lectura
-
-
-
-
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chart1;
 	private: int rowIndex; // Contador de filas
 
@@ -88,7 +79,7 @@ namespace ProjectView {
 			// 
 			// chart1
 			// 
-			chartArea2->AxisY->Maximum = 500;
+			chartArea2->AxisY->Maximum = 200;
 			chartArea2->AxisY->Minimum = 0;
 			chartArea2->Name = L"ChartArea1";
 			this->chart1->ChartAreas->Add(chartArea2);

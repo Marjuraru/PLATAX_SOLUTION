@@ -1,5 +1,4 @@
 #pragma once
-#include "AdmNotifyPage.h" 
 
 namespace ProjectView {
 
@@ -1111,9 +1110,7 @@ namespace ProjectView {
         this->Close();
     }
     private: System::Void button_notify_Click(System::Object^ sender, System::EventArgs^ e) {
-        AdmNotifyPage^ admnotifypage = gcnew AdmNotifyPage();
-        admnotifypage->MdiParent = this->MdiParent;
-        admnotifypage->Show();
+
     }
     private: System::Void AdmInfoUserPage_Load(System::Object^ sender, System::EventArgs^ e) {
         InitializeDataGridView();

@@ -1,10 +1,8 @@
 #pragma once
 #include "ClientEditProfilePage.h"
 #include "ClientSearchVehiclePage.h"
-#include "ClientHelp.h"
 #include "ClientMyVehiclePage.h"
 #include "ClientMailBox.h"
-#include "ClientMyReclamationPage.h"
 
 
 namespace ProjectView {
@@ -32,10 +30,8 @@ namespace ProjectView {
 
 		static ClientSearchVehiclePage^ clientSearchVehiclePage;
 		static ClientEditProfilePage^ clientEditProfilePage;
-		static ClientHelp^ clientHelp;
 		static ClientMyVehiclePage^ clientMyVehiclePage;
 		static ClientMailBox^ clientMailBox;
-		static ClientMyReclamationPage^ clientMyReclamationPage;
 
 	protected:
 		/// <summary>
@@ -233,16 +229,6 @@ namespace ProjectView {
 
 	private: System::Void button_help_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		if (clientHelp == nullptr) {
-			clientHelp = gcnew ClientHelp();
-			clientHelp->MdiParent = this->MdiParent;
-			this->Hide();
-			if (clientHelp->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-				this->Show();
-				clientHelp = nullptr;
-			}
-		}
-		return;
 	}
 	
 
@@ -276,17 +262,7 @@ namespace ProjectView {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;
 	}
 private: System::Void button_myreclamations_Click(System::Object^ sender, System::EventArgs^ e) {
-	//this->Close();
-	if (clientMyReclamationPage == nullptr) {
-		clientMyReclamationPage = gcnew ClientMyReclamationPage();
-		clientMyReclamationPage->MdiParent = this->MdiParent;
-		this->Hide();
-		if (clientMyReclamationPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-			this->Show();
-			clientMyReclamationPage = nullptr;
-		}
-	}
-	return;
+
 }
 };
 }

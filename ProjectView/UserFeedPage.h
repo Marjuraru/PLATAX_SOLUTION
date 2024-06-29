@@ -3,9 +3,6 @@
 #include "UserAddVehiclePage.h"
 #include "UserMyVehiclesPage.h"
 #include "UserMyStatisticsPage.h"
-#include "UserReclamationPage.h"
-#include "UserMyReclamationsPage.h"
-#include "UserHelpPage.h"
 #include "UserMailBoxPage.h"
 #include "SensorSectionPage.h"
 
@@ -35,8 +32,6 @@ namespace ProjectView {
 		static UserMyVehiclesPage^ userMyVehiclesPage;
 		static UserProfilePage^ userProfilePage;
 		static UserMyStatisticsPage^ userMyStatisticsPage;
-		static UserHelpPage^ userHelpPage;
-		static UserReclamationPage^ userReclamationPage;
 		static UserMailBoxPage^ userMailBoxPage;
 		static SensorSectionPage^ sensorSectionPage;
 
@@ -47,7 +42,6 @@ namespace ProjectView {
 	public:
 
 	public:
-		static UserMyReclamationsPage^ userMyReclamationsPage;
 
 	protected:
 		/// <summary>
@@ -299,17 +293,6 @@ namespace ProjectView {
 	private: System::Void button_help_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
-		//this->Close();
-		if (userHelpPage == nullptr) {
-			userHelpPage = gcnew UserHelpPage();
-			userHelpPage->MdiParent = this->MdiParent;
-			this->Hide();
-			if (userHelpPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-				this->Show();
-				userHelpPage = nullptr;
-			}
-		}
-		return;
 	}
 	private: System::Void button_statistics_Click(System::Object^ sender, System::EventArgs^ e) {
 
@@ -331,32 +314,9 @@ namespace ProjectView {
 	private: System::Void button_reclamation_Click(System::Object^ sender, System::EventArgs^ e) {
 
 
-		//this->Close();
-		if (userReclamationPage == nullptr) {
-			userReclamationPage = gcnew UserReclamationPage();
-			userReclamationPage->MdiParent = this->MdiParent;
-			this->Hide();
-			if (userReclamationPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-				this->Show();
-				userReclamationPage = nullptr;
-			}
-		}
-		return;
 	}
 	private: System::Void button_myreclamations_Click(System::Object^ sender, System::EventArgs^ e) {
 
-
-		//this->Close();
-		if (userMyReclamationsPage == nullptr) {
-			userMyReclamationsPage = gcnew UserMyReclamationsPage();
-			userMyReclamationsPage->MdiParent = this->MdiParent;
-			this->Hide();
-			if (userMyReclamationsPage->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-				this->Show();
-				userMyReclamationsPage = nullptr;
-			}
-		}
-		return;
 	}
 	private: System::Void UserFeedPage_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 		this->DialogResult = System::Windows::Forms::DialogResult::OK;

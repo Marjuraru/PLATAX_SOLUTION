@@ -131,16 +131,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AdmDataBaseUsers.cpp" />
     <ClCompile Include="AdminEmailsPage.cpp" />
     <ClCompile Include="AdminFeedPage .cpp" />
     <ClCompile Include="AdmInfoUserPage.cpp" />
-    <ClCompile Include="AdmNotifyPage.cpp" />
     <ClCompile Include="ClientEditProfilePage.cpp" />
     <ClCompile Include="ClientFeedPage.cpp" />
-    <ClCompile Include="ClientHelp.cpp" />
     <ClCompile Include="ClientMailBox.cpp" />
-    <ClCompile Include="ClientMyReclamationPage.cpp" />
     <ClCompile Include="ClientMyStatisticsPage.cpp" />
     <ClCompile Include="ClientMyVehiclePage.cpp" />
     <ClCompile Include="ClientSearchVehiclePage.cpp" />
@@ -150,20 +146,14 @@
     <ClCompile Include="TestSensorsPage.cpp" />
     <ClCompile Include="UserAddVehiclePage.cpp" />
     <ClCompile Include="UserFeedPage.cpp" />
-    <ClCompile Include="UserHelpPage.cpp" />
     <ClCompile Include="UserLoginPage.cpp" />
     <ClCompile Include="UserMailBoxPage.cpp" />
     <ClCompile Include="UserMyVehiclesPage.cpp" />
-    <ClCompile Include="UserMyReclamationsPage.cpp" />
     <ClCompile Include="UserMyStatisticsPage.cpp" />
     <ClCompile Include="UserProfilePage.cpp" />
-    <ClCompile Include="UserReclamationPage.cpp" />
     <ClCompile Include="UserRegisterPage.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdmDataBaseUsers.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="AdminEmailsPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -173,22 +163,13 @@
     <ClInclude Include="AdmInfoUserPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="AdmNotifyPage.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="ClientEditProfilePage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ClientFeedPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="ClientHelp.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="ClientMailBox.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="ClientMyReclamationPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ClientMyStatisticsPage.h">
@@ -218,9 +199,6 @@
     <ClInclude Include="UserFeedPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="UserHelpPage.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="UserLoginPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -230,16 +208,10 @@
     <ClInclude Include="UserMyVehiclesPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="UserMyReclamationsPage.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="UserMyStatisticsPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserProfilePage.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="UserReclamationPage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UserRegisterPage.h">
@@ -256,23 +228,14 @@
     <EmbeddedResource Include="AdmInfoUserPage.resx">
       <DependentUpon>AdmInfoUserPage.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdmNotifyPage.resx">
-      <DependentUpon>AdmNotifyPage.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ClientEditProfilePage.resx">
       <DependentUpon>ClientEditProfilePage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientFeedPage.resx">
       <DependentUpon>ClientFeedPage.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientHelp.resx">
-      <DependentUpon>ClientHelp.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ClientMailBox.resx">
       <DependentUpon>ClientMailBox.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClientMyReclamationPage.resx">
-      <DependentUpon>ClientMyReclamationPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientMyStatisticsPage.resx">
       <DependentUpon>ClientMyStatisticsPage.h</DependentUpon>
@@ -298,9 +261,6 @@
     <EmbeddedResource Include="UserFeedPage.resx">
       <DependentUpon>UserFeedPage.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserHelpPage.resx">
-      <DependentUpon>UserHelpPage.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserLoginPage.resx">
       <DependentUpon>UserLoginPage.h</DependentUpon>
     </EmbeddedResource>
@@ -310,17 +270,11 @@
     <EmbeddedResource Include="UserMyVehiclesPage.resx">
       <DependentUpon>UserMyVehiclesPage.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserMyReclamationsPage.resx">
-      <DependentUpon>UserMyReclamationsPage.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserMyStatisticsPage.resx">
       <DependentUpon>UserMyStatisticsPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserProfilePage.resx">
       <DependentUpon>UserProfilePage.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserReclamationPage.resx">
-      <DependentUpon>UserReclamationPage.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserRegisterPage.resx">
       <DependentUpon>UserRegisterPage.h</DependentUpon>
