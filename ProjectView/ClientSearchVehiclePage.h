@@ -904,9 +904,18 @@ namespace ProjectView {
 	private: System::Void DataGridView_Load() {
 		// Obtener todos los vehículos desde el controlador
 		List<Vehicle^>^ vehicles = Controller::QueryAllVehicles();
+		List<Vehicle^>^ v = gcnew List<Vehicle^>();
+
+		if (vehicles != nullptr) {
+			for each (Vehicle^ vehicle in vehicles) {
+				if (vehicle->VehicleAvailable) {
+					v->Add(vehicle);
+				}
+			}
+		}
 
 		// Vincular los datos al DataGridView
-		dgv_vehicles->DataSource = vehicles;
+		dgv_vehicles->DataSource = v;
 	}
 
 

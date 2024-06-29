@@ -341,14 +341,9 @@ namespace ProjectView {
 		List<Client^>^ countclient = Controller::QueryAllClients();
 
 		if (countproprietor == nullptr && countclient == nullptr) {
-
-
 			MessageBox::Show("El usuario ingresado no existe, registrese por favor.");
-
-
 		}
 		else {
-
 			if (countproprietor != nullptr) {
 				Proprietor^ p = Controller::QueryProprietorByEmail(email);
 				if (p != nullptr) {

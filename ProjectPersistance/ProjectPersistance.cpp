@@ -50,7 +50,6 @@ Object^ ProjectPersistance::Persistance::LoadBinaryFile(String^ fileName) {
             else if (fileName->Equals(VEHICLE_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
-
             else if (fileName->Equals(RECLAMATION_FILE_BIN_NAME)) {
                 result = formatter->Deserialize(file);
             }
@@ -662,13 +661,6 @@ void ProjectPersistance::Persistance::UpdateProprietor(Proprietor^ c)
                 ProprietorList[i] = c;
             }
         }
-        /*
-        for each (Client^ client in ClientList){
-            if (c->Id == ClientList[i]->Id) {
-                ClientList[i] = c;
-            }
-        }
-        */
     }
     PersistBinaryFile(PROPRIETOR_FILE_BIN_NAME, ProprietorList);
 }

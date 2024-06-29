@@ -525,97 +525,80 @@ namespace ProjectView {
 		}
 	}
 
-	private: System::Void button_savechanges_Click(System::Object^ sender, System::EventArgs^ e) {
-		Client^ c = Session::CurrentClient;
+private: System::Void button_savechanges_Click(System::Object^ sender, System::EventArgs^ e) {
+	Client^ c = Session::CurrentClient;
 
-		String^ name = textBox_name->Text;
-		String^ lastname = textBox_lastname->Text;
-		String^ _dni = textBox_dni->Text;
-		String^ _phone = textBox_phone->Text;
-		String^ email = textBox_email->Text;
-		String^ address = textBox_address->Text;
-		String^ password = textBox_password->Text;
-		String^ newpassword = textBox_newpassword->Text;
+	String^ name = textBox_name->Text;
+	String^ lastname = textBox_lastname->Text;
+	String^ _dni = textBox_dni->Text;
+	String^ _phone = textBox_phone->Text;
+	String^ email = textBox_email->Text;
+	String^ address = textBox_address->Text;
+	String^ password = textBox_password->Text;
+	String^ newpassword = textBox_newpassword->Text;
 
-		bool male = checkBox_male->Checked;
-		bool female = checkBox_female->Checked;
+	bool male = checkBox_male->Checked;
+	bool female = checkBox_female->Checked;
 
-		if (String::IsNullOrWhiteSpace(name) || String::IsNullOrWhiteSpace(lastname) || String::IsNullOrWhiteSpace(_dni) ||
-			String::IsNullOrWhiteSpace(_phone) || String::IsNullOrWhiteSpace(address)) {
-			MessageBox::Show("Es necesario que se completen todos los datos de registro");
-			return;
-		}
-		if (!String::IsNullOrWhiteSpace(password) && !String::IsNullOrWhiteSpace(newpassword)) {
+	if (String::IsNullOrWhiteSpace(name) || String::IsNullOrWhiteSpace(lastname) || String::IsNullOrWhiteSpace(_dni) ||
+		String::IsNullOrWhiteSpace(_phone) || String::IsNullOrWhiteSpace(address)) {
+		MessageBox::Show("Es necesario que se completen todos los datos de registro");
+		return;
+	}
 
-			Client^ c = Controller::QueryClientById(Session::CurrentClient->Id); //el id aun no lo sabemos
-			if (password == c->Password) {
-				c->Password = newpassword;
-			}
-			else {
-				// La contraseña actual no coincide, mostrar un mensaje de error.
-				MessageBox::Show("La contraseña actual ingresada es incorrecta");
-				return;
-			}
+	if (!String::IsNullOrWhiteSpace(password) && !String::IsNullOrWhiteSpace(newpassword)) {
+		Client^ currentClient = Controller::QueryClientById(Session::CurrentClient->Id);
+		if (password == currentClient->Password) {
+			c->Password = newpassword;
 		}
 		else {
-			MessageBox::Show("Por favor ingrese las contraseñas para actualizarla");
+			MessageBox::Show("La contraseña actual ingresada es incorrecta");
 			return;
 		}
-
-
-		// String::IsNullOrWhiteSpace(password) || String::IsNullOrWhiteSpace(newpassword)
-		int phone = 0, dni = 0;
-		if (_phone->Length != 9) {
-			MessageBox::Show("El número de telefono ingresado debe tener 9 dígitos");
-			return;
-		}
-		if (_dni->Length != 8) {
-			MessageBox::Show("El número de DNI ingresado debe tener 8 dígitos");
-			return;
-		}
-
-		if (!Int32::TryParse(_phone, phone)) {
-			MessageBox::Show("Ingrese solo números para el teléfono");
-			return;
-		}
-		if (!Int32::TryParse(_dni, dni)) {
-			MessageBox::Show("Ingrese solo números para el DNI");
-			return;
-		}
-
-		if (!male && !female) {
-			MessageBox::Show("Seleccione su sexo");
-			return;
-		}
-
-
-		//no se va generar ID
-		c->Name = textBox_name->Text;
-		c->Lastname = textBox_lastname->Text;
-		c->Dni = Convert::ToInt32(textBox_dni->Text);
-		c->Phone = Int32::Parse(textBox_phone->Text);
-		c->Email = textBox_email->Text;
-		c->Address = textBox_address->Text;
-		c->BirthDate = dtp_birthdate->Value;
-		c->female = checkBox_female->Checked;
-		c->male = checkBox_male->Checked;
-
-
-		if (pb_photo->Image != nullptr) {
-
-			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
-			pb_photo->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
-			c->Photo = ms->ToArray();
-			ms->Close();
-		}
-
-		//Session::CurrentClient = c;
-		Controller::UpdateClient(c);
-		MessageBox::Show("¡Se editó correctamente!");
-		Session::CurrentClient = c;
-		this->Close();
-
 	}
+	else if (!String::IsNullOrWhiteSpace(password) || !String::IsNullOrWhiteSpace(newpassword)) {
+		MessageBox::Show("Por favor ingrese ambas contraseñas para actualizarla");
+		return;
+	}
+
+	int phone = 0, dni = 0;
+	if (_phone->Length != 9 || !Int32::TryParse(_phone, phone)) {
+		MessageBox::Show("El número de telefono ingresado debe tener 9 dígitos y contener solo números");
+		return;
+	}
+	if (_dni->Length != 8 || !Int32::TryParse(_dni, dni)) {
+		MessageBox::Show("El número de DNI ingresado debe tener 8 dígitos y contener solo números");
+		return;
+	}
+
+	if (!male && !female) {
+		MessageBox::Show("Seleccione su sexo");
+		return;
+	}
+
+	c->Name = name;
+	c->Lastname = lastname;
+	c->Dni = dni;
+	c->Phone = phone;
+	c->Email = email;
+	c->Address = address;
+	c->BirthDate = dtp_birthdate->Value;
+	c->female = female;
+	c->male = male;
+
+	if (pb_photo->Image != nullptr) {
+		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+		pb_photo->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+		c->Photo = ms->ToArray();
+		ms->Close();
+	}
+
+	Controller::UpdateClient(c);
+	MessageBox::Show("¡Se editó correctamente!");
+	Session::CurrentClient = c;
+	this->Close();
+}
+
 
 
 	private: System::Void ClientProfilePage_Load(System::Object^ sender, System::EventArgs^ e) {
